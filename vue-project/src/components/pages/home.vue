@@ -1,5 +1,7 @@
 <script setup>
 import Traffic from './echarts/traffic.vue';
+import Classify from './echarts/classify.vue';
+import Trend from './echarts/trend.vue';
 </script>
 
 <template>
@@ -75,7 +77,7 @@ import Traffic from './echarts/traffic.vue';
                 </div>
                 </template>
                 <div class="card-content">
-
+                    <Classify />
                 </div>
             </el-card>
         </el-col>
@@ -94,7 +96,7 @@ import Traffic from './echarts/traffic.vue';
                 </div>
                 </template>
                 <div class="card-content big-card-content">
-                    
+                    <Trend />
                 </div>
             </el-card>
         </el-col>
