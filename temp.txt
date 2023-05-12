@@ -11,10 +11,10 @@
 		username varchar  	用户名
 		phone varchar           手机号码
 		password varchar	用户密码
-		address varchar 	地址
-		gender bit		性别
+		gender int		性别
 		role int		角色
 		avatar varchar		头像
+		create_time datetime	创建时间
 		enable int		是否启用
 		
 角色表 role
@@ -26,22 +26,58 @@
 		name varchar		角色名称
 
 权限表 permission
-	功能权限限制功能
+	权限管理功能
 	
 	字段：
 		permission_id int 	权限标识
 		name varchar		功能名称
 		url varchar		对应的访问路径
-		is_menu int		是否为菜单	
+		is_menu int		是否为菜单
+	
 角色-权限表 role_permission
-	用于判断角色是否有权限
+	功能权限限制功能
 
 	字段：
 		id int 			角色-权限标识
-		role_id			角色id
-		permission_id		权限id
+		role_id int		角色id
+		permission_id int	权限id
 		
 日志表 log
-	
+	日志管理功能
+	记录用户操作
+
+	字段：
+		log_id int 		日志标识	
+		title varchar		日志标题
+		url varchar 		日志访问的接口
+		user_id int		操作的用户
+		execution_time datetime	执行的时间
+
 商品表 goods
+	商品管理功能
+	商品购买功能	
+	
+	字段：
+		good_id int 		商品标识
+		name varchar		商品名称
+		price double		商品价格
+		user_id int		商品的发布者标识
+		description varchar	商品的描述
+		classify int		商品的类别
+		status int		商品的状态，记录是否被出售
+		
+		
+
 订单表 orders
+	订单管理功能
+	订单评价功能
+	订单支付功能	
+
+	字段：
+		order_id int		订单标识
+		good_id	int		购买商品的id
+		sell_user_id int	出售商品的id
+		buy_user_id int		购买商品的id
+		status int		订单的状态
+		create_time datetime	订单创建的时间
+		update_time datetime	订单修改的时间
