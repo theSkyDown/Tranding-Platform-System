@@ -3,7 +3,7 @@ use trand_platform_sys;
 create table user(
     user_id int primary key auto_increment comment '用户标识',
     username varchar(255) not null comment '用户名',
-    phone varchar(11) not null comment '用户手机号',
+    phone varchar(11) not null unique comment '用户手机号',
     password varchar(255) not null comment '用户密码',
     gender tinyint not null comment '性别',
     role_id int not null comment '角色标识',
