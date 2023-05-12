@@ -4,7 +4,7 @@ server:
 spring:
   datasource:
     driver-class-name: com.mysql.cj.jdbc.Driver
-    url: jdbc:mysql://localhost:3306/java_web_class
+    url: jdbc:mysql://localhost:3306/trand_platform_sys
     username: root
     password: root
 

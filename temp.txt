@@ -12,10 +12,10 @@
 		phone varchar           手机号码
 		password varchar	用户密码
 		gender int		性别
-		role int		角色
+		role_id int		角色
 		avatar varchar		头像
 		create_time datetime	创建时间
-		enable int		是否启用
+		status int		用户状态
 		
 角色表 role
 	角色管理功能
@@ -63,9 +63,7 @@
 		price double		商品价格
 		user_id int		商品的发布者标识
 		description varchar	商品的描述
-		classify int		商品的类别
-		status int		商品的状态，记录是否被出售
-		
+		classify varchar	商品的类别
 		
 
 订单表 orders
@@ -76,8 +74,9 @@
 	字段：
 		order_id int		订单标识
 		good_id	int		购买商品的id
-		sell_user_id int	出售商品的id
-		buy_user_id int		购买商品的id
+		user_id int		购买商品的id
+		price double		订单的价格
+		pay_type int		支付类型
 		status int		订单的状态
 		create_time datetime	订单创建的时间
 		update_time datetime	订单修改的时间
