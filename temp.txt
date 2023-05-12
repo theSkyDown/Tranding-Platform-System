@@ -12,58 +12,59 @@
 		phone varchar           手机号码
 		password varchar	用户密码
 		gender int		性别
-		role_id int		角色
+		role_id int		角色标识
 		avatar varchar		头像
 		create_time datetime	创建时间
+		update_time datetime	最后更新时间
 		status int		用户状态
 		
 角色表 role
 	角色管理功能
-	角色分配功能
+	给用户分配角色功能
 
 	字段：
 		role_id int		角色标识
-		name varchar		角色名称
+		role_name varchar	角色名称
+		create_time 		角色创建时间
 
-权限表 permission
-	权限管理功能
+资源表 module
+	资源管理功能
 	
 	字段：
-		permission_id int 	权限标识
-		name varchar		功能名称
+		module_id int	 	资源标识
+		module_name varchar	资源名称
 		url varchar		对应的访问路径
 		is_menu int		是否为菜单
 	
-角色-权限表 role_permission
-	功能权限限制功能
+权限表 permission
+	角色功能权限功能
 
 	字段：
-		id int 			角色-权限标识
+		permission_id int 	权限标识
 		role_id int		角色id
-		permission_id int	权限id
+		module_id int		资源id
 		
-日志表 log
-	日志管理功能
-	记录用户操作
-
-	字段：
-		log_id int 		日志标识	
-		title varchar		日志标题
-		url varchar 		日志访问的接口
-		user_id int		操作的用户
-		execution_time datetime	执行的时间
-
 商品表 goods
 	商品管理功能
 	商品购买功能	
 	
 	字段：
 		good_id int 		商品标识
-		name varchar		商品名称
+		good_name varchar	商品名称
 		price double		商品价格
 		user_id int		商品的发布者标识
 		description varchar	商品的描述
-		classify varchar	商品的类别
+		good_img varchar	商品的图片
+		category_id int		商品的类别标识
+		create_time datetime	创建时间
+		
+分类表 category
+	商品分类信息
+	
+	字段：
+		category_id int		分类标识
+		category_name int 	分类名称
+		create_time datetime	创建时间
 		
 
 订单表 orders
