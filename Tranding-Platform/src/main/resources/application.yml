@@ -1,0 +1,14 @@
+server:
+  port: 8080
+
+spring:
+  datasource:
+    driver-class-name: com.mysql.cj.jdbc.Driver
+    url: jdbc:mysql://localhost:3306/java_web_class
+    username: root
+    password: root
+
+
+mybatis:
+  configuration:
+    map-underscore-to-camel-case: true

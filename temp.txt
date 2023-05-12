@@ -1,0 +1,47 @@
+用户表 user
+	用户添加功能
+	用户信息管理功能
+	用户密码重置功能
+	用户删除功能
+	用户登陆功能
+	用户详细信息查看功能
+
+	字段：
+		user_id int  	        用户标识
+		username varchar  	用户名
+		phone varchar           手机号码
+		password varchar	用户密码
+		address varchar 	地址
+		gender bit		性别
+		role int		角色
+		avatar varchar		头像
+		enable int		是否启用
+		
+角色表 role
+	角色管理功能
+	角色分配功能
+
+	字段：
+		role_id int		角色标识
+		name varchar		角色名称
+
+权限表 permission
+	功能权限限制功能
+	
+	字段：
+		permission_id int 	权限标识
+		name varchar		功能名称
+		url varchar		对应的访问路径
+		is_menu int		是否为菜单	
+角色-权限表 role_permission
+	用于判断角色是否有权限
+
+	字段：
+		id int 			角色-权限标识
+		role_id			角色id
+		permission_id		权限id
+		
+日志表 log
+	
+商品表 goods
+订单表 orders

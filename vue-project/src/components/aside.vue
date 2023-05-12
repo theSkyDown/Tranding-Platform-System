@@ -33,6 +33,11 @@
                 <span>用户管理</span>
             </el-menu-item>
 
+            <el-menu-item index="3-4">
+                <el-icon><GoodsFilled /></el-icon>
+                <span>订单管理</span>
+            </el-menu-item>
+
             <el-menu-item index="3-3">
                 <el-icon><Lock /></el-icon>
                 <span>权限管理</span>
