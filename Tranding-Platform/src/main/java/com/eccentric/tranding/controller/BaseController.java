@@ -13,21 +13,21 @@ public abstract class BaseController {
 
     /**
      * 用于检测参数是否合理的
-     * @param user
+     * @param obj
      * @return
      */
-    public static Boolean isOk(User user){
-        if (user == null){
+    public static Boolean isOk(Object obj){
+        if (obj == null){
             return false;
         }
-        Field[] fields = user.getClass().getDeclaredFields();
+        Field[] fields = obj.getClass().getDeclaredFields();
 
         //遍历所有属性，如果存在不为空的值则参数没有问题，如果属性全为空则参数存在问题
         Boolean result = false;
         for (Field field : fields) {
             field.setAccessible(true);
             try {
-                if (field.get(user) != null) {
+                if (field.get(obj) != null) {
                     result = true;
                 }
             } catch (IllegalAccessException e) {

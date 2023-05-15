@@ -1,5 +1,6 @@
 package com.eccentric.tranding.config;
 
+import com.eccentric.tranding.interceptor.CookieInterceptor;
 import com.eccentric.tranding.interceptor.CorsInterceptor;
 import com.eccentric.tranding.interceptor.PermissionInterceptor;
 import org.springframework.context.annotation.Configuration;
@@ -18,7 +19,8 @@ public class Config implements WebMvcConfigurer {
     @Override
     public void addInterceptors(InterceptorRegistry registry) {
         registry.addInterceptor(new CorsInterceptor());
-        registry.addInterceptor(new PermissionInterceptor());
+        registry.addInterceptor(new CookieInterceptor());
+        registry.addInterceptor(new PermissionInterceptor()).excludePathPatterns("/test");
         WebMvcConfigurer.super.addInterceptors(registry);
     }
 }

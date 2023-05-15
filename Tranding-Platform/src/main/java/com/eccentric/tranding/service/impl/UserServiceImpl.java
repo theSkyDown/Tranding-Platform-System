@@ -13,6 +13,8 @@ import org.springframework.beans.factory.annotation.Autowired;
 import org.springframework.stereotype.Service;
 
 import java.time.LocalDateTime;
+import java.util.ArrayList;
+import java.util.List;
 
 /**
  * 对用户操作提供服务
@@ -114,16 +116,93 @@ public class UserServiceImpl implements UserService {
 
 
     @Override
+    public Ret deleteByIds(List<Integer> idList) {
+        //批量删除
+        Integer count = userMapper.deleteByIds(idList);
+        return count>0 ? Ret.ok() : Ret.fail();
+    }
+
+    @Override
     public Ret updateUser(User user) {
         //拦截不存在的用户
         if (!isExist(user)){
             return Ret.fail("用户不存在，修改失败");
         }
+
+        //防止修改的手机号已经被使用
+        User tempUser = userMapper.getUserByPhone(user.getPhone());
+        if (tempUser!=null && !user.getUserId().equals(tempUser.getUserId())){
+            return Ret.fail("手机号修改失败，手机号已被使用");
+        }
+
         //设置默认值，防止参数为空
         setDefault(user);
 
         //执行修改操作
         boolean result = userMapper.updateUser(user)==1;
         return result?Ret.ok():Ret.fail();
+    }
+
+
+    @Override
+    public Ret login(User user) throws Exception {
+        User userByPhone = userMapper.getUserByPhone(user.getPhone());
+        if (userByPhone == null){
+            return Ret.fail("用户不存在");
+        }
+
+        String md5 = Md5Util.getMD5(user.getPassword() + Encrypt.MD5_HELPER);
+        if (!md5.equals(userByPhone.getPassword())){
+            return Ret.fail("用户名或密码错误");
+        }
+        //密码不传回去
+        userByPhone.setPassword(null);
+        return Ret.ok(null,userByPhone);
+    }
+
+
+    @Override
+    public Ret resetPassword(Integer userId) throws Exception {
+        User temp = new User();
+        temp.setUserId(userId);
+        if (!isExist(temp)){
+            return Ret.fail("用户不存在");
+        }
+        //生成密码
+        String pwd = Md5Util.getMD5(Encrypt.PWD_RESET + Encrypt.MD5_HELPER);
+        Integer count = userMapper.updatePassword(userId, pwd);
+        return count==1 ? Ret.ok() : Ret.fail();
+    }
+
+
+    @Override
+    public User getUserById(Integer userId) {
+        User user = userMapper.getUserByUserId(userId);
+        if (user != null){
+            user.setPassword(null);
+        }
+        return user;
+    }
+
+
+    @Override
+    public Ret updatePassword(Integer userId, String password) throws Exception {
+        User temp = new User();
+        temp.setUserId(userId);
+        if (!isExist(temp)){
+            return Ret.fail("用户不存在");
+        }
+        //对密码加密
+        String md5 = Md5Util.getMD5(password + Encrypt.MD5_HELPER);
+
+        Integer count = userMapper.updatePassword(userId, md5);
+        return count==1 ? Ret.ok():Ret.fail();
+    }
+
+    @Override
+    public Ret getAllUser(Integer pageNum, Integer pageSize) {
+        List<User> userList = userMapper.getAllUserPage(pageNum, pageSize);
+        userList.forEach(user -> {user.setPassword(null);});
+        return Ret.ok(null,userList);
     }
 }

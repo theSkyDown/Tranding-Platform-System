@@ -2,14 +2,14 @@
 <!DOCTYPE mapper PUBLIC "-//mybatis.org//DTD Mapper 3.0//EN" "http://mybatis.org/dtd/mybatis-3-mapper.dtd">
 
 <mapper namespace="com.eccentric.tranding.mappers.UserMapper">
-
+<!--public Integer insertUser(User user);-->
     <insert id="insertUser">
         insert into
             user(username,phone,password,gender,role_id,avatar,create_time,update_time,status)
         values(#{username},#{phone},#{password},#{gender},#{roleId},#{avatar},#{createTime},#{updateTime},#{status})
     </insert>
 
-
+<!--public Integer updateUser(User user);-->
     <update id="updateUser">
         update user set
             username=#{username},
@@ -21,4 +21,14 @@
             status=#{status}
         where user_id = #{userId}
     </update>
+
+
+<!--public Integer deleteByIds(@Param("idList") List<Integer> idList);-->
+    <delete id="deleteByIds">
+        delete from user where user_id in 
+        <foreach collection="idList" item="id" separator="," open="(" close=")">
+            #{id}
+        </foreach>
+    </delete>
+
 </mapper>

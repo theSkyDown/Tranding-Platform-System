@@ -4,6 +4,8 @@ package com.eccentric.tranding.mappers;
 import com.eccentric.tranding.pojo.User;
 import org.apache.ibatis.annotations.*;
 
+import java.util.List;
+
 /**
  * @author eccentric
  */
@@ -43,6 +45,13 @@ public interface UserMapper {
     @Delete("delete from user where user_id=#{userId}")
     public Integer deleteUser(@Param("userId") Integer userId);
 
+    /**
+     * 批量删除
+     * @param idList
+     * @return
+     */
+    public Integer deleteByIds(@Param("idList") List<Integer> idList);
+
 
     /**
      * 修改用户信息
@@ -50,4 +59,24 @@ public interface UserMapper {
      * @return
      */
     public Integer updateUser(User user);
+
+
+    /**
+     * 修改用户的密码
+     * @param userId
+     * @param password
+     * @return
+     */
+    @Update("update user set password=#{password} where user_id=#{userId}")
+    public Integer updatePassword(@Param("userId") Integer userId,@Param("password") String password);
+
+
+    /**
+     * 分页查询所有用户
+     * @param pageNum
+     * @param pageSize
+     * @return
+     */
+    @Select("select * from user limit #{pageNum},#{pageSize}")
+    public List<User> getAllUserPage(@Param("pageNum") Integer pageNum,@Param("pageSize") Integer pageSize);
 }
