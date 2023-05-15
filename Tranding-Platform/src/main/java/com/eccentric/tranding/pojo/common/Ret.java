@@ -1,4 +1,4 @@
-package com.eccentric.tranding.pojo;
+package com.eccentric.tranding.pojo.common;
 
 import lombok.AllArgsConstructor;
 import lombok.Data;

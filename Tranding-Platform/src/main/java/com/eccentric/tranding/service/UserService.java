@@ -1,6 +1,6 @@
 package com.eccentric.tranding.service;
 
-import com.eccentric.tranding.pojo.Ret;
+import com.eccentric.tranding.pojo.common.Ret;
 import com.eccentric.tranding.pojo.User;
 
 /**

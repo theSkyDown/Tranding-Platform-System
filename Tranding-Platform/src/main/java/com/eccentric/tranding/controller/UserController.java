@@ -4,7 +4,7 @@
  */
 package com.eccentric.tranding.controller;
 
-import com.eccentric.tranding.pojo.Ret;
+import com.eccentric.tranding.pojo.common.Ret;
 import com.eccentric.tranding.pojo.User;
 import com.eccentric.tranding.service.impl.UserServiceImpl;
 import org.springframework.beans.factory.annotation.Autowired;
@@ -43,6 +43,7 @@ public class UserController extends BaseController{
         //添加用户
         return userService.addUser(user);
     }
+
 
 
 

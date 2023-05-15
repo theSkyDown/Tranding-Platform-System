@@ -5,7 +5,7 @@ import com.eccentric.tranding.dictionary.Gender;
 import com.eccentric.tranding.dictionary.Identity;
 import com.eccentric.tranding.dictionary.Status;
 import com.eccentric.tranding.mappers.UserMapper;
-import com.eccentric.tranding.pojo.Ret;
+import com.eccentric.tranding.pojo.common.Ret;
 import com.eccentric.tranding.pojo.User;
 import com.eccentric.tranding.service.UserService;
 import com.eccentric.tranding.utils.Md5Util;
@@ -73,7 +73,7 @@ public class UserServiceImpl implements UserService {
         }
         //设置默认的用户状态，启用
         if (user.getStatus()==null){
-            user.setStatus(Status.enable);
+            user.setStatus(Status.ENABLE);
         }
     }
 

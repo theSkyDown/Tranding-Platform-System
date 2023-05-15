@@ -6,7 +6,7 @@ package com.eccentric.tranding.dictionary;
  */
 public final class Status {
     //启用
-    public static final Integer enable = 1;
+    public static final Integer ENABLE = 1;
     //禁用
-    public static final Integer disable = 2;
+    public static final Integer DISABLE = 2;
 }
