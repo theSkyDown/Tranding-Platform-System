@@ -7,8 +7,8 @@ import java.lang.reflect.Field;
 
 /**
  * 基础Controller类
+ * @author eccentric
  */
-@RestController
 public abstract class BaseController {
 
 

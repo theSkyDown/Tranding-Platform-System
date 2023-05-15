@@ -29,4 +29,19 @@ public interface UserService {
      */
     public Boolean isExist(User user);
 
+    /**
+     * 删除用户
+     * @param userId
+     * @return
+     */
+    public Ret deleteUser(Integer userId);
+
+
+    /**
+     * 修改用户信息
+     * @param user
+     * @return
+     */
+    public Ret updateUser(User user);
+
 }

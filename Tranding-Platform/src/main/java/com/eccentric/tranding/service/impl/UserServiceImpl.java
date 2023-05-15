@@ -73,7 +73,7 @@ public class UserServiceImpl implements UserService {
         }
         //设置默认的用户状态，启用
         if (user.getStatus()==null){
-            user.setStatus(Status.enable);
+            user.setStatus(Status.ENABLE);
         }
     }
 
@@ -99,5 +99,31 @@ public class UserServiceImpl implements UserService {
     }
 
 
+    @Override
+    public Ret deleteUser(Integer userId) {
+        //判断用户是否存在
+        User tempUser = new User();
+        tempUser.setUserId(userId);
+        if (!isExist(tempUser)){
+            return Ret.fail("用户不存在");
+        }
+        //执行删除操作
+        boolean result =  userMapper.deleteUser(userId) == 1;
+        return result?Ret.ok():Ret.fail();
+    }
 
+
+    @Override
+    public Ret updateUser(User user) {
+        //拦截不存在的用户
+        if (!isExist(user)){
+            return Ret.fail("用户不存在，修改失败");
+        }
+        //设置默认值，防止参数为空
+        setDefault(user);
+
+        //执行修改操作
+        boolean result = userMapper.updateUser(user)==1;
+        return result?Ret.ok():Ret.fail();
+    }
 }

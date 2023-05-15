@@ -9,4 +9,16 @@
         values(#{username},#{phone},#{password},#{gender},#{roleId},#{avatar},#{createTime},#{updateTime},#{status})
     </insert>
 
+
+    <update id="updateUser">
+        update user set
+            username=#{username},
+            phone=#{phone},
+            gender=#{gender},
+            role_id=#{roleId},
+            avatar=#{avatar},
+            update_time=#{updateTime},
+            status=#{status}
+        where user_id = #{userId}
+    </update>
 </mapper>
