@@ -1,14 +1,13 @@
 package com.eccentric.tranding.controller;
 
 import com.eccentric.tranding.pojo.User;
-import org.springframework.web.bind.annotation.RestController;
 
 import java.lang.reflect.Field;
 
 /**
  * 基础Controller类
+ * @author eccentric
  */
-@RestController
 public abstract class BaseController {
 
 

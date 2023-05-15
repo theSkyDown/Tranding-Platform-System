@@ -2,10 +2,7 @@ package com.eccentric.tranding.mappers;
 
 
 import com.eccentric.tranding.pojo.User;
-import org.apache.ibatis.annotations.Insert;
-import org.apache.ibatis.annotations.Mapper;
-import org.apache.ibatis.annotations.Param;
-import org.apache.ibatis.annotations.Select;
+import org.apache.ibatis.annotations.*;
 
 /**
  * @author eccentric
@@ -36,4 +33,21 @@ public interface UserMapper {
      * @return
      */
     public Integer insertUser(User user);
+
+
+    /**
+     * 删除用户
+     * @param userId
+     * @return
+     */
+    @Delete("delete from user where user_id=#{userId}")
+    public Integer deleteUser(@Param("userId") Integer userId);
+
+
+    /**
+     * 修改用户信息
+     * @param user
+     * @return
+     */
+    public Integer updateUser(User user);
 }
