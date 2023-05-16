@@ -53,6 +53,12 @@ public class PermissionInterceptor implements HandlerInterceptor {
                     if (user.getRoleId()==1){
                         return true;
                     }
+                    //拦截已经被禁用的用户
+                    if (user.getStatus() == 2){
+                        response.getWriter().write(objectMapper.writeValueAsString(Ret.fail("用户已经被禁用")));
+                        return false;
+                    }
+
                     //获取资源信息
                     String url = request.getServletPath();
                     Module module = moduleService.getModuleByUrl(url);

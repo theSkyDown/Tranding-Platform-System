@@ -33,8 +33,10 @@ public class Config implements WebMvcConfigurer {
         registry.addInterceptor(corsInterceptor);
         //非法用户拦截器
         registry.addInterceptor(cookieInterceptor);
-        //权限拦截器(登陆请求不拦截)
-        registry.addInterceptor(permissionInterceptor).excludePathPatterns("/user/login");
+        //权限拦截器(登陆，验证码请求不拦截)
+        registry.addInterceptor(permissionInterceptor)
+                .excludePathPatterns("/user/login")
+                .excludePathPatterns("/captcha/img");
         WebMvcConfigurer.super.addInterceptors(registry);
     }
 }

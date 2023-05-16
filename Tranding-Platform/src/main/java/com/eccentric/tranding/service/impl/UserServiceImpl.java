@@ -7,6 +7,7 @@ import com.eccentric.tranding.dictionary.Status;
 import com.eccentric.tranding.mappers.UserMapper;
 import com.eccentric.tranding.pojo.common.Ret;
 import com.eccentric.tranding.pojo.User;
+import com.eccentric.tranding.service.RoleService;
 import com.eccentric.tranding.service.UserService;
 import com.eccentric.tranding.utils.Md5Util;
 import org.springframework.beans.factory.annotation.Autowired;
@@ -25,6 +26,9 @@ public class UserServiceImpl implements UserService {
 
     @Autowired
     private UserMapper userMapper;
+
+    @Autowired
+    private RoleService roleService;
 
     @Override
     public Boolean isExist(User user) {
@@ -165,6 +169,10 @@ public class UserServiceImpl implements UserService {
         }
         //密码不传回去
         userByPhone.setPassword(null);
+
+        //设置角色名称
+        userByPhone.setRoleName(roleService.getRoleById(userByPhone.getRoleId()).getRoleName());
+
         return Ret.ok(null,userByPhone);
     }
 

@@ -36,4 +36,8 @@ public class User {
     //用户状态
     private Integer status;
 
+    //验证码
+    private String captcha;
+    //角色名称
+    private String roleName;
 }

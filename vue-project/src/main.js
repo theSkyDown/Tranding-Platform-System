@@ -9,6 +9,9 @@ import * as ElementPlusIconsVue from '@element-plus/icons-vue'
 import * as echarts from 'echarts'
 //路由
 import router from './router/index.js'
+// vuex，全局状态管理
+import store from './store/index.js'
+
 
 
 
@@ -27,6 +30,10 @@ app.config.globalProperties.$echarts = echarts
 
 //路由
 app.use(router)
+
+//vuex
+app.use(store)
+
 
 
 app.mount('#app')

@@ -9,11 +9,13 @@ import com.eccentric.tranding.pojo.common.Ret;
 import com.eccentric.tranding.pojo.User;
 import com.eccentric.tranding.service.impl.UserServiceImpl;
 import com.eccentric.tranding.utils.Md5Util;
+import com.wf.captcha.utils.CaptchaUtil;
 import org.springframework.beans.factory.annotation.Autowired;
 import org.springframework.http.HttpHeaders;
 import org.springframework.http.ResponseCookie;
 import org.springframework.web.bind.annotation.*;
 
+import javax.servlet.http.HttpServletRequest;
 import javax.servlet.http.HttpServletResponse;
 import java.util.ArrayList;
 import java.util.List;
@@ -133,7 +135,7 @@ public class UserController extends BaseController{
      */
     @RequestMapping(value = "/login",method = RequestMethod.POST)
     @ResponseBody
-    public Ret login(@RequestBody User user, HttpServletResponse response) throws Exception {
+    public Ret login(@RequestBody User user, HttpServletResponse response, HttpServletRequest request) throws Exception {
         //拦截参数异常的情况
         if (!isOk(user)) {
             return Ret.fail("参数异常");
@@ -141,6 +143,12 @@ public class UserController extends BaseController{
         if (user.getPhone()==null || user.getPassword()==null){
             return Ret.fail("参数异常");
         }
+
+        //拦截验证码错误的
+        if (user.getCaptcha()==null || !CaptchaUtil.ver(user.getCaptcha(),request)){
+            return Ret.fail("验证码错误");
+        }
+
         //如果登陆成功则写入cookie
         Ret ret = userService.login(user);
         if (ret.getStatus()){
