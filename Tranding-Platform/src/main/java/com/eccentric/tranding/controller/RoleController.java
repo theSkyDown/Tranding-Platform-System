@@ -13,7 +13,7 @@ import java.util.List;
  * @author eccentric
  */
 @RestController
-@RequestMapping("/role")
+@RequestMapping(value = "/role")
 public class RoleController extends BaseController{
 
     @Autowired
