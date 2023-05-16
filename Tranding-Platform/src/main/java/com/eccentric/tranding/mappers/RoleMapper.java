@@ -1,10 +1,7 @@
 package com.eccentric.tranding.mappers;
 
 import com.eccentric.tranding.pojo.Role;
-import org.apache.ibatis.annotations.Insert;
-import org.apache.ibatis.annotations.Mapper;
-import org.apache.ibatis.annotations.Param;
-import org.apache.ibatis.annotations.Select;
+import org.apache.ibatis.annotations.*;
 
 import java.util.List;
 
@@ -32,6 +29,27 @@ public interface RoleMapper {
     public Role getRoleById(@Param("roleId") Integer roleId);
 
 
+    /**
+     * 添加角色
+     * @param role
+     * @return
+     */
     @Insert("insert into role values(#{roleId},#{roleName},#{createTime})")
     public Integer addRole(Role role);
+
+
+    /**
+     * 通过id删除角色
+     * @param roleId
+     * @return
+     */
+    @Delete("delete from role where role_id = #{roleId}")
+    public Integer deleteById(@Param("roleId") Integer roleId);
+
+    /**
+     * 批量删除
+     * @param idList
+     * @return
+     */
+    public Integer deleteByBatchIds(@Param("idList") List<Integer> idList);
 }

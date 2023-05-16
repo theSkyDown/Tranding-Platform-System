@@ -52,4 +52,22 @@ public class RoleServiceImpl implements RoleService {
         Integer count = roleMapper.addRole(role);
         return count==1 ? Ret.ok() : Ret.fail();
     }
+
+
+    @Override
+    public Ret deleteRole(Integer roleId) {
+        if (!isExist(roleId)){
+            return Ret.fail("角色不存在");
+        }
+        //执行删除操作
+        Integer count = roleMapper.deleteById(roleId);
+        return count==1 ? Ret.ok() : Ret.fail();
+    }
+
+
+    @Override
+    public Ret deleteByIds(List<Integer> idList) {
+        Integer count = roleMapper.deleteByBatchIds(idList);
+        return count > 0 ? Ret.ok() : Ret.fail();
+    }
 }

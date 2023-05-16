@@ -75,7 +75,7 @@ public class UserController extends BaseController{
         //判断是否有权限
 
         //拦截参数为空的情况
-        if (userId == null || userId <= 0){
+        if (!isOk(userId)){
             return Ret.fail("参数异常");
         }
         //执行删除操作
@@ -177,7 +177,7 @@ public class UserController extends BaseController{
     @RequestMapping(value = "/reset/password/{userId}",method = RequestMethod.PUT)
     @ResponseBody
     public Ret resetPassword(@PathVariable Integer userId) throws Exception {
-        if (userId == null || userId <= 0){
+        if (!isOk(userId)){
             return Ret.fail("参数异常");
         }
         return userService.resetPassword(userId);

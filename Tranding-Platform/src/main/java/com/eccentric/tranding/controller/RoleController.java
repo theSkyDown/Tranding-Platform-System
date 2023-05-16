@@ -6,6 +6,9 @@ import com.eccentric.tranding.service.RoleService;
 import org.springframework.beans.factory.annotation.Autowired;
 import org.springframework.web.bind.annotation.*;
 
+import java.util.ArrayList;
+import java.util.List;
+
 /**
  * @author eccentric
  */
@@ -47,6 +50,46 @@ public class RoleController extends BaseController{
             return Ret.fail("参数异常");
         }
         return roleService.addRole(role);
+    }
+
+
+    /**
+     * 角色删除功能
+     * @param roleId
+     * @return
+     */
+    @RequestMapping(value = "/delete/{roleId}",method = RequestMethod.DELETE)
+    @ResponseBody
+    public Ret deleteRole(@PathVariable Integer roleId){
+        if (!isOk(roleId)){
+            return Ret.fail("参数异常");
+        }
+        return roleService.deleteRole(roleId);
+    }
+
+
+    /**
+     * 角色批量删除功能
+     * @param ids
+     * @return
+     */
+    @RequestMapping("/delete/ids/{ids}")
+    @ResponseBody
+    public Ret deleteByBatchIds(@PathVariable String ids){
+        List<Integer> idList = new ArrayList<>();
+        //判断参数是否正常
+        String[] idArray = ids.split(",");
+        for (String id : idArray){
+            if (!id.matches("\\d+")){
+                return Ret.fail("参数异常");
+            }
+            idList.add(Integer.valueOf(id));
+        }
+        //防止最后一个为逗号
+        if (ids.lastIndexOf(",") == ids.length()-1){
+            return Ret.fail("参数异常");
+        }
+        return roleService.deleteByIds(idList);
     }
 
 }

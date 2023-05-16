@@ -40,4 +40,20 @@ public interface RoleService {
      * @return
      */
     public Ret addRole(Role role);
+
+
+    /**
+     * 通过id将角色删除
+     * @param roleId
+     * @return
+     */
+    public Ret deleteRole(Integer roleId);
+
+
+    /**
+     * 批量删除角色
+     * @param idList
+     * @return
+     */
+    public Ret deleteByIds(List<Integer> idList);
 }

@@ -10,6 +10,31 @@ import java.lang.reflect.Field;
  */
 public abstract class BaseController {
 
+    /**
+     * 检测id类型的数据是否合理
+     * @param id
+     * @return
+     */
+    public static Boolean isOk(Integer id){
+        if (id == null || id <= 0){
+            return false;
+        }
+        return true;
+    }
+
+
+    /**
+     * 检测字符串类型的数据是否合理
+     * @param str
+     * @return
+     */
+    public static Boolean isOk(String str){
+        if (str == null || "".equals(str.trim())){
+            return false;
+        }
+        return true;
+    }
+
 
     /**
      * 用于检测参数是否合理的

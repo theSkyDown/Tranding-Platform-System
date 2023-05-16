@@ -3,5 +3,12 @@
 
 <mapper namespace="com.eccentric.tranding.mappers.RoleMapper">
 
+<!--public Integer deleteByBatchIds(@Param("idList") List<Integer> idList);-->
+    <delete id="deleteByBatchIds">
+        delete from role where role_id in
+        <foreach collection="idList" item="id" separator="," open="(" close=")">
+            #{id}
+        </foreach>
+    </delete>
 
 </mapper>
