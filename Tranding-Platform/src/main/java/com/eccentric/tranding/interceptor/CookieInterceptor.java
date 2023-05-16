@@ -4,6 +4,7 @@ import com.eccentric.tranding.dictionary.Encrypt;
 import com.eccentric.tranding.pojo.common.Ret;
 import com.eccentric.tranding.utils.Md5Util;
 import com.fasterxml.jackson.databind.ObjectMapper;
+import org.springframework.stereotype.Component;
 import org.springframework.web.servlet.HandlerInterceptor;
 
 import javax.servlet.http.Cookie;
@@ -14,6 +15,7 @@ import javax.servlet.http.HttpServletResponse;
  * 非法用户拦截器
  * @author eccentric
  */
+@Component
 public class CookieInterceptor implements HandlerInterceptor {
     @Override
     public boolean preHandle(HttpServletRequest request, HttpServletResponse response, Object handler) throws Exception {

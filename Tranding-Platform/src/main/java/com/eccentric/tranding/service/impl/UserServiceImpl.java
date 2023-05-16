@@ -34,16 +34,14 @@ public class UserServiceImpl implements UserService {
         }
         //通过用户标识判断用户是否存在
         Integer userId = user.getUserId();
-        if (userId!=null){
-            User isExistUser = userMapper.getUserByUserId(userId);
-            return isExistUser!=null;
+        if (userMapper.getUserByUserId(userId)!=null){
+            return true;
         }
 
         //通过手机号标识判断用户是否存在
         String phone = user.getPhone();
-        if (phone != null){
-            User isExistUser = userMapper.getUserByPhone(phone);
-            return isExistUser!=null;
+        if (userMapper.getUserByPhone(phone) != null){
+            return true;
         }
         return false;
     }
@@ -83,9 +81,13 @@ public class UserServiceImpl implements UserService {
     public Ret addUser(User user) throws Exception {
         //拦截用户已经存在
         if (isExist(user)) {
-            return Ret.fail("用户已经存在");
+            return Ret.fail("用户已存在");
         }
         //拦截手机格式错误的
+        String phone = user.getPhone();
+        if (!phone.matches("^1[3-9]\\d{9}")){
+            return Ret.fail("手机格式存在错误");
+        }
 
         //设置默认参数
         setDefault(user);
@@ -134,6 +136,12 @@ public class UserServiceImpl implements UserService {
         if (tempUser!=null && !user.getUserId().equals(tempUser.getUserId())){
             return Ret.fail("手机号修改失败，手机号已被使用");
         }
+        //拦截手机格式错误的
+        String phone = user.getPhone();
+        if (!phone.matches("^1[3-9]\\d{9}")){
+            return Ret.fail("手机格式存在错误");
+        }
+
 
         //设置默认值，防止参数为空
         setDefault(user);
@@ -184,6 +192,11 @@ public class UserServiceImpl implements UserService {
         return user;
     }
 
+
+    @Override
+    public User getUserByPhone(String phone) {
+        return userMapper.getUserByPhone(phone);
+    }
 
     @Override
     public Ret updatePassword(Integer userId, String password) throws Exception {

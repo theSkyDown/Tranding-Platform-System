@@ -35,7 +35,7 @@ public interface RoleMapper {
      * @return
      */
     @Insert("insert into role values(#{roleId},#{roleName},#{createTime})")
-    public Integer addRole(Role role);
+    public Integer insertRole(Role role);
 
 
     /**
@@ -52,4 +52,12 @@ public interface RoleMapper {
      * @return
      */
     public Integer deleteByBatchIds(@Param("idList") List<Integer> idList);
+
+    /**
+     * 修改角色的信息
+     * @param role
+     * @return
+     */
+    @Update("update role set role_name=#{roleName} where role_id = #{roleId}")
+    public Integer updateRole(Role role);
 }

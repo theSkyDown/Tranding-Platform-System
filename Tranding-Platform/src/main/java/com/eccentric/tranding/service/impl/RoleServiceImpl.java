@@ -49,7 +49,7 @@ public class RoleServiceImpl implements RoleService {
         role.setCreateTime(LocalDateTime.now());
 
         //执行添加操作
-        Integer count = roleMapper.addRole(role);
+        Integer count = roleMapper.insertRole(role);
         return count==1 ? Ret.ok() : Ret.fail();
     }
 
@@ -69,5 +69,15 @@ public class RoleServiceImpl implements RoleService {
     public Ret deleteByIds(List<Integer> idList) {
         Integer count = roleMapper.deleteByBatchIds(idList);
         return count > 0 ? Ret.ok() : Ret.fail();
+    }
+
+
+    @Override
+    public Ret updateRole(Role role) {
+        if (!isExist(role.getRoleId())){
+            return Ret.fail("角色不存在，修改失败");
+        }
+        Integer count = roleMapper.updateRole(role);
+        return count==1 ? Ret.ok() : Ret.fail();
     }
 }

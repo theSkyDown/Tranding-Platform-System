@@ -33,9 +33,9 @@ public class UserController extends BaseController{
      * 获取所有用户信息（包含分页功能）
      * @return
      */
-    @RequestMapping(value = "/all/{num}/{size}",method = RequestMethod.GET)
+    @RequestMapping(value = "/all",method = RequestMethod.GET)
     @ResponseBody
-    public Ret getAllUser(@PathVariable("num") Integer num,@PathVariable("size") Integer size){
+    public Ret getAllUser(@RequestParam("num") Integer num,@RequestParam("size") Integer size){
         if (num == null || size == null || num < 0 || size <= 0){
             return Ret.fail("参数异常");
         }
@@ -50,8 +50,6 @@ public class UserController extends BaseController{
     @RequestMapping(value = "/add",method = RequestMethod.POST)
     @ResponseBody
     public Ret addUser(@RequestBody User user) throws Exception {
-        //判断是否有权限操作
-
         //拦截所有参数都为空的情况
         if (!isOk(user)){
             return Ret.fail("参数异常");
@@ -69,11 +67,9 @@ public class UserController extends BaseController{
      * @param userId
      * @return
      */
-    @RequestMapping(value = "/delete/{userId}",method = RequestMethod.DELETE)
+    @RequestMapping(value = "/delete",method = RequestMethod.DELETE)
     @ResponseBody
-    public Ret deleteUser(@PathVariable Integer userId){
-        //判断是否有权限
-
+    public Ret deleteUser(@RequestParam("userId") Integer userId){
         //拦截参数为空的情况
         if (!isOk(userId)){
             return Ret.fail("参数异常");
@@ -88,9 +84,9 @@ public class UserController extends BaseController{
      * @param ids
      * @return
      */
-    @RequestMapping(value = "/delete/ids/{ids}",method = RequestMethod.DELETE)
+    @RequestMapping(value = "/delete/ids",method = RequestMethod.DELETE)
     @ResponseBody
-    public Ret deleteByBatchId(@PathVariable String ids){
+    public Ret deleteByBatchId(@RequestParam("ids") String ids){
         List<Integer> idList = new ArrayList<>();
         //判断参数是否正常
         String[] idArray = ids.split(",");
@@ -174,9 +170,9 @@ public class UserController extends BaseController{
      * @param userId
      * @return
      */
-    @RequestMapping(value = "/reset/password/{userId}",method = RequestMethod.PUT)
+    @RequestMapping(value = "/reset/password",method = RequestMethod.PUT)
     @ResponseBody
-    public Ret resetPassword(@PathVariable Integer userId) throws Exception {
+    public Ret resetPassword(@RequestParam("userId") Integer userId) throws Exception {
         if (!isOk(userId)){
             return Ret.fail("参数异常");
         }
@@ -189,9 +185,9 @@ public class UserController extends BaseController{
      * @param userId
      * @return
      */
-    @RequestMapping(value = "/info/{userId}",method = RequestMethod.GET)
+    @RequestMapping(value = "/info",method = RequestMethod.GET)
     @ResponseBody
-    public Ret getUserInfo(@PathVariable Integer userId){
+    public Ret getUserInfo(@RequestParam("userId") Integer userId){
         User user = userService.getUserById(userId);
         if (user!=null){
             return Ret.ok(null,user);

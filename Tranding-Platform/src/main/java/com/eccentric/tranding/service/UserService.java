@@ -75,6 +75,13 @@ public interface UserService {
      */
     public User getUserById(Integer userId);
 
+    /**
+     * 通过电话查找用户
+     * @param phone
+     * @return
+     */
+    public User getUserByPhone(String phone);
+
 
     /**
      * 用户修改密码

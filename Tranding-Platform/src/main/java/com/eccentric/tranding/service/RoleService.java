@@ -56,4 +56,12 @@ public interface RoleService {
      * @return
      */
     public Ret deleteByIds(List<Integer> idList);
+
+
+    /**
+     * 更新角色的信息
+     * @param role
+     * @return
+     */
+    public Ret updateRole(Role role);
 }

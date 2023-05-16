@@ -1,6 +1,7 @@
 package com.eccentric.tranding.controller;
 
 import com.eccentric.tranding.pojo.User;
+import com.eccentric.tranding.pojo.common.Ret;
 
 import java.lang.reflect.Field;
 
@@ -9,6 +10,26 @@ import java.lang.reflect.Field;
  * @author eccentric
  */
 public abstract class BaseController {
+
+    /**
+     * 用于判断批量删除的参数是否合理
+     * @param ids
+     * @return
+     */
+    public Boolean isIdsOk(String ids){
+        //判断参数是否正常
+        String[] idArray = ids.split(",");
+        for (String id : idArray){
+            if (!id.matches("\\d+")){
+                return false;
+            }
+        }
+        //防止最后一个为逗号
+        if (ids.lastIndexOf(",") == ids.length()-1){
+            return false;
+        }
+        return true;
+    }
 
     /**
      * 检测id类型的数据是否合理

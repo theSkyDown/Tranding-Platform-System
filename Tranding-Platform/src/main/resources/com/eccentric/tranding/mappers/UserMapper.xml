@@ -5,8 +5,8 @@
 <!--public Integer insertUser(User user);-->
     <insert id="insertUser">
         insert into
-            user(username,phone,password,gender,role_id,avatar,create_time,update_time,status)
-        values(#{username},#{phone},#{password},#{gender},#{roleId},#{avatar},#{createTime},#{updateTime},#{status})
+            user(user_id,username,phone,password,gender,role_id,avatar,create_time,update_time,status)
+        values(#{userId},#{username},#{phone},#{password},#{gender},#{roleId},#{avatar},#{createTime},#{updateTime},#{status})
     </insert>
 
 <!--public Integer updateUser(User user);-->
