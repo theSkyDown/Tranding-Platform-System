@@ -10,7 +10,7 @@ import org.springframework.web.bind.annotation.*;
  * @author eccentric
  */
 @RestController
-@RequestMapping("/role")
+@RequestMapping(value = "/role",method = RequestMethod.GET)
 public class RoleController extends BaseController{
 
     @Autowired
