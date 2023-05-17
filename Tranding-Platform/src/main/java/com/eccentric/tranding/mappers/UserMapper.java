@@ -79,4 +79,20 @@ public interface UserMapper {
      */
     @Select("select * from user limit #{pageNum},#{pageSize}")
     public List<User> getAllUserPage(@Param("pageNum") Integer pageNum,@Param("pageSize") Integer pageSize);
+
+
+    /**
+     * 修改用户的状态
+     * @param userId
+     * @return
+     */
+    @Update("update user set status = #{status} where user_id = #{userId}")
+    public Integer updateUserStatus(@Param("userId") Integer userId,@Param("status") Integer status);
+
+    /**
+     * 统计用户数量
+     * @return
+     */
+    @Select("select count(*) from user")
+    public Integer getTotalUser();
 }

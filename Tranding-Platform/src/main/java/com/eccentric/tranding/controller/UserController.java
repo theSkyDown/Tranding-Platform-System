@@ -5,6 +5,7 @@
 package com.eccentric.tranding.controller;
 
 import com.eccentric.tranding.dictionary.Encrypt;
+import com.eccentric.tranding.dictionary.Status;
 import com.eccentric.tranding.pojo.common.Ret;
 import com.eccentric.tranding.pojo.User;
 import com.eccentric.tranding.service.impl.UserServiceImpl;
@@ -56,7 +57,7 @@ public class UserController extends BaseController{
         if (!isOk(user)){
             return Ret.fail("参数异常");
         }
-        if (user.getUsername()==null|| user.getPhone() == null|| user.getPassword()==null){
+        if (user.getUsername()==null|| user.getPhone() == null){
             return Ret.fail("参数异常");
         }
         //添加用户
@@ -154,6 +155,12 @@ public class UserController extends BaseController{
         if (ret.getStatus()){
             //登陆成功的用户
             User tempUser = (User) ret.getData();
+
+            //判断用户是否被禁用
+            if (Status.DISABLE.equals(tempUser.getStatus())){
+                return Ret.fail("用户已被禁用");
+            }
+
             //设置cookie的值
             StringBuilder cookieValue = new StringBuilder(Md5Util.getMD5(tempUser.getPhone() + Encrypt.MD5_HELPER) );
             cookieValue.append("#");
@@ -220,5 +227,32 @@ public class UserController extends BaseController{
             return Ret.fail("参数异常");
         }
         return userService.updatePassword(user.getUserId(),user.getPassword());
+    }
+
+
+    /**
+     * 修改用户的状态
+     * @param userId
+     * @return
+     */
+    @RequestMapping(value = "/switch/status",method = RequestMethod.PUT)
+    @ResponseBody
+    public Ret toggleStatus(@RequestParam("userId") Integer userId){
+        if (!isOk(userId)) {
+            return Ret.fail("参数异常");
+        }
+        //执行修改操作
+        return userService.toggleUserStatus(userId);
+    }
+
+
+    /**
+     * 获取一共有多少条用户数据
+     * @return
+     */
+    @RequestMapping(value = "/total",method = RequestMethod.GET)
+    @ResponseBody
+    public Ret getTotal(){
+        return userService.getTotalUser();
     }
 }

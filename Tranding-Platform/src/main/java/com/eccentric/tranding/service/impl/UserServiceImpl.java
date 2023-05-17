@@ -79,6 +79,10 @@ public class UserServiceImpl implements UserService {
         if (user.getStatus()==null){
             user.setStatus(Status.ENABLE);
         }
+        //设置默认的密码
+        if (user.getPassword()==null){
+            user.setPassword(Encrypt.PWD_RESET);
+        }
     }
 
     @Override
@@ -109,6 +113,10 @@ public class UserServiceImpl implements UserService {
 
     @Override
     public Ret deleteUser(Integer userId) {
+        if (userId == 1){
+            return Ret.fail("admin无法删除");
+        }
+
         //判断用户是否存在
         User tempUser = new User();
         tempUser.setUserId(userId);
@@ -123,6 +131,9 @@ public class UserServiceImpl implements UserService {
 
     @Override
     public Ret deleteByIds(List<Integer> idList) {
+        if (idList.contains(1)){
+            return Ret.fail("admin无法删除");
+        }
         //批量删除
         Integer count = userMapper.deleteByIds(idList);
         return count>0 ? Ret.ok() : Ret.fail();
@@ -172,6 +183,8 @@ public class UserServiceImpl implements UserService {
 
         //设置角色名称
         userByPhone.setRoleName(roleService.getRoleById(userByPhone.getRoleId()).getRoleName());
+        //设置性别名称
+        userByPhone.setGenderName(userByPhone.getGender()==1?"男":"女");
 
         return Ret.ok(null,userByPhone);
     }
@@ -196,6 +209,10 @@ public class UserServiceImpl implements UserService {
         User user = userMapper.getUserByUserId(userId);
         if (user != null){
             user.setPassword(null);
+            //设置角色名称
+            user.setRoleName(roleService.getRoleById(user.getRoleId()).getRoleName());
+            //设置性别名称
+            user.setGenderName(user.getGender()==1?"男":"女");
         }
         return user;
     }
@@ -223,11 +240,35 @@ public class UserServiceImpl implements UserService {
     @Override
     public Ret getAllUser(Integer pageNum, Integer pageSize) {
         List<User> userList = userMapper.getAllUserPage(pageNum, pageSize);
-        userList.forEach(user -> {user.setPassword(null);});
+        userList.forEach(user -> {
+            user.setPassword(null);
+            //设置角色名称
+            user.setRoleName(roleService.getRoleById(user.getRoleId()).getRoleName());
+            //设置性别名称
+            user.setGenderName(user.getGender()==1?"男":"女");
+        });
         return Ret.ok(null,userList);
     }
 
 
+    @Override
+    public Ret toggleUserStatus(Integer userId) {
+        //超级管理员的状态不能被禁用
+        if (userId == 1){
+            return Ret.fail("admin无法被禁用");
+        }
+
+        User user = getUserById(userId);
+        if (user == null) {
+            return Ret.fail("用户不存在");
+        }
+        Integer count = userMapper.updateUserStatus(userId,user.getStatus()==1?2:1);
+        return count==1 ? Ret.ok() : Ret.fail();
+    }
 
 
+    @Override
+    public Ret getTotalUser() {
+        return Ret.ok(null,userMapper.getTotalUser());
+    }
 }

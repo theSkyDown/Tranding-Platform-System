@@ -1,4 +1,9 @@
-<!-- 导航栏 -->
+<!-- 
+  
+  导航栏 
+
+  
+-->
 <template>
   <div class="header">
     <!-- 左边logo -->
@@ -14,10 +19,7 @@
       <!-- 显示头像信息 -->
       <div class="information" v-show="this.$store.state.isLogin">
         <el-avatar>
-          <img
-            src="../assets/avatar.png"
-            v-bind:src="this.$store.state.user.avatar"
-          />
+          <img src="../assets/avatar.png" />
         </el-avatar>
         <div class="username">{{ this.$store.state.user.username }}</div>
       </div>

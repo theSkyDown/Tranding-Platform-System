@@ -99,4 +99,19 @@ public interface UserService {
      * @return
      */
     public Ret getAllUser(Integer pageNum,Integer pageSize);
+
+
+    /**
+     * 切换用户的状态
+     * @param userId
+     * @return
+     */
+    public Ret toggleUserStatus(Integer userId);
+
+
+    /**
+     * 统计一共有多少用户
+     * @return
+     */
+    public Ret getTotalUser();
 }

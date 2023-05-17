@@ -40,4 +40,6 @@ public class User {
     private String captcha;
     //角色名称
     private String roleName;
+    //性别名称
+    private String genderName;
 }

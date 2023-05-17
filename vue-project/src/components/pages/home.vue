@@ -1,3 +1,9 @@
+<!-- 
+
+  主页面
+
+ -->
+
 <script setup>
 import Traffic from "./echarts/traffic.vue";
 import Classify from "./echarts/classify.vue";
@@ -52,7 +58,7 @@ import Trend from "./echarts/trend.vue";
     </el-col>
 
     <!--  访问量卡片  -->
-    <el-col :span="8">
+    <el-col :span="8" v-loading="!this.$store.state.isLogin">
       <el-card shadow="hover">
         <template #header>
           <div class="card-header">访问量</div>
@@ -64,7 +70,7 @@ import Trend from "./echarts/trend.vue";
     </el-col>
 
     <!-- 商品类型卡片 -->
-    <el-col :span="8">
+    <el-col :span="8" v-loading="!this.$store.state.isLogin">
       <el-card shadow="hover">
         <template #header>
           <div class="card-header">商品种类</div>
@@ -78,7 +84,7 @@ import Trend from "./echarts/trend.vue";
 
   <el-row>
     <!-- 销售额趋势卡片 -->
-    <el-col :span="24">
+    <el-col :span="24" v-loading="!this.$store.state.isLogin">
       <el-card shadow="hover">
         <template #header>
           <div class="card-header">销售额趋势</div>

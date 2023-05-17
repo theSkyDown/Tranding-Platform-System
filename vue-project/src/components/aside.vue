@@ -1,4 +1,8 @@
-<!-- 侧边栏 -->
+<!-- 
+  
+  侧边栏 
+
+-->
 <template>
   <!-- 菜单 -->
   <el-menu default-active="2" class="el-menu-vertical-demo">
@@ -23,7 +27,7 @@
         <span>商品信息管理</span>
       </el-menu-item>
 
-      <el-menu-item index="3-2">
+      <el-menu-item index="3-2" v-on:click="toUserAdmin">
         <el-icon><User /></el-icon>
         <span>用户管理</span>
       </el-menu-item>
@@ -66,6 +70,11 @@ export default {
     toHome() {
       this.$router.push("/home");
     },
+    //跳转到用户管理页面
+    toUserAdmin() {
+      this.$router.push("/userAdmin");
+    },
+
     //跳转测试页面
     toTest() {
       console.log(this.$store.state.user.username);
