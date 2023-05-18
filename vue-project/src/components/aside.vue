@@ -27,22 +27,32 @@
         <span>商品信息管理</span>
       </el-menu-item>
 
-      <el-menu-item index="3-2" v-on:click="toUserAdmin">
-        <el-icon><User /></el-icon>
-        <span>用户管理</span>
-      </el-menu-item>
-
-      <el-menu-item index="3-4">
+      <el-menu-item index="3-2">
         <el-icon><GoodsFilled /></el-icon>
         <span>订单管理</span>
       </el-menu-item>
 
-      <el-menu-item index="3-3">
+      <el-menu-item index="3-3" v-on:click="toUserAdmin">
+        <el-icon><User /></el-icon>
+        <span>用户管理</span>
+      </el-menu-item>
+
+      <el-menu-item index="3-4" v-on:click="toRoleAdmin">
+        <el-icon><Avatar /></el-icon>
+        <span>角色管理</span>
+      </el-menu-item>
+
+      <el-menu-item index="3-5">
+        <el-icon><Box /></el-icon>
+        <span>资源管理</span>
+      </el-menu-item>
+
+      <el-menu-item index="3-6">
         <el-icon><Lock /></el-icon>
         <span>权限管理</span>
       </el-menu-item>
 
-      <el-menu-item index="3-4">
+      <el-menu-item index="3-7">
         <el-icon><Folder /></el-icon>
         <span>日志管理</span>
       </el-menu-item>
@@ -74,7 +84,10 @@ export default {
     toUserAdmin() {
       this.$router.push("/userAdmin");
     },
-
+    //跳转到角色管理
+    toRoleAdmin() {
+      this.$router.push("/roleAdmin");
+    },
     //跳转测试页面
     toTest() {
       console.log(this.$store.state.user.username);

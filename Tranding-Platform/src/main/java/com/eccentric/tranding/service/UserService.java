@@ -96,9 +96,10 @@ public interface UserService {
      * 获取所有用户（分页）
      * @param pageNum
      * @param pageSize
+     * @param keyword
      * @return
      */
-    public Ret getAllUser(Integer pageNum,Integer pageSize);
+    public Ret getAllUser(Integer pageNum,Integer pageSize,String keyword);
 
 
     /**

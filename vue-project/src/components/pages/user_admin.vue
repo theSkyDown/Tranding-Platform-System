@@ -23,6 +23,16 @@
         <el-icon><Refresh /></el-icon>
         <span>刷新</span>
       </el-button>
+      <el-input
+        v-model="keyword"
+        placeholder="请输入关键词"
+        style="width: 200px; margin-left: 20px"
+      />
+      <el-button v-on:click="reloadUsers">
+        <el-icon><Search /></el-icon>
+        <span>搜索</span>
+      </el-button>
+
       <el-table
         :data="users"
         height="630"
@@ -33,7 +43,7 @@
         <el-table-column type="selection" width="55" />
         <el-table-column label="序号" type="index" width="80" />
         <el-table-column label="用户名" prop="username" min-width="120" />
-        <el-table-column label="手机号" prop="phone" min-width="120" />
+        <el-table-column label="手机号" sortable prop="phone" min-width="120" />
         <el-table-column label="性别" prop="genderName" width="80" />
         <el-table-column label="角色" prop="roleName" width="100" />
         <el-table-column label="头像" prop="avatar" min-width="160" />
@@ -254,15 +264,11 @@ export default {
       //修改弹窗是否显示
       updateDialog: false,
       //用于修改的user
-      updateUser: {
-        username: "",
-        phone: "",
-        gender: "",
-        roleId: "",
-        status: "",
-      },
+      updateUser: {},
       //角色列表
       roles: [],
+      //关键词
+      keyword: "",
     };
   },
   methods: {
@@ -275,7 +281,9 @@ export default {
           "/user/all?num=" +
           this.num +
           "&size=" +
-          this.size,
+          this.size +
+          "&keyword=" +
+          this.keyword,
         method: "get",
         withCredentials: true,
       }).then(function (res) {
@@ -338,7 +346,9 @@ export default {
     reloadUsers() {
       this.tableLoading = true;
       this.getUsersInfo();
-      this.getTotal();
+      if (this.total == 10) {
+        this.getTotal();
+      }
       setTimeout(() => {
         this.tableLoading = false;
       }, 300);
@@ -396,8 +406,7 @@ export default {
     },
     //当前页数发生改变
     numChange(page) {
-      console.log(page);
-      // 更新页数
+      // 更新当前页数
       this.page = page;
       // 更新num用于发请求
       this.num = (page - 1) * this.size;

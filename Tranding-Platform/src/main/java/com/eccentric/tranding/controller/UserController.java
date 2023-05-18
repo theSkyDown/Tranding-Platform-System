@@ -33,16 +33,16 @@ public class UserController extends BaseController{
     private UserServiceImpl userService;
 
     /**
-     * 获取所有用户信息（包含分页功能）
+     * 获取所有用户信息（包含分页，关键字功能）
      * @return
      */
     @RequestMapping(value = "/all",method = RequestMethod.GET)
     @ResponseBody
-    public Ret getAllUser(@RequestParam("num") Integer num,@RequestParam("size") Integer size){
+    public Ret getAllUser(@RequestParam("num") Integer num,@RequestParam("size") Integer size,@RequestParam("keyword") String keyword){
         if (num == null || size == null || num < 0 || size <= 0){
             return Ret.fail("参数异常");
         }
-        return userService.getAllUser(num,size);
+        return userService.getAllUser(num,size,keyword);
     }
 
     /**

@@ -1,3 +1,4 @@
+truncate trand_platform_sys.user;
 INSERT INTO trand_platform_sys.user (user_id, username, phone, password, gender, role_id, avatar, create_time, update_time, status) VALUES (1, 'admin', 'admin', '14a5d25145bc9a0afef8529d32926688', 1, 1, '/avatar/default', '2023-05-13 15:27:11', '2023-05-13 15:27:11', 1);
 INSERT INTO trand_platform_sys.user (user_id, username, phone, password, gender, role_id, avatar, create_time, update_time, status) VALUES (2, 'ecc521', '17373011501', '14a5d25145bc9a0afef8529d32926688', 2, 2, '/avatar/test', '2023-05-13 15:27:11', '2023-05-13 15:30:06', 2);
 INSERT INTO trand_platform_sys.user (user_id, username, phone, password, gender, role_id, avatar, create_time, update_time, status) VALUES (3, 'test', 'test', '14a5d25145bc9a0afef8529d32926688', 1, 3, '/avatar/default', '2023-05-17 13:37:11', '2023-05-17 13:37:11', 1);

@@ -238,8 +238,8 @@ public class UserServiceImpl implements UserService {
     }
 
     @Override
-    public Ret getAllUser(Integer pageNum, Integer pageSize) {
-        List<User> userList = userMapper.getAllUserPage(pageNum, pageSize);
+    public Ret getAllUser(Integer pageNum, Integer pageSize, String keyword) {
+        List<User> userList = userMapper.getAllUserPage(pageNum, pageSize,keyword);
         userList.forEach(user -> {
             user.setPassword(null);
             //设置角色名称

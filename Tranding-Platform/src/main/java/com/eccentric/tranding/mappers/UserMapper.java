@@ -77,8 +77,7 @@ public interface UserMapper {
      * @param pageSize
      * @return
      */
-    @Select("select * from user limit #{pageNum},#{pageSize}")
-    public List<User> getAllUserPage(@Param("pageNum") Integer pageNum,@Param("pageSize") Integer pageSize);
+    public List<User> getAllUserPage(@Param("pageNum") Integer pageNum,@Param("pageSize") Integer pageSize,@Param("keyword") String keyword);
 
 
     /**

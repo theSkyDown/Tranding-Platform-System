@@ -2,6 +2,12 @@
 <!DOCTYPE mapper PUBLIC "-//mybatis.org//DTD Mapper 3.0//EN" "http://mybatis.org/dtd/mybatis-3-mapper.dtd">
 
 <mapper namespace="com.eccentric.tranding.mappers.UserMapper">
+<!--    public List<User> getAllUserPage(@Param("pageNum") Integer pageNum,@Param("pageSize") Integer pageSize,@Param("keyword") String keyword);-->
+    <select id="getAllUserPage" resultType="com.eccentric.tranding.pojo.User">
+        select * from user where concat(username,phone) like "%"#{keyword}"%" limit #{pageNum},#{pageSize}
+    </select>
+
+
 <!--public Integer insertUser(User user);-->
     <insert id="insertUser">
         insert into
