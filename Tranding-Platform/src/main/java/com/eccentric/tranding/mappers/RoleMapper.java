@@ -17,8 +17,7 @@ public interface RoleMapper {
      * @param size
      * @return
      */
-    @Select("select * from role limit #{num},#{size}")
-    public List<Role> getAllRolePage(@Param("num") Integer num,@Param("size") Integer size);
+    public List<Role> getAllRolePage(@Param("num") Integer num,@Param("size") Integer size,@Param("keyword") String keyword);
 
     /**
      * 通过id获取角色信息
@@ -60,4 +59,21 @@ public interface RoleMapper {
      */
     @Update("update role set role_name=#{roleName} where role_id = #{roleId}")
     public Integer updateRole(Role role);
+
+
+    /**
+     * 统计角色数量
+     * @return
+     */
+    @Select("select count(*) from role")
+    public Integer getTotalRole();
+
+
+    /**
+     * 通过角色名称获取角色
+     * @param roleName
+     * @return
+     */
+    @Select("select * from role where role_name = #{roleName}")
+    public Role getRoleByName(@Param("roleName") String roleName);
 }

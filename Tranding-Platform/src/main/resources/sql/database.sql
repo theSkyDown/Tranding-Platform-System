@@ -15,7 +15,7 @@ create table user(
 
 create table role(
     role_id int primary key auto_increment comment '角色标识',
-    role_name varchar(64) not null comment '角色名称',
+    role_name varchar(64) not null unique comment '角色名称',
     create_time datetime not null comment '创建时间'
 )comment '角色表';
 

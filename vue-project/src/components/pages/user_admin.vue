@@ -11,24 +11,36 @@
       <div class="card-header">用户管理</div>
     </template>
     <div>
-      <el-button type="primary" v-on:click="showAddDialog">
+      <el-button
+        type="primary"
+        style="margin-bottom: 5px"
+        v-on:click="showAddDialog"
+      >
         <el-icon><Plus /></el-icon>
         <span>添加</span>
       </el-button>
-      <el-button type="danger" v-on:click="deleteUsersByBatchIds">
+      <el-button
+        type="danger"
+        style="margin-bottom: 5px"
+        v-on:click="deleteUsersByBatchIds"
+      >
         <el-icon><Delete /></el-icon>
         <span>批量删除</span>
       </el-button>
-      <el-button v-on:click="reloadUsers">
+      <el-button style="margin-bottom: 5px" v-on:click="reloadUsers">
         <el-icon><Refresh /></el-icon>
         <span>刷新</span>
       </el-button>
       <el-input
         v-model="keyword"
         placeholder="请输入关键词"
-        style="width: 200px; margin-left: 20px"
+        style="width: 200px; margin-left: 20px; margin-bottom: 5px"
       />
-      <el-button v-on:click="reloadUsers">
+      <el-button
+        style="margin-bottom: 5px; margin-left: 5px"
+        v-on:click="reloadUsers"
+        type="primary"
+      >
         <el-icon><Search /></el-icon>
         <span>搜索</span>
       </el-button>
@@ -74,7 +86,7 @@
           </template>
         </el-table-column>
 
-        <el-table-column fixed="right" label="操作" width="170">
+        <el-table-column fixed="right" label="操作" width="300">
           <template #default="scope">
             <el-button
               size="small"
@@ -84,6 +96,15 @@
               <el-icon><EditPen /></el-icon>
               <span>修改</span>
             </el-button>
+
+            <el-button
+              size="small"
+              v-on:click="resetPassword(scope.row.userId)"
+            >
+              <el-icon><setting /></el-icon>
+              <span>重置密码</span>
+            </el-button>
+
             <el-button
               size="small"
               type="danger"
@@ -120,7 +141,7 @@
     draggable
   >
     <el-form label-position="top">
-      <el-form-item label="用户名">
+      <el-form-item label="用户名" required>
         <el-input
           placeholder="请输入用户名"
           maxlength="20"
@@ -128,7 +149,7 @@
           v-model="user.username"
         />
       </el-form-item>
-      <el-form-item label="手机号">
+      <el-form-item label="手机号" required>
         <el-input
           placeholder="请输入手机号码"
           v-model="user.phone"
@@ -141,18 +162,6 @@
         <el-select v-model="user.gender" placeholder="请选择性别">
           <el-option label="男" value="1" />
           <el-option label="女" value="2" />
-        </el-select>
-      </el-form-item>
-
-      <el-form-item label="角色">
-        <el-select v-model="user.roleId" placeholder="请选择用户的角色">
-          <el-option
-            v-for="item in roles"
-            :key="item.roleId"
-            :label="item.roleName"
-            :value="item.roleId"
-          >
-          </el-option>
         </el-select>
       </el-form-item>
 
@@ -181,7 +190,7 @@
     draggable
   >
     <el-form label-position="top">
-      <el-form-item label="用户名">
+      <el-form-item label="用户名" required>
         <el-input
           placeholder="请输入用户名"
           maxlength="20"
@@ -189,7 +198,7 @@
           v-model="updateUser.username"
         />
       </el-form-item>
-      <el-form-item label="手机号">
+      <el-form-item label="手机号" required>
         <el-input
           placeholder="请输入手机号码"
           v-model="updateUser.phone"
@@ -227,7 +236,13 @@
     <!-- 底部按钮 -->
     <template #footer>
       <span class="dialog-footer">
-        <el-button v-on:click="updateDialog = false">取消</el-button>
+        <el-button
+          v-on:click="
+            updateDialog = false;
+            this.reloadUsers();
+          "
+          >取消</el-button
+        >
         <el-button type="primary" v-on:click="update">修改</el-button>
       </span>
     </template>
@@ -346,9 +361,7 @@ export default {
     reloadUsers() {
       this.tableLoading = true;
       this.getUsersInfo();
-      if (this.total == 10) {
-        this.getTotal();
-      }
+      this.getTotal();
       setTimeout(() => {
         this.tableLoading = false;
       }, 300);
@@ -360,7 +373,8 @@ export default {
       if (this.roles.length == 0) {
         //获取角色列表
         axios({
-          url: this.$store.state.localhost + "/role/all?num=0&size=100",
+          url:
+            this.$store.state.localhost + "/role/all?num=0&size=100&keyword=",
           method: "get",
           withCredentials: true,
         }).then(function (res) {
@@ -370,7 +384,6 @@ export default {
     },
     //发送添加用户请求
     add() {
-      console.log(this.user);
       let that = this;
       axios({
         url: this.$store.state.localhost + "/user/add",
@@ -416,38 +429,64 @@ export default {
     //删除用户
     deleteUser(userId) {
       let that = this;
-      axios({
-        url: this.$store.state.localhost + "/user/delete?userId=" + userId,
-        method: "delete",
-        withCredentials: true,
-      }).then(function (res) {
-        ElMessage({
-          message: res.data.message,
-          type: res.data.status ? "success" : "error",
+      this.$confirm("此操作将永久删除该用户, 是否继续?", "提示", {
+        confirmButtonText: "确定",
+        cancelButtonText: "取消",
+        type: "warning",
+      })
+        .then(() => {
+          axios({
+            url: this.$store.state.localhost + "/user/delete?userId=" + userId,
+            method: "delete",
+            withCredentials: true,
+          }).then(function (res) {
+            ElMessage({
+              message: res.data.message,
+              type: res.data.status ? "success" : "error",
+            });
+            that.reloadUsers();
+          });
+        })
+        .catch(() => {
+          ElMessage({
+            type: "info",
+            message: "已取消删除",
+          });
         });
-        that.reloadUsers();
-      });
     },
     //批量删除
     deleteUsersByBatchIds() {
       let that = this;
       //拼接字符串，用于请求的参数
-      let ids = "";
-      for (let i = 0; i < this.selectId.length; i++) {
-        ids = ids + this.selectId[i] + ",";
-      }
-      ids = ids.substring(0, ids.lastIndexOf(","));
-      axios({
-        url: this.$store.state.localhost + "/user/delete/ids?ids=" + ids,
-        method: "delete",
-        withCredentials: true,
-      }).then(function (res) {
-        ElMessage({
-          message: res.data.message,
-          type: res.data.status ? "success" : "error",
+      this.$confirm("此操作将永久删除这些用户, 是否继续?", "提示", {
+        confirmButtonText: "确定",
+        cancelButtonText: "取消",
+        type: "warning",
+      })
+        .then(() => {
+          let ids = "";
+          for (let i = 0; i < this.selectId.length; i++) {
+            ids = ids + this.selectId[i] + ",";
+          }
+          ids = ids.substring(0, ids.lastIndexOf(","));
+          axios({
+            url: this.$store.state.localhost + "/user/delete/ids?ids=" + ids,
+            method: "delete",
+            withCredentials: true,
+          }).then(function (res) {
+            ElMessage({
+              message: res.data.message,
+              type: res.data.status ? "success" : "error",
+            });
+            that.reloadUsers();
+          });
+        })
+        .catch(() => {
+          ElMessage({
+            type: "info",
+            message: "已取消删除",
+          });
         });
-        that.reloadUsers();
-      });
     },
     //显示修改按钮弹窗
     showUpdateDialog(user) {
@@ -456,7 +495,8 @@ export default {
       if (this.roles.length == 0) {
         //获取角色列表
         axios({
-          url: this.$store.state.localhost + "/role/all?num=0&size=100",
+          url:
+            this.$store.state.localhost + "/role/all?num=0&size=100&keyword=",
           method: "get",
           withCredentials: true,
         }).then(function (res) {
@@ -492,6 +532,35 @@ export default {
           that.reloadUsers();
         }
       });
+    },
+    //重置密码发送请求
+    resetPassword(userId) {
+      this.$confirm("此操作将重置用户的密码, 是否继续?", "提示", {
+        confirmButtonText: "确定",
+        cancelButtonText: "取消",
+        type: "warning",
+      })
+        .then(() => {
+          axios({
+            url:
+              this.$store.state.localhost +
+              "/user/reset/password?userId=" +
+              userId,
+            method: "put",
+            withCredentials: true,
+          }).then(function (res) {
+            ElMessage({
+              message: res.data.message,
+              type: res.data.status ? "success" : "error",
+            });
+          });
+        })
+        .catch(() => {
+          ElMessage({
+            type: "info",
+            message: "已取消删除",
+          });
+        });
     },
   },
   mounted() {

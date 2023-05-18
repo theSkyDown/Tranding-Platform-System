@@ -111,6 +111,8 @@ export default {
           localStorage.setItem("user", JSON.stringify(res.data.data));
           //显示用户信息
           that.$store.state.isLogin = true;
+          //跳转至首页
+          that.$router.push("/home");
         } else {
           ElMessage({
             message: res.data.message,

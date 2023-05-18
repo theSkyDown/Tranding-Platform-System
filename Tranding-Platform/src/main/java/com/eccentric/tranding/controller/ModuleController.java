@@ -43,10 +43,7 @@ public class ModuleController extends BaseController {
     @RequestMapping(value = "/add",method = RequestMethod.POST)
     @ResponseBody
     public Ret addModule(@RequestBody Module module){
-        if (!isOk(module)){
-            return Ret.fail("参数异常");
-        }
-        if (module.getModuleName()==null || module.getUrl()==null){
+        if (!isOk(module) || !isOk(module.getModuleName()) || !isOk(module.getUrl())){
             return Ret.fail("参数异常");
         }
         return moduleService.addModule(module);
@@ -95,10 +92,7 @@ public class ModuleController extends BaseController {
     @RequestMapping(value = "/update",method = RequestMethod.PUT)
     @ResponseBody
     public Ret updateModule(@RequestBody Module module){
-        if (!isOk(module)){
-            return Ret.fail("参数异常");
-        }
-        if (module.getModuleName()==null || module.getUrl()==null){
+        if (!isOk(module) || !isOk(module.getModuleName()) || !isOk(module.getUrl())){
             return Ret.fail("参数异常");
         }
         return moduleService.updateModule(module);

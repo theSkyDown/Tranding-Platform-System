@@ -21,7 +21,9 @@
         <el-avatar>
           <img src="../assets/avatar.png" />
         </el-avatar>
-        <div class="username">{{ this.$store.state.user.username }}</div>
+        <div class="username" show-overflow-tooltip>
+          {{ this.$store.state.user.username }}
+        </div>
       </div>
       <!-- 下拉选项 -->
       <template #dropdown>
@@ -134,6 +136,9 @@ export default {
   height: 40px;
   line-height: 40px;
   text-align: center;
+  overflow: hidden;
+  white-space: nowrap;
+  text-overflow: ellipsis;
 }
 
 /* 登陆按钮所在的div */

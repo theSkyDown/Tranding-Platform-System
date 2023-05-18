@@ -17,7 +17,7 @@ public interface RoleService {
      * @param size
      * @return
      */
-    public List<Role> getAllRole(Integer num,Integer size);
+    public List<Role> getAllRole(Integer num,Integer size,String keyword);
 
 
     /**
@@ -25,7 +25,7 @@ public interface RoleService {
      * @param roleId
      * @return
      */
-    public Boolean isExist(Integer roleId);
+    public Boolean isExist(Role role);
 
     /**
      * 通过id查找角色
@@ -64,4 +64,11 @@ public interface RoleService {
      * @return
      */
     public Ret updateRole(Role role);
+
+
+    /**
+     * 统计一共有多少个角色
+     * @return
+     */
+    public Ret getTotalRole();
 }

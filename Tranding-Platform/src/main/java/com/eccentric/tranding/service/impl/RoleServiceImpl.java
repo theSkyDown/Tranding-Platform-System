@@ -7,7 +7,6 @@ import com.eccentric.tranding.service.RoleService;
 import org.springframework.beans.factory.annotation.Autowired;
 import org.springframework.stereotype.Service;
 
-import java.sql.Date;
 import java.time.LocalDateTime;
 import java.util.List;
 
@@ -23,16 +22,26 @@ public class RoleServiceImpl implements RoleService {
 
 
     @Override
-    public List<Role> getAllRole(Integer num, Integer size) {
-        return roleMapper.getAllRolePage(num, size);
+    public List<Role> getAllRole(Integer num, Integer size,String keyword) {
+        return roleMapper.getAllRolePage(num, size, keyword);
     }
 
     @Override
-    public Boolean isExist(Integer roleId) {
-        if (roleId == null || roleId <= 0){
+    public Boolean isExist(Role role) {
+        if (role == null){
             return false;
         }
-        return roleMapper.getRoleById(roleId)!=null;
+        //通过角色表示判断角色是否存在
+        Integer roleId = role.getRoleId();
+        if (roleMapper.getRoleById(roleId) != null){
+            return true;
+        }
+        //通过角色名称判断角色是否存在
+        String roleName = role.getRoleName();
+        if(roleMapper.getRoleByName(roleName) != null){
+            return true;
+        }
+        return false;
     }
 
     @Override
@@ -42,7 +51,7 @@ public class RoleServiceImpl implements RoleService {
 
     @Override
     public Ret addRole(Role role) {
-        if (isExist(role.getRoleId())){
+        if (isExist(role)){
             return Ret.fail("角色已存在");
         }
         //设置创建时间
@@ -56,7 +65,13 @@ public class RoleServiceImpl implements RoleService {
 
     @Override
     public Ret deleteRole(Integer roleId) {
-        if (!isExist(roleId)){
+        if (roleId == 1 || roleId == 2 || roleId ==3){
+            return Ret.fail("基础角色无法被删除");
+        }
+
+        Role temp = new Role();
+        temp.setRoleId(roleId);
+        if (!isExist(temp)){
             return Ret.fail("角色不存在");
         }
         //执行删除操作
@@ -67,6 +82,9 @@ public class RoleServiceImpl implements RoleService {
 
     @Override
     public Ret deleteByIds(List<Integer> idList) {
+        if (idList.contains(1) || idList.contains(2) || idList.contains(3)){
+            return Ret.fail("基础角色无法被删除");
+        }
         Integer count = roleMapper.deleteByBatchIds(idList);
         return count > 0 ? Ret.ok() : Ret.fail();
     }
@@ -74,10 +92,25 @@ public class RoleServiceImpl implements RoleService {
 
     @Override
     public Ret updateRole(Role role) {
-        if (!isExist(role.getRoleId())){
+        if (!isExist(role)){
             return Ret.fail("角色不存在，修改失败");
         }
+        if (role.getRoleId()==1||role.getRoleId()==2||role.getRoleId()==3){
+            return Ret.fail("基础角色无法被修改");
+        }
+        //防止修改的角色名称已经被使用
+        Role roleByName = roleMapper.getRoleByName(role.getRoleName());
+        if (roleByName != null && !role.getRoleId().equals(roleByName.getRoleId())){
+            return Ret.fail("角色修改失败，角色名称以被使用");
+        }
+
         Integer count = roleMapper.updateRole(role);
         return count==1 ? Ret.ok() : Ret.fail();
+    }
+
+
+    @Override
+    public Ret getTotalRole() {
+        return Ret.ok(null,roleMapper.getTotalRole());
     }
 }

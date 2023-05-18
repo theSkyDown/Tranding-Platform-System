@@ -28,7 +28,15 @@ import Trend from "./echarts/trend.vue";
             </el-col>
             <!-- 用户名 -->
             <el-col :span="12" class="card-username">
-              <span>用户名: {{ this.$store.state.user.username }}</span>
+              <div
+                style="
+                  overflow: hidden;
+                  white-space: nowrap;
+                  text-overflow: ellipsis;
+                "
+              >
+                用户名: {{ this.$store.state.user.username }}
+              </div>
             </el-col>
           </el-row>
           <el-row>

@@ -27,11 +27,11 @@ public class RoleController extends BaseController{
      */
     @RequestMapping(value = "/all",method = RequestMethod.GET)
     @ResponseBody
-    public Ret getAllRole(@RequestParam("num") Integer num,@RequestParam("size") Integer size){
+    public Ret getAllRole(@RequestParam("num") Integer num,@RequestParam("size") Integer size,@RequestParam("keyword") String keyword){
         if (num == null || size == null || num < 0 || size <= 0){
             return Ret.fail("参数异常");
         }
-        return Ret.ok(null,roleService.getAllRole(num,size));
+        return Ret.ok(null,roleService.getAllRole(num,size,keyword));
     }
 
 
@@ -43,10 +43,7 @@ public class RoleController extends BaseController{
     @RequestMapping(value = "/add",method = RequestMethod.POST)
     @ResponseBody
     public Ret addRole(@RequestBody Role role){
-        if (!isOk(role)){
-            return Ret.fail("参数异常");
-        }
-        if (role.getRoleName()==null){
+        if (!isOk(role) || !isOk(role.getRoleName())){
             return Ret.fail("参数异常");
         }
         return roleService.addRole(role);
@@ -101,12 +98,19 @@ public class RoleController extends BaseController{
     @RequestMapping(value = "/update",method = RequestMethod.PUT)
     @ResponseBody
     public Ret updateRole(@RequestBody Role role){
-        if (!isOk(role)){
-            return Ret.fail("参数异常");
-        }
-        if (role.getRoleName()==null){
+        if (!isOk(role) || !isOk(role.getRoleName()) || !isOk(role.getRoleId())){
             return Ret.fail("参数异常");
         }
         return roleService.updateRole(role);
+    }
+
+    /**
+     * 获取一共有多少条角色数据
+     * @return
+     */
+    @RequestMapping(value = "/total",method = RequestMethod.GET)
+    @ResponseBody
+    public Ret getTotal(){
+        return roleService.getTotalRole();
     }
 }

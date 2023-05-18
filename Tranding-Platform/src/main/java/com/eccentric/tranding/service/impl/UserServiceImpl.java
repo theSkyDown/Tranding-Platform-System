@@ -5,6 +5,7 @@ import com.eccentric.tranding.dictionary.Gender;
 import com.eccentric.tranding.dictionary.Identity;
 import com.eccentric.tranding.dictionary.Status;
 import com.eccentric.tranding.mappers.UserMapper;
+import com.eccentric.tranding.pojo.Role;
 import com.eccentric.tranding.pojo.common.Ret;
 import com.eccentric.tranding.pojo.User;
 import com.eccentric.tranding.service.RoleService;
@@ -99,6 +100,14 @@ public class UserServiceImpl implements UserService {
 
         //设置默认参数
         setDefault(user);
+        //添加只能设置为默认的角色
+        user.setRoleId(Identity.USER);
+
+
+        //拦截用户名叫做admin的请求
+        if ("admin".equals(user.getUsername())){
+            return Ret.fail("用户名不能为admin");
+        }
 
         //对密码进行加密
         String password = Md5Util.getMD5(user.getPassword() + Encrypt.MD5_HELPER);
@@ -146,6 +155,11 @@ public class UserServiceImpl implements UserService {
             return Ret.fail("用户不存在，修改失败");
         }
 
+        //admin的信息无法被修改
+        if (user.getUserId() == 1){
+            return Ret.fail("admin的信息无法被修改");
+        }
+
         //防止修改的手机号已经被使用
         User tempUser = userMapper.getUserByPhone(user.getPhone());
         if (tempUser!=null && !user.getUserId().equals(tempUser.getUserId())){
@@ -160,6 +174,11 @@ public class UserServiceImpl implements UserService {
 
         //设置默认值，防止参数为空
         setDefault(user);
+
+        //防止用户修改名称为admin
+        if ("admin".equals(user.getUsername())){
+            return Ret.fail("用户名不能为admin");
+        }
 
         //执行修改操作
         boolean result = userMapper.updateUser(user)==1;
@@ -243,7 +262,10 @@ public class UserServiceImpl implements UserService {
         userList.forEach(user -> {
             user.setPassword(null);
             //设置角色名称
-            user.setRoleName(roleService.getRoleById(user.getRoleId()).getRoleName());
+            Role roleById = roleService.getRoleById(user.getRoleId());
+            if (roleById != null){
+                user.setRoleName(roleById.getRoleName());
+            }
             //设置性别名称
             user.setGenderName(user.getGender()==1?"男":"女");
         });

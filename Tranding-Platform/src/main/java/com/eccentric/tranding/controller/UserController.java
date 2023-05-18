@@ -54,12 +54,10 @@ public class UserController extends BaseController{
     @ResponseBody
     public Ret addUser(@RequestBody User user) throws Exception {
         //拦截所有参数都为空的情况
-        if (!isOk(user)){
+        if (!isOk(user) || !isOk(user.getUsername()) || !isOk(user.getPhone())){
             return Ret.fail("参数异常");
         }
-        if (user.getUsername()==null|| user.getPhone() == null){
-            return Ret.fail("参数异常");
-        }
+
         //添加用户
         return userService.addUser(user);
     }
@@ -115,13 +113,8 @@ public class UserController extends BaseController{
     @RequestMapping(value = "/update",method = RequestMethod.PUT)
     @ResponseBody
     public Ret updateUser(@RequestBody User user){
-        //判断是否有权限
-
         //拦截所有参数都为空的状态
-        if (!isOk(user)){
-            return Ret.fail("参数异常");
-        }
-        if (user.getUserId()==null){
+        if (!isOk(user) || !isOk(user.getUserId()) || !isOk(user.getUsername())){
             return Ret.fail("参数异常");
         }
         //更新用户信息
@@ -138,15 +131,12 @@ public class UserController extends BaseController{
     @ResponseBody
     public Ret login(@RequestBody User user, HttpServletResponse response, HttpServletRequest request) throws Exception {
         //拦截参数异常的情况
-        if (!isOk(user)) {
-            return Ret.fail("参数异常");
-        }
-        if (user.getPhone()==null || user.getPassword()==null){
+        if (!isOk(user) || !isOk(user.getPhone()) || !isOk(user.getPassword())) {
             return Ret.fail("参数异常");
         }
 
         //拦截验证码错误的
-        if (user.getCaptcha()==null || !CaptchaUtil.ver(user.getCaptcha(),request)){
+        if (!isOk(user.getCaptcha()) || !CaptchaUtil.ver(user.getCaptcha(),request)){
             return Ret.fail("验证码错误");
         }
 
@@ -220,10 +210,7 @@ public class UserController extends BaseController{
     @RequestMapping(value = "/update/password",method = RequestMethod.PUT)
     @ResponseBody
     public Ret updatePassword(@RequestBody User user) throws Exception {
-        if (!isOk(user)){
-            return Ret.fail("参数异常");
-        }
-        if (user.getUserId()==null || user.getPassword()==null){
+        if (!isOk(user) || !isOk(user.getUserId()) || !isOk(user.getPassword())){
             return Ret.fail("参数异常");
         }
         return userService.updatePassword(user.getUserId(),user.getPassword());
@@ -244,7 +231,6 @@ public class UserController extends BaseController{
         //执行修改操作
         return userService.toggleUserStatus(userId);
     }
-
 
     /**
      * 获取一共有多少条用户数据
