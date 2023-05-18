@@ -92,6 +92,5 @@ public interface UserMapper {
      * 统计用户数量
      * @return
      */
-    @Select("select count(*) from user")
-    public Integer getTotalUser();
+    public Integer getTotalUser(@Param("keyword") String keyword);
 }

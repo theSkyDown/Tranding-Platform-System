@@ -27,11 +27,11 @@ public class ModuleController extends BaseController {
      */
     @RequestMapping(value = "/all",method = RequestMethod.GET)
     @ResponseBody
-    public Ret getAllModule(@RequestParam("num") Integer num, @RequestParam("size") Integer size){
+    public Ret getAllModule(@RequestParam("num") Integer num, @RequestParam("size") Integer size, @RequestParam("keyword") String keyword){
         if (num == null || num < 0 || size == null || size <= 0){
             return Ret.fail("参数异常");
         }
-        return Ret.ok(null,moduleService.getAllModule(num,size));
+        return Ret.ok(null,moduleService.getAllModule(num,size,keyword));
     }
 
 
@@ -96,5 +96,16 @@ public class ModuleController extends BaseController {
             return Ret.fail("参数异常");
         }
         return moduleService.updateModule(module);
+    }
+
+
+    /**
+     * 获取一共有多少条资源数据
+     * @return
+     */
+    @RequestMapping(value = "/total",method = RequestMethod.GET)
+    @ResponseBody
+    public Ret getTotal(@RequestParam("keyword") String keyword){
+        return moduleService.getTotalModule(keyword);
     }
 }

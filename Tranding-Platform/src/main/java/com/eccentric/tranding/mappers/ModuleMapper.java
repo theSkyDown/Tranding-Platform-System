@@ -17,8 +17,7 @@ public interface ModuleMapper {
      * @param size
      * @return
      */
-    @Select("select * from module limit #{num},#{size}")
-    public List<Module> getAllModulePage(@Param("num") Integer num,@Param("size") Integer size);
+    public List<Module> getAllModulePage(@Param("num") Integer num,@Param("size") Integer size,@Param("keyword") String keyword);
 
 
     /**
@@ -71,4 +70,11 @@ public interface ModuleMapper {
      */
     @Update("update module set module_name=#{moduleName},url=#{url},is_menu=#{isMenu} where module_id=#{moduleId}")
     public Integer updateModule(Module module);
+
+    /**
+     * 统计资源数量
+     * @param keyword
+     * @return
+     */
+    public Integer getTotalModule(@Param("keyword") String keyword);
 }

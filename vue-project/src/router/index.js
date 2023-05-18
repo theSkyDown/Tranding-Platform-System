@@ -3,6 +3,7 @@ import Home from '../components/pages/home.vue'
 import Echart from '../components/test/echartTest.vue'
 import userAdmin from '../components/pages/user_admin.vue'
 import roleAdmin from '../components/pages/role_admin.vue'
+import moduleAdmin from '../components/pages/module_admin.vue'
 
 const router = createRouter({
     history:createWebHashHistory(),
@@ -24,6 +25,12 @@ const router = createRouter({
           path:"/roleAdmin",
           name:"roleAdmin",
           component:roleAdmin,
+        },
+        //资源管理页面
+        {
+          path:"/moduleAdmin",
+          name:"moduleAdmin",
+          component:moduleAdmin
         },
         //echart测试
         {

@@ -8,6 +8,11 @@
     </select>
 
 
+    <select id="getTotalUser" resultType="integer">
+        select count(*) from user where concat(username,phone) like "%"#{keyword}"%"
+    </select>
+
+
 <!--public Integer insertUser(User user);-->
     <insert id="insertUser">
         insert into

@@ -238,7 +238,7 @@ public class UserController extends BaseController{
      */
     @RequestMapping(value = "/total",method = RequestMethod.GET)
     @ResponseBody
-    public Ret getTotal(){
-        return userService.getTotalUser();
+    public Ret getTotal(@RequestParam("keyword") String keyword){
+        return userService.getTotalUser(keyword);
     }
 }

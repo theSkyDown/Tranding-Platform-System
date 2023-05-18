@@ -1,14 +1,14 @@
 <!-- 
 
-    角色管理页面
+    资源管理页面
 
  -->
 
 <template>
-  <!-- 角色管理卡片 -->
+  <!-- 资源管理卡片 -->
   <el-card shadow="hover" v-loading="!this.$store.state.isLogin">
     <template #header>
-      <div class="card-header">角色管理</div>
+      <div class="card-header">资源管理</div>
     </template>
     <div>
       <el-button
@@ -22,31 +22,31 @@
       <el-button
         style="margin-bottom: 5px"
         type="danger"
-        v-on:click="deleteRolesByBatchIds"
+        v-on:click="deleteModulesByBatchIds"
       >
         <el-icon><Delete /></el-icon>
         <span>批量删除</span>
       </el-button>
-      <el-button style="margin-bottom: 5px" v-on:click="reloadRoles">
+      <el-button style="margin-bottom: 5px" v-on:click="reloadModule">
         <el-icon><Refresh /></el-icon>
         <span>刷新</span>
       </el-button>
       <el-input
         v-model="keyword"
-        placeholder="角色名称"
+        placeholder="资源名称或访问路径"
         style="width: 200px; margin-left: 20px; margin-bottom: 5px"
       />
       <el-button
         type="primary"
         style="margin-bottom: 5px; margin-left: 5px"
-        v-on:click="reloadRoles"
+        v-on:click="reloadModule"
       >
         <el-icon><Search /></el-icon>
         <span>搜索</span>
       </el-button>
 
       <el-table
-        :data="roles"
+        :data="modules"
         height="630"
         style="width: 100%"
         @selection-change="handleSelectionChange"
@@ -54,13 +54,8 @@
       >
         <el-table-column type="selection" width="55" />
         <el-table-column label="序号" type="index" width="80" />
-        <el-table-column label="角色名" prop="roleName" min-width="120" />
-        <el-table-column
-          label="创建时间"
-          sortable
-          prop="createTime"
-          min-width="160"
-        />
+        <el-table-column label="资源名称" prop="moduleName" min-width="120" />
+        <el-table-column label="访问路径" prop="url" min-width="160" />
 
         <el-table-column fixed="right" label="操作" width="170">
           <template #default="scope">
@@ -75,7 +70,7 @@
             <el-button
               size="small"
               type="danger"
-              v-on:click="deleteRole(scope.row.roleId)"
+              v-on:click="deleteRole(scope.row.moduleId)"
             >
               <el-icon><Delete /></el-icon>
               <span>删除</span>
@@ -102,19 +97,23 @@
   <!-- 添加角色弹窗 -->
   <el-dialog
     v-model="addDialog"
-    title="添加角色"
+    title="添加资源"
     width="25%"
     align-center
     draggable
   >
     <el-form label-position="top">
-      <el-form-item label="角色名" required>
+      <el-form-item label="资源名称" required>
         <el-input
-          placeholder="请输入角色名"
-          maxlength="10"
+          placeholder="请输入资源名称"
+          maxlength="20"
           show-word-limit
-          v-model="role.roleName"
+          v-model="module.moduleName"
         />
+      </el-form-item>
+
+      <el-form-item label="访问路径" required>
+        <el-input placeholder="请输入访问路径(url)" v-model="module.url" />
       </el-form-item>
     </el-form>
     <!-- 底部按钮 -->
@@ -135,12 +134,19 @@
     draggable
   >
     <el-form label-position="top">
-      <el-form-item label="角色名" required>
+      <el-form-item label="资源名称" required>
         <el-input
-          placeholder="请输入角色名"
-          maxlength="10"
+          placeholder="请输入资源名称"
+          maxlength="20"
           show-word-limit
-          v-model="updateRole.roleName"
+          v-model="updateModule.moduleName"
+        />
+      </el-form-item>
+
+      <el-form-item label="访问路径" required>
+        <el-input
+          placeholder="请输入访问路径(url)"
+          v-model="updateModule.url"
         />
       </el-form-item>
     </el-form>
@@ -150,7 +156,7 @@
         <el-button
           v-on:click="
             updateDialog = false;
-            this.reloadRoles();
+            this.reloadModule();
           "
           >取消</el-button
         >
@@ -166,8 +172,8 @@ import { ElMessage } from "element-plus";
 export default {
   data() {
     return {
-      //角色列表
-      roles: [],
+      //资源列表
+      modules: [],
       //分页参数
       page: 1, //当前页数
       num: 0, //从第几条开始算
@@ -179,26 +185,27 @@ export default {
       tableLoading: false,
       //添加弹窗是否显示
       addDialog: false,
-      //用于添加的role
-      role: {
-        roleName: "",
+      //用于添加的module
+      module: {
+        moduleName: "",
+        url: "",
       },
       //修改弹窗是否显示
       updateDialog: false,
-      //用于修改的role
-      updateRole: {},
+      //用于修改的module
+      updateModule: {},
       //关键词
       keyword: "",
     };
   },
   methods: {
     //获取所有角色的数据
-    getAllRole() {
+    getAllModule() {
       let that = this;
       axios({
         url:
           this.$store.state.localhost +
-          "/role/all?num=" +
+          "/module/all?num=" +
           this.num +
           "&size=" +
           this.size +
@@ -213,12 +220,12 @@ export default {
           type: res.data.status ? "success" : "error",
         });
         if (res.data.status) {
-          that.roles = res.data.data;
+          that.modules = res.data.data;
         }
       });
     },
     //批量删除
-    deleteRolesByBatchIds() {
+    deleteModulesByBatchIds() {
       let that = this;
       //拼接字符串，用于请求的参数
       this.$confirm("此操作将永久删除这些角色, 是否继续?", "提示", {
@@ -233,7 +240,7 @@ export default {
           }
           ids = ids.substring(0, ids.lastIndexOf(","));
           axios({
-            url: this.$store.state.localhost + "/role/delete/ids?ids=" + ids,
+            url: this.$store.state.localhost + "/module/delete/ids?ids=" + ids,
             method: "delete",
             withCredentials: true,
           }).then(function (res) {
@@ -241,7 +248,7 @@ export default {
               message: res.data.message,
               type: res.data.status ? "success" : "error",
             });
-            that.reloadRoles();
+            that.reloadModule();
           });
         })
         .catch(() => {
@@ -252,10 +259,10 @@ export default {
         });
     },
     //刷新
-    reloadRoles() {
+    reloadModule() {
       this.tableLoading = true;
-      //查询所有角色
-      this.getAllRole();
+      //获取所有数据
+      this.getAllModule();
       //统计数量
       this.getTotal();
       setTimeout(() => {
@@ -266,15 +273,15 @@ export default {
     handleSelectionChange(val) {
       let temp = [];
       for (let i = 0; i < val.length; i++) {
-        temp[i] = val[i].roleId;
+        temp[i] = val[i].moduleId;
       }
       this.selectId = temp;
     },
     //显示修改弹窗
-    showUpdateDialog(role) {
+    showUpdateDialog(module) {
       this.updateDialog = true;
       //信息回显
-      this.updateRole = role;
+      this.updateModule = module;
     },
     //删除指定角色
     deleteRole(id) {
@@ -286,7 +293,7 @@ export default {
       })
         .then(() => {
           axios({
-            url: this.$store.state.localhost + "/role/delete?roleId=" + id,
+            url: this.$store.state.localhost + "/module/delete?moduleId=" + id,
             method: "delete",
             withCredentials: true,
           }).then(function (res) {
@@ -294,7 +301,7 @@ export default {
               message: res.data.message,
               type: res.data.status ? "success" : "error",
             });
-            that.reloadRoles();
+            that.reloadModule();
           });
         })
         .catch(() => {
@@ -309,7 +316,7 @@ export default {
       // 更新每页大小
       this.size = pageSize;
       //   刷新页面
-      this.reloadRoles();
+      this.reloadModule();
     },
     //当前页数发生改变
     numChange(page) {
@@ -318,19 +325,19 @@ export default {
       // 更新num用于发请求
       this.num = (page - 1) * this.size;
       //刷新页面
-      this.reloadRoles();
+      this.reloadModule();
     },
     //发送添加请求
     add() {
       let that = this;
       axios({
-        url: this.$store.state.localhost + "/role/add",
+        url: this.$store.state.localhost + "/module/add",
         method: "post",
         withCredentials: true,
         headers: {
           "Content-Type": "application/json",
         },
-        data: JSON.stringify(this.role),
+        data: JSON.stringify(this.module),
       }).then(function (res) {
         // 打印信息
         ElMessage({
@@ -339,11 +346,11 @@ export default {
         });
         if (res.data.status) {
           //清空表单
-          that.role = {};
+          that.module = {};
           //关闭添加弹窗
           that.addDialog = false;
           //刷新表格
-          that.reloadRoles();
+          that.reloadModule();
         }
       });
     },
@@ -351,13 +358,13 @@ export default {
     update() {
       let that = this;
       axios({
-        url: this.$store.state.localhost + "/role/update",
+        url: this.$store.state.localhost + "/module/update",
         method: "put",
         withCredentials: true,
         headers: {
           "Content-Type": "application/json",
         },
-        data: JSON.stringify(this.updateRole),
+        data: JSON.stringify(this.updateModule),
       }).then(function (res) {
         ElMessage({
           message: res.data.message,
@@ -366,11 +373,11 @@ export default {
         //如果修改成功
         if (res.data.status) {
           //清空表单
-          that.updateRole = {};
+          that.updateModule = {};
           //关闭添加弹窗
           that.updateDialog = false;
           //刷新表格
-          that.reloadRoles();
+          that.reloadModule();
         }
       });
     },
@@ -379,7 +386,7 @@ export default {
       let that = this;
       axios({
         url:
-          this.$store.state.localhost + "/role/total?keyword=" + this.keyword,
+          this.$store.state.localhost + "/module/total?keyword=" + this.keyword,
         method: "get",
         withCredentials: true,
       }).then(function (res) {
@@ -390,7 +397,7 @@ export default {
     },
   },
   mounted() {
-    this.reloadRoles();
+    this.reloadModule();
   },
 };
 </script>

@@ -21,8 +21,8 @@ public class ModuleServiceImpl implements ModuleService {
     private ModuleMapper moduleMapper;
 
     @Override
-    public List<Module> getAllModule(Integer num, Integer size) {
-        return moduleMapper.getAllModulePage(num,size);
+    public List<Module> getAllModule(Integer num, Integer size,String keyword) {
+        return moduleMapper.getAllModulePage(num,size,keyword);
     }
 
     @Override
@@ -96,5 +96,10 @@ public class ModuleServiceImpl implements ModuleService {
         //执行修改操作
         Integer count = moduleMapper.updateModule(module);
         return count==1 ? Ret.ok() : Ret.fail();
+    }
+
+    @Override
+    public Ret getTotalModule(String keyword) {
+        return Ret.ok(null,moduleMapper.getTotalModule(keyword));
     }
 }

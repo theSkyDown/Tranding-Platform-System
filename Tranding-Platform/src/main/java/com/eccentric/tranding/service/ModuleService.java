@@ -17,7 +17,7 @@ public interface ModuleService {
      * @param size
      * @return
      */
-    public List<Module> getAllModule(Integer num,Integer size);
+    public List<Module> getAllModule(Integer num,Integer size,String keyword);
 
     /**
      * 判断资源是否存在
@@ -71,4 +71,11 @@ public interface ModuleService {
      * @return
      */
     public Ret updateModule(Module module);
+
+    /**
+     * 统计一共有多少资源
+     * @param keyword
+     * @return
+     */
+    public Ret getTotalModule(String keyword);
 }

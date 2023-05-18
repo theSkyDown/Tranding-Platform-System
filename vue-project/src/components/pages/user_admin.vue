@@ -33,7 +33,7 @@
       </el-button>
       <el-input
         v-model="keyword"
-        placeholder="请输入关键词"
+        placeholder="用户名或手机号码"
         style="width: 200px; margin-left: 20px; margin-bottom: 5px"
       />
       <el-button
@@ -57,7 +57,7 @@
         <el-table-column label="用户名" prop="username" min-width="120" />
         <el-table-column label="手机号" sortable prop="phone" min-width="120" />
         <el-table-column label="性别" prop="genderName" width="80" />
-        <el-table-column label="角色" prop="roleName" width="100" />
+        <el-table-column label="角色" sortable prop="roleName" width="100" />
         <el-table-column label="头像" prop="avatar" min-width="160" />
         <el-table-column
           label="创建时间"
@@ -316,7 +316,8 @@ export default {
     getTotal() {
       let that = this;
       axios({
-        url: this.$store.state.localhost + "/user/total",
+        url:
+          this.$store.state.localhost + "/user/total?keyword=" + this.keyword,
         method: "get",
         withCredentials: true,
       }).then(function (res) {
@@ -360,7 +361,9 @@ export default {
     //刷新按钮
     reloadUsers() {
       this.tableLoading = true;
+      // 查询所有用户数据
       this.getUsersInfo();
+      //统计数量
       this.getTotal();
       setTimeout(() => {
         this.tableLoading = false;

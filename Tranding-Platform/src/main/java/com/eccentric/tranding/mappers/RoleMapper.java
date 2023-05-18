@@ -65,8 +65,7 @@ public interface RoleMapper {
      * 统计角色数量
      * @return
      */
-    @Select("select count(*) from role")
-    public Integer getTotalRole();
+    public Integer getTotalRole(@Param("keyword") String keyword);
 
 
     /**

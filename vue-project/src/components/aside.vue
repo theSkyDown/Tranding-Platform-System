@@ -42,7 +42,7 @@
         <span>角色管理</span>
       </el-menu-item>
 
-      <el-menu-item index="3-5">
+      <el-menu-item index="3-5" v-on:click="toModuleAdmin">
         <el-icon><Box /></el-icon>
         <span>资源管理</span>
       </el-menu-item>
@@ -88,10 +88,12 @@ export default {
     toRoleAdmin() {
       this.$router.push("/roleAdmin");
     },
+    //跳转到资源管理页面
+    toModuleAdmin() {
+      this.$router.push("/moduleAdmin");
+    },
     //跳转测试页面
     toTest() {
-      console.log(this.$store.state.user.username);
-
       this.$router.push("/echartTest");
     },
   },

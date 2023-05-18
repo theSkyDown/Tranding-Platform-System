@@ -114,5 +114,5 @@ public interface UserService {
      * 统计一共有多少用户
      * @return
      */
-    public Ret getTotalUser();
+    public Ret getTotalUser(String keyword);
 }

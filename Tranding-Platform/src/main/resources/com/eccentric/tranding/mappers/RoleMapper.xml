@@ -7,6 +7,10 @@
         select * from role where concat(role_name) like "%"#{keyword}"%" limit #{num},#{size}
     </select>
 
+    <select id="getTotalRole" resultType="integer">
+        select count(*) from role where concat(role_name) like "%"#{keyword}"%"
+    </select>
+
 <!--public Integer deleteByBatchIds(@Param("idList") List<Integer> idList);-->
     <delete id="deleteByBatchIds">
         delete from role where role_id in

@@ -265,6 +265,8 @@ public class UserServiceImpl implements UserService {
             Role roleById = roleService.getRoleById(user.getRoleId());
             if (roleById != null){
                 user.setRoleName(roleById.getRoleName());
+            }else{
+                user.setRoleName("用户角色异常");
             }
             //设置性别名称
             user.setGenderName(user.getGender()==1?"男":"女");
@@ -290,7 +292,7 @@ public class UserServiceImpl implements UserService {
 
 
     @Override
-    public Ret getTotalUser() {
-        return Ret.ok(null,userMapper.getTotalUser());
+    public Ret getTotalUser(String keyword) {
+        return Ret.ok(null,userMapper.getTotalUser(keyword));
     }
 }

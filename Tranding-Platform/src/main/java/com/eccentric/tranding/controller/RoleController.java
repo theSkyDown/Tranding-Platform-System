@@ -110,7 +110,7 @@ public class RoleController extends BaseController{
      */
     @RequestMapping(value = "/total",method = RequestMethod.GET)
     @ResponseBody
-    public Ret getTotal(){
-        return roleService.getTotalRole();
+    public Ret getTotal(@RequestParam("keyword") String keyword){
+        return roleService.getTotalRole(keyword);
     }
 }

@@ -110,7 +110,7 @@ public class RoleServiceImpl implements RoleService {
 
 
     @Override
-    public Ret getTotalRole() {
-        return Ret.ok(null,roleMapper.getTotalRole());
+    public Ret getTotalRole(String keyword) {
+        return Ret.ok(null,roleMapper.getTotalRole(keyword));
     }
 }

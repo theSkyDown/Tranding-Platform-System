@@ -70,5 +70,5 @@ public interface RoleService {
      * 统计一共有多少个角色
      * @return
      */
-    public Ret getTotalRole();
+    public Ret getTotalRole(String keyword);
 }
