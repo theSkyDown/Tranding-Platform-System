@@ -4,6 +4,7 @@ import Echart from '../components/test/echartTest.vue'
 import userAdmin from '../components/pages/user_admin.vue'
 import roleAdmin from '../components/pages/role_admin.vue'
 import moduleAdmin from '../components/pages/module_admin.vue'
+import permissionAdmin from '../components/pages/permission_admin.vue'
 
 const router = createRouter({
     history:createWebHashHistory(),
@@ -31,6 +32,12 @@ const router = createRouter({
           path:"/moduleAdmin",
           name:"moduleAdmin",
           component:moduleAdmin
+        },
+        //权限管理页面
+        {
+          path:"/permissionAdmin",
+          name:"permissionAdmin",
+          component:permissionAdmin
         },
         //echart测试
         {

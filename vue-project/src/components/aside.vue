@@ -47,7 +47,7 @@
         <span>资源管理</span>
       </el-menu-item>
 
-      <el-menu-item index="3-6">
+      <el-menu-item index="3-6" v-on:click="toPermissionAdmin">
         <el-icon><Lock /></el-icon>
         <span>权限管理</span>
       </el-menu-item>
@@ -91,6 +91,10 @@ export default {
     //跳转到资源管理页面
     toModuleAdmin() {
       this.$router.push("/moduleAdmin");
+    },
+    //跳转到权限管理
+    toPermissionAdmin() {
+      this.$router.push("/permissionAdmin");
     },
     //跳转测试页面
     toTest() {

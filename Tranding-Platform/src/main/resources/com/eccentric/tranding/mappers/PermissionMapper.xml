@@ -3,7 +3,16 @@
 
 <mapper namespace="com.eccentric.tranding.mappers.PermissionMapper">
 
+    <select id="getAllPermission" resultType="com.eccentric.tranding.pojo.Permission">
+        select * from permission limit #{num},#{size}
+    </select>
 
 
+    <delete id="deleteByIds">
+        delete from permission where permission_id in
+        <foreach collection="idList" item="id" separator="," open="(" close=")">
+            #{id}
+        </foreach>
+    </delete>
 
 </mapper>

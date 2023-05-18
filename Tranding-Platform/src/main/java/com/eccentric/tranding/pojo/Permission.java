@@ -19,4 +19,10 @@ public class Permission {
     private Integer roleId;
     //资源标识
     private Integer moduleId;
+
+    //角色名称
+    private String roleName;
+    //资源名称
+    private String moduleName;
+
 }

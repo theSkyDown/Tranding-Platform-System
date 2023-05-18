@@ -261,7 +261,7 @@ export default {
       page: 1, //当前页数
       num: 0, //从第几条开始算
       size: 10, //每页多少条数据
-      total: 10, //总共多少条数据
+      total: 0, //总共多少条数据
       // 多选选中的id
       selectId: [],
       //表单加载
