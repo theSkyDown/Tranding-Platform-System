@@ -37,7 +37,6 @@ public class User {
     @JsonFormat(shape= JsonFormat.Shape.STRING ,pattern="yyyy-MM-dd HH:mm:ss")
     private LocalDateTime updateTime;
     //用户状态
-
     private Integer status;
 
     //验证码

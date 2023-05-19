@@ -57,7 +57,7 @@
         <el-table-column label="用户名" prop="username" min-width="120" />
         <el-table-column label="手机号" sortable prop="phone" min-width="120" />
         <el-table-column label="性别" prop="genderName" width="80" />
-        <el-table-column label="角色" sortable prop="roleName" width="100" />
+        <el-table-column label="角色" sortable prop="roleName" width="120" />
         <el-table-column label="头像" prop="avatar" min-width="160" />
         <el-table-column
           label="创建时间"

@@ -229,7 +229,12 @@ public class UserServiceImpl implements UserService {
         if (user != null){
             user.setPassword(null);
             //设置角色名称
-            user.setRoleName(roleService.getRoleById(user.getRoleId()).getRoleName());
+            Role roleById = roleService.getRoleById(user.getRoleId());
+            if (roleById != null){
+                user.setRoleName(roleById.getRoleName());
+            }else{
+                user.setRoleName("用户角色异常");
+            }
             //设置性别名称
             user.setGenderName(user.getGender()==1?"男":"女");
         }
