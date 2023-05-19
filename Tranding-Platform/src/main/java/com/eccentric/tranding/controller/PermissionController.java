@@ -1,8 +1,10 @@
 package com.eccentric.tranding.controller;
 
 import com.eccentric.tranding.pojo.Permission;
+import com.eccentric.tranding.pojo.User;
 import com.eccentric.tranding.pojo.common.Ret;
 import com.eccentric.tranding.service.PermissionService;
+import com.eccentric.tranding.utils.UserHolder;
 import org.springframework.beans.factory.annotation.Autowired;
 import org.springframework.web.bind.annotation.*;
 
@@ -58,7 +60,9 @@ public class PermissionController extends BaseController{
         if (!isOk(permission) || !isOk(permission.getRoleId()) || !isOk(permission.getModuleId())){
             return Ret.fail("参数异常");
         }
-        return permissionService.addPermission(permission);
+        //获取操作者的信息
+        User actionUser = UserHolder.getUser();
+        return permissionService.addPermission(permission,actionUser);
     }
 
 
@@ -73,7 +77,9 @@ public class PermissionController extends BaseController{
         if (!isOk(permissionId)){
             return Ret.fail("参数异常");
         }
-        return permissionService.deletePermission(permissionId);
+        //获取操作者的信息
+        User actionUser = UserHolder.getUser();
+        return permissionService.deletePermission(permissionId,actionUser);
     }
 
 
@@ -97,7 +103,9 @@ public class PermissionController extends BaseController{
         if (ids.lastIndexOf(",") == ids.length()-1){
             return Ret.fail("参数异常");
         }
-        return permissionService.deleteByIds(idList);
+        //获取操作者的信息
+        User actionUser = UserHolder.getUser();
+        return permissionService.deleteByIds(idList,actionUser);
     }
 
 }

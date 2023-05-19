@@ -52,12 +52,17 @@ public class ModuleServiceImpl implements ModuleService {
     }
 
     @Override
-    public Ret addModule(Module module) {
+    public Ret addModule(Module module,User actionUser) {
         if (isExist(module)){
             return Ret.fail("资源已存在");
         }
         //设置默认选项-不是菜单
         module.setIsMenu(0);
+
+        //如果不是admin无法添加资源
+        if (actionUser.getUserId()!=1) {
+            return Ret.fail("只有admin才能添加资源");
+        }
 
         //执行添加操作
         Integer count = moduleMapper.insertModule(module);
@@ -65,24 +70,32 @@ public class ModuleServiceImpl implements ModuleService {
     }
 
     @Override
-    public Ret deleteModule(Integer moduleId) {
+    public Ret deleteModule(Integer moduleId,User actionUser) {
         Module temp = new Module();
         temp.setModuleId(moduleId);
         if (!isExist(temp)){
             return Ret.fail("资源不存在");
+        }
+        //如果不是admin无法添加资源
+        if (actionUser.getUserId()!=1) {
+            return Ret.fail("只有admin才能删除资源");
         }
         Integer count = moduleMapper.deleteModule(moduleId);
         return count==1 ? Ret.ok() : Ret.fail();
     }
 
     @Override
-    public Ret deleteByBatchIds(List<Integer> idList) {
+    public Ret deleteByBatchIds(List<Integer> idList,User actionUser) {
+        //如果不是admin无法删除资源
+        if (actionUser.getUserId()!=1) {
+            return Ret.fail("只有admin才能删除资源");
+        }
         Integer count = moduleMapper.deleteByBatchIds(idList);
         return count>0 ? Ret.ok() : Ret.fail();
     }
 
     @Override
-    public Ret updateModule(Module module) {
+    public Ret updateModule(Module module,User actionUser) {
         if (!isExist(module)){
             return Ret.fail("资源不存在,修改失败");
         }
@@ -91,6 +104,11 @@ public class ModuleServiceImpl implements ModuleService {
         Module tempModule = moduleMapper.getModuleByUrl(module.getUrl());
         if (tempModule!=null && !module.getModuleId().equals(tempModule.getModuleId())){
             return Ret.fail("路由修改失败，路由已被使用");
+        }
+
+        //如果不是admin无法添加资源
+        if (actionUser.getUserId()!=1) {
+            return Ret.fail("只有admin才能修改资源");
         }
 
         //执行修改操作

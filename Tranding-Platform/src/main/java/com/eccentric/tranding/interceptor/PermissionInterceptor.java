@@ -7,6 +7,7 @@ import com.eccentric.tranding.pojo.common.Ret;
 import com.eccentric.tranding.service.ModuleService;
 import com.eccentric.tranding.service.PermissionService;
 import com.eccentric.tranding.service.UserService;
+import com.eccentric.tranding.utils.UserHolder;
 import com.fasterxml.jackson.databind.ObjectMapper;
 import org.springframework.beans.factory.annotation.Autowired;
 import org.springframework.stereotype.Component;
@@ -49,6 +50,10 @@ public class PermissionInterceptor implements HandlerInterceptor {
                         response.getWriter().write(objectMapper.writeValueAsString(Ret.fail("用户信息错误")));
                         return false;
                     }
+
+                    //将用户放到throwLocal中
+                    UserHolder.saveUser(user);
+
                     //如果是超级管理员则直接过
                     if (user.getRoleId()==1){
                         return true;

@@ -1,8 +1,10 @@
 package com.eccentric.tranding.controller;
 
 import com.eccentric.tranding.pojo.Role;
+import com.eccentric.tranding.pojo.User;
 import com.eccentric.tranding.pojo.common.Ret;
 import com.eccentric.tranding.service.RoleService;
+import com.eccentric.tranding.utils.UserHolder;
 import org.springframework.beans.factory.annotation.Autowired;
 import org.springframework.web.bind.annotation.*;
 
@@ -61,7 +63,9 @@ public class RoleController extends BaseController{
         if (!isOk(roleId)){
             return Ret.fail("参数异常");
         }
-        return roleService.deleteRole(roleId);
+        //获取执行操作的用户
+        User actionUser = UserHolder.getUser();
+        return roleService.deleteRole(roleId,actionUser);
     }
 
 
@@ -86,7 +90,9 @@ public class RoleController extends BaseController{
         if (ids.lastIndexOf(",") == ids.length()-1){
             return Ret.fail("参数异常");
         }
-        return roleService.deleteByIds(idList);
+        //获取操作者的信息
+        User actionUser = UserHolder.getUser();
+        return roleService.deleteByIds(idList,actionUser);
     }
 
 
@@ -101,7 +107,9 @@ public class RoleController extends BaseController{
         if (!isOk(role) || !isOk(role.getRoleName()) || !isOk(role.getRoleId()) || !isOk(role.getLevel())){
             return Ret.fail("参数异常");
         }
-        return roleService.updateRole(role);
+        //获取操作者的信息
+        User actionUser = UserHolder.getUser();
+        return roleService.updateRole(role,actionUser);
     }
 
     /**

@@ -14,9 +14,7 @@ import com.eccentric.tranding.utils.Md5Util;
 import org.springframework.beans.factory.annotation.Autowired;
 import org.springframework.stereotype.Service;
 
-import javax.annotation.PostConstruct;
 import java.time.LocalDateTime;
-import java.util.ArrayList;
 import java.util.List;
 
 /**
@@ -140,29 +138,53 @@ public class UserServiceImpl implements UserService {
         if (actionUserRole == null){
             return Ret.fail("你的角色信息异常");
         }
-        //删除者的角色没有异常,且执行者的level大于与删除者的level，则无法成功（level越小权限越大）
-        if(deleteUserRole != null && actionUserRole.getLevel() >= deleteUserRole.getLevel()){
+        //若要被删除人的  角色信息异常  或者  admin  可以直接操作
+        if(deleteUserRole != null
+                && actionUser.getUserId() != 1
+                && actionUserRole.getLevel() >= deleteUserRole.getLevel()
+        ){
             return Ret.fail("你没有权限删除该用户");
         }
 
         //执行删除操作
-        boolean result =  userMapper.deleteUser(userId) == 1;
+        boolean result = userMapper.deleteUser(userId) == 1;
         return result?Ret.ok():Ret.fail();
     }
 
 
     @Override
-    public Ret deleteByIds(List<Integer> idList) {
+    public Ret  deleteByIds(List<Integer> idList,User actionUser) {
         if (idList.contains(1)){
             return Ret.fail("admin无法删除");
         }
+
+        //循环检查这些用户，是否存在不能删除的用户
+        for (Integer id : idList){
+            User user = userMapper.getUserByUserId(id);
+            if (user != null){
+                //判断操作用户的角色等级是否比要删除的用户的等级高
+                Role actionRole = roleService.getRoleById(actionUser.getRoleId());
+                Role deleteRole = roleService.getRoleById(user.getRoleId());
+                //防止操作用户角色异常
+                if (actionRole == null){
+                    return Ret.fail("你的角色信息异常");
+                }
+                //若删除人的  角色信息异常  或者  admin  可以直接操作
+                if (deleteRole!=null
+                        && actionUser.getUserId() != 1
+                        && actionRole.getLevel() >= deleteRole.getLevel()){
+                    return Ret.fail("你没有权限删除 '"+user.getUsername()+"' 这个用户");
+                }
+            }
+        }
+
         //批量删除
         Integer count = userMapper.deleteByIds(idList);
         return count>0 ? Ret.ok() : Ret.fail();
     }
 
     @Override
-    public Ret updateUser(User user) {
+    public Ret updateUser(User user,User actionUser) {
         //拦截不存在的用户
         if (!isExist(user)){
             return Ret.fail("用户不存在，修改失败");
@@ -192,6 +214,29 @@ public class UserServiceImpl implements UserService {
         if ("admin".equals(user.getUsername())){
             return Ret.fail("用户名不能为admin");
         }
+
+
+        //获取被修改用户的信息
+        User updateUser = userMapper.getUserByUserId(user.getUserId());
+        //判断操作用户的角色等级是否比要修改的用户的等级高
+        Role actionRole = roleService.getRoleById(actionUser.getRoleId());
+        Role updateRole = roleService.getRoleById(updateUser.getRoleId());
+        //防止操作用户角色异常
+        if (actionRole == null){
+            return Ret.fail("你的角色信息异常");
+        }
+        //若被修改人的  角色信息异常  或者  admin  可以直接操作
+        if (updateRole!=null && actionUser.getUserId() != 1){
+            if (actionRole.getLevel() >= updateRole.getLevel()){
+                return Ret.fail("你没有权限修改该用户的信息");
+            }
+            //防止操作者将角色设置成权限等级比自己高的角色
+            Role afterUpdateRole = roleService.getRoleById(user.getRoleId());
+            if (afterUpdateRole!=null && actionRole.getLevel() >= afterUpdateRole.getLevel()){
+                return Ret.fail("你没有权限将用户的角色设置为 '" + afterUpdateRole.getRoleName() + "'");
+            }
+        }
+
 
         //执行修改操作
         boolean result = userMapper.updateUser(user)==1;
@@ -223,12 +268,26 @@ public class UserServiceImpl implements UserService {
 
 
     @Override
-    public Ret resetPassword(Integer userId) throws Exception {
-        User temp = new User();
-        temp.setUserId(userId);
-        if (!isExist(temp)){
+    public Ret resetPassword(Integer userId,User actionUser) throws Exception {
+        User resetUser = userMapper.getUserByUserId(userId);
+        if (resetUser == null){
             return Ret.fail("用户不存在");
         }
+
+        //判断操作用户的角色等级是否比要重置密码的用户的等级高
+        Role actionRole = roleService.getRoleById(actionUser.getRoleId());
+        Role resetRole = roleService.getRoleById(resetUser.getRoleId());
+        //防止操作用户角色异常
+        if (actionRole == null){
+            return Ret.fail("你的角色信息异常");
+        }
+        //若要重置人的  角色信息异常  或者  admin  可以直接操作
+        if (resetRole!=null
+                && actionUser.getUserId() != 1
+                && actionRole.getLevel() >= resetRole.getLevel()){
+            return Ret.fail("你没有权限重置该用户的密码");
+        }
+
         //生成密码
         String pwd = Md5Util.getMD5(Encrypt.PWD_RESET + Encrypt.MD5_HELPER);
         Integer count = userMapper.updatePassword(userId, pwd);
@@ -309,7 +368,7 @@ public class UserServiceImpl implements UserService {
 
 
     @Override
-    public Ret toggleUserStatus(Integer userId) {
+    public Ret toggleUserStatus(Integer userId,User actionUser) {
         //超级管理员的状态不能被禁用
         if (userId == 1){
             return Ret.fail("admin无法被禁用");
@@ -319,6 +378,22 @@ public class UserServiceImpl implements UserService {
         if (user == null) {
             return Ret.fail("用户不存在");
         }
+
+        //判断执行操作的用户是否有权限修改用户的状态
+        Role actionRole = roleService.getRoleById(actionUser.getRoleId());
+        Role toggleRole = roleService.getRoleById(user.getRoleId());
+        //防止操作者的角色信息异常
+        if (actionRole == null){
+            return Ret.fail("你的角色信息异常");
+        }
+        //若状态切换人的  角色信息异常  或者  admin  可以直接操作
+        if(toggleRole != null
+                && actionUser.getUserId() != 1
+                && actionRole.getLevel() >= toggleRole.getLevel()
+        ){
+            return Ret.fail("你没有权限切换该用户的状态");
+        }
+
         Integer count = userMapper.updateUserStatus(userId,user.getStatus()==1?2:1);
         return count==1 ? Ret.ok() : Ret.fail();
     }

@@ -106,7 +106,9 @@ public class UserController extends BaseController{
         if (ids.lastIndexOf(",") == ids.length()-1){
             return Ret.fail("参数异常");
         }
-        return userService.deleteByIds(idList);
+        //获取操作人的信息
+        User actionUser = UserHolder.getUser();
+        return userService.deleteByIds(idList,actionUser);
     }
 
 
@@ -122,8 +124,10 @@ public class UserController extends BaseController{
         if (!isOk(user) || !isOk(user.getUserId()) || !isOk(user.getUsername())){
             return Ret.fail("参数异常");
         }
+        //获取执行操作的用户
+        User actionUser = UserHolder.getUser();
         //更新用户信息
-        return userService.updateUser(user);
+        return userService.updateUser(user,actionUser);
     }
 
 
@@ -186,7 +190,9 @@ public class UserController extends BaseController{
         if (!isOk(userId)){
             return Ret.fail("参数异常");
         }
-        return userService.resetPassword(userId);
+        //获取执行操作的用户
+        User actionUser = UserHolder.getUser();
+        return userService.resetPassword(userId,actionUser);
     }
 
 
@@ -233,8 +239,9 @@ public class UserController extends BaseController{
         if (!isOk(userId)) {
             return Ret.fail("参数异常");
         }
+        User actionUser = UserHolder.getUser();
         //执行修改操作
-        return userService.toggleUserStatus(userId);
+        return userService.toggleUserStatus(userId,actionUser);
     }
 
     /**

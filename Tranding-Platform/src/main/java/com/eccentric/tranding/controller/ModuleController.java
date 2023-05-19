@@ -1,8 +1,10 @@
 package com.eccentric.tranding.controller;
 
 import com.eccentric.tranding.pojo.Module;
+import com.eccentric.tranding.pojo.User;
 import com.eccentric.tranding.pojo.common.Ret;
 import com.eccentric.tranding.service.ModuleService;
+import com.eccentric.tranding.utils.UserHolder;
 import org.springframework.beans.factory.annotation.Autowired;
 import org.springframework.web.bind.annotation.*;
 
@@ -46,7 +48,8 @@ public class ModuleController extends BaseController {
         if (!isOk(module) || !isOk(module.getModuleName()) || !isOk(module.getUrl())){
             return Ret.fail("参数异常");
         }
-        return moduleService.addModule(module);
+        User actionUser = UserHolder.getUser();
+        return moduleService.addModule(module,actionUser);
     }
 
 
@@ -61,7 +64,8 @@ public class ModuleController extends BaseController {
         if (!isOk(moduleId)){
             return Ret.fail("参数异常");
         }
-        return moduleService.deleteModule(moduleId);
+        User actionUser = UserHolder.getUser();
+        return moduleService.deleteModule(moduleId,actionUser);
     }
 
     /**
@@ -80,7 +84,8 @@ public class ModuleController extends BaseController {
         for (String id : idArray){
             idList.add(Integer.valueOf(id));
         }
-        return moduleService.deleteByBatchIds(idList);
+        User actionUser = UserHolder.getUser();
+        return moduleService.deleteByBatchIds(idList,actionUser);
     }
 
 
@@ -95,7 +100,8 @@ public class ModuleController extends BaseController {
         if (!isOk(module) || !isOk(module.getModuleName()) || !isOk(module.getUrl())){
             return Ret.fail("参数异常");
         }
-        return moduleService.updateModule(module);
+        User actionUser = UserHolder.getUser();
+        return moduleService.updateModule(module,actionUser);
     }
 
 

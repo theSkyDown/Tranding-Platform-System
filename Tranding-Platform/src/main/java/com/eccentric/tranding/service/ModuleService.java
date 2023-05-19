@@ -1,6 +1,7 @@
 package com.eccentric.tranding.service;
 
 import com.eccentric.tranding.pojo.Module;
+import com.eccentric.tranding.pojo.User;
 import com.eccentric.tranding.pojo.common.Ret;
 
 import java.util.List;
@@ -46,7 +47,7 @@ public interface ModuleService {
      * @param module
      * @return
      */
-    public Ret addModule(Module module);
+    public Ret addModule(Module module, User actionUser);
 
 
     /**
@@ -54,7 +55,7 @@ public interface ModuleService {
      * @param moduleId
      * @return
      */
-    public Ret deleteModule(Integer moduleId);
+    public Ret deleteModule(Integer moduleId,User actionUser);
 
 
     /**
@@ -62,7 +63,7 @@ public interface ModuleService {
      * @param idList
      * @return
      */
-    public Ret deleteByBatchIds(List<Integer> idList);
+    public Ret deleteByBatchIds(List<Integer> idList,User actionUser);
 
 
     /**
@@ -70,7 +71,7 @@ public interface ModuleService {
      * @param module
      * @return
      */
-    public Ret updateModule(Module module);
+    public Ret updateModule(Module module,User actionUser);
 
     /**
      * 统计一共有多少资源

@@ -55,7 +55,12 @@
         <el-table-column type="selection" width="55" />
         <el-table-column label="序号" type="index" width="80" />
         <el-table-column label="角色名" prop="roleName" min-width="120" />
-        <el-table-column label="权限等级" prop="level" min-width="120" />
+        <el-table-column
+          label="权限等级"
+          sortable
+          prop="level"
+          min-width="120"
+        />
         <el-table-column
           label="创建时间"
           sortable

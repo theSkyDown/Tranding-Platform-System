@@ -1,6 +1,7 @@
 package com.eccentric.tranding.service;
 
 import com.eccentric.tranding.pojo.Role;
+import com.eccentric.tranding.pojo.User;
 import com.eccentric.tranding.pojo.common.Ret;
 
 import java.util.List;
@@ -45,9 +46,10 @@ public interface RoleService {
     /**
      * 通过id将角色删除
      * @param roleId
+     * @param actionUser
      * @return
      */
-    public Ret deleteRole(Integer roleId);
+    public Ret deleteRole(Integer roleId, User actionUser);
 
 
     /**
@@ -55,15 +57,16 @@ public interface RoleService {
      * @param idList
      * @return
      */
-    public Ret deleteByIds(List<Integer> idList);
+    public Ret deleteByIds(List<Integer> idList,User actionUser);
 
 
     /**
      * 更新角色的信息
      * @param role
+     * @param actionUser
      * @return
      */
-    public Ret updateRole(Role role);
+    public Ret updateRole(Role role,User actionUser);
 
 
     /**

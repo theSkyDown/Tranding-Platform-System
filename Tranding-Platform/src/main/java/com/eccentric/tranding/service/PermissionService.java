@@ -52,7 +52,7 @@ public interface PermissionService  {
      * @param permission
      * @return
      */
-    public Ret addPermission(Permission permission);
+    public Ret addPermission(Permission permission,User actionUser);
 
 
     /**
@@ -60,7 +60,7 @@ public interface PermissionService  {
      * @param permissionId
      * @return
      */
-    public Ret deletePermission(Integer permissionId);
+    public Ret deletePermission(Integer permissionId,User actionUser);
 
 
     /**
@@ -68,5 +68,5 @@ public interface PermissionService  {
      * @param idList
      * @return
      */
-    public Ret deleteByIds(List<Integer> idList);
+    public Ret deleteByIds(List<Integer> idList,User actionUser);
 }

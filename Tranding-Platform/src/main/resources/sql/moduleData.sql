@@ -23,3 +23,8 @@ INSERT INTO trand_platform_sys.module (module_name, url, is_menu) VALUES ('资�
 INSERT INTO trand_platform_sys.module (module_name, url, is_menu) VALUES ('资源的批量删除', '/module/delete/ids', 0);
 INSERT INTO trand_platform_sys.module (module_name, url, is_menu) VALUES ('资源的修改功能', '/module/update', 0);
 INSERT INTO trand_platform_sys.module (module_name, url, is_menu) VALUES ('资源数量统计功能', '/module/total', 0);
+INSERT INTO trand_platform_sys.module (module_name, url, is_menu) VALUES ('获取所有权限(分页)', '/permission/all', 0);
+INSERT INTO trand_platform_sys.module (module_name, url, is_menu) VALUES ('权限的添加功能', '/permission/add', 0);
+INSERT INTO trand_platform_sys.module (module_name, url, is_menu) VALUES ('权限的删除功能', '/permission/delete', 0);
+INSERT INTO trand_platform_sys.module (module_name, url, is_menu) VALUES ('权限的统计功能', '/permission/total', 0);
+INSERT INTO trand_platform_sys.module (module_name, url, is_menu) VALUES ('权限的批量删除功能', '/permission/delete/ids', 0);

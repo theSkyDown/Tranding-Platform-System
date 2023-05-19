@@ -43,16 +43,18 @@ public interface UserService {
     /**
      * 批量删除用户
      * @param idList
+     * @param actionUser 执行操作的用户
      * @return
      */
-    public Ret deleteByIds(List<Integer> idList);
+    public Ret deleteByIds(List<Integer> idList,User actionUser);
 
     /**
      * 修改用户信息
      * @param user
+     * @param actionUser 执行操作的用户
      * @return
      */
-    public Ret updateUser(User user);
+    public Ret updateUser(User user,User actionUser);
 
     /**
      * 用户登陆
@@ -65,9 +67,10 @@ public interface UserService {
     /**
      * 重置用户的密码
      * @param userId
+     * @param actionUser 执行操作的用户
      * @return
      */
-    public Ret resetPassword(Integer userId) throws Exception;
+    public Ret resetPassword(Integer userId,User actionUser) throws Exception;
 
     /**
      * 通过id查找用户
@@ -106,9 +109,10 @@ public interface UserService {
     /**
      * 切换用户的状态
      * @param userId
+     * @param actionUser
      * @return
      */
-    public Ret toggleUserStatus(Integer userId);
+    public Ret toggleUserStatus(Integer userId,User actionUser);
 
 
     /**
