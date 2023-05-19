@@ -98,7 +98,7 @@ public class RoleController extends BaseController{
     @RequestMapping(value = "/update",method = RequestMethod.PUT)
     @ResponseBody
     public Ret updateRole(@RequestBody Role role){
-        if (!isOk(role) || !isOk(role.getRoleName()) || !isOk(role.getRoleId())){
+        if (!isOk(role) || !isOk(role.getRoleName()) || !isOk(role.getRoleId()) || !isOk(role.getLevel())){
             return Ret.fail("参数异常");
         }
         return roleService.updateRole(role);

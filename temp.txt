@@ -98,3 +98,12 @@
 		status int		订单的状态
 		create_time datetime	订单创建的时间
 		update_time datetime	订单修改的时间
+
+
+
+暂时：
+修改了role表的结构
+添加角色时设置了默认的level
+修改角色参数需要添加level
+
+删除用户是进行了多一步判断，判断操作用户是否有权限删除指定的用户

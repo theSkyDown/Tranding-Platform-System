@@ -1,9 +1,13 @@
 package com.eccentric.tranding.interceptor;
 
 import com.eccentric.tranding.dictionary.Encrypt;
+import com.eccentric.tranding.pojo.User;
 import com.eccentric.tranding.pojo.common.Ret;
+import com.eccentric.tranding.service.UserService;
 import com.eccentric.tranding.utils.Md5Util;
+import com.eccentric.tranding.utils.UserHolder;
 import com.fasterxml.jackson.databind.ObjectMapper;
+import org.springframework.beans.factory.annotation.Autowired;
 import org.springframework.stereotype.Component;
 import org.springframework.web.servlet.HandlerInterceptor;
 
@@ -17,6 +21,10 @@ import javax.servlet.http.HttpServletResponse;
  */
 @Component
 public class CookieInterceptor implements HandlerInterceptor {
+
+    @Autowired
+    private UserService userService;
+
     @Override
     public boolean preHandle(HttpServletRequest request, HttpServletResponse response, Object handler) throws Exception {
         //拦截非法用户
@@ -41,6 +49,9 @@ public class CookieInterceptor implements HandlerInterceptor {
                     response.getWriter().write(objectMapper.writeValueAsString(Ret.fail("非法用户")));
                     return false;
                 }
+
+                //将用户放到throwLocal中
+                UserHolder.saveUser(userService.getUserByPhone(phone));
             }
         }
         return true;

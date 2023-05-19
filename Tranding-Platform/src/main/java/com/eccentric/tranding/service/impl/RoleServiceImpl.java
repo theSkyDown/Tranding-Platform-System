@@ -56,7 +56,8 @@ public class RoleServiceImpl implements RoleService {
         }
         //设置创建时间
         role.setCreateTime(LocalDateTime.now());
-
+        //设置默认的权限等级(level)
+        role.setLevel(3);
         //执行添加操作
         Integer count = roleMapper.insertRole(role);
         return count==1 ? Ret.ok() : Ret.fail();

@@ -34,9 +34,10 @@ public interface UserService {
     /**
      * 删除用户
      * @param userId
+     * @param actionUser 执行操作的用户
      * @return
      */
-    public Ret deleteUser(Integer userId);
+    public Ret deleteUser(Integer userId,User actionUser);
 
 
     /**

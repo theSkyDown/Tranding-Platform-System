@@ -14,6 +14,7 @@ import com.eccentric.tranding.utils.Md5Util;
 import org.springframework.beans.factory.annotation.Autowired;
 import org.springframework.stereotype.Service;
 
+import javax.annotation.PostConstruct;
 import java.time.LocalDateTime;
 import java.util.ArrayList;
 import java.util.List;
@@ -121,17 +122,29 @@ public class UserServiceImpl implements UserService {
 
 
     @Override
-    public Ret deleteUser(Integer userId) {
+    public Ret deleteUser(Integer userId,User actionUser) {
         if (userId == 1){
             return Ret.fail("admin无法删除");
         }
 
-        //判断用户是否存在
-        User tempUser = new User();
-        tempUser.setUserId(userId);
-        if (!isExist(tempUser)){
+        //判断要删除用户是否存在
+        User user = userMapper.getUserByUserId(userId);
+        if (user == null){
             return Ret.fail("用户不存在");
         }
+
+        //判断执行操作的用户是否有权限删除用户
+        Role actionUserRole = roleService.getRoleById(actionUser.getRoleId());
+        Role deleteUserRole = roleService.getRoleById(user.getRoleId());
+        //防止操作者的角色信息异常
+        if (actionUserRole == null){
+            return Ret.fail("你的角色信息异常");
+        }
+        //删除者的角色没有异常,且执行者的level大于与删除者的level，则无法成功（level越小权限越大）
+        if(deleteUserRole != null && actionUserRole.getLevel() >= deleteUserRole.getLevel()){
+            return Ret.fail("你没有权限删除该用户");
+        }
+
         //执行删除操作
         boolean result =  userMapper.deleteUser(userId) == 1;
         return result?Ret.ok():Ret.fail();
@@ -227,6 +240,7 @@ public class UserServiceImpl implements UserService {
     public User getUserById(Integer userId) {
         User user = userMapper.getUserByUserId(userId);
         if (user != null){
+            //将密码信息至空
             user.setPassword(null);
             //设置角色名称
             Role roleById = roleService.getRoleById(user.getRoleId());
@@ -244,7 +258,21 @@ public class UserServiceImpl implements UserService {
 
     @Override
     public User getUserByPhone(String phone) {
-        return userMapper.getUserByPhone(phone);
+        User user = userMapper.getUserByPhone(phone);
+        if (user != null){
+            //将密码信息至空
+            user.setPassword(null);
+            //设置角色名称
+            Role roleById = roleService.getRoleById(user.getRoleId());
+            if (roleById != null){
+                user.setRoleName(roleById.getRoleName());
+            }else{
+                user.setRoleName("用户角色异常");
+            }
+            //设置性别名称
+            user.setGenderName(user.getGender()==1?"男":"女");
+        }
+        return user;
     }
 
     @Override

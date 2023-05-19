@@ -10,6 +10,7 @@ import com.eccentric.tranding.pojo.common.Ret;
 import com.eccentric.tranding.pojo.User;
 import com.eccentric.tranding.service.impl.UserServiceImpl;
 import com.eccentric.tranding.utils.Md5Util;
+import com.eccentric.tranding.utils.UserHolder;
 import com.wf.captcha.utils.CaptchaUtil;
 import org.springframework.beans.factory.annotation.Autowired;
 import org.springframework.http.HttpHeaders;
@@ -70,13 +71,17 @@ public class UserController extends BaseController{
      */
     @RequestMapping(value = "/delete",method = RequestMethod.DELETE)
     @ResponseBody
-    public Ret deleteUser(@RequestParam("userId") Integer userId){
+    public Ret deleteUser(@RequestParam("userId") Integer userId,HttpServletRequest request){
         //拦截参数为空的情况
         if (!isOk(userId)){
             return Ret.fail("参数异常");
         }
-        //执行删除操作
-        return userService.deleteUser(userId);
+
+        //获取正在执行操作的用户
+        User actionUser =  UserHolder.getUser();
+
+        //执行删除操作(防止操作时删除比自己等级更高的用户)
+        return userService.deleteUser(userId,actionUser);
     }
 
 

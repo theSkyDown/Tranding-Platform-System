@@ -55,6 +55,7 @@
         <el-table-column type="selection" width="55" />
         <el-table-column label="序号" type="index" width="80" />
         <el-table-column label="角色名" prop="roleName" min-width="120" />
+        <el-table-column label="权限等级" prop="level" min-width="120" />
         <el-table-column
           label="创建时间"
           sortable
@@ -141,6 +142,15 @@
           maxlength="10"
           show-word-limit
           v-model="updateRole.roleName"
+        />
+      </el-form-item>
+
+      <el-form-item label="权限等级" required>
+        <el-input
+          placeholder="请输入角色等级"
+          onkeyup="value=value.replace(/[^\d]/g,'')"
+          maxlength="5"
+          v-model="updateRole.level"
         />
       </el-form-item>
     </el-form>

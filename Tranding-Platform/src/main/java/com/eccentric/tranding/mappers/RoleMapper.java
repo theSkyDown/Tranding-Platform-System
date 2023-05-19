@@ -33,7 +33,7 @@ public interface RoleMapper {
      * @param role
      * @return
      */
-    @Insert("insert into role values(#{roleId},#{roleName},#{createTime})")
+    @Insert("insert into role values(#{roleId},#{roleName},#{level},#{createTime})")
     public Integer insertRole(Role role);
 
 
@@ -57,7 +57,7 @@ public interface RoleMapper {
      * @param role
      * @return
      */
-    @Update("update role set role_name=#{roleName} where role_id = #{roleId}")
+    @Update("update role set role_name=#{roleName},level=#{level} where role_id = #{roleId}")
     public Integer updateRole(Role role);
 
 
