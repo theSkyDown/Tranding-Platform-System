@@ -114,7 +114,7 @@
           <el-option
             v-for="item in modules"
             :key="item.moduleId"
-            :label="item.moduleName"
+            :label="item.moduleName + ':' + item.url"
             :value="item.moduleId"
           >
           </el-option>

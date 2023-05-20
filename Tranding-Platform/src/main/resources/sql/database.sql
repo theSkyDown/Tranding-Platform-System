@@ -1,5 +1,6 @@
-create database trand_platform_sys;
+# create database trand_platform_sys;
 use trand_platform_sys;
+drop table user;
 create table user(
     user_id int primary key auto_increment comment '用户标识',
     username varchar(255) not null comment '用户名',
@@ -12,27 +13,27 @@ create table user(
     update_time datetime comment '最后更新时间',
     status tinyint not null comment '用户状态'
 )comment '用户表';
-
+drop table role;
 create table role(
     role_id int primary key auto_increment comment '角色标识',
     role_name varchar(64) not null unique comment '角色名称',
     level int not null comment '权限等级',
     create_time datetime not null comment '创建时间'
 )comment '角色表';
-
+drop table module;
 create table module(
     module_id int primary key auto_increment comment '资源标识',
     module_name varchar(255) not null comment '资源名称',
     url varchar(255) comment '对应的访问路径',
     is_menu tinyint default 0 comment '是否为菜单'
 )comment '资源表';
-
+drop table permission;
 create table permission(
     permission_id int primary key auto_increment comment '权限标识',
     role_id int not null comment '角色标识',
     module_id int not null comment '资源标识'
 )comment '权限表';
-
+drop table goods;
 create table goods(
     good_id int primary key auto_increment comment '商品标识',
     good_name varchar(255) not null comment '商品名称',
@@ -43,13 +44,13 @@ create table goods(
     category_id int not null comment '商品的类型标识',
     create_time datetime not null comment '创建时间'
 )comment '商品表';
-
+drop table category;
 create table category(
     category_id int primary key auto_increment comment '分类标识',
     category_name varchar(255) not null comment '分类名称',
     create_time datetime not null comment '创建时间'
 )comment '分类表';
-
+drop table orders;
 create table orders(
     order_id int primary key auto_increment comment '订单标识',
     good_id int not null comment '购买商品的标识',

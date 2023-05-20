@@ -22,7 +22,12 @@
     <!-- 内容 -->
     <el-form label-position="top" label-width="70px" status-icon>
       <el-form-item label="手机">
-        <el-input v-model="user.phone" placeholder="请输入手机号码" />
+        <el-input
+          v-model="user.phone"
+          maxlength="11"
+          show-word-limit
+          placeholder="请输入手机号码"
+        />
       </el-form-item>
 
       <el-form-item label="密码">
@@ -59,6 +64,37 @@
       </span>
     </template>
   </el-dialog>
+
+  <!-- 修改密码弹窗 -->
+  <el-dialog
+    v-model="this.$store.state.updateDialog"
+    title="修改密码"
+    width="25%"
+    align-center
+    draggable
+  >
+    <!-- 内容 -->
+    <el-form label-position="top" label-width="70px" status-icon>
+      <el-form-item label="密码">
+        <el-input
+          type="password"
+          show-password
+          v-model="updatePasswordUser.password"
+          placeholder="请输入密码"
+        />
+      </el-form-item>
+    </el-form>
+
+    <!-- 底部按钮 -->
+    <template #footer>
+      <span class="dialog-footer">
+        <el-button v-on:click="this.$store.state.updateDialog = false">
+          取消
+        </el-button>
+        <el-button type="primary" v-on:click="updatePassword"> 修改 </el-button>
+      </span>
+    </template>
+  </el-dialog>
 </template>
 
 <script>
@@ -74,6 +110,9 @@ export default {
         phone: "",
         password: "",
         captcha: "",
+      },
+      updatePasswordUser: {
+        password: "",
       },
     };
   },
@@ -125,6 +164,31 @@ export default {
         }
         //刷新验证码
         that.reloadCaptcha();
+      });
+    },
+    //修改密码
+    updatePassword() {
+      let that = this;
+      this.updatePasswordUser.userId = this.$store.state.user.userId;
+      axios({
+        url: this.$store.state.localhost + "/user/update/password",
+        method: "put",
+        withCredentials: true,
+        headers: {
+          "Content-Type": "application/json",
+        },
+        data: JSON.stringify(this.updatePasswordUser),
+      }).then(function (res) {
+        ElMessage({
+          message: res.data.message,
+          type: res.data.status ? "success" : "error",
+        });
+        if (res.data.status) {
+          //关闭修改弹窗
+          that.$store.state.updateDialog = false;
+          //清空输入框
+          that.updatePasswordUser = {};
+        }
       });
     },
   },
