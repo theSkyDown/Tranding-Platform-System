@@ -4,11 +4,11 @@ import com.eccentric.tranding.dictionary.Encrypt;
 import com.eccentric.tranding.dictionary.Gender;
 import com.eccentric.tranding.dictionary.Identity;
 import com.eccentric.tranding.dictionary.Status;
+import com.eccentric.tranding.mappers.RoleMapper;
 import com.eccentric.tranding.mappers.UserMapper;
 import com.eccentric.tranding.pojo.Role;
 import com.eccentric.tranding.pojo.common.Ret;
 import com.eccentric.tranding.pojo.User;
-import com.eccentric.tranding.service.RoleService;
 import com.eccentric.tranding.service.UserService;
 import com.eccentric.tranding.utils.Md5Util;
 import org.springframework.beans.factory.annotation.Autowired;
@@ -28,7 +28,7 @@ public class UserServiceImpl implements UserService {
     private UserMapper userMapper;
 
     @Autowired
-    private RoleService roleService;
+    private RoleMapper roleMapper;
 
     @Override
     public Boolean isExist(User user) {
@@ -132,8 +132,8 @@ public class UserServiceImpl implements UserService {
         }
 
         //判断执行操作的用户是否有权限删除用户
-        Role actionUserRole = roleService.getRoleById(actionUser.getRoleId());
-        Role deleteUserRole = roleService.getRoleById(user.getRoleId());
+        Role actionUserRole = roleMapper.getRoleById(actionUser.getRoleId());
+        Role deleteUserRole = roleMapper.getRoleById(user.getRoleId());
         //防止操作者的角色信息异常
         if (actionUserRole == null){
             return Ret.fail("你的角色信息异常");
@@ -163,8 +163,8 @@ public class UserServiceImpl implements UserService {
             User user = userMapper.getUserByUserId(id);
             if (user != null){
                 //判断操作用户的角色等级是否比要删除的用户的等级高
-                Role actionRole = roleService.getRoleById(actionUser.getRoleId());
-                Role deleteRole = roleService.getRoleById(user.getRoleId());
+                Role actionRole = roleMapper.getRoleById(actionUser.getRoleId());
+                Role deleteRole = roleMapper.getRoleById(user.getRoleId());
                 //防止操作用户角色异常
                 if (actionRole == null){
                     return Ret.fail("你的角色信息异常");
@@ -219,8 +219,8 @@ public class UserServiceImpl implements UserService {
         //获取被修改用户的信息
         User updateUser = userMapper.getUserByUserId(user.getUserId());
         //判断操作用户的角色等级是否比要修改的用户的等级高
-        Role actionRole = roleService.getRoleById(actionUser.getRoleId());
-        Role updateRole = roleService.getRoleById(updateUser.getRoleId());
+        Role actionRole = roleMapper.getRoleById(actionUser.getRoleId());
+        Role updateRole = roleMapper.getRoleById(updateUser.getRoleId());
         //防止操作用户角色异常
         if (actionRole == null){
             return Ret.fail("你的角色信息异常");
@@ -231,7 +231,7 @@ public class UserServiceImpl implements UserService {
                 return Ret.fail("你没有权限修改该用户的信息");
             }
             //防止操作者将角色设置成权限等级比自己高的角色
-            Role afterUpdateRole = roleService.getRoleById(user.getRoleId());
+            Role afterUpdateRole = roleMapper.getRoleById(user.getRoleId());
             if (afterUpdateRole!=null && actionRole.getLevel() >= afterUpdateRole.getLevel()){
                 return Ret.fail("你没有权限将用户的角色设置为 '" + afterUpdateRole.getRoleName() + "'");
             }
@@ -259,7 +259,7 @@ public class UserServiceImpl implements UserService {
         userByPhone.setPassword(null);
 
         //设置角色名称
-        userByPhone.setRoleName(roleService.getRoleById(userByPhone.getRoleId()).getRoleName());
+        userByPhone.setRoleName(roleMapper.getRoleById(userByPhone.getRoleId()).getRoleName());
         //设置性别名称
         userByPhone.setGenderName(userByPhone.getGender()==1?"男":"女");
 
@@ -275,8 +275,8 @@ public class UserServiceImpl implements UserService {
         }
 
         //判断操作用户的角色等级是否比要重置密码的用户的等级高
-        Role actionRole = roleService.getRoleById(actionUser.getRoleId());
-        Role resetRole = roleService.getRoleById(resetUser.getRoleId());
+        Role actionRole = roleMapper.getRoleById(actionUser.getRoleId());
+        Role resetRole = roleMapper.getRoleById(resetUser.getRoleId());
         //防止操作用户角色异常
         if (actionRole == null){
             return Ret.fail("你的角色信息异常");
@@ -302,7 +302,7 @@ public class UserServiceImpl implements UserService {
             //将密码信息至空
             user.setPassword(null);
             //设置角色名称
-            Role roleById = roleService.getRoleById(user.getRoleId());
+            Role roleById = roleMapper.getRoleById(user.getRoleId());
             if (roleById != null){
                 user.setRoleName(roleById.getRoleName());
             }else{
@@ -322,7 +322,7 @@ public class UserServiceImpl implements UserService {
             //将密码信息至空
             user.setPassword(null);
             //设置角色名称
-            Role roleById = roleService.getRoleById(user.getRoleId());
+            Role roleById = roleMapper.getRoleById(user.getRoleId());
             if (roleById != null){
                 user.setRoleName(roleById.getRoleName());
             }else{
@@ -354,7 +354,7 @@ public class UserServiceImpl implements UserService {
         userList.forEach(user -> {
             user.setPassword(null);
             //设置角色名称
-            Role roleById = roleService.getRoleById(user.getRoleId());
+            Role roleById = roleMapper.getRoleById(user.getRoleId());
             if (roleById != null){
                 user.setRoleName(roleById.getRoleName());
             }else{
@@ -380,8 +380,8 @@ public class UserServiceImpl implements UserService {
         }
 
         //判断执行操作的用户是否有权限修改用户的状态
-        Role actionRole = roleService.getRoleById(actionUser.getRoleId());
-        Role toggleRole = roleService.getRoleById(user.getRoleId());
+        Role actionRole = roleMapper.getRoleById(actionUser.getRoleId());
+        Role toggleRole = roleMapper.getRoleById(user.getRoleId());
         //防止操作者的角色信息异常
         if (actionRole == null){
             return Ret.fail("你的角色信息异常");

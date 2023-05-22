@@ -1,5 +1,6 @@
 package com.eccentric.tranding.pojo;
 
+import com.fasterxml.jackson.annotation.JsonFormat;
 import lombok.AllArgsConstructor;
 import lombok.Data;
 import lombok.NoArgsConstructor;
@@ -28,7 +29,9 @@ public class Order {
     //订单状态
     private Integer status;
     //创建时间
+    @JsonFormat(shape= JsonFormat.Shape.STRING ,pattern="yyyy-MM-dd HH:mm:ss")
     private LocalDateTime createTime;
     //最后更新时间
+    @JsonFormat(shape= JsonFormat.Shape.STRING ,pattern="yyyy-MM-dd HH:mm:ss")
     private LocalDateTime updateTime;
 }

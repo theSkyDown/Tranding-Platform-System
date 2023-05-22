@@ -78,6 +78,7 @@
 		module_id int		资源id
 		
 商品表 goods
+	获取所有商品功能(分页、关键字) +
 	商品管理功能
 	商品购买功能	
 	
@@ -92,7 +93,7 @@
 		create_time datetime	创建时间
 		
 分类表 category
-	商品分类信息
+	管理分类表 ++
 	
 	字段：
 		category_id int		分类标识

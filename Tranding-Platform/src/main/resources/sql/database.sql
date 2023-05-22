@@ -47,7 +47,7 @@ create table goods(
 drop table category;
 create table category(
     category_id int primary key auto_increment comment '分类标识',
-    category_name varchar(255) not null comment '分类名称',
+    category_name varchar(255) not null unique comment '分类名称',
     create_time datetime not null comment '创建时间'
 )comment '分类表';
 drop table orders;

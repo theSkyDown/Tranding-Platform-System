@@ -36,4 +36,21 @@ public class QiniuController {
         String fileUrl = qiniuService.uploadQiniuImg(file,"avatar/");
         return Ret.ok(fileUrl==null?"上传失败":"上传成功", fileUrl);
     }
+
+
+    /**
+     * 上传商品图片至七牛
+     * @param file
+     * @return
+     */
+    @RequestMapping("/good")
+    @ResponseBody
+    public Ret goodImgUpload(@RequestParam("file") MultipartFile file) throws IOException {
+        //拦截空文件
+        if (file.isEmpty()){
+            return Ret.fail("图片为空，请重新上传");
+        }
+        String fileUrl = qiniuService.uploadQiniuImg(file,"good/");
+        return Ret.ok(fileUrl==null?"上传失败":"上传成功", fileUrl);
+    }
 }

@@ -1,0 +1,14 @@
+truncate table trand_platform_sys.category;
+INSERT INTO trand_platform_sys.category (category_name, create_time) VALUES ('家用电器', '2023-05-22 17:52:49');
+INSERT INTO trand_platform_sys.category (category_name, create_time) VALUES ('数码', '2023-05-22 17:52:49');
+INSERT INTO trand_platform_sys.category (category_name, create_time) VALUES ('家具', '2023-05-22 17:52:49');
+INSERT INTO trand_platform_sys.category (category_name, create_time) VALUES ('服装', '2023-05-22 17:52:49');
+INSERT INTO trand_platform_sys.category (category_name, create_time) VALUES ('厨具', '2023-05-22 17:52:49');
+INSERT INTO trand_platform_sys.category (category_name, create_time) VALUES ('鞋子', '2023-05-22 17:52:49');
+INSERT INTO trand_platform_sys.category (category_name, create_time) VALUES ('化妆品', '2023-05-22 20:41:01');
+INSERT INTO trand_platform_sys.category (category_name, create_time) VALUES ('钟表', '2023-05-22 20:41:22');
+INSERT INTO trand_platform_sys.category (category_name, create_time) VALUES ('食品', '2023-05-22 20:41:34');
+INSERT INTO trand_platform_sys.category (category_name, create_time) VALUES ('医疗药品', '2023-05-22 20:41:48');
+INSERT INTO trand_platform_sys.category (category_name, create_time) VALUES ('书籍', '2023-05-22 20:42:34');
+INSERT INTO trand_platform_sys.category (category_name, create_time) VALUES ('游戏账号', '2023-05-22 20:42:47');
+INSERT INTO trand_platform_sys.category (category_name, create_time) VALUES ('其他', '2023-05-23 01:03:50');

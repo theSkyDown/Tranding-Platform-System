@@ -224,7 +224,11 @@
       </el-form-item>
 
       <el-form-item label="角色">
-        <el-select v-model="updateUser.roleId" placeholder="请选择用户的角色">
+        <el-select
+          v-model="updateUser.roleId"
+          filterable
+          placeholder="请选择用户的角色"
+        >
           <el-option
             v-for="item in roles"
             :key="item.roleId"

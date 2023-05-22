@@ -1,6 +1,8 @@
 import {createRouter,createWebHashHistory} from 'vue-router'
 import Home from '../components/pages/home.vue'
 import Echart from '../components/test/echartTest.vue'
+import goodAdmin from '../components/pages/good_admin.vue'
+import categoryAdmin from '../components/pages/category_admin.vue'
 import userAdmin from '../components/pages/user_admin.vue'
 import roleAdmin from '../components/pages/role_admin.vue'
 import moduleAdmin from '../components/pages/module_admin.vue'
@@ -14,6 +16,18 @@ const router = createRouter({
           path:'/home',
           name:'home',
           component:Home
+        },
+        //商品管理页面
+        {
+          path:'/goodAdmin',
+          name:'goodAdmin',
+          component:goodAdmin
+        },
+        //分类管理页面
+        {
+          path:'/categoryAdmin',
+          name:'categoryAdmin',
+          component:categoryAdmin
         },
         //用户管理页面
         {

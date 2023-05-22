@@ -1,6 +1,8 @@
 package com.eccentric.tranding.service.impl;
 
+import com.eccentric.tranding.mappers.ModuleMapper;
 import com.eccentric.tranding.mappers.PermissionMapper;
+import com.eccentric.tranding.mappers.RoleMapper;
 import com.eccentric.tranding.pojo.Module;
 import com.eccentric.tranding.pojo.Permission;
 import com.eccentric.tranding.pojo.Role;
@@ -8,7 +10,6 @@ import com.eccentric.tranding.pojo.User;
 import com.eccentric.tranding.pojo.common.Ret;
 import com.eccentric.tranding.service.ModuleService;
 import com.eccentric.tranding.service.PermissionService;
-import com.eccentric.tranding.service.RoleService;
 import org.springframework.beans.factory.annotation.Autowired;
 import org.springframework.stereotype.Service;
 
@@ -24,10 +25,10 @@ public class PermissionServiceImpl implements PermissionService {
     private PermissionMapper permissionMapper;
 
     @Autowired
-    private RoleService roleService;
+    private RoleMapper roleMapper;
 
     @Autowired
-    private ModuleService moduleService;
+    private ModuleMapper moduleMapper;
 
 
     @Override
@@ -48,7 +49,7 @@ public class PermissionServiceImpl implements PermissionService {
         List<Permission> allPermission = permissionMapper.getAllPermission(num, size);
         allPermission.forEach(permission -> {
             //设置角色名称
-            Role role = roleService.getRoleById(permission.getRoleId());
+            Role role = roleMapper.getRoleById(permission.getRoleId());
             if (role != null){
                 permission.setRoleName(role.getRoleName());
             }else{
@@ -57,7 +58,7 @@ public class PermissionServiceImpl implements PermissionService {
 
 
             //设置资源名称
-            Module module = moduleService.getModuleById(permission.getModuleId());
+            Module module = moduleMapper.getModuleById(permission.getModuleId());
             if (module != null){
                 permission.setModuleName(module.getModuleName());
             }else{
@@ -81,8 +82,8 @@ public class PermissionServiceImpl implements PermissionService {
         }
 
         //判断是否有权限为该角色分配资源
-        Role actionRole = roleService.getRoleById(actionUser.getRoleId());
-        Role addRole = roleService.getRoleById(permission.getRoleId());
+        Role actionRole = roleMapper.getRoleById(actionUser.getRoleId());
+        Role addRole = roleMapper.getRoleById(permission.getRoleId());
         if (actionRole == null){
             return Ret.fail("你的角色信息异常");
         }
@@ -104,8 +105,8 @@ public class PermissionServiceImpl implements PermissionService {
         //获取删除的权限
         Permission deletePermission = permissionMapper.getPermissionById(permissionId);
         //判断是否有权限为该角色分配资源
-        Role actionRole = roleService.getRoleById(actionUser.getRoleId());
-        Role deleteRole = roleService.getRoleById(deletePermission.getRoleId());
+        Role actionRole = roleMapper.getRoleById(actionUser.getRoleId());
+        Role deleteRole = roleMapper.getRoleById(deletePermission.getRoleId());
         if (actionRole == null){
             return Ret.fail("你的角色信息异常");
         }
@@ -125,8 +126,8 @@ public class PermissionServiceImpl implements PermissionService {
             Permission permission = permissionMapper.getPermissionById(id);
             if (permission != null){
                 //判断操作用户的角色等级是否比要删除的用户的等级高
-                Role actionRole = roleService.getRoleById(actionUser.getRoleId());
-                Role deleteRole = roleService.getRoleById(permission.getRoleId());
+                Role actionRole = roleMapper.getRoleById(actionUser.getRoleId());
+                Role deleteRole = roleMapper.getRoleById(permission.getRoleId());
                 //防止操作用户角色异常
                 if (actionRole == null){
                     return Ret.fail("你的角色信息异常");

@@ -22,37 +22,42 @@
         <span>系统管理</span>
       </template>
 
-      <el-menu-item index="3-1">
+      <el-menu-item index="3-1" v-on:click="toGoodAdmin">
         <el-icon><Operation /></el-icon>
         <span>商品信息管理</span>
       </el-menu-item>
 
-      <el-menu-item index="3-2">
+      <el-menu-item index="3-2" v-on:click="toCategoryAdmin">
+        <el-icon><Histogram /></el-icon>
+        <span>分类管理</span>
+      </el-menu-item>
+
+      <el-menu-item index="3-3">
         <el-icon><GoodsFilled /></el-icon>
         <span>订单管理</span>
       </el-menu-item>
 
-      <el-menu-item index="3-3" v-on:click="toUserAdmin">
+      <el-menu-item index="3-4" v-on:click="toUserAdmin">
         <el-icon><User /></el-icon>
         <span>用户管理</span>
       </el-menu-item>
 
-      <el-menu-item index="3-4" v-on:click="toRoleAdmin">
+      <el-menu-item index="3-5" v-on:click="toRoleAdmin">
         <el-icon><Avatar /></el-icon>
         <span>角色管理</span>
       </el-menu-item>
 
-      <el-menu-item index="3-5" v-on:click="toModuleAdmin">
+      <el-menu-item index="3-6" v-on:click="toModuleAdmin">
         <el-icon><Box /></el-icon>
         <span>资源管理</span>
       </el-menu-item>
 
-      <el-menu-item index="3-6" v-on:click="toPermissionAdmin">
+      <el-menu-item index="3-7" v-on:click="toPermissionAdmin">
         <el-icon><Lock /></el-icon>
         <span>权限管理</span>
       </el-menu-item>
 
-      <el-menu-item index="3-7">
+      <el-menu-item index="3-8">
         <el-icon><Folder /></el-icon>
         <span>日志管理</span>
       </el-menu-item>
@@ -79,6 +84,14 @@ export default {
     //主页
     toHome() {
       this.$router.push("/home");
+    },
+    //跳转到商品管理页面
+    toGoodAdmin() {
+      this.$router.push("/goodAdmin");
+    },
+    //跳转到分类管理页面
+    toCategoryAdmin() {
+      this.$router.push("/categoryAdmin");
     },
     //跳转到用户管理页面
     toUserAdmin() {
