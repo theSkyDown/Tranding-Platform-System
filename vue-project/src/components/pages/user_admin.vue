@@ -58,7 +58,16 @@
         <el-table-column label="手机号" sortable prop="phone" min-width="120" />
         <el-table-column label="性别" prop="genderName" width="80" />
         <el-table-column label="角色" sortable prop="roleName" width="120" />
-        <el-table-column label="头像" prop="avatar" min-width="160" />
+        <el-table-column label="头像" prop="avatar" min-width="160">
+          <template #default="scope">
+            <el-image
+              :src="scope.row.avatar"
+              :preview-src-list="[scope.row.avatar]"
+              style="width: 80px; height: 80px"
+              preview-teleported
+            ></el-image>
+          </template>
+        </el-table-column>
         <el-table-column
           label="创建时间"
           sortable
@@ -226,6 +235,24 @@
         </el-select>
       </el-form-item>
 
+      <el-form-item label="头像">
+        <el-upload
+          v-model:file-list="fileList"
+          :action="this.$store.state.localhost + '/qiniu/avatar'"
+          :limit="1"
+          :on-exceed="fileExceed"
+          :on-success="fileSuccess"
+          with-credentials
+        >
+          <el-button type="primary">点击上传</el-button>
+          <template #tip>
+            <div class="el-upload__tip">
+              只能上传jpg/png文件，且不超过5000kb
+            </div>
+          </template>
+        </el-upload>
+      </el-form-item>
+
       <el-form-item label="用户的状态">
         <el-radio-group v-model="updateUser.status">
           <el-radio :label="1">启用</el-radio>
@@ -274,6 +301,7 @@ export default {
         phone: "",
         gender: "",
         roleId: "",
+        avatar: "",
         status: "",
       },
       //修改弹窗是否显示
@@ -284,6 +312,8 @@ export default {
       roles: [],
       //关键词
       keyword: "",
+      //文件列表
+      fileList: [],
     };
   },
   methods: {
@@ -493,6 +523,7 @@ export default {
     },
     //显示修改按钮弹窗
     showUpdateDialog(user) {
+      //显示修改弹窗
       this.updateDialog = true;
       let that = this;
       if (this.roles.length == 0) {
@@ -506,6 +537,8 @@ export default {
           that.roles = res.data.data;
         });
       }
+      //上传列表清空
+      this.fileList = [];
       //信息回显
       this.updateUser = user;
     },
@@ -564,6 +597,23 @@ export default {
             message: "已取消删除",
           });
         });
+    },
+    //文件超出限制触发
+    fileExceed() {
+      ElMessage({
+        message: "只能上传一张图片",
+        type: "warning",
+      });
+    },
+    //上传成功后触发
+    fileSuccess(res) {
+      ElMessage({
+        message: res.message,
+        type: res.status ? "success" : "error",
+      });
+      if (res.status) {
+        this.updateUser.avatar = res.data;
+      }
     },
   },
   mounted() {

@@ -66,7 +66,7 @@ public class UserServiceImpl implements UserService {
         }
         //设置默认的头像路径
         if (user.getAvatar()==null){
-            user.setAvatar("/avatar/default");
+            user.setAvatar("http://ruyj27zul.hn-bkt.clouddn.com/R.jpg");
         }
         //设置创建时间
         if (user.getCreateTime()==null){

@@ -34,7 +34,6 @@ public class QiniuController {
             return Ret.fail("图片为空，请重新上传");
         }
         String fileUrl = qiniuService.uploadQiniuImg(file,"avatar/");
-        System.out.println(fileUrl);
-        return Ret.ok("上传成功", fileUrl);
+        return Ret.ok(fileUrl==null?"上传失败":"上传成功", fileUrl);
     }
 }

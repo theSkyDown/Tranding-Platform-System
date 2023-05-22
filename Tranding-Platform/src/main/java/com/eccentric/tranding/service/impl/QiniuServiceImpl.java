@@ -62,12 +62,14 @@ public class QiniuServiceImpl implements QiniuService {
         //小数点索引
         int index = fileName.lastIndexOf(".");
         if (index == -1){
+            System.out.println("文件类型未知");
             return null;
         }
         // 获取文件后缀
         String suffix = fileName.substring(index);
         //判断文件是否为图片
-        if (!imgSuffix.contains(suffix)){
+        if (!imgSuffix.contains(suffix.toLowerCase())){
+            System.out.println("后缀错误：" + suffix);
             return null;
         }
 

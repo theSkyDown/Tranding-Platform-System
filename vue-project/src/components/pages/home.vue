@@ -23,7 +23,12 @@ import Trend from "./echarts/trend.vue";
             <!-- 头像 -->
             <el-col :span="12" id="card-avatar">
               <el-avatar :size="70">
-                <img src="../../assets/avatar.png" />
+                <!-- <img src="../../assets/avatar.png" /> -->
+                <el-image
+                  :src="this.$store.state.user.avatar"
+                  :preview-src-list="[this.$store.state.user.avatar]"
+                  preview-teleported
+                ></el-image>
               </el-avatar>
             </el-col>
             <!-- 用户名 -->

@@ -5,9 +5,11 @@
 
   <el-upload
     v-model:file-list="fileList"
-    class="upload-demo"
     :action="this.$store.state.localhost + '/qiniu/avatar'"
     :limit="1"
+    :on-exceed="fileExceed"
+    :on-success="fileSuccess"
+    with-credentials
   >
     <el-button type="primary">Click to upload</el-button>
     <template #tip>
@@ -19,6 +21,8 @@
 </template>
 
 <script>
+import { ElMessage } from "element-plus";
+
 export default {
   data() {
     return {
@@ -112,8 +116,19 @@ export default {
       // 使用刚指定的配置项和数据显示图表。
       myChart.setOption(option);
     },
-    action() {
-      return this.$store.state.localhost + "/qiniu/avatar";
+    //文件超出限制触发
+    fileExceed() {
+      ElMessage({
+        message: "只能上传一张图片",
+        type: "warning",
+      });
+    },
+    //上传成功后触发
+    fileSuccess(res) {
+      ElMessage({
+        message: res.message,
+        type: res.status ? "success" : "error",
+      });
     },
   },
 };

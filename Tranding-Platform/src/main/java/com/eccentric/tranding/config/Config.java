@@ -36,8 +36,7 @@ public class Config implements WebMvcConfigurer {
         //权限拦截器(登陆，验证码请求不拦截)
         registry.addInterceptor(permissionInterceptor)
                 .excludePathPatterns("/user/login")
-                .excludePathPatterns("/captcha/img")
-                .excludePathPatterns("/qiniu/avatar");
+                .excludePathPatterns("/captcha/img");
         WebMvcConfigurer.super.addInterceptors(registry);
     }
 }

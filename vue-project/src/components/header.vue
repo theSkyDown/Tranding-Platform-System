@@ -19,7 +19,7 @@
       <!-- 显示头像信息 -->
       <div class="information" v-show="this.$store.state.isLogin">
         <el-avatar>
-          <img src="../assets/avatar.png" />
+          <el-image :src="this.$store.state.user.avatar"></el-image>
         </el-avatar>
         <div class="username" show-overflow-tooltip>
           {{ this.$store.state.user.username }}
