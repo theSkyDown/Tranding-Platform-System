@@ -26,10 +26,14 @@ public class Good {
     private Integer userId;
     //商品描述
     private String description;
+    //支付方式
+    private Integer payType;
     //商品图片
     private String goodImg;
     //商品分类标识
     private Integer categoryId;
+    //商品的状态，1标识在售，2标识售出
+    private Integer status;
     //创建时间
     @JsonFormat(shape= JsonFormat.Shape.STRING ,pattern="yyyy-MM-dd HH:mm:ss")
     private LocalDateTime createTime;

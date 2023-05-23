@@ -11,10 +11,32 @@
       <span>首 页</span>
     </el-menu-item>
 
-    <el-menu-item index="2">
-      <el-icon><ShoppingTrolley /></el-icon>
-      <span>商品交易</span>
-    </el-menu-item>
+    <el-sub-menu index="2">
+      <template #title>
+        <el-icon><ShoppingCart /></el-icon>
+        <span>商品交易</span>
+      </template>
+
+      <el-menu-item index="2-1" v-on:click="toGoodTrading">
+        <el-icon><Goods /></el-icon>
+        <span>商品购买</span>
+      </el-menu-item>
+
+      <el-menu-item index="2-2" v-on:click="">
+        <el-icon><SoldOut /></el-icon>
+        <span>我的购买</span>
+      </el-menu-item>
+
+      <el-menu-item index="2-3" v-on:click="">
+        <el-icon><GoodsFilled /></el-icon>
+        <span>我的订单</span>
+      </el-menu-item>
+
+      <el-menu-item index="2-4" v-on:click="">
+        <el-icon><Sell /></el-icon>
+        <span>我的售出</span>
+      </el-menu-item>
+    </el-sub-menu>
 
     <el-sub-menu index="3">
       <template #title>
@@ -32,7 +54,7 @@
         <span>分类管理</span>
       </el-menu-item>
 
-      <el-menu-item index="3-3">
+      <el-menu-item index="3-3" v-on:click="toOrderAdmin">
         <el-icon><GoodsFilled /></el-icon>
         <span>订单管理</span>
       </el-menu-item>
@@ -63,11 +85,6 @@
       </el-menu-item>
     </el-sub-menu>
 
-    <el-menu-item index="4">
-      <el-icon><ChatDotRound /></el-icon>
-      <span>信息反馈</span>
-    </el-menu-item>
-
     <el-menu-item index="5" v-on:click="toTest">
       <el-icon><Opportunity /></el-icon>
       <span>测 试</span>
@@ -85,6 +102,10 @@ export default {
     toHome() {
       this.$router.push("/home");
     },
+    //跳转到商品交易页面
+    toGoodTrading() {
+      this.$router.push("/goodTrading");
+    },
     //跳转到商品管理页面
     toGoodAdmin() {
       this.$router.push("/goodAdmin");
@@ -92,6 +113,10 @@ export default {
     //跳转到分类管理页面
     toCategoryAdmin() {
       this.$router.push("/categoryAdmin");
+    },
+    //跳转到订单管理页面
+    toOrderAdmin() {
+      this.$router.push("/orderAdmin");
     },
     //跳转到用户管理页面
     toUserAdmin() {

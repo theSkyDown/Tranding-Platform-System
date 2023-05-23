@@ -40,6 +40,22 @@ public class GoodController extends BaseController{
         return goodService.getAllGood(num,size,keyword);
     }
 
+    /**
+     * 获取所有在售商品的信息
+     * @param num
+     * @param size
+     * @param keyword
+     * @return
+     */
+    @RequestMapping(value = "/all/trading",method = RequestMethod.GET)
+    @ResponseBody
+    public Ret getAllGoodOnSale(@RequestParam("num") Integer num,@RequestParam("size") Integer size,@RequestParam("keyword") String keyword){
+        if (num == null || size == null || num < 0 || size <= 0){
+            return Ret.fail("参数异常");
+        }
+        return goodService.getAllGoodOnSale(num,size,keyword);
+    }
+
 
     /**
      * 获取一共有多少条商品数据
@@ -52,23 +68,36 @@ public class GoodController extends BaseController{
     }
 
     /**
+     * 获取一共有多少条在售的商品数据
+     * @return
+     */
+    @RequestMapping(value = "/total/trading",method = RequestMethod.GET)
+    @ResponseBody
+    public Ret getTotalOnSale(@RequestParam("keyword") String keyword){
+        return goodService.getTotalOnSale(keyword);
+    }
+
+    /**
      * 商品添加功能
      * @param good
      * @return
      */
     @RequestMapping(value = "/add",method = RequestMethod.POST)
     @ResponseBody
-    public Ret addUser(@RequestBody Good good) throws Exception {
+    public Ret addGood(@RequestBody Good good) throws Exception {
         //拦截所有参数都为空的情况
         if (
                 !isOk(good) || !isOk(good.getGoodName()) ||
                 !isOk(good.getPrice()) || !isOk(good.getCategoryId())||
-                !isOk(good.getDescription()) || !isOk(good.getUserId()) ||
+                !isOk(good.getDescription())|| !isOk(good.getPayType()) ||
                 !isOk(good.getGoodImg())
         ){
             return Ret.fail("参数异常");
         }
 
+        //获取执行添加的用户信息
+        User user = UserHolder.getUser();
+        good.setUserId(user.getUserId());
         //添加商品
         return goodService.addGood(good);
     }
@@ -81,7 +110,7 @@ public class GoodController extends BaseController{
      */
     @RequestMapping(value = "/delete",method = RequestMethod.DELETE)
     @ResponseBody
-    public Ret deleteUser(@RequestParam("goodId") Integer goodId){
+    public Ret deleteGood(@RequestParam("goodId") Integer goodId){
         //拦截参数为空的情况
         if (!isOk(goodId)){
             return Ret.fail("参数异常");
@@ -122,17 +151,33 @@ public class GoodController extends BaseController{
      */
     @RequestMapping(value = "/update",method = RequestMethod.PUT)
     @ResponseBody
-    public Ret updateUser(@RequestBody Good good){
+    public Ret updateGood(@RequestBody Good good){
         //拦截所有参数都为空的情况
         if (
                 !isOk(good) || !isOk(good.getGoodName()) ||
                         !isOk(good.getPrice()) || !isOk(good.getCategoryId())||
                         !isOk(good.getDescription()) || !isOk(good.getUserId()) ||
-                        !isOk(good.getGoodImg()) || !isOk(good.getGoodId())
+                        !isOk(good.getGoodImg()) || !isOk(good.getGoodId()) ||
+                        !isOk(good.getPayType())
         ){
             return Ret.fail("参数异常");
         }
         //更新用户信息
         return goodService.updateGood(good);
+    }
+
+
+    /**
+     * 购买商品
+     * @return
+     */
+    @RequestMapping(value = "/buy",method = RequestMethod.POST)
+    @ResponseBody
+    public Ret buyGood(@RequestParam("goodId") Integer goodId){
+        if (!isOk(goodId)){
+            return Ret.fail("参数异常");
+        }
+        User actionUser = UserHolder.getUser();
+        return goodService.buyGood(goodId,actionUser);
     }
 }

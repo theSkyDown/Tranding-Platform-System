@@ -12,7 +12,7 @@
     </select>
 
     <insert id="addGood">
-        insert into goods values(#{goodId},#{goodName},#{price},#{userId},#{description},#{goodImg},#{categoryId},#{createTime})
+        insert into goods values(#{goodId},#{goodName},#{price},#{userId},#{payType},#{description},#{goodImg},#{categoryId},#{status},#{createTime})
     </insert>
 
 
@@ -30,8 +30,20 @@
                         price=#{price},
                         user_id=#{userId},
                         description=#{description},
+                        pay_type=#{payType},
                         good_img=#{goodImg},
-                        category_id=#{categoryId}
+                        category_id=#{categoryId},
+                        status=#{status}
         where good_id = #{goodId}
     </update>
+
+
+    <select id="getAllGoodOnSale" resultType="com.eccentric.tranding.pojo.Good">
+        select * from goods where concat(good_name,description) like "%"#{keyword}"%" and status = 1 limit #{num},#{size}
+    </select>
+
+    <select id="getTotalOnSale" resultType="integer">
+        select count(*) from goods where concat(good_name,description) like "%"#{keyword}"%" and status = 1
+    </select>
+
 </mapper>

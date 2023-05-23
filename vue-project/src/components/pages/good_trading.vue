@@ -1,23 +1,24 @@
 <!-- 
 
-    商品管理页面
+    商品交易页面
 
  -->
 <template>
-  <!-- 商品管理卡片 -->
+  <!-- 商品交易卡片 -->
   <el-card shadow="hover" v-loading="!this.$store.state.isLogin">
     <template #header>
       <div class="card-header">商品管理</div>
     </template>
     <div>
       <el-button
+        type="success"
         style="margin-bottom: 5px"
-        type="danger"
-        v-on:click="deleteGoodByBatchIds"
+        v-on:click="showAddDialog"
       >
-        <el-icon><Delete /></el-icon>
-        <span>批量删除</span>
+        <el-icon><Plus /></el-icon>
+        <span>发布商品</span>
       </el-button>
+
       <el-button style="margin-bottom: 5px" v-on:click="reloadGood">
         <el-icon><Refresh /></el-icon>
         <span>刷新</span>
@@ -43,7 +44,6 @@
         @selection-change="handleSelectionChange"
         v-loading="tableLoading"
       >
-        <el-table-column type="selection" width="55" />
         <el-table-column label="序号" type="index" width="80" />
         <el-table-column label="商品名称" prop="goodName" min-width="120" />
         <el-table-column
@@ -80,39 +80,19 @@
         </el-table-column>
 
         <el-table-column
-          label="商品状态"
-          prop="status"
-          sortable
-          min-width="120"
-        >
-          <template #default="scope">
-            <span>{{ scope.row.status == 1 ? "在售" : "已售出" }}</span>
-          </template>
-        </el-table-column>
-
-        <el-table-column
           label="创建时间"
           sortable
           prop="createTime"
           min-width="160"
         />
-        <el-table-column fixed="right" label="操作" width="170">
+        <el-table-column fixed="right" label="操作" width="100">
           <template #default="scope">
             <el-button
               size="small"
               type="primary"
-              v-on:click="showUpdateDialog(scope.row)"
+              v-on:click="buyGood(scope.row.goodId)"
             >
-              <el-icon><EditPen /></el-icon>
-              <span>修改</span>
-            </el-button>
-            <el-button
-              size="small"
-              type="danger"
-              v-on:click="deleteGood(scope.row.goodId)"
-            >
-              <el-icon><Delete /></el-icon>
-              <span>删除</span>
+              <span>购买</span>
             </el-button>
           </template>
         </el-table-column>
@@ -133,10 +113,10 @@
     </div>
   </el-card>
 
-  <!-- 修改商品弹窗 -->
+  <!-- 添加商品弹窗 -->
   <el-dialog
-    v-model="updateDialog"
-    title="修改商品"
+    v-model="addDialog"
+    title="发布商品"
     width="35%"
     align-center
     draggable
@@ -147,7 +127,7 @@
           placeholder="请输入商品名称"
           maxlength="20"
           show-word-limit
-          v-model="updateGood.goodName"
+          v-model="good.goodName"
         />
       </el-form-item>
 
@@ -155,14 +135,14 @@
         <el-input
           placeholder="请输入商品的价格"
           maxlength="20"
-          v-model="updateGood.price"
+          v-model="good.price"
           onkeyup="value=value.replace(/[^\d\.]/g,'')"
         />
       </el-form-item>
 
       <el-form-item label="商品类型" required>
         <el-select
-          v-model="updateGood.categoryId"
+          v-model="good.categoryId"
           filterable
           placeholder="请选择商品的类型"
         >
@@ -177,7 +157,7 @@
       </el-form-item>
 
       <el-form-item label="支付类型" required>
-        <el-radio-group v-model="updateGood.payType">
+        <el-radio-group v-model="good.payType">
           <el-radio :label="1">现金支付</el-radio>
           <el-radio :label="2">以物易物</el-radio>
         </el-radio-group>
@@ -190,33 +170,17 @@
           :rows="3"
           show-word-limit
           resize="none"
-          v-model="updateGood.description"
+          v-model="good.description"
         />
       </el-form-item>
 
-      <el-form-item label="发布者" required>
-        <el-select
-          v-model="updateGood.userId"
-          filterable
-          placeholder="请选择发布人"
-        >
-          <el-option
-            v-for="item in users"
-            :key="item.userId"
-            :label="item.username + ' : ' + item.phone"
-            :value="item.userId"
-          >
-          </el-option>
-        </el-select>
-      </el-form-item>
-
-      <el-form-item label="商品图片">
+      <el-form-item label="商品图片" required>
         <el-upload
-          v-model:file-list="updateFileList"
+          v-model:file-list="fileList"
           :action="this.$store.state.localhost + '/qiniu/good'"
           :limit="1"
           :on-exceed="fileExceed"
-          :on-success="updateFileSuccess"
+          :on-success="addFileSuccess"
           with-credentials
         >
           <el-button type="primary">点击上传</el-button>
@@ -229,14 +193,8 @@
     <!-- 底部按钮 -->
     <template #footer>
       <span class="dialog-footer">
-        <el-button
-          v-on:click="
-            updateDialog = false;
-            reloadGood();
-          "
-          >取消</el-button
-        >
-        <el-button type="primary" v-on:click="update">修改</el-button>
+        <el-button v-on:click="addDialog = false">取消</el-button>
+        <el-button type="primary" v-on:click="add">添加</el-button>
       </span>
     </template>
   </el-dialog>
@@ -255,14 +213,19 @@ export default {
       num: 0, //从第几条开始算
       size: 10, //每页多少条数据
       total: 0, //总共多少条数据
-      // 多选选中的id
-      selectId: [],
       //表单加载
       tableLoading: false,
-      //修改弹窗是否显示
-      updateDialog: false,
-      //用于修改的good
-      updateGood: {},
+      //添加弹窗是否显示
+      addDialog: false,
+      //用于添加的good
+      good: {
+        goodName: "",
+        price: "",
+        description: "",
+        payType: "",
+        goodImg: "",
+        categoryId: "",
+      },
       //关键词
       keyword: "",
       //商品类型
@@ -271,8 +234,6 @@ export default {
       users: [],
       //用于上传商品图片
       fileList: [],
-      //用于修改上传的商品图片
-      updateFileList: [],
     };
   },
   methods: {
@@ -282,7 +243,7 @@ export default {
       axios({
         url:
           this.$store.state.localhost +
-          "/good/all?num=" +
+          "/good/all/trading?num=" +
           this.num +
           "&size=" +
           this.size +
@@ -301,40 +262,6 @@ export default {
         }
       });
     },
-    //批量删除
-    deleteGoodByBatchIds() {
-      let that = this;
-      //拼接字符串，用于请求的参数
-      this.$confirm("此操作将永久删除这些商品, 是否继续?", "提示", {
-        confirmButtonText: "确定",
-        cancelButtonText: "取消",
-        type: "warning",
-      })
-        .then(() => {
-          let ids = "";
-          for (let i = 0; i < this.selectId.length; i++) {
-            ids = ids + this.selectId[i] + ",";
-          }
-          ids = ids.substring(0, ids.lastIndexOf(","));
-          axios({
-            url: this.$store.state.localhost + "/good/delete/ids?ids=" + ids,
-            method: "delete",
-            withCredentials: true,
-          }).then(function (res) {
-            ElMessage({
-              message: res.data.message,
-              type: res.data.status ? "success" : "error",
-            });
-            that.reloadGood();
-          });
-        })
-        .catch(() => {
-          ElMessage({
-            type: "info",
-            message: "已取消删除",
-          });
-        });
-    },
     //刷新
     reloadGood() {
       this.tableLoading = true;
@@ -345,75 +272,6 @@ export default {
       setTimeout(() => {
         this.tableLoading = false;
       }, 300);
-    },
-    //多选栏，选中触发
-    handleSelectionChange(val) {
-      let temp = [];
-      for (let i = 0; i < val.length; i++) {
-        temp[i] = val[i].goodId;
-      }
-      this.selectId = temp;
-    },
-    //显示修改弹窗
-    showUpdateDialog(good) {
-      //显示修改弹窗
-      this.updateDialog = true;
-      let that = this;
-      //获取商品类型
-      if (this.categories.length == 0) {
-        axios({
-          url:
-            this.$store.state.localhost +
-            "/category/all?num=0&size=100&keyword=",
-          method: "get",
-          withCredentials: true,
-        }).then(function (res) {
-          that.categories = res.data.data;
-        });
-      }
-      //获取发布人信息
-      if (this.users.length == 0) {
-        axios({
-          url:
-            this.$store.state.localhost + "/user/all?num=0&size=500&keyword=",
-          method: "get",
-          withCredentials: true,
-        }).then(function (res) {
-          that.users = res.data.data;
-        });
-      }
-      //上传列表清空
-      this.updateFileList = [];
-      //信息回显
-      this.updateGood = good;
-    },
-    //删除指定分类
-    deleteGood(id) {
-      let that = this;
-      this.$confirm("此操作将永久删除该商品, 是否继续?", "提示", {
-        confirmButtonText: "确定",
-        cancelButtonText: "取消",
-        type: "warning",
-      })
-        .then(() => {
-          axios({
-            url: this.$store.state.localhost + "/good/delete?goodId=" + id,
-            method: "delete",
-            withCredentials: true,
-          }).then(function (res) {
-            ElMessage({
-              message: res.data.message,
-              type: res.data.status ? "success" : "error",
-            });
-            that.reloadGood();
-          });
-        })
-        .catch(() => {
-          ElMessage({
-            type: "info",
-            message: "已取消删除",
-          });
-        });
     },
     //每页显示的数据量发生改变
     sizeChange(pageSize) {
@@ -431,28 +289,47 @@ export default {
       //刷新页面
       this.reloadGood();
     },
-    //发送修改请求
-    update() {
+    //打开添加弹窗
+    showAddDialog() {
+      this.addDialog = true;
+      let that = this;
+      //获取商品类型
+      if (this.categories.length == 0) {
+        axios({
+          url:
+            this.$store.state.localhost +
+            "/category/all?num=0&size=100&keyword=",
+          method: "get",
+          withCredentials: true,
+        }).then(function (res) {
+          that.categories = res.data.data;
+        });
+      }
+      //上传列表清空
+      this.fileList = [];
+    },
+    //发送添加请求
+    add() {
       let that = this;
       axios({
-        url: this.$store.state.localhost + "/good/update",
-        method: "put",
+        url: this.$store.state.localhost + "/good/add",
+        method: "post",
         withCredentials: true,
         headers: {
           "Content-Type": "application/json",
         },
-        data: JSON.stringify(this.updateGood),
+        data: JSON.stringify(this.good),
       }).then(function (res) {
+        // 打印信息
         ElMessage({
           message: res.data.message,
           type: res.data.status ? "success" : "error",
         });
-        //如果修改成功
         if (res.data.status) {
           //清空表单
-          that.updateGood = {};
-          //关闭修改弹窗
-          that.updateDialog = false;
+          that.good = {};
+          //关闭添加弹窗
+          that.addDialog = false;
           //刷新表格
           that.reloadGood();
         }
@@ -463,7 +340,9 @@ export default {
       let that = this;
       axios({
         url:
-          this.$store.state.localhost + "/good/total?keyword=" + this.keyword,
+          this.$store.state.localhost +
+          "/good/total/trading?keyword=" +
+          this.keyword,
         method: "get",
         withCredentials: true,
       }).then(function (res) {
@@ -479,15 +358,44 @@ export default {
         type: "warning",
       });
     },
-    //修改上传成功后触发
-    updateFileSuccess(res) {
+    //添加上传成功后触发
+    addFileSuccess(res) {
       ElMessage({
         message: res.message,
         type: res.status ? "success" : "error",
       });
       if (res.status) {
-        this.updateGood.goodImg = res.data;
+        this.good.goodImg = res.data;
       }
+    },
+    //购买商品
+    buyGood(goodId) {
+      let that = this;
+
+      this.$confirm("是否要购买该商品?", "提示", {
+        confirmButtonText: "确定",
+        cancelButtonText: "取消",
+        type: "warning",
+      })
+        .then(() => {
+          axios({
+            url: this.$store.state.localhost + "/good/buy?goodId=" + goodId,
+            method: "post",
+            withCredentials: true,
+          }).then(function (res) {
+            ElMessage({
+              message: res.data.message,
+              type: res.data.status ? "success" : "error",
+            });
+            that.reloadGood();
+          });
+        })
+        .catch(() => {
+          ElMessage({
+            type: "info",
+            message: "已取消删除",
+          });
+        });
     },
   },
   mounted() {

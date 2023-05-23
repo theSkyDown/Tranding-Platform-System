@@ -1,0 +1,28 @@
+<?xml version="1.0" encoding="UTF-8"?>
+<!DOCTYPE mapper PUBLIC "-//mybatis.org//DTD Mapper 3.0//EN" "http://mybatis.org/dtd/mybatis-3-mapper.dtd">
+
+<mapper namespace="com.eccentric.tranding.mappers.OrderMapper">
+
+    <insert id="addOrder">
+        insert into orders values(#{orderId},#{goodId},#{userId},#{status},#{createTime},#{updateTime})
+    </insert>
+
+    <select id="getAllOrders" resultType="com.eccentric.tranding.pojo.Order">
+        select orders.*,goods.good_name,saleUser.username as saleUsername,buyUser.username as buyUsername from orders left join goods on orders.good_id = goods.good_id
+                 left join user as buyUser on orders.user_id = buyUser.user_id left join user as saleUser on goods.user_id=saleUser.user_id
+            where concat(saleUser.username,buyUser.username,goods.good_name) like "%"#{keyword}"%" limit #{num},#{size}
+    </select>
+
+    <select id="getTotal" resultType="integer">
+        select count(*) from orders left join goods on orders.good_id = goods.good_id
+                left join user as buyUser on orders.user_id = buyUser.user_id left join user as saleUser on goods.user_id=saleUser.user_id
+        where concat(saleUser.username,buyUser.username,goods.good_name) like "%"#{keyword}"%"
+    </select>
+
+    <delete id="deleteByBatchIds">
+        delete from orders where order_id in
+        <foreach collection="idList" item="id" separator="," open="(" close=")">
+            #{id}
+        </foreach>
+    </delete>
+</mapper>

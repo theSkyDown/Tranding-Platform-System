@@ -1,8 +1,10 @@
 import {createRouter,createWebHashHistory} from 'vue-router'
 import Home from '../components/pages/home.vue'
 import Echart from '../components/test/echartTest.vue'
+import goodTrading from '../components/pages/good_trading.vue'
 import goodAdmin from '../components/pages/good_admin.vue'
 import categoryAdmin from '../components/pages/category_admin.vue'
+import orderAdmin from '../components/pages/order_admin.vue'
 import userAdmin from '../components/pages/user_admin.vue'
 import roleAdmin from '../components/pages/role_admin.vue'
 import moduleAdmin from '../components/pages/module_admin.vue'
@@ -17,6 +19,12 @@ const router = createRouter({
           name:'home',
           component:Home
         },
+        //商品交易页面
+        {
+          path:"/goodTrading",
+          name:"goodTrading",
+          component:goodTrading
+        },
         //商品管理页面
         {
           path:'/goodAdmin',
@@ -28,6 +36,12 @@ const router = createRouter({
           path:'/categoryAdmin',
           name:'categoryAdmin',
           component:categoryAdmin
+        },
+        //订单管理页面
+        {
+          path:'/orderAdmin',
+          name:'orderAdmin',
+          component:orderAdmin
         },
         //用户管理页面
         {

@@ -2,6 +2,7 @@ package com.eccentric.tranding.service;
 
 
 import com.eccentric.tranding.pojo.Good;
+import com.eccentric.tranding.pojo.User;
 import com.eccentric.tranding.pojo.common.Ret;
 
 import java.util.List;
@@ -65,4 +66,28 @@ public interface GoodService {
      * @return
      */
     public Ret updateGood(Good good);
+
+    /**
+     * 获取所有正在销售的商品
+     * @param num
+     * @param size
+     * @param keyword
+     * @return
+     */
+    public Ret getAllGoodOnSale(Integer num, Integer size, String keyword);
+
+    /**
+     * 统计所有正在销售的商品数量
+     * @param keyword
+     * @return
+     */
+    public Ret getTotalOnSale(String keyword);
+
+    /**
+     * 用户购买商品
+     * @param goodId
+     * @param actionUser
+     * @return
+     */
+    public Ret buyGood(Integer goodId, User actionUser);
 }

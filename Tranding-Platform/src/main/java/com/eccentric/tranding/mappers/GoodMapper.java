@@ -77,4 +77,20 @@ public interface GoodMapper {
      * @return
      */
     public Integer updateGood(Good good);
+
+    /**
+     * 获取所有正在销售的商品
+     * @param num
+     * @param size
+     * @param keyword
+     * @return
+     */
+    public List<Good> getAllGoodOnSale(Integer num, Integer size, String keyword);
+
+    /**
+     * 统计所有正在销售的商品数量
+     * @param keyword
+     * @return
+     */
+    public Integer getTotalOnSale(String keyword);
 }
