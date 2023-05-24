@@ -120,11 +120,16 @@ public class GoodServiceImpl implements GoodService {
     }
 
     @Override
-    public Ret updateGood(Good good) {
+    public Ret updateGood(Good good,User actionUser) {
         //拦截不存在的商品
         if (!isExist(good)){
             return Ret.fail("商品不存在，修改失败");
         }
+        //判断是否有权限修改商品信息(如果不是发布者，也不是admin无法修改商品的信息)
+        if (!good.getUserId().equals(actionUser.getUserId()) && !actionUser.getUserId().equals(1)){
+            return Ret.fail("你没有权限修改该商品的信息");
+        }
+
         //执行修改操作
         boolean result = goodMapper.updateGood(good)==1;
         return result?Ret.ok():Ret.fail();
@@ -182,6 +187,7 @@ public class GoodServiceImpl implements GoodService {
         order.setUserId(actionUser.getUserId());
         //1表示完成交易，2表示未完成
         order.setStatus(Status.DISABLE);
+        order.setRate(0.0);
         order.setCreateTime(LocalDateTime.now());
         order.setUpdateTime(LocalDateTime.now());
 
@@ -194,5 +200,73 @@ public class GoodServiceImpl implements GoodService {
         }
         return updateGoodCount==1 ? Ret.ok() : Ret.fail();
 
+    }
+
+
+    @Override
+    public Ret getGoodById(Integer goodId) {
+        Good good = goodMapper.getGoodById(goodId);
+        if (good == null) {
+            return Ret.fail("商品不存在");
+        }
+        //填入详细信息
+        //分类信息
+        Category category = categoryMapper.getCategoryById(good.getCategoryId());
+        good.setCategoryName(category.getCategoryName());
+        //发布人
+        User user = userMapper.getUserByUserId(good.getUserId());
+        good.setUserUsername(user.getUsername());
+
+        return Ret.ok(null,good);
+    }
+
+    @Override
+    public Ret getGoodByUserId(Integer num,Integer size,String keyword,Integer userId) {
+        List<Good> goodList = goodMapper.getGoodByUserId(num,size,keyword,userId);
+        goodList.forEach(good -> {
+            //设置分类名称
+            Category categoryById = categoryMapper.getCategoryById(good.getCategoryId());
+            if (categoryById != null){
+                good.setCategoryName(categoryById.getCategoryName());
+            }else{
+                good.setCategoryName("分类信息异常");
+            }
+            //设置发布者名称
+            User userByUserId = userMapper.getUserByUserId(good.getUserId());
+            if (userByUserId != null){
+                good.setUserUsername(userByUserId.getUsername());
+            }else{
+                good.setUserUsername("用户信息异常");
+            }
+        });
+        return Ret.ok(null,goodList);
+    }
+
+
+    @Override
+    public Ret getTotalByUserId(String keyword, Integer userId) {
+        return Ret.ok(null,goodMapper.getTotalByUserId(keyword,userId));
+    }
+
+    @Override
+    public Ret takeDownGood(Integer goodId, User actionUser) {
+        //判断要删除商品是否存在
+        Good temp = goodMapper.getGoodById(goodId);
+        if (temp == null){
+            return Ret.fail("商品不存在");
+        }
+
+        //拦截商品已经售出
+        if (Status.DISABLE.equals(temp.getStatus())){
+            return Ret.fail("商品已经售出，无法下架");
+        }
+
+        if (!temp.getUserId().equals(actionUser.getUserId()) && actionUser.getUserId().equals(1)){
+            return Ret.fail("你没有权限下架该商品");
+        }
+
+        //执行删除操作
+        Integer count = goodMapper.deleteGoodById(goodId);
+        return count==1 ? Ret.ok() : Ret.fail();
     }
 }

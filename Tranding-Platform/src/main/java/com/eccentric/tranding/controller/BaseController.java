@@ -10,6 +10,17 @@ import java.lang.reflect.Field;
  * @author eccentric
  */
 public abstract class BaseController {
+    /**
+     * 用于判断double的值是否合理
+     * @param value
+     * @return
+     */
+    public Boolean isOk(Double value){
+        if (value == null || value <= 0){
+            return false;
+        }
+        return true;
+    }
 
     /**
      * 用于判断批量删除的参数是否合理

@@ -93,4 +93,20 @@ public interface GoodMapper {
      * @return
      */
     public Integer getTotalOnSale(String keyword);
+
+    /**
+     * 通过用户标识获取该用户出售的所有商品
+     * @param userId
+     * @return
+     */
+    public List<Good> getGoodByUserId(@Param("num") Integer num,@Param("size") Integer size,@Param("keyword") String keyword,@Param("userId") Integer userId);
+
+
+    /**
+     * 通过用户标识统计该用户出售的商品的数量
+     * @param keyword
+     * @param userId
+     * @return
+     */
+    public Integer getTotalByUserId(@Param("keyword") String keyword,@Param("userId") Integer userId);
 }

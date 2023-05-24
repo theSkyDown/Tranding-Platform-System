@@ -11,14 +11,6 @@
       <div class="card-header">订单管理</div>
     </template>
     <div>
-      <el-button
-        style="margin-bottom: 5px"
-        type="danger"
-        v-on:click="deleteOrdersByBatchIds"
-      >
-        <el-icon><Delete /></el-icon>
-        <span>批量删除</span>
-      </el-button>
       <el-button style="margin-bottom: 5px" v-on:click="reloadOrder">
         <el-icon><Refresh /></el-icon>
         <span>刷新</span>
@@ -41,19 +33,11 @@
         :data="orders"
         height="630"
         style="width: 100%"
-        @selection-change="handleSelectionChange"
         v-loading="tableLoading"
       >
-        <el-table-column type="selection" width="55" />
         <el-table-column label="序号" type="index" width="80" />
         <el-table-column label="商品名称" prop="goodName" min-width="120" />
         <el-table-column label="出售者" prop="saleUsername" min-width="120" />
-        <el-table-column label="购买者" prop="buyUsername" min-width="120" />
-        <el-table-column label="状态" prop="status" min-width="120">
-          <template #default="scope">
-            <span>{{ scope.row.status == 1 ? "完成交易" : "未完成交易" }}</span>
-          </template>
-        </el-table-column>
 
         <el-table-column
           label="创建时间"
@@ -62,22 +46,43 @@
           min-width="160"
         />
 
-        <el-table-column
-          label="修改时间"
-          sortable
-          prop="updateTime"
-          min-width="160"
-        />
+        <el-table-column label="状态" prop="status" min-width="120">
+          <template #default="scope">
+            <span>{{ scope.row.status == 1 ? "完成交易" : "未完成交易" }}</span>
+          </template>
+        </el-table-column>
 
-        <el-table-column fixed="right" label="操作" width="100">
+        <el-table-column label="评分" prop="rate" min-width="160">
+          <template #default="scope">
+            <el-rate
+              v-model="scope.row.rate"
+              disabled
+              show-score
+              score-template="{value} 分"
+            />
+          </template>
+        </el-table-column>
+
+        <el-table-column fixed="right" label="操作" width="200">
           <template #default="scope">
             <el-button
+              :disabled="scope.row.status == 1"
+              size="small"
+              type="success"
+              v-on:click="
+                showRateDialog = true;
+                orderId = scope.row.orderId;
+              "
+            >
+              <span>完成订单</span>
+            </el-button>
+            <el-button
+              :disabled="scope.row.status == 1"
               size="small"
               type="danger"
-              v-on:click="deleteOrder(scope.row.orderId)"
+              v-on:click="cancelOrder(scope.row.orderId)"
             >
-              <el-icon><Delete /></el-icon>
-              <span>删除</span>
+              <span>取消订单</span>
             </el-button>
           </template>
         </el-table-column>
@@ -97,11 +102,36 @@
       </div>
     </div>
   </el-card>
+
+  <el-dialog
+    v-model="showRateDialog"
+    title="评分"
+    width="25%"
+    align-center
+    draggable
+  >
+    <span class="demonstration">请对这次交易进行评分</span>
+    <el-rate v-model="rate" />
+
+    <!-- 底部按钮 -->
+    <template #footer>
+      <span class="dialog-footer">
+        <el-button
+          v-on:click="
+            showRateDialog = false;
+            reloadOrder();
+          "
+          >取消</el-button
+        >
+        <el-button type="primary" v-on:click="completeOrder">确认</el-button>
+      </span>
+    </template>
+  </el-dialog>
 </template>
 
 <script>
 import axios from "axios";
-import { ElMessage } from "element-plus";
+import { ElMessage, ElMessageBox } from "element-plus";
 export default {
   data() {
     return {
@@ -112,12 +142,16 @@ export default {
       num: 0, //从第几条开始算
       size: 10, //每页多少条数据
       total: 0, //总共多少条数据
-      // 多选选中的id
-      selectId: [],
       //表单加载
       tableLoading: false,
       //关键词
       keyword: "",
+      //评分弹窗
+      showRateDialog: false,
+      //评分
+      rate: 0.0,
+      //用于订单评分的订单id
+      orderId: "",
     };
   },
   methods: {
@@ -127,7 +161,7 @@ export default {
       axios({
         url:
           this.$store.state.localhost +
-          "/order/all?num=" +
+          "/order/all/trading?num=" +
           this.num +
           "&size=" +
           this.size +
@@ -146,40 +180,6 @@ export default {
         }
       });
     },
-    //批量删除
-    deleteOrdersByBatchIds() {
-      let that = this;
-      //拼接字符串，用于请求的参数
-      this.$confirm("此操作将永久删除这些订单, 是否继续?", "提示", {
-        confirmButtonText: "确定",
-        cancelButtonText: "取消",
-        type: "warning",
-      })
-        .then(() => {
-          let ids = "";
-          for (let i = 0; i < this.selectId.length; i++) {
-            ids = ids + this.selectId[i] + ",";
-          }
-          ids = ids.substring(0, ids.lastIndexOf(","));
-          axios({
-            url: this.$store.state.localhost + "/order/delete/ids?ids=" + ids,
-            method: "delete",
-            withCredentials: true,
-          }).then(function (res) {
-            ElMessage({
-              message: res.data.message,
-              type: res.data.status ? "success" : "error",
-            });
-            that.reloadOrder();
-          });
-        })
-        .catch(() => {
-          ElMessage({
-            type: "info",
-            message: "已取消删除",
-          });
-        });
-    },
     //刷新
     reloadOrder() {
       this.tableLoading = true;
@@ -191,16 +191,8 @@ export default {
         this.tableLoading = false;
       }, 300);
     },
-    //多选栏，选中触发
-    handleSelectionChange(val) {
-      let temp = [];
-      for (let i = 0; i < val.length; i++) {
-        temp[i] = val[i].orderId;
-      }
-      this.selectId = temp;
-    },
-    //删除指定订单
-    deleteOrder(id) {
+    //取消该订单
+    cancelOrder(id) {
       let that = this;
       this.$confirm("此操作将永久删除该订单, 是否继续?", "提示", {
         confirmButtonText: "确定",
@@ -209,7 +201,7 @@ export default {
       })
         .then(() => {
           axios({
-            url: this.$store.state.localhost + "/order/delete?orderId=" + id,
+            url: this.$store.state.localhost + "/order/cancel?orderId=" + id,
             method: "delete",
             withCredentials: true,
           }).then(function (res) {
@@ -248,13 +240,36 @@ export default {
       let that = this;
       axios({
         url:
-          this.$store.state.localhost + "/order/total?keyword=" + this.keyword,
+          this.$store.state.localhost +
+          "/order/total/trading?keyword=" +
+          this.keyword,
         method: "get",
         withCredentials: true,
       }).then(function (res) {
         if (res.data.status) {
           that.total = res.data.data;
         }
+      });
+    },
+    //完成订单操作
+    completeOrder() {
+      let that = this;
+      axios({
+        url:
+          this.$store.state.localhost +
+          "/order/complete?orderId=" +
+          this.orderId +
+          "&rate=" +
+          1.0 * this.rate,
+        method: "put",
+        withCredentials: true,
+      }).then(function (res) {
+        ElMessage({
+          message: res.data.message,
+          type: res.data.status ? "success" : "error",
+        });
+        that.showRateDialog = false;
+        that.reloadOrder();
       });
     },
   },

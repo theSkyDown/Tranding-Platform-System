@@ -28,11 +28,6 @@
       <!-- 下拉选项 -->
       <template #dropdown>
         <el-dropdown-menu>
-          <el-dropdown-item>
-            <el-icon><User /></el-icon>
-            <span>个人中心</span>
-          </el-dropdown-item>
-
           <el-dropdown-item v-on:click="this.$store.state.updateDialog = true">
             <el-icon><Key /></el-icon>
             <span>修改密码</span>

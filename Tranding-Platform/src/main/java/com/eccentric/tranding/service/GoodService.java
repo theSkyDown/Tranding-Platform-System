@@ -65,7 +65,7 @@ public interface GoodService {
      * @param good
      * @return
      */
-    public Ret updateGood(Good good);
+    public Ret updateGood(Good good,User actionUser);
 
     /**
      * 获取所有正在销售的商品
@@ -90,4 +90,34 @@ public interface GoodService {
      * @return
      */
     public Ret buyGood(Integer goodId, User actionUser);
+
+    /**
+     * 通过标识获取商品的信息
+     * @param goodId
+     * @return
+     */
+    public Ret getGoodById(Integer goodId);
+
+    /**
+     * 通过用户标识获取该用户出售的所有商品
+     * @param userId
+     * @return
+     */
+    public Ret getGoodByUserId(Integer num,Integer size,String keyword,Integer userId);
+
+    /**
+     * 通过用户标识统计该用户出售的商品的数量
+     * @param keyword
+     * @param userId
+     * @return
+     */
+    public Ret getTotalByUserId(String keyword,Integer userId);
+
+    /**
+     * 用户下架商品
+     * @param goodId
+     * @param actionUser
+     * @return
+     */
+    public Ret takeDownGood(Integer goodId, User actionUser);
 }

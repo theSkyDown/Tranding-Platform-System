@@ -86,4 +86,68 @@ public class OrderController extends BaseController {
         }
         return orderService.deleteByIds(idList);
     }
+
+
+
+
+
+    /**
+     * 我的订单获取所有购买的订单信息
+     * @return
+     */
+    @RequestMapping(value = "/all/trading",method = RequestMethod.GET)
+    @ResponseBody
+    public Ret getAllOrderByActionUser(@RequestParam("num") Integer num,@RequestParam("size") Integer size,@RequestParam("keyword") String keyword){
+        if (num == null || size == null || num < 0 || size <= 0){
+            return Ret.fail("参数异常");
+        }
+        User actionUser = UserHolder.getUser();
+        return Ret.ok(null,orderService.getAllOrderByActionUser(num,size,keyword,actionUser.getUserId()));
+    }
+
+    /**
+     * 统计我的订单中所有订单的数量
+     * @param keyword
+     * @return
+     */
+    @RequestMapping(value = "/total/trading",method = RequestMethod.GET)
+    @ResponseBody
+    public Ret getTotalByActionUser(@RequestParam("keyword") String keyword){
+        User actionUser = UserHolder.getUser();
+        return orderService.getTotalByActionUser(keyword,actionUser.getUserId());
+    }
+
+
+    /**
+     * 取消订单
+     * @param orderId
+     * @return
+     */
+    @RequestMapping(value = "/cancel",method = RequestMethod.DELETE)
+    @ResponseBody
+    public Ret cancelOrder(@RequestParam("orderId") Integer orderId){
+        if (!isOk(orderId)){
+            return Ret.fail("参数异常");
+        }
+        User actionUser = UserHolder.getUser();
+        return orderService.cancelOrder(orderId,actionUser);
+    }
+
+
+    /**
+     * 完成订单操作
+     * @param rate
+     * @param orderId
+     * @return
+     */
+    @RequestMapping(value = "/complete",method = RequestMethod.PUT)
+    @ResponseBody
+    public Ret completeOrder(@RequestParam("rate") Double rate,@RequestParam("orderId") Integer orderId){
+        if (!isOk(rate) || !isOk(orderId)){
+            return Ret.fail("参数异常");
+        }
+        User actionUser = UserHolder.getUser();
+        return orderService.completeOrder(orderId,rate,actionUser);
+    }
+
 }

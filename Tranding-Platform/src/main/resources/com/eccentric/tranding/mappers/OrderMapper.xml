@@ -4,7 +4,7 @@
 <mapper namespace="com.eccentric.tranding.mappers.OrderMapper">
 
     <insert id="addOrder">
-        insert into orders values(#{orderId},#{goodId},#{userId},#{status},#{createTime},#{updateTime})
+        insert into orders values(#{orderId},#{goodId},#{userId},#{status},#{rate},#{createTime},#{updateTime})
     </insert>
 
     <select id="getAllOrders" resultType="com.eccentric.tranding.pojo.Order">
@@ -25,4 +25,20 @@
             #{id}
         </foreach>
     </delete>
+
+
+    <select id="getAllOrderByActionUser" resultType="com.eccentric.tranding.pojo.Order">
+        select orders.*,goods.good_name,saleUser.username as saleUsername,buyUser.username as buyUsername
+        from orders left join goods on orders.good_id = goods.good_id
+            left join user as buyUser on orders.user_id = buyUser.user_id
+            left join user as saleUser on goods.user_id=saleUser.user_id
+        where concat(saleUser.username,goods.good_name) like "%"#{keyword}"%" and orders.user_id = #{actionUserId}
+        limit #{num},#{size}
+    </select>
+
+    <select id="getTotalByActionUser" resultType="integer">
+        select count(*) from orders left join goods on orders.good_id = goods.good_id
+                                    left join user as buyUser on orders.user_id = buyUser.user_id left join user as saleUser on goods.user_id=saleUser.user_id
+        where concat(saleUser.username,goods.good_name) like "%"#{keyword}"%" and orders.user_id = #{actionUserId}
+    </select>
 </mapper>

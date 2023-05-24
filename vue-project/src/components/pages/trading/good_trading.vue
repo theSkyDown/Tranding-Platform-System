@@ -7,7 +7,7 @@
   <!-- 商品交易卡片 -->
   <el-card shadow="hover" v-loading="!this.$store.state.isLogin">
     <template #header>
-      <div class="card-header">商品管理</div>
+      <div class="card-header">商品购买</div>
     </template>
     <div>
       <el-button
@@ -68,7 +68,7 @@
         </el-table-column>
 
         <el-table-column label="发布者" prop="userUsername" min-width="120" />
-        <el-table-column label="商品图片" prop="goodImg" min-width="160">
+        <el-table-column label="商品图片" prop="goodImg" min-width="120">
           <template #default="scope">
             <el-image
               :src="scope.row.goodImg"

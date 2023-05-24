@@ -162,8 +162,10 @@ public class GoodController extends BaseController{
         ){
             return Ret.fail("参数异常");
         }
+        //执行修改操作的用户
+        User actionUser = UserHolder.getUser();
         //更新用户信息
-        return goodService.updateGood(good);
+        return goodService.updateGood(good,actionUser);
     }
 
 
@@ -179,5 +181,57 @@ public class GoodController extends BaseController{
         }
         User actionUser = UserHolder.getUser();
         return goodService.buyGood(goodId,actionUser);
+    }
+
+    /**
+     * 获取商品的详细信息
+     * @param goodId
+     * @return
+     */
+    @RequestMapping(value = "/detail",method = RequestMethod.GET)
+    @ResponseBody
+    public Ret getGoodDetail(@RequestParam("goodId") Integer goodId){
+        if (!isOk(goodId)){
+            return Ret.fail("参数异常");
+        }
+        return goodService.getGoodById(goodId);
+    }
+
+    /**
+     * 获取用户出售的所有商品
+     * @return
+     */
+    @RequestMapping(value = "/all/sale",method = RequestMethod.GET)
+    @ResponseBody
+    public Ret getGoodByUserId(@RequestParam("num") Integer num,@RequestParam("size") Integer size,@RequestParam("keyword") String keyword){
+        if (num == null || size == null || num < 0 || size <= 0){
+            return Ret.fail("参数异常");
+        }
+        User actionUser = UserHolder.getUser();
+        return goodService.getGoodByUserId(num,size,keyword,actionUser.getUserId());
+    }
+
+    /**
+     * 通过用户标识统计该用户出售的商品的数量
+     * @param keyword
+     * @return
+     */
+    @RequestMapping(value = "/total/sale",method = RequestMethod.GET)
+    @ResponseBody
+    public Ret getTotalByUserId(@RequestParam("keyword") String keyword){
+        return goodService.getTotalByUserId(keyword,UserHolder.getUser().getUserId());
+    }
+
+
+    /**
+     * 商品下架
+     * @param goodId
+     * @return
+     */
+    @RequestMapping(value = "/take/down",method = RequestMethod.DELETE)
+    @ResponseBody
+    public Ret takeDownGood(@RequestParam("goodId") Integer goodId){
+        User actionUser = UserHolder.getUser();
+        return goodService.takeDownGood(goodId,actionUser);
     }
 }

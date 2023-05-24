@@ -22,17 +22,12 @@
         <span>商品购买</span>
       </el-menu-item>
 
-      <el-menu-item index="2-2" v-on:click="">
-        <el-icon><SoldOut /></el-icon>
-        <span>我的购买</span>
-      </el-menu-item>
-
-      <el-menu-item index="2-3" v-on:click="">
+      <el-menu-item index="2-3" v-on:click="toOrderTrading">
         <el-icon><GoodsFilled /></el-icon>
         <span>我的订单</span>
       </el-menu-item>
 
-      <el-menu-item index="2-4" v-on:click="">
+      <el-menu-item index="2-4" v-on:click="toSaleTrading">
         <el-icon><Sell /></el-icon>
         <span>我的售出</span>
       </el-menu-item>
@@ -106,6 +101,14 @@ export default {
     toGoodTrading() {
       this.$router.push("/goodTrading");
     },
+    //跳转到我的订单页面
+    toOrderTrading() {
+      this.$router.push("/orderTrading");
+    }, //跳转到我的出售页面
+    toSaleTrading() {
+      this.$router.push("/saleTrading");
+    },
+
     //跳转到商品管理页面
     toGoodAdmin() {
       this.$router.push("/goodAdmin");

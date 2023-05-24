@@ -24,6 +24,8 @@ public class Order {
     private Integer userId;
     //订单状态
     private Integer status;
+    //评分
+    private Double rate;
     //创建时间
     @JsonFormat(shape= JsonFormat.Shape.STRING ,pattern="yyyy-MM-dd HH:mm:ss")
     private LocalDateTime createTime;
