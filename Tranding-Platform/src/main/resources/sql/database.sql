@@ -85,6 +85,7 @@ create table orders(
     good_id int not null comment '购买商品的标识',
     user_id int not null comment '购买商品的用户标识',
     status tinyint not null comment '订单状态',
+    rate double default 0.0 not null comment '评分',
     create_time datetime comment '订单创建的时间',
     update_time datetime comment '订单修改的时间'
 )comment '订单表';
