@@ -308,7 +308,8 @@ export default {
       if (this.modules.length == 0) {
         axios({
           url:
-            this.$store.state.localhost + "/module/all?num=0&size=300&keyword=",
+            this.$store.state.localhost +
+            "/module/all?num=0&size=1000&keyword=",
           method: "get",
           withCredentials: true,
         }).then(function (res) {

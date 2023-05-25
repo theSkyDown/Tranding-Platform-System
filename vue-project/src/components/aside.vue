@@ -33,7 +33,7 @@
       </el-menu-item>
     </el-sub-menu>
 
-    <el-sub-menu index="3">
+    <el-sub-menu index="3" v-if="this.$store.state.user.roleId != 3">
       <template #title>
         <el-icon><setting /></el-icon>
         <span>系统管理</span>
