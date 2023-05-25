@@ -403,4 +403,9 @@ public class UserServiceImpl implements UserService {
     public Ret getTotalUser(String keyword) {
         return Ret.ok(null,userMapper.getTotalUser(keyword));
     }
+
+    @Override
+    public Double getUserRate(User actionUser) {
+        return userMapper.getUserRate(actionUser.getUserId());
+    }
 }

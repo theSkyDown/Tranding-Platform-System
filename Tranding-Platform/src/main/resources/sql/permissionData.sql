@@ -1,4 +1,4 @@
-truncate table trand_platform_sys.permission;truncate table trand_platform_sys.permission;
+truncate table trand_platform_sys.permission;
 INSERT INTO trand_platform_sys.permission (permission_id, role_id, module_id) VALUES (1, 9, 1);
 INSERT INTO trand_platform_sys.permission (permission_id, role_id, module_id) VALUES (2, 9, 15);
 INSERT INTO trand_platform_sys.permission (permission_id, role_id, module_id) VALUES (3, 9, 2);
@@ -148,3 +148,8 @@ INSERT INTO trand_platform_sys.permission (permission_id, role_id, module_id) VA
 INSERT INTO trand_platform_sys.permission (permission_id, role_id, module_id) VALUES (153, 3, 51);
 INSERT INTO trand_platform_sys.permission (permission_id, role_id, module_id) VALUES (154, 3, 38);
 INSERT INTO trand_platform_sys.permission (permission_id, role_id, module_id) VALUES (155, 3, 58);
+INSERT INTO trand_platform_sys.permission (permission_id, role_id, module_id) VALUES (156, 1, 59);
+INSERT INTO trand_platform_sys.permission (permission_id, role_id, module_id) VALUES (157, 2, 59);
+INSERT INTO trand_platform_sys.permission (permission_id, role_id, module_id) VALUES (158, 1, 60);
+INSERT INTO trand_platform_sys.permission (permission_id, role_id, module_id) VALUES (159, 2, 60);
+INSERT INTO trand_platform_sys.permission (permission_id, role_id, module_id) VALUES (160, 3, 60);

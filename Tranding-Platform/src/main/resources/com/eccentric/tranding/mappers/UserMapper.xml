@@ -42,4 +42,10 @@
         </foreach>
     </delete>
 
+
+    <select id="getUserRate" resultType="double">
+        select avg(orders.rate) from orders
+            left join goods on goods.good_id = orders.good_id
+        where goods.user_id = #{userId}
+    </select>
 </mapper>

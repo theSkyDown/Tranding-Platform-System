@@ -17,3 +17,8 @@ spring:
 mybatis:
   configuration:
     map-underscore-to-camel-case: true
+
+logging:
+  config: classpath:locbak.xml
+  level:
+    com.hl.magic: trace

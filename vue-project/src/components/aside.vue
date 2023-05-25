@@ -74,20 +74,17 @@
         <span>权限管理</span>
       </el-menu-item>
 
-      <el-menu-item index="3-8">
+      <el-menu-item index="3-8" v-on:click="logExport">
         <el-icon><Folder /></el-icon>
-        <span>日志管理</span>
+        <span>日志导出</span>
       </el-menu-item>
     </el-sub-menu>
-
-    <el-menu-item index="5" v-on:click="toTest">
-      <el-icon><Opportunity /></el-icon>
-      <span>测 试</span>
-    </el-menu-item>
   </el-menu>
 </template>
 
 <script>
+import axios from "axios";
+import { ElMessage } from "element-plus";
 export default {
   data() {
     return {};
@@ -136,6 +133,14 @@ export default {
     //跳转到权限管理
     toPermissionAdmin() {
       this.$router.push("/permissionAdmin");
+    },
+    //日志导出
+    logExport() {
+      let link = document.createElement("a");
+      link.style.display = "none";
+      link.href = this.$store.state.localhost + "/log/export";
+      document.body.appendChild(link);
+      link.click();
     },
     //跳转测试页面
     toTest() {

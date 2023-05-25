@@ -57,3 +57,5 @@ INSERT INTO trand_platform_sys.module (module_id, module_name, url, is_menu) VAL
 INSERT INTO trand_platform_sys.module (module_id, module_name, url, is_menu) VALUES (56, '批量删除权限的功能', '/permission/delete/ids', 0);
 INSERT INTO trand_platform_sys.module (module_id, module_name, url, is_menu) VALUES (57, '头像上传功能', '/qiniu/avatar', 0);
 INSERT INTO trand_platform_sys.module (module_id, module_name, url, is_menu) VALUES (58, '商品图片上传功能', '/qiniu/good', 0);
+INSERT INTO trand_platform_sys.module (module_id, module_name, url, is_menu) VALUES (59, '日志导出', '/log/export', 0);
+INSERT INTO trand_platform_sys.module (module_id, module_name, url, is_menu) VALUES (60, '获取用户的平均分数', '/user/rate', 0);

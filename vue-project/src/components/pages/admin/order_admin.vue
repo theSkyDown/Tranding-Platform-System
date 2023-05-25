@@ -46,7 +46,15 @@
       >
         <el-table-column type="selection" width="55" />
         <el-table-column label="序号" type="index" width="80" />
-        <el-table-column label="商品名称" prop="goodName" min-width="120" />
+        <el-table-column label="商品名称" prop="goodName" min-width="120">
+          <template #default="scope">
+            <span
+              v-on:click="showGoodDetailInfo(scope.row.goodId)"
+              class="goodName"
+              >{{ scope.row.goodName }}</span
+            >
+          </template>
+        </el-table-column>
         <el-table-column label="出售者" prop="saleUsername" min-width="120" />
         <el-table-column label="购买者" prop="buyUsername" min-width="120" />
         <el-table-column label="状态" prop="status" min-width="120">
@@ -108,6 +116,42 @@
       </div>
     </div>
   </el-card>
+
+  <el-dialog
+    title="商品详细信息"
+    width="25%"
+    align-center
+    draggable
+    v-model="goodDetailDialog"
+  >
+    <div class="good-detail-content">
+      <div>商品名称：{{ this.good.goodName }}</div>
+      <div>商品价格：{{ this.good.price }}</div>
+      <div>商品类型：{{ this.good.categoryName }}</div>
+      <div>商品描述：{{ this.good.description }}</div>
+      <div>
+        支付方式：{{ this.good.payType == 1 ? "现金支付" : "以物易物" }}
+      </div>
+      <div>发布人：{{ this.good.userUsername }}</div>
+      <div>
+        <span class="good-img-title">商品图片：</span>
+        <el-image
+          class="good-img"
+          :src="this.good.goodImg"
+          :preview-src-list="[this.good.goodImg]"
+          style="width: 80px; height: 80px"
+          preview-teleported
+        ></el-image>
+      </div>
+      <div>发布时间：{{ this.good.createTime }}</div>
+    </div>
+    <!-- 底部按钮 -->
+    <template #footer>
+      <el-button type="primary" v-on:click="goodDetailDialog = false"
+        >确认</el-button
+      >
+    </template>
+  </el-dialog>
 </template>
 
 <script>
@@ -129,6 +173,19 @@ export default {
       tableLoading: false,
       //关键词
       keyword: "",
+      //商品详细信息窗口
+      goodDetailDialog: false,
+      //显示的商品信息
+      good: {
+        goodName: "",
+        price: "",
+        categoryName: "",
+        description: "",
+        payType: "",
+        userUsername: "",
+        goodImg: "",
+        createTime: "",
+      },
     };
   },
   methods: {
@@ -268,9 +325,46 @@ export default {
         }
       });
     },
+    //显示商品的详细信息
+    showGoodDetailInfo(goodId) {
+      this.goodDetailDialog = true;
+      let that = this;
+      //获取商品的详细信息请求
+      axios({
+        url: this.$store.state.localhost + "/good/detail?goodId=" + goodId,
+        method: "get",
+        withCredentials: true,
+      }).then(function (res) {
+        if (res.data.status) {
+          that.good = res.data.data;
+        }
+      });
+    },
   },
   mounted() {
     this.reloadOrder();
   },
 };
 </script>
+
+<style>
+.goodName:hover {
+  cursor: pointer;
+  color: #44a7ff;
+}
+.good-detail-content {
+  margin-left: 10%;
+}
+.good-detail-content > div {
+  margin: 15px 10px;
+}
+/* 商品详细信息 */
+.good-detail-content > div > .good-img-title {
+  position: relative !important;
+  bottom: 65px !important;
+}
+.good-detail-content > div > .good-img {
+  position: relative !important;
+  left: 10px !important;
+}
+</style>

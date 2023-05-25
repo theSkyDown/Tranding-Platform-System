@@ -2,6 +2,7 @@ package com.eccentric.tranding.config;
 
 import com.eccentric.tranding.interceptor.CookieInterceptor;
 import com.eccentric.tranding.interceptor.CorsInterceptor;
+import com.eccentric.tranding.interceptor.LoggingInterceptor;
 import com.eccentric.tranding.interceptor.PermissionInterceptor;
 import org.springframework.beans.factory.annotation.Autowired;
 import org.springframework.context.annotation.Configuration;
@@ -23,6 +24,9 @@ public class Config implements WebMvcConfigurer {
     @Autowired
     private PermissionInterceptor permissionInterceptor;
 
+    @Autowired
+    private LoggingInterceptor loggingInterceptor;
+
     /**
      * 添加拦截器
      * @param registry
@@ -35,6 +39,9 @@ public class Config implements WebMvcConfigurer {
         registry.addInterceptor(cookieInterceptor);
         //权限拦截器(登陆，验证码请求不拦截)
         registry.addInterceptor(permissionInterceptor)
+                .excludePathPatterns("/user/login")
+                .excludePathPatterns("/captcha/img");
+        registry.addInterceptor(loggingInterceptor)
                 .excludePathPatterns("/user/login")
                 .excludePathPatterns("/captcha/img");
         WebMvcConfigurer.super.addInterceptors(registry);

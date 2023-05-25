@@ -18,54 +18,41 @@ import Trend from "./echarts/trend.vue";
         <template #header>
           <div class="card-header">个人基本信息</div>
         </template>
-        <div class="card-content">
-          <el-row>
+
+        <div class="card-content father-div">
+          <div class="card-content-left">
             <!-- 头像 -->
-            <el-col :span="12" id="card-avatar">
-              <el-avatar :size="70">
-                <!-- <img src="../../assets/avatar.png" /> -->
-                <el-image
-                  :src="this.$store.state.user.avatar"
-                  :preview-src-list="[this.$store.state.user.avatar]"
-                  preview-teleported
-                ></el-image>
-              </el-avatar>
-            </el-col>
-            <!-- 用户名 -->
-            <el-col :span="12" class="card-username">
-              <div
-                style="
-                  overflow: hidden;
-                  white-space: nowrap;
-                  text-overflow: ellipsis;
-                "
-              >
-                用户名: {{ this.$store.state.user.username }}
-              </div>
-            </el-col>
-          </el-row>
-          <el-row>
-            <!-- 基本信息 -->
-            <el-col :span="24" class="card-information">
-              <div>
-                <el-icon><User /></el-icon>
-                <span>角色: {{ this.$store.state.user.roleName }}</span>
-              </div>
-
-              <div>
-                <el-icon><Message /></el-icon>
-                <span>联系方式: {{ this.$store.state.user.phone }}</span>
-              </div>
-
-              <div>
-                <el-icon><Postcard /></el-icon>
-                <span
-                  >性别:
-                  {{ this.$store.state.user.gender == 1 ? "男" : "女" }}</span
-                >
-              </div>
-            </el-col>
-          </el-row>
+            <el-avatar :size="180">
+              <!-- <img src="../../assets/avatar.png" /> -->
+              <el-image
+                :src="this.$store.state.user.avatar"
+                :preview-src-list="[this.$store.state.user.avatar]"
+                preview-teleported
+              ></el-image>
+            </el-avatar>
+          </div>
+          <div class="card-content-right">
+            <div class="card-content-right-info">
+              用户名：{{ this.$store.state.user.username }}
+            </div>
+            <div class="card-content-right-info">
+              联系方式：{{ this.$store.state.user.phone }}
+            </div>
+            <div class="card-content-right-info">
+              角色：{{ this.$store.state.user.roleName }}
+            </div>
+            <div class="card-content-right-info">
+              性别：{{ this.$store.state.user.gender == 1 ? "男" : "女" }}
+            </div>
+            <div class="card-content-right-info">
+              评分：<el-rate
+                v-model="rate"
+                disabled
+                show-score
+                score-template="{value} 分"
+              />
+            </div>
+          </div>
         </div>
       </el-card>
     </el-col>
@@ -110,6 +97,37 @@ import Trend from "./echarts/trend.vue";
   </el-row>
 </template>
 
+<script>
+import axios from "axios";
+export default {
+  data() {
+    return {
+      //分数
+      rate: 0,
+    };
+  },
+  methods: {
+    getUserRate() {
+      let that = this;
+      axios({
+        url: this.$store.state.localhost + "/user/rate",
+        method: "get",
+        withCredentials: true,
+      }).then(function (res) {
+        if (res.data.status) {
+          that.rate = res.data.data;
+          that.rate = parseFloat(that.rate).toFixed(1);
+        }
+      });
+    },
+  },
+  mounted() {
+    //获取用户的分数
+    this.getUserRate();
+  },
+};
+</script>
+
 <style>
 /* 固定卡片的大小 */
 .card-header {
@@ -128,37 +146,36 @@ import Trend from "./echarts/trend.vue";
   margin-bottom: 20px;
 }
 
-/* 个人基本信息卡片 */
-.card-content > .el-row {
-  margin: 0;
-}
-.card-content > .el-row:first-child {
-  height: 40%;
-  overflow: hidden;
-}
-.card-content > .el-row:last-child {
-  height: 60%;
-  overflow: hidden;
-}
-.card-content .el-col {
+.father-div {
   position: relative !important;
 }
+
 /* 头像 */
-.card-content .el-col > .el-avatar {
+.card-content-left {
   position: absolute !important;
-  top: 50%;
-  left: 50%;
-  transform: translate(-50%, -50%);
+  left: 0 !important;
+  width: 40% !important;
+  height: 100% !important;
 }
-/* 用户名 */
-.card-content .el-row > .card-username {
-  text-align: center;
-  line-height: 80px;
+.card-content-left .el-avatar {
+  position: absolute !important;
+  top: 50% !important;
+  left: 50% !important;
+  transform: translate(-50%, -50%) !important;
 }
-/* 其他信息 */
-.card-content .el-row > .card-information > div {
-  height: 35px;
-  line-height: 35px;
-  text-align: left;
+
+/* 用户信息 */
+.card-content-right {
+  overflow: hidden !important;
+  position: absolute !important;
+  right: 0 !important;
+  width: 60% !important;
+  height: 100% !important;
+}
+.card-content-right > .card-content-right-info {
+  width: 100% !important;
+  height: 20% !important;
+  line-height: 40px !important;
+  padding-left: 60px;
 }
 </style>

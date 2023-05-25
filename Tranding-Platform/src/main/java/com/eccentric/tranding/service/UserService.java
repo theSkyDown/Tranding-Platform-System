@@ -120,4 +120,11 @@ public interface UserService {
      * @return
      */
     public Ret getTotalUser(String keyword);
+
+    /**
+     * 获取用户的分数
+     * @param actionUser
+     * @return
+     */
+    public Double getUserRate(User actionUser);
 }

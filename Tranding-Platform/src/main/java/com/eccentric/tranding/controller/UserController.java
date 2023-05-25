@@ -253,4 +253,16 @@ public class UserController extends BaseController{
     public Ret getTotal(@RequestParam("keyword") String keyword){
         return userService.getTotalUser(keyword);
     }
+
+    /**
+     * 获取用户的分数
+     * @return
+     */
+    @RequestMapping(value = "/rate",method = RequestMethod.GET)
+    @ResponseBody
+    public Ret getUserRate(){
+        User actionUser = UserHolder.getUser();
+        Double rate = userService.getUserRate(actionUser);
+        return Ret.ok(null,rate==null?0:rate);
+    }
 }

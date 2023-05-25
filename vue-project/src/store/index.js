@@ -13,7 +13,9 @@ const store = new Vuex.Store({
     //默认后端地址
     localhost:"http://localhost:8080",
     //修改弹窗显示状态
-    updateDialog:false
+    updateDialog:false,
+  
+
   },
 });
 

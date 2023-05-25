@@ -93,4 +93,12 @@ public interface UserMapper {
      * @return
      */
     public Integer getTotalUser(@Param("keyword") String keyword);
+
+    /**
+     * 获取用户的平均分数
+     * @param userId
+     * @return
+     */
+    public Double getUserRate(@Param("userId") Integer userId);
+
 }

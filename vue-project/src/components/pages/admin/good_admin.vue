@@ -500,6 +500,6 @@ export default {
 .el-table .el-popper {
   width: 200px !important;
   max-height: 100px !important;
-  overflow: scroll !important;
+  overflow: auto !important;
 }
 </style>
