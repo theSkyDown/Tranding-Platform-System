@@ -1,7 +1,11 @@
 package com.eccentric.tranding.mappers;
 
 
+import com.eccentric.tranding.pojo.Category;
 import com.eccentric.tranding.pojo.User;
+import com.eccentric.tranding.pojo.common.ClassifyEcharts;
+import com.eccentric.tranding.pojo.common.RateEcharts;
+import com.eccentric.tranding.pojo.common.TradingEcharts;
 import org.apache.ibatis.annotations.*;
 
 import java.util.List;
@@ -101,4 +105,24 @@ public interface UserMapper {
      */
     public Double getUserRate(@Param("userId") Integer userId);
 
+    /**
+     * 获取该用户出售的商品分类信息
+     * @param userId
+     * @return
+     */
+    public List<ClassifyEcharts> getSaleCategoryEcharts(@Param("userId") Integer userId);
+
+    /**
+     * 获取统计评分的echarts图
+     * @param userId
+     * @return
+     */
+    public List<RateEcharts> getRateTotalEcharts(@Param("userId") Integer userId);
+
+    /**
+     * 获取一年销售额的echarts图
+     * @param userId
+     * @return
+     */
+    public List<TradingEcharts> getYearTradingEcharts(@Param("userId") Integer userId);
 }

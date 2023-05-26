@@ -1,7 +1,11 @@
 package com.eccentric.tranding.service;
 
+import com.eccentric.tranding.pojo.Category;
+import com.eccentric.tranding.pojo.common.ClassifyEcharts;
+import com.eccentric.tranding.pojo.common.RateEcharts;
 import com.eccentric.tranding.pojo.common.Ret;
 import com.eccentric.tranding.pojo.User;
+import com.eccentric.tranding.pojo.common.TradingEcharts;
 
 import java.util.List;
 
@@ -127,4 +131,25 @@ public interface UserService {
      * @return
      */
     public Double getUserRate(User actionUser);
+
+    /**
+     * 获取该用户出售的商品分类信息
+     * @param actionUser
+     * @return
+     */
+    public List<ClassifyEcharts> getSaleCategoryEcharts(User actionUser);
+
+    /**
+     * 获取统计评分的echarts图
+     * @param actionUser
+     * @return
+     */
+    public List<RateEcharts> getRateTotalEcharts(User actionUser);
+
+    /**
+     * 获取一年销售额的echarts图
+     * @param actionUser
+     * @return
+     */
+    public List<TradingEcharts> getYearTradingEcharts(User actionUser);
 }

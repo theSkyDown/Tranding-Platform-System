@@ -6,8 +6,11 @@ package com.eccentric.tranding.controller;
 
 import com.eccentric.tranding.dictionary.Encrypt;
 import com.eccentric.tranding.dictionary.Status;
+import com.eccentric.tranding.pojo.Category;
+import com.eccentric.tranding.pojo.common.RateEcharts;
 import com.eccentric.tranding.pojo.common.Ret;
 import com.eccentric.tranding.pojo.User;
+import com.eccentric.tranding.pojo.common.TradingEcharts;
 import com.eccentric.tranding.service.impl.UserServiceImpl;
 import com.eccentric.tranding.utils.Md5Util;
 import com.eccentric.tranding.utils.UserHolder;
@@ -20,7 +23,9 @@ import org.springframework.web.bind.annotation.*;
 import javax.servlet.http.HttpServletRequest;
 import javax.servlet.http.HttpServletResponse;
 import java.util.ArrayList;
+import java.util.HashMap;
 import java.util.List;
+import java.util.Map;
 
 
 /**
@@ -264,5 +269,52 @@ public class UserController extends BaseController{
         User actionUser = UserHolder.getUser();
         Double rate = userService.getUserRate(actionUser);
         return Ret.ok(null,rate==null?0:rate);
+    }
+
+
+
+    /**
+     * 获取用户出售商品的商品种类信息的echarts图
+     * @return
+     */
+    @RequestMapping(value = "/sale/category/echarts",method = RequestMethod.GET)
+    @ResponseBody
+    public Ret getSaleCategoryEcharts(){
+        User actionUser = UserHolder.getUser();
+        return Ret.ok(null,userService.getSaleCategoryEcharts(actionUser));
+    }
+
+    /**
+     * 获取统计评分的echarts图
+     * @return
+     */
+    @RequestMapping(value = "/rate/echarts",method = RequestMethod.GET)
+    public Ret getRateTotalEcharts(){
+        User actionUser = UserHolder.getUser();
+        //将没有查到的评分人数设置为0
+        List<RateEcharts> rateEcharts = userService.getRateTotalEcharts(actionUser);
+        //不使用封装类Integer是因为，int有默认值0
+        int[] result = new int[6];
+        rateEcharts.forEach(rate -> {
+            result[rate.getRate()] = rate.getValue();
+        });
+        return Ret.ok(null,result);
+    }
+
+
+    /**
+     * 获取一年销售额的echarts图
+     * @return
+     */
+    @RequestMapping(value = "/trading/echarts",method = RequestMethod.GET)
+    @ResponseBody
+    public Ret getYearTradingEcharts(){
+        User actionUser = UserHolder.getUser();
+        List<TradingEcharts> tradingEcharts = userService.getYearTradingEcharts(actionUser);
+        double[] result = new double[13];
+        tradingEcharts.forEach(trading ->{
+            result[trading.getDate()] = trading.getValue();
+        });
+        return Ret.ok(null,result);
     }
 }

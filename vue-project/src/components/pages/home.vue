@@ -5,9 +5,9 @@
  -->
 
 <script setup>
-import Traffic from "./echarts/traffic.vue";
+import Rate from "./echarts/rate.vue";
 import Classify from "./echarts/classify.vue";
-import Trend from "./echarts/trend.vue";
+import Trading from "./echarts/trading.vue";
 </script>
 
 <template>
@@ -58,19 +58,27 @@ import Trend from "./echarts/trend.vue";
     </el-col>
 
     <!--  访问量卡片  -->
-    <el-col :span="8" v-loading="!this.$store.state.isLogin">
+    <el-col
+      :span="8"
+      v-loading="!this.$store.state.isLogin"
+      style="overflow: hidden"
+    >
       <el-card shadow="hover">
         <template #header>
-          <div class="card-header">访问量</div>
+          <div class="card-header">评分统计</div>
         </template>
         <div class="card-content">
-          <Traffic />
+          <Rate />
         </div>
       </el-card>
     </el-col>
 
     <!-- 商品类型卡片 -->
-    <el-col :span="8" v-loading="!this.$store.state.isLogin">
+    <el-col
+      :span="8"
+      v-loading="!this.$store.state.isLogin"
+      style="overflow: hidden"
+    >
       <el-card shadow="hover">
         <template #header>
           <div class="card-header">商品种类</div>
@@ -84,13 +92,17 @@ import Trend from "./echarts/trend.vue";
 
   <el-row>
     <!-- 销售额趋势卡片 -->
-    <el-col :span="24" v-loading="!this.$store.state.isLogin">
+    <el-col
+      :span="24"
+      v-loading="!this.$store.state.isLogin"
+      style="overflow: hidden"
+    >
       <el-card shadow="hover">
         <template #header>
-          <div class="card-header">销售额趋势</div>
+          <div class="card-header">今年一年销售额趋势</div>
         </template>
         <div class="card-content big-card-content">
-          <Trend />
+          <Trading />
         </div>
       </el-card>
     </el-col>

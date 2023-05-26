@@ -48,4 +48,26 @@
             left join goods on goods.good_id = orders.good_id
         where goods.user_id = #{userId}
     </select>
+
+
+    <select id="getSaleCategoryEcharts" resultType="com.eccentric.tranding.pojo.common.ClassifyEcharts">
+        select category.category_name as name,count(goods.category_id) as value from goods
+            left join category on goods.category_id = category.category_id
+        where goods.user_id = #{userId} group by goods.category_id;
+    </select>
+
+    <select id="getRateTotalEcharts" resultType="com.eccentric.tranding.pojo.common.RateEcharts">
+        select rate,count(rate) as value from orders
+            left join goods on orders.good_id = goods.good_id
+            where goods.user_id = #{userId}
+        group by rate;
+    </select>
+
+    <select id="getYearTradingEcharts" resultType="com.eccentric.tranding.pojo.common.TradingEcharts">
+        select date_format(orders.create_time, '%m') as date,sum(goods.price) as value from orders
+               left join goods on goods.good_id=orders.good_id
+        where goods.user_id = #{userId}
+          and date_format(orders.create_time,'%Y') = date_format(now(),'%Y')
+        group by date_format(orders.create_time, '%m');
+    </select>
 </mapper>

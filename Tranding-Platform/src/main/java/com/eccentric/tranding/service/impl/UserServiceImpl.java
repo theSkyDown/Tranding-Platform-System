@@ -6,9 +6,13 @@ import com.eccentric.tranding.dictionary.Identity;
 import com.eccentric.tranding.dictionary.Status;
 import com.eccentric.tranding.mappers.RoleMapper;
 import com.eccentric.tranding.mappers.UserMapper;
+import com.eccentric.tranding.pojo.Category;
 import com.eccentric.tranding.pojo.Role;
+import com.eccentric.tranding.pojo.common.ClassifyEcharts;
+import com.eccentric.tranding.pojo.common.RateEcharts;
 import com.eccentric.tranding.pojo.common.Ret;
 import com.eccentric.tranding.pojo.User;
+import com.eccentric.tranding.pojo.common.TradingEcharts;
 import com.eccentric.tranding.service.UserService;
 import com.eccentric.tranding.utils.Md5Util;
 import org.springframework.beans.factory.annotation.Autowired;
@@ -407,5 +411,20 @@ public class UserServiceImpl implements UserService {
     @Override
     public Double getUserRate(User actionUser) {
         return userMapper.getUserRate(actionUser.getUserId());
+    }
+
+    @Override
+    public List<ClassifyEcharts> getSaleCategoryEcharts(User actionUser) {
+        return userMapper.getSaleCategoryEcharts(actionUser.getUserId());
+    }
+
+    @Override
+    public List<RateEcharts> getRateTotalEcharts(User actionUser) {
+        return userMapper.getRateTotalEcharts(actionUser.getUserId());
+    }
+
+    @Override
+    public List<TradingEcharts> getYearTradingEcharts(User actionUser) {
+        return userMapper.getYearTradingEcharts(actionUser.getUserId());
     }
 }
