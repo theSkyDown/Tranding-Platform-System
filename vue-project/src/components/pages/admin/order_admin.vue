@@ -55,7 +55,15 @@
             >
           </template>
         </el-table-column>
-        <el-table-column label="出售者" prop="saleUsername" min-width="120" />
+        <el-table-column label="出售者" prop="saleUsername" min-width="120">
+          <template #default="scope">
+            <span
+              class="saleUsername"
+              v-on:click="showSaleDetaileInfo(scope.row.saleUserId)"
+              >{{ scope.row.saleUsername }}</span
+            >
+          </template>
+        </el-table-column>
         <el-table-column label="购买者" prop="buyUsername" min-width="120" />
         <el-table-column label="状态" prop="status" min-width="120">
           <template #default="scope">
@@ -152,6 +160,38 @@
       >
     </template>
   </el-dialog>
+
+  <!-- 卖家详细信息 -->
+  <el-dialog
+    title="卖家详细信息"
+    width="25%"
+    align-center
+    draggable
+    v-model="userDetailDialog"
+  >
+    <div class="good-detail-content">
+      <div>用户名：{{ this.saleUser.username }}</div>
+      <div>联系方式：{{ this.saleUser.phone }}</div>
+      <div>性别：{{ this.saleUser.genderName }}</div>
+      <div>角色：{{ this.saleUser.roleName }}</div>
+      <div>
+        <span class="good-img-title">头像：</span>
+        <el-image
+          class="good-img"
+          :src="this.saleUser.avatar"
+          :preview-src-list="[this.saleUser.avatar]"
+          style="width: 80px; height: 80px"
+          preview-teleported
+        ></el-image>
+      </div>
+    </div>
+    <!-- 底部按钮 -->
+    <template #footer>
+      <el-button type="primary" v-on:click="userDetailDialog = false"
+        >确认</el-button
+      >
+    </template>
+  </el-dialog>
 </template>
 
 <script>
@@ -186,6 +226,9 @@ export default {
         goodImg: "",
         createTime: "",
       },
+      userDetailDialog: false,
+      //卖家详细信息
+      saleUser: {},
     };
   },
   methods: {
@@ -340,6 +383,21 @@ export default {
         }
       });
     },
+    //显示卖家的详细信息
+    showSaleDetaileInfo(userId) {
+      this.userDetailDialog = true;
+      let that = this;
+      //获取商品的详细信息请求
+      axios({
+        url: this.$store.state.localhost + "/user/info?userId=" + userId,
+        method: "get",
+        withCredentials: true,
+      }).then(function (res) {
+        if (res.data.status) {
+          that.saleUser = res.data.data;
+        }
+      });
+    },
   },
   mounted() {
     this.reloadOrder();
@@ -366,5 +424,9 @@ export default {
 .good-detail-content > div > .good-img {
   position: relative !important;
   left: 10px !important;
+}
+.saleUsername:hover {
+  cursor: pointer;
+  color: #44a7ff;
 }
 </style>

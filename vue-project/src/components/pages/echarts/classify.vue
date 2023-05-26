@@ -1,6 +1,6 @@
 <!-- 
     
-    分类的echart图
+    出售分类的echart图
 
 -->
 <template>

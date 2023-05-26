@@ -8,7 +8,7 @@
     </insert>
 
     <select id="getAllOrders" resultType="com.eccentric.tranding.pojo.Order">
-        select orders.*,goods.good_name,saleUser.username as saleUsername,buyUser.username as buyUsername from orders left join goods on orders.good_id = goods.good_id
+        select orders.*,goods.good_name,saleUser.username as saleUsername,buyUser.username as buyUsername,goods.user_id as sale_user_id from orders left join goods on orders.good_id = goods.good_id
                  left join user as buyUser on orders.user_id = buyUser.user_id left join user as saleUser on goods.user_id=saleUser.user_id
             where concat(saleUser.username,buyUser.username,goods.good_name) like "%"#{keyword}"%" limit #{num},#{size}
     </select>
@@ -28,7 +28,7 @@
 
 
     <select id="getAllOrderByActionUser" resultType="com.eccentric.tranding.pojo.Order">
-        select orders.*,goods.good_name,saleUser.username as saleUsername,buyUser.username as buyUsername
+        select orders.*,goods.good_name,saleUser.username as saleUsername,buyUser.username as buyUsername,goods.user_id as sale_user_id
         from orders left join goods on orders.good_id = goods.good_id
             left join user as buyUser on orders.user_id = buyUser.user_id
             left join user as saleUser on goods.user_id=saleUser.user_id

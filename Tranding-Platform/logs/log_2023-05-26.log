@@ -915,3 +915,632 @@ java.lang.IllegalArgumentException: Invalid character found in the request targe
 2023-05-26 01:56:59.607 [http-nio-8080-exec-1] INFO  c.e.tranding.interceptor.LoggingInterceptor - Response Status: 200
 2023-05-26 01:57:12.647 [SpringApplicationShutdownHook] INFO  com.zaxxer.hikari.HikariDataSource - HikariPool-1 - Shutdown initiated...
 2023-05-26 01:57:12.648 [SpringApplicationShutdownHook] INFO  com.zaxxer.hikari.HikariDataSource - HikariPool-1 - Shutdown completed.
+2023-05-26 14:35:53.004 [main] INFO  com.eccentric.tranding.TrandingPlatformApplication - Starting TrandingPlatformApplication using Java 1.8.0_342 on EccentricPC with PID 31208 (/home/eccentric/Documents/Trading-Platform-System/Tranding-Platform/target/classes started by eccentric in /home/eccentric/Documents/Trading-Platform-System/Tranding-Platform)
+2023-05-26 14:35:53.007 [main] INFO  com.eccentric.tranding.TrandingPlatformApplication - No active profile set, falling back to 1 default profile: "default"
+2023-05-26 14:35:53.776 [main] INFO  o.s.d.r.config.RepositoryConfigurationDelegate - Multiple Spring Data modules found, entering strict repository configuration mode
+2023-05-26 14:35:53.779 [main] INFO  o.s.d.r.config.RepositoryConfigurationDelegate - Bootstrapping Spring Data Redis repositories in DEFAULT mode.
+2023-05-26 14:35:53.811 [main] INFO  o.s.d.r.config.RepositoryConfigurationDelegate - Finished Spring Data repository scanning in 10 ms. Found 0 Redis repository interfaces.
+2023-05-26 14:35:54.354 [main] INFO  o.s.boot.web.embedded.tomcat.TomcatWebServer - Tomcat initialized with port(s): 8080 (http)
+2023-05-26 14:35:54.362 [main] INFO  org.apache.coyote.http11.Http11NioProtocol - Initializing ProtocolHandler ["http-nio-8080"]
+2023-05-26 14:35:54.363 [main] INFO  org.apache.catalina.core.StandardService - Starting service [Tomcat]
+2023-05-26 14:35:54.363 [main] INFO  org.apache.catalina.core.StandardEngine - Starting Servlet engine: [Apache Tomcat/9.0.71]
+2023-05-26 14:35:54.436 [main] INFO  o.a.c.core.ContainerBase.[Tomcat].[localhost].[/] - Initializing Spring embedded WebApplicationContext
+2023-05-26 14:35:54.436 [main] INFO  o.s.b.w.s.c.ServletWebServerApplicationContext - Root WebApplicationContext: initialization completed in 1382 ms
+2023-05-26 14:35:55.508 [main] INFO  org.apache.coyote.http11.Http11NioProtocol - Starting ProtocolHandler ["http-nio-8080"]
+2023-05-26 14:35:55.520 [main] INFO  o.s.boot.web.embedded.tomcat.TomcatWebServer - Tomcat started on port(s): 8080 (http) with context path ''
+2023-05-26 14:35:55.532 [main] INFO  com.eccentric.tranding.TrandingPlatformApplication - Started TrandingPlatformApplication in 2.985 seconds (JVM running for 3.466)
+2023-05-26 14:38:34.036 [http-nio-8080-exec-1] INFO  o.a.c.core.ContainerBase.[Tomcat].[localhost].[/] - Initializing Spring DispatcherServlet 'dispatcherServlet'
+2023-05-26 14:38:34.036 [http-nio-8080-exec-1] INFO  org.springframework.web.servlet.DispatcherServlet - Initializing Servlet 'dispatcherServlet'
+2023-05-26 14:38:34.038 [http-nio-8080-exec-1] INFO  org.springframework.web.servlet.DispatcherServlet - Completed initialization in 2 ms
+2023-05-26 14:38:34.082 [http-nio-8080-exec-1] INFO  com.zaxxer.hikari.HikariDataSource - HikariPool-1 - Starting...
+2023-05-26 14:38:34.260 [http-nio-8080-exec-1] INFO  com.zaxxer.hikari.HikariDataSource - HikariPool-1 - Start completed.
+2023-05-26 14:38:34.317 [http-nio-8080-exec-1] INFO  c.e.tranding.interceptor.LoggingInterceptor - admin 使用资源：日志导出，访问路径：http://localhost:8080/log/export
+2023-05-26 14:38:34.363 [http-nio-8080-exec-1] INFO  c.e.tranding.interceptor.LoggingInterceptor - Response Status: 200
+2023-05-26 14:38:39.587 [http-nio-8080-exec-2] INFO  c.e.tranding.interceptor.LoggingInterceptor - admin 使用资源：日志导出，访问路径：http://localhost:8080/log/export
+2023-05-26 14:38:39.592 [http-nio-8080-exec-2] INFO  c.e.tranding.interceptor.LoggingInterceptor - Response Status: 200
+2023-05-26 14:38:58.737 [http-nio-8080-exec-4] INFO  c.e.tranding.interceptor.LoggingInterceptor - admin 使用资源：统计用户出售的所有商品的数量，访问路径：http://localhost:8080/good/total/sale
+2023-05-26 14:38:58.739 [http-nio-8080-exec-3] INFO  c.e.tranding.interceptor.LoggingInterceptor - admin 使用资源：获取用户出售的所有商品信息，访问路径：http://localhost:8080/good/all/sale
+2023-05-26 14:38:58.828 [http-nio-8080-exec-4] INFO  c.e.tranding.interceptor.LoggingInterceptor - Response Status: 200
+2023-05-26 14:38:58.836 [http-nio-8080-exec-3] INFO  c.e.tranding.interceptor.LoggingInterceptor - Response Status: 200
+2023-05-26 14:39:00.479 [http-nio-8080-exec-5] INFO  c.e.tranding.interceptor.LoggingInterceptor - admin 使用资源：用户获取自己的所有订单信息的功能，访问路径：http://localhost:8080/order/all/trading
+2023-05-26 14:39:00.479 [http-nio-8080-exec-6] INFO  c.e.tranding.interceptor.LoggingInterceptor - admin 使用资源：用户统计自己的所有订单信息的数量的功能，访问路径：http://localhost:8080/order/total/trading
+2023-05-26 14:39:00.487 [http-nio-8080-exec-5] INFO  c.e.tranding.interceptor.LoggingInterceptor - Response Status: 200
+2023-05-26 14:39:00.488 [http-nio-8080-exec-6] INFO  c.e.tranding.interceptor.LoggingInterceptor - Response Status: 200
+2023-05-26 14:39:05.435 [http-nio-8080-exec-7] INFO  c.e.tranding.interceptor.LoggingInterceptor - admin 使用资源：获取用户的平均分数，访问路径：http://localhost:8080/user/rate
+2023-05-26 14:39:05.446 [http-nio-8080-exec-7] INFO  c.e.tranding.interceptor.LoggingInterceptor - Response Status: 200
+2023-05-26 14:39:13.158 [http-nio-8080-exec-8] INFO  c.e.tranding.interceptor.LoggingInterceptor - admin 使用资源：获取所有在售商品的信息，访问路径：http://localhost:8080/good/all/trading
+2023-05-26 14:39:13.158 [http-nio-8080-exec-9] INFO  c.e.tranding.interceptor.LoggingInterceptor - admin 使用资源：统计所有在售商品的信息，访问路径：http://localhost:8080/good/total/trading
+2023-05-26 14:39:13.165 [http-nio-8080-exec-9] INFO  c.e.tranding.interceptor.LoggingInterceptor - Response Status: 200
+2023-05-26 14:39:13.166 [http-nio-8080-exec-8] INFO  c.e.tranding.interceptor.LoggingInterceptor - Response Status: 200
+2023-05-26 14:39:13.887 [http-nio-8080-exec-10] INFO  c.e.tranding.interceptor.LoggingInterceptor - admin 使用资源：用户获取自己的所有订单信息的功能，访问路径：http://localhost:8080/order/all/trading
+2023-05-26 14:39:13.888 [http-nio-8080-exec-1] INFO  c.e.tranding.interceptor.LoggingInterceptor - admin 使用资源：用户统计自己的所有订单信息的数量的功能，访问路径：http://localhost:8080/order/total/trading
+2023-05-26 14:39:13.893 [http-nio-8080-exec-10] INFO  c.e.tranding.interceptor.LoggingInterceptor - Response Status: 200
+2023-05-26 14:39:13.893 [http-nio-8080-exec-1] INFO  c.e.tranding.interceptor.LoggingInterceptor - Response Status: 200
+2023-05-26 14:39:14.868 [http-nio-8080-exec-2] INFO  c.e.tranding.interceptor.LoggingInterceptor - admin 使用资源：获取所有分类信息的功能，访问路径：http://localhost:8080/category/all
+2023-05-26 14:39:14.868 [http-nio-8080-exec-4] INFO  c.e.tranding.interceptor.LoggingInterceptor - admin 使用资源：统计所有分类信息的数量，访问路径：http://localhost:8080/category/total
+2023-05-26 14:39:14.874 [http-nio-8080-exec-2] INFO  c.e.tranding.interceptor.LoggingInterceptor - Response Status: 200
+2023-05-26 14:39:14.874 [http-nio-8080-exec-4] INFO  c.e.tranding.interceptor.LoggingInterceptor - Response Status: 200
+2023-05-26 14:39:15.492 [http-nio-8080-exec-6] INFO  c.e.tranding.interceptor.LoggingInterceptor - admin 使用资源：统计用户数量功能，访问路径：http://localhost:8080/user/total
+2023-05-26 14:39:15.494 [http-nio-8080-exec-3] INFO  c.e.tranding.interceptor.LoggingInterceptor - admin 使用资源：获取所有用户功能（分页、关键字搜索），访问路径：http://localhost:8080/user/all
+2023-05-26 14:39:15.495 [http-nio-8080-exec-6] INFO  c.e.tranding.interceptor.LoggingInterceptor - Response Status: 200
+2023-05-26 14:39:15.539 [http-nio-8080-exec-3] INFO  c.e.tranding.interceptor.LoggingInterceptor - Response Status: 200
+2023-05-26 14:39:16.827 [http-nio-8080-exec-7] INFO  c.e.tranding.interceptor.LoggingInterceptor - admin 使用资源：统计角色数量功能，访问路径：http://localhost:8080/role/total
+2023-05-26 14:39:16.828 [http-nio-8080-exec-5] INFO  c.e.tranding.interceptor.LoggingInterceptor - admin 使用资源：获取所有角色信息功能（分页、关键字搜索），访问路径：http://localhost:8080/role/all
+2023-05-26 14:39:16.831 [http-nio-8080-exec-7] INFO  c.e.tranding.interceptor.LoggingInterceptor - Response Status: 200
+2023-05-26 14:39:16.838 [http-nio-8080-exec-5] INFO  c.e.tranding.interceptor.LoggingInterceptor - Response Status: 200
+2023-05-26 14:39:17.590 [http-nio-8080-exec-9] INFO  c.e.tranding.interceptor.LoggingInterceptor - admin 使用资源：获取所有用户功能（分页、关键字搜索），访问路径：http://localhost:8080/user/all
+2023-05-26 14:39:17.592 [http-nio-8080-exec-8] INFO  c.e.tranding.interceptor.LoggingInterceptor - admin 使用资源：统计用户数量功能，访问路径：http://localhost:8080/user/total
+2023-05-26 14:39:17.595 [http-nio-8080-exec-8] INFO  c.e.tranding.interceptor.LoggingInterceptor - Response Status: 200
+2023-05-26 14:39:17.607 [http-nio-8080-exec-9] INFO  c.e.tranding.interceptor.LoggingInterceptor - Response Status: 200
+2023-05-26 14:40:06.359 [http-nio-8080-exec-2] INFO  c.e.tranding.interceptor.LoggingInterceptor - admin 使用资源：统计所有分类信息的数量，访问路径：http://localhost:8080/category/total
+2023-05-26 14:40:06.359 [http-nio-8080-exec-1] INFO  c.e.tranding.interceptor.LoggingInterceptor - admin 使用资源：获取所有分类信息的功能，访问路径：http://localhost:8080/category/all
+2023-05-26 14:40:06.362 [http-nio-8080-exec-2] INFO  c.e.tranding.interceptor.LoggingInterceptor - Response Status: 200
+2023-05-26 14:40:06.362 [http-nio-8080-exec-1] INFO  c.e.tranding.interceptor.LoggingInterceptor - Response Status: 200
+2023-05-26 14:40:11.457 [http-nio-8080-exec-4] INFO  c.e.tranding.interceptor.LoggingInterceptor - admin 使用资源：获取所有分类信息的功能，访问路径：http://localhost:8080/category/all
+2023-05-26 14:40:11.458 [http-nio-8080-exec-6] INFO  c.e.tranding.interceptor.LoggingInterceptor - admin 使用资源：统计所有分类信息的数量，访问路径：http://localhost:8080/category/total
+2023-05-26 14:40:11.461 [http-nio-8080-exec-4] INFO  c.e.tranding.interceptor.LoggingInterceptor - Response Status: 200
+2023-05-26 14:40:11.461 [http-nio-8080-exec-6] INFO  c.e.tranding.interceptor.LoggingInterceptor - Response Status: 200
+2023-05-26 14:40:21.192 [http-nio-8080-exec-3] INFO  c.e.tranding.interceptor.LoggingInterceptor - admin 使用资源：获取所有分类信息的功能，访问路径：http://localhost:8080/category/all
+2023-05-26 14:40:21.194 [http-nio-8080-exec-7] INFO  c.e.tranding.interceptor.LoggingInterceptor - admin 使用资源：统计所有分类信息的数量，访问路径：http://localhost:8080/category/total
+2023-05-26 14:40:21.198 [http-nio-8080-exec-7] INFO  c.e.tranding.interceptor.LoggingInterceptor - Response Status: 200
+2023-05-26 14:40:21.199 [http-nio-8080-exec-3] INFO  c.e.tranding.interceptor.LoggingInterceptor - Response Status: 200
+2023-05-26 14:40:23.039 [http-nio-8080-exec-5] INFO  c.e.tranding.interceptor.LoggingInterceptor - admin 使用资源：获取所有商品的信息，访问路径：http://localhost:8080/good/all
+2023-05-26 14:40:23.039 [http-nio-8080-exec-8] INFO  c.e.tranding.interceptor.LoggingInterceptor - admin 使用资源：统计所有商品的信息，访问路径：http://localhost:8080/good/total
+2023-05-26 14:40:23.042 [http-nio-8080-exec-5] INFO  c.e.tranding.interceptor.LoggingInterceptor - Response Status: 200
+2023-05-26 14:40:23.042 [http-nio-8080-exec-8] INFO  c.e.tranding.interceptor.LoggingInterceptor - Response Status: 200
+2023-05-26 14:40:26.250 [http-nio-8080-exec-10] INFO  c.e.tranding.interceptor.LoggingInterceptor - admin 使用资源：统计所有订单信息的数量的功能，访问路径：http://localhost:8080/order/total
+2023-05-26 14:40:26.250 [http-nio-8080-exec-9] INFO  c.e.tranding.interceptor.LoggingInterceptor - admin 使用资源：获取所有订单信息的功能，访问路径：http://localhost:8080/order/all
+2023-05-26 14:40:26.254 [http-nio-8080-exec-10] INFO  c.e.tranding.interceptor.LoggingInterceptor - Response Status: 200
+2023-05-26 14:40:26.254 [http-nio-8080-exec-9] INFO  c.e.tranding.interceptor.LoggingInterceptor - Response Status: 200
+2023-05-26 14:40:27.519 [http-nio-8080-exec-2] INFO  c.e.tranding.interceptor.LoggingInterceptor - admin 使用资源：获取所有用户功能（分页、关键字搜索），访问路径：http://localhost:8080/user/all
+2023-05-26 14:40:27.521 [http-nio-8080-exec-1] INFO  c.e.tranding.interceptor.LoggingInterceptor - admin 使用资源：统计用户数量功能，访问路径：http://localhost:8080/user/total
+2023-05-26 14:40:27.525 [http-nio-8080-exec-1] INFO  c.e.tranding.interceptor.LoggingInterceptor - Response Status: 200
+2023-05-26 14:40:27.535 [http-nio-8080-exec-2] INFO  c.e.tranding.interceptor.LoggingInterceptor - Response Status: 200
+2023-05-26 14:40:28.667 [http-nio-8080-exec-4] INFO  c.e.tranding.interceptor.LoggingInterceptor - admin 使用资源：获取所有角色信息功能（分页、关键字搜索），访问路径：http://localhost:8080/role/all
+2023-05-26 14:40:28.668 [http-nio-8080-exec-6] INFO  c.e.tranding.interceptor.LoggingInterceptor - admin 使用资源：统计角色数量功能，访问路径：http://localhost:8080/role/total
+2023-05-26 14:40:28.671 [http-nio-8080-exec-6] INFO  c.e.tranding.interceptor.LoggingInterceptor - Response Status: 200
+2023-05-26 14:40:28.671 [http-nio-8080-exec-4] INFO  c.e.tranding.interceptor.LoggingInterceptor - Response Status: 200
+2023-05-26 14:40:29.722 [http-nio-8080-exec-3] INFO  c.e.tranding.interceptor.LoggingInterceptor - admin 使用资源：资源数量统计功能，访问路径：http://localhost:8080/module/total
+2023-05-26 14:40:29.722 [http-nio-8080-exec-7] INFO  c.e.tranding.interceptor.LoggingInterceptor - admin 使用资源：获取所有资源信息功能（分页、关键字搜素），访问路径：http://localhost:8080/module/all
+2023-05-26 14:40:29.725 [http-nio-8080-exec-3] INFO  c.e.tranding.interceptor.LoggingInterceptor - Response Status: 200
+2023-05-26 14:40:29.727 [http-nio-8080-exec-7] INFO  c.e.tranding.interceptor.LoggingInterceptor - Response Status: 200
+2023-05-26 14:40:30.800 [http-nio-8080-exec-8] INFO  c.e.tranding.interceptor.LoggingInterceptor - admin 使用资源：统计所有权限的数量，访问路径：http://localhost:8080/permission/total
+2023-05-26 14:40:30.802 [http-nio-8080-exec-5] INFO  c.e.tranding.interceptor.LoggingInterceptor - admin 使用资源：获取所有权限的信息，访问路径：http://localhost:8080/permission/all
+2023-05-26 14:40:30.802 [http-nio-8080-exec-8] INFO  c.e.tranding.interceptor.LoggingInterceptor - Response Status: 200
+2023-05-26 14:40:30.832 [http-nio-8080-exec-5] INFO  c.e.tranding.interceptor.LoggingInterceptor - Response Status: 200
+2023-05-26 14:40:33.275 [http-nio-8080-exec-9] INFO  c.e.tranding.interceptor.LoggingInterceptor - admin 使用资源：获取用户的平均分数，访问路径：http://localhost:8080/user/rate
+2023-05-26 14:40:33.277 [http-nio-8080-exec-9] INFO  c.e.tranding.interceptor.LoggingInterceptor - Response Status: 200
+2023-05-26 14:40:34.556 [http-nio-8080-exec-1] INFO  c.e.tranding.interceptor.LoggingInterceptor - admin 使用资源：统计用户出售的所有商品的数量，访问路径：http://localhost:8080/good/total/sale
+2023-05-26 14:40:34.556 [http-nio-8080-exec-10] INFO  c.e.tranding.interceptor.LoggingInterceptor - admin 使用资源：获取用户出售的所有商品信息，访问路径：http://localhost:8080/good/all/sale
+2023-05-26 14:40:34.558 [http-nio-8080-exec-10] INFO  c.e.tranding.interceptor.LoggingInterceptor - Response Status: 200
+2023-05-26 14:40:34.558 [http-nio-8080-exec-1] INFO  c.e.tranding.interceptor.LoggingInterceptor - Response Status: 200
+2023-05-26 14:40:35.808 [http-nio-8080-exec-4] INFO  c.e.tranding.interceptor.LoggingInterceptor - admin 使用资源：用户统计自己的所有订单信息的数量的功能，访问路径：http://localhost:8080/order/total/trading
+2023-05-26 14:40:35.808 [http-nio-8080-exec-2] INFO  c.e.tranding.interceptor.LoggingInterceptor - admin 使用资源：用户获取自己的所有订单信息的功能，访问路径：http://localhost:8080/order/all/trading
+2023-05-26 14:40:35.811 [http-nio-8080-exec-2] INFO  c.e.tranding.interceptor.LoggingInterceptor - Response Status: 200
+2023-05-26 14:40:35.811 [http-nio-8080-exec-4] INFO  c.e.tranding.interceptor.LoggingInterceptor - Response Status: 200
+2023-05-26 14:40:40.260 [http-nio-8080-exec-6] INFO  c.e.tranding.interceptor.LoggingInterceptor - admin 使用资源：获取所有商品的信息，访问路径：http://localhost:8080/good/all
+2023-05-26 14:40:40.261 [http-nio-8080-exec-3] INFO  c.e.tranding.interceptor.LoggingInterceptor - admin 使用资源：统计所有商品的信息，访问路径：http://localhost:8080/good/total
+2023-05-26 14:40:40.263 [http-nio-8080-exec-6] INFO  c.e.tranding.interceptor.LoggingInterceptor - Response Status: 200
+2023-05-26 14:40:40.264 [http-nio-8080-exec-3] INFO  c.e.tranding.interceptor.LoggingInterceptor - Response Status: 200
+2023-05-26 14:40:42.596 [http-nio-8080-exec-8] INFO  c.e.tranding.interceptor.LoggingInterceptor - admin 使用资源：统计所有在售商品的信息，访问路径：http://localhost:8080/good/total/trading
+2023-05-26 14:40:42.596 [http-nio-8080-exec-7] INFO  c.e.tranding.interceptor.LoggingInterceptor - admin 使用资源：获取所有在售商品的信息，访问路径：http://localhost:8080/good/all/trading
+2023-05-26 14:40:42.599 [http-nio-8080-exec-8] INFO  c.e.tranding.interceptor.LoggingInterceptor - Response Status: 200
+2023-05-26 14:40:42.599 [http-nio-8080-exec-7] INFO  c.e.tranding.interceptor.LoggingInterceptor - Response Status: 200
+2023-05-26 14:40:43.358 [http-nio-8080-exec-5] INFO  c.e.tranding.interceptor.LoggingInterceptor - admin 使用资源：获取所有分类信息的功能，访问路径：http://localhost:8080/category/all
+2023-05-26 14:40:43.364 [http-nio-8080-exec-5] INFO  c.e.tranding.interceptor.LoggingInterceptor - Response Status: 200
+2023-05-26 14:40:54.391 [http-nio-8080-exec-9] INFO  c.e.tranding.interceptor.LoggingInterceptor - admin 使用资源：商品图片上传功能，访问路径：http://localhost:8080/qiniu/good
+2023-05-26 14:40:55.414 [http-nio-8080-exec-9] INFO  c.e.tranding.interceptor.LoggingInterceptor - Response Status: 200
+2023-05-26 14:41:11.431 [http-nio-8080-exec-1] INFO  c.e.tranding.interceptor.LoggingInterceptor - admin 使用资源：商品发布功能，访问路径：http://localhost:8080/good/add
+2023-05-26 14:41:11.482 [http-nio-8080-exec-1] INFO  c.e.tranding.interceptor.LoggingInterceptor - Response Status: 200
+2023-05-26 14:41:11.496 [http-nio-8080-exec-2] INFO  c.e.tranding.interceptor.LoggingInterceptor - admin 使用资源：获取所有在售商品的信息，访问路径：http://localhost:8080/good/all/trading
+2023-05-26 14:41:11.498 [http-nio-8080-exec-4] INFO  c.e.tranding.interceptor.LoggingInterceptor - admin 使用资源：统计所有在售商品的信息，访问路径：http://localhost:8080/good/total/trading
+2023-05-26 14:41:11.501 [http-nio-8080-exec-4] INFO  c.e.tranding.interceptor.LoggingInterceptor - Response Status: 200
+2023-05-26 14:41:11.504 [http-nio-8080-exec-2] INFO  c.e.tranding.interceptor.LoggingInterceptor - Response Status: 200
+2023-05-26 14:41:17.394 [http-nio-8080-exec-6] INFO  c.e.tranding.interceptor.LoggingInterceptor - admin 使用资源：购买商品功能，访问路径：http://localhost:8080/good/buy
+2023-05-26 14:41:17.397 [http-nio-8080-exec-6] INFO  c.e.tranding.interceptor.LoggingInterceptor - Response Status: 200
+2023-05-26 14:41:17.412 [http-nio-8080-exec-8] INFO  c.e.tranding.interceptor.LoggingInterceptor - admin 使用资源：统计所有在售商品的信息，访问路径：http://localhost:8080/good/total/trading
+2023-05-26 14:41:17.412 [http-nio-8080-exec-3] INFO  c.e.tranding.interceptor.LoggingInterceptor - admin 使用资源：获取所有在售商品的信息，访问路径：http://localhost:8080/good/all/trading
+2023-05-26 14:41:17.415 [http-nio-8080-exec-8] INFO  c.e.tranding.interceptor.LoggingInterceptor - Response Status: 200
+2023-05-26 14:41:17.419 [http-nio-8080-exec-3] INFO  c.e.tranding.interceptor.LoggingInterceptor - Response Status: 200
+2023-05-26 14:41:41.384 [http-nio-8080-exec-7] INFO  c.e.tranding.interceptor.LoggingInterceptor - admin 使用资源：商品图片上传功能，访问路径：http://localhost:8080/qiniu/good
+2023-05-26 14:41:42.258 [http-nio-8080-exec-7] INFO  c.e.tranding.interceptor.LoggingInterceptor - Response Status: 200
+2023-05-26 14:41:42.325 [http-nio-8080-exec-9] INFO  c.e.tranding.interceptor.LoggingInterceptor - admin 使用资源：商品发布功能，访问路径：http://localhost:8080/good/add
+2023-05-26 14:41:42.335 [http-nio-8080-exec-9] INFO  c.e.tranding.interceptor.LoggingInterceptor - Response Status: 200
+2023-05-26 14:41:42.354 [http-nio-8080-exec-1] INFO  c.e.tranding.interceptor.LoggingInterceptor - admin 使用资源：统计所有在售商品的信息，访问路径：http://localhost:8080/good/total/trading
+2023-05-26 14:41:42.354 [http-nio-8080-exec-10] INFO  c.e.tranding.interceptor.LoggingInterceptor - admin 使用资源：获取所有在售商品的信息，访问路径：http://localhost:8080/good/all/trading
+2023-05-26 14:41:42.357 [http-nio-8080-exec-1] INFO  c.e.tranding.interceptor.LoggingInterceptor - Response Status: 200
+2023-05-26 14:41:42.363 [http-nio-8080-exec-10] INFO  c.e.tranding.interceptor.LoggingInterceptor - Response Status: 200
+2023-05-26 14:41:44.868 [http-nio-8080-exec-4] INFO  c.e.tranding.interceptor.LoggingInterceptor - admin 使用资源：用户获取自己的所有订单信息的功能，访问路径：http://localhost:8080/order/all/trading
+2023-05-26 14:41:44.868 [http-nio-8080-exec-2] INFO  c.e.tranding.interceptor.LoggingInterceptor - admin 使用资源：用户统计自己的所有订单信息的数量的功能，访问路径：http://localhost:8080/order/total/trading
+2023-05-26 14:41:44.871 [http-nio-8080-exec-2] INFO  c.e.tranding.interceptor.LoggingInterceptor - Response Status: 200
+2023-05-26 14:41:44.871 [http-nio-8080-exec-4] INFO  c.e.tranding.interceptor.LoggingInterceptor - Response Status: 200
+2023-05-26 14:41:45.932 [http-nio-8080-exec-6] INFO  c.e.tranding.interceptor.LoggingInterceptor - admin 使用资源：获取用户出售的所有商品信息，访问路径：http://localhost:8080/good/all/sale
+2023-05-26 14:41:45.933 [http-nio-8080-exec-8] INFO  c.e.tranding.interceptor.LoggingInterceptor - admin 使用资源：统计用户出售的所有商品的数量，访问路径：http://localhost:8080/good/total/sale
+2023-05-26 14:41:45.936 [http-nio-8080-exec-8] INFO  c.e.tranding.interceptor.LoggingInterceptor - Response Status: 200
+2023-05-26 14:41:45.942 [http-nio-8080-exec-6] INFO  c.e.tranding.interceptor.LoggingInterceptor - Response Status: 200
+2023-05-26 14:41:48.901 [http-nio-8080-exec-3] INFO  c.e.tranding.interceptor.LoggingInterceptor - admin 使用资源：获取所有商品的信息，访问路径：http://localhost:8080/good/all
+2023-05-26 14:41:48.901 [http-nio-8080-exec-7] INFO  c.e.tranding.interceptor.LoggingInterceptor - admin 使用资源：统计所有商品的信息，访问路径：http://localhost:8080/good/total
+2023-05-26 14:41:48.905 [http-nio-8080-exec-7] INFO  c.e.tranding.interceptor.LoggingInterceptor - Response Status: 200
+2023-05-26 14:41:48.912 [http-nio-8080-exec-3] INFO  c.e.tranding.interceptor.LoggingInterceptor - Response Status: 200
+2023-05-26 14:41:50.622 [http-nio-8080-exec-5] INFO  c.e.tranding.interceptor.LoggingInterceptor - admin 使用资源：获取所有分类信息的功能，访问路径：http://localhost:8080/category/all
+2023-05-26 14:41:50.625 [http-nio-8080-exec-9] INFO  c.e.tranding.interceptor.LoggingInterceptor - admin 使用资源：获取所有用户功能（分页、关键字搜索），访问路径：http://localhost:8080/user/all
+2023-05-26 14:41:50.627 [http-nio-8080-exec-5] INFO  c.e.tranding.interceptor.LoggingInterceptor - Response Status: 200
+2023-05-26 14:41:50.644 [http-nio-8080-exec-9] INFO  c.e.tranding.interceptor.LoggingInterceptor - Response Status: 200
+2023-05-26 14:41:55.455 [http-nio-8080-exec-10] INFO  c.e.tranding.interceptor.LoggingInterceptor - admin 使用资源：修改商品信息功能，访问路径：http://localhost:8080/good/update
+2023-05-26 14:41:55.466 [http-nio-8080-exec-10] INFO  c.e.tranding.interceptor.LoggingInterceptor - Response Status: 200
+2023-05-26 14:41:55.480 [http-nio-8080-exec-2] INFO  c.e.tranding.interceptor.LoggingInterceptor - admin 使用资源：获取所有商品的信息，访问路径：http://localhost:8080/good/all
+2023-05-26 14:41:55.481 [http-nio-8080-exec-4] INFO  c.e.tranding.interceptor.LoggingInterceptor - admin 使用资源：统计所有商品的信息，访问路径：http://localhost:8080/good/total
+2023-05-26 14:41:55.483 [http-nio-8080-exec-4] INFO  c.e.tranding.interceptor.LoggingInterceptor - Response Status: 200
+2023-05-26 14:41:55.489 [http-nio-8080-exec-2] INFO  c.e.tranding.interceptor.LoggingInterceptor - Response Status: 200
+2023-05-26 14:41:57.059 [http-nio-8080-exec-8] INFO  c.e.tranding.interceptor.LoggingInterceptor - admin 使用资源：获取所有在售商品的信息，访问路径：http://localhost:8080/good/all/trading
+2023-05-26 14:41:57.060 [http-nio-8080-exec-6] INFO  c.e.tranding.interceptor.LoggingInterceptor - admin 使用资源：统计所有在售商品的信息，访问路径：http://localhost:8080/good/total/trading
+2023-05-26 14:41:57.063 [http-nio-8080-exec-6] INFO  c.e.tranding.interceptor.LoggingInterceptor - Response Status: 200
+2023-05-26 14:41:57.066 [http-nio-8080-exec-8] INFO  c.e.tranding.interceptor.LoggingInterceptor - Response Status: 200
+2023-05-26 14:42:06.113 [http-nio-8080-exec-7] INFO  c.e.tranding.interceptor.LoggingInterceptor - admin 使用资源：购买商品功能，访问路径：http://localhost:8080/good/buy
+2023-05-26 14:42:06.131 [http-nio-8080-exec-7] INFO  c.e.tranding.interceptor.LoggingInterceptor - Response Status: 200
+2023-05-26 14:42:06.146 [http-nio-8080-exec-5] INFO  c.e.tranding.interceptor.LoggingInterceptor - admin 使用资源：统计所有在售商品的信息，访问路径：http://localhost:8080/good/total/trading
+2023-05-26 14:42:06.146 [http-nio-8080-exec-3] INFO  c.e.tranding.interceptor.LoggingInterceptor - admin 使用资源：获取所有在售商品的信息，访问路径：http://localhost:8080/good/all/trading
+2023-05-26 14:42:06.150 [http-nio-8080-exec-5] INFO  c.e.tranding.interceptor.LoggingInterceptor - Response Status: 200
+2023-05-26 14:42:06.153 [http-nio-8080-exec-3] INFO  c.e.tranding.interceptor.LoggingInterceptor - Response Status: 200
+2023-05-26 14:42:09.282 [http-nio-8080-exec-9] INFO  c.e.tranding.interceptor.LoggingInterceptor - admin 使用资源：用户获取自己的所有订单信息的功能，访问路径：http://localhost:8080/order/all/trading
+2023-05-26 14:42:09.284 [http-nio-8080-exec-1] INFO  c.e.tranding.interceptor.LoggingInterceptor - admin 使用资源：用户统计自己的所有订单信息的数量的功能，访问路径：http://localhost:8080/order/total/trading
+2023-05-26 14:42:09.288 [http-nio-8080-exec-9] INFO  c.e.tranding.interceptor.LoggingInterceptor - Response Status: 200
+2023-05-26 14:42:09.288 [http-nio-8080-exec-1] INFO  c.e.tranding.interceptor.LoggingInterceptor - Response Status: 200
+2023-05-26 14:42:15.843 [http-nio-8080-exec-4] INFO  c.e.tranding.interceptor.LoggingInterceptor - admin 使用资源：用户选择完成订单的功能，访问路径：http://localhost:8080/order/complete
+2023-05-26 14:42:15.849 [http-nio-8080-exec-4] INFO  c.e.tranding.interceptor.LoggingInterceptor - Response Status: 200
+2023-05-26 14:42:15.863 [http-nio-8080-exec-6] INFO  c.e.tranding.interceptor.LoggingInterceptor - admin 使用资源：用户统计自己的所有订单信息的数量的功能，访问路径：http://localhost:8080/order/total/trading
+2023-05-26 14:42:15.863 [http-nio-8080-exec-2] INFO  c.e.tranding.interceptor.LoggingInterceptor - admin 使用资源：用户获取自己的所有订单信息的功能，访问路径：http://localhost:8080/order/all/trading
+2023-05-26 14:42:15.867 [http-nio-8080-exec-6] INFO  c.e.tranding.interceptor.LoggingInterceptor - Response Status: 200
+2023-05-26 14:42:15.867 [http-nio-8080-exec-2] INFO  c.e.tranding.interceptor.LoggingInterceptor - Response Status: 200
+2023-05-26 14:43:40.930 [http-nio-8080-exec-4] INFO  c.e.tranding.interceptor.LoggingInterceptor - eccentric 使用资源：获取用户的平均分数，访问路径：http://localhost:8080/user/rate
+2023-05-26 14:43:40.933 [http-nio-8080-exec-4] INFO  c.e.tranding.interceptor.LoggingInterceptor - Response Status: 200
+2023-05-26 14:44:39.397 [http-nio-8080-exec-8] INFO  c.e.tranding.interceptor.LoggingInterceptor - admin 使用资源：获取用户的平均分数，访问路径：http://localhost:8080/user/rate
+2023-05-26 14:44:39.400 [http-nio-8080-exec-8] INFO  c.e.tranding.interceptor.LoggingInterceptor - Response Status: 200
+2023-05-26 14:44:46.046 [http-nio-8080-exec-5] INFO  c.e.tranding.interceptor.LoggingInterceptor - admin 使用资源：日志导出，访问路径：http://localhost:8080/log/export
+2023-05-26 14:44:46.050 [http-nio-8080-exec-5] INFO  c.e.tranding.interceptor.LoggingInterceptor - Response Status: 200
+2023-05-26 14:49:02.434 [http-nio-8080-exec-9] INFO  c.e.tranding.interceptor.LoggingInterceptor - admin 使用资源：获取所有角色信息功能（分页、关键字搜索），访问路径：http://localhost:8080/role/all
+2023-05-26 14:49:02.437 [http-nio-8080-exec-1] INFO  c.e.tranding.interceptor.LoggingInterceptor - admin 使用资源：统计角色数量功能，访问路径：http://localhost:8080/role/total
+2023-05-26 14:49:02.438 [http-nio-8080-exec-9] INFO  c.e.tranding.interceptor.LoggingInterceptor - Response Status: 200
+2023-05-26 14:49:02.440 [http-nio-8080-exec-1] INFO  c.e.tranding.interceptor.LoggingInterceptor - Response Status: 200
+2023-05-26 14:49:09.543 [http-nio-8080-exec-10] INFO  c.e.tranding.interceptor.LoggingInterceptor - admin 使用资源：获取所有权限的信息，访问路径：http://localhost:8080/permission/all
+2023-05-26 14:49:09.544 [http-nio-8080-exec-4] INFO  c.e.tranding.interceptor.LoggingInterceptor - admin 使用资源：统计所有权限的数量，访问路径：http://localhost:8080/permission/total
+2023-05-26 14:49:09.547 [http-nio-8080-exec-4] INFO  c.e.tranding.interceptor.LoggingInterceptor - Response Status: 200
+2023-05-26 14:49:09.561 [http-nio-8080-exec-10] INFO  c.e.tranding.interceptor.LoggingInterceptor - Response Status: 200
+2023-05-26 14:49:10.498 [http-nio-8080-exec-2] INFO  c.e.tranding.interceptor.LoggingInterceptor - admin 使用资源：资源数量统计功能，访问路径：http://localhost:8080/module/total
+2023-05-26 14:49:10.498 [http-nio-8080-exec-6] INFO  c.e.tranding.interceptor.LoggingInterceptor - admin 使用资源：获取所有资源信息功能（分页、关键字搜素），访问路径：http://localhost:8080/module/all
+2023-05-26 14:49:10.501 [http-nio-8080-exec-2] INFO  c.e.tranding.interceptor.LoggingInterceptor - Response Status: 200
+2023-05-26 14:49:10.504 [http-nio-8080-exec-6] INFO  c.e.tranding.interceptor.LoggingInterceptor - Response Status: 200
+2023-05-26 14:49:17.521 [http-nio-8080-exec-8] INFO  c.e.tranding.interceptor.LoggingInterceptor - admin 使用资源：获取所有权限的信息，访问路径：http://localhost:8080/permission/all
+2023-05-26 14:49:17.522 [http-nio-8080-exec-5] INFO  c.e.tranding.interceptor.LoggingInterceptor - admin 使用资源：统计所有权限的数量，访问路径：http://localhost:8080/permission/total
+2023-05-26 14:49:17.525 [http-nio-8080-exec-5] INFO  c.e.tranding.interceptor.LoggingInterceptor - Response Status: 200
+2023-05-26 14:49:17.533 [http-nio-8080-exec-8] INFO  c.e.tranding.interceptor.LoggingInterceptor - Response Status: 200
+2023-05-26 14:50:06.356 [http-nio-8080-exec-8] INFO  c.e.tranding.interceptor.LoggingInterceptor - 张三 使用资源：统计用户出售的所有商品的数量，访问路径：http://localhost:8080/good/total/sale
+2023-05-26 14:50:06.356 [http-nio-8080-exec-5] INFO  c.e.tranding.interceptor.LoggingInterceptor - 张三 使用资源：获取用户出售的所有商品信息，访问路径：http://localhost:8080/good/all/sale
+2023-05-26 14:50:06.359 [http-nio-8080-exec-8] INFO  c.e.tranding.interceptor.LoggingInterceptor - Response Status: 200
+2023-05-26 14:50:06.359 [http-nio-8080-exec-5] INFO  c.e.tranding.interceptor.LoggingInterceptor - Response Status: 200
+2023-05-26 14:50:07.172 [http-nio-8080-exec-3] INFO  c.e.tranding.interceptor.LoggingInterceptor - 张三 使用资源：用户统计自己的所有订单信息的数量的功能，访问路径：http://localhost:8080/order/total/trading
+2023-05-26 14:50:07.172 [http-nio-8080-exec-7] INFO  c.e.tranding.interceptor.LoggingInterceptor - 张三 使用资源：用户获取自己的所有订单信息的功能，访问路径：http://localhost:8080/order/all/trading
+2023-05-26 14:50:07.174 [http-nio-8080-exec-3] INFO  c.e.tranding.interceptor.LoggingInterceptor - Response Status: 200
+2023-05-26 14:50:07.174 [http-nio-8080-exec-7] INFO  c.e.tranding.interceptor.LoggingInterceptor - Response Status: 200
+2023-05-26 14:50:08.787 [http-nio-8080-exec-1] INFO  c.e.tranding.interceptor.LoggingInterceptor - 张三 使用资源：统计所有在售商品的信息，访问路径：http://localhost:8080/good/total/trading
+2023-05-26 14:50:08.788 [http-nio-8080-exec-9] INFO  c.e.tranding.interceptor.LoggingInterceptor - 张三 使用资源：获取所有在售商品的信息，访问路径：http://localhost:8080/good/all/trading
+2023-05-26 14:50:08.790 [http-nio-8080-exec-1] INFO  c.e.tranding.interceptor.LoggingInterceptor - Response Status: 200
+2023-05-26 14:50:08.795 [http-nio-8080-exec-9] INFO  c.e.tranding.interceptor.LoggingInterceptor - Response Status: 200
+2023-05-26 14:50:20.300 [http-nio-8080-exec-5] INFO  c.e.tranding.interceptor.LoggingInterceptor - test 使用资源：获取用户的平均分数，访问路径：http://localhost:8080/user/rate
+2023-05-26 14:50:20.304 [http-nio-8080-exec-5] INFO  c.e.tranding.interceptor.LoggingInterceptor - Response Status: 200
+2023-05-26 14:50:24.023 [http-nio-8080-exec-3] INFO  c.e.tranding.interceptor.LoggingInterceptor - test 使用资源：获取所有订单信息的功能，访问路径：http://localhost:8080/order/all
+2023-05-26 14:50:24.023 [http-nio-8080-exec-7] INFO  c.e.tranding.interceptor.LoggingInterceptor - test 使用资源：统计所有订单信息的数量的功能，访问路径：http://localhost:8080/order/total
+2023-05-26 14:50:24.026 [http-nio-8080-exec-7] INFO  c.e.tranding.interceptor.LoggingInterceptor - Response Status: 200
+2023-05-26 14:50:24.026 [http-nio-8080-exec-3] INFO  c.e.tranding.interceptor.LoggingInterceptor - Response Status: 200
+2023-05-26 14:50:28.226 [http-nio-8080-exec-10] INFO  c.e.tranding.interceptor.LoggingInterceptor - test 使用资源：统计所有订单信息的数量的功能，访问路径：http://localhost:8080/order/total
+2023-05-26 14:50:28.226 [http-nio-8080-exec-4] INFO  c.e.tranding.interceptor.LoggingInterceptor - test 使用资源：获取所有订单信息的功能，访问路径：http://localhost:8080/order/all
+2023-05-26 14:50:28.228 [http-nio-8080-exec-4] INFO  c.e.tranding.interceptor.LoggingInterceptor - Response Status: 200
+2023-05-26 14:50:28.228 [http-nio-8080-exec-10] INFO  c.e.tranding.interceptor.LoggingInterceptor - Response Status: 200
+2023-05-26 14:50:33.269 [http-nio-8080-exec-6] INFO  c.e.tranding.interceptor.LoggingInterceptor - test 使用资源：统计角色数量功能，访问路径：http://localhost:8080/role/total
+2023-05-26 14:50:33.269 [http-nio-8080-exec-2] INFO  c.e.tranding.interceptor.LoggingInterceptor - test 使用资源：获取所有角色信息功能（分页、关键字搜索），访问路径：http://localhost:8080/role/all
+2023-05-26 14:50:33.272 [http-nio-8080-exec-2] INFO  c.e.tranding.interceptor.LoggingInterceptor - Response Status: 200
+2023-05-26 14:50:33.272 [http-nio-8080-exec-6] INFO  c.e.tranding.interceptor.LoggingInterceptor - Response Status: 200
+2023-05-26 14:50:43.925 [http-nio-8080-exec-7] INFO  c.e.tranding.interceptor.LoggingInterceptor - admin 使用资源：获取所有角色信息功能（分页、关键字搜索），访问路径：http://localhost:8080/role/all
+2023-05-26 14:50:43.927 [http-nio-8080-exec-3] INFO  c.e.tranding.interceptor.LoggingInterceptor - admin 使用资源：统计角色数量功能，访问路径：http://localhost:8080/role/total
+2023-05-26 14:50:43.929 [http-nio-8080-exec-7] INFO  c.e.tranding.interceptor.LoggingInterceptor - Response Status: 200
+2023-05-26 14:50:43.930 [http-nio-8080-exec-3] INFO  c.e.tranding.interceptor.LoggingInterceptor - Response Status: 200
+2023-05-26 14:50:45.140 [http-nio-8080-exec-9] INFO  c.e.tranding.interceptor.LoggingInterceptor - admin 使用资源：统计所有权限的数量，访问路径：http://localhost:8080/permission/total
+2023-05-26 14:50:45.140 [http-nio-8080-exec-1] INFO  c.e.tranding.interceptor.LoggingInterceptor - admin 使用资源：获取所有权限的信息，访问路径：http://localhost:8080/permission/all
+2023-05-26 14:50:45.142 [http-nio-8080-exec-9] INFO  c.e.tranding.interceptor.LoggingInterceptor - Response Status: 200
+2023-05-26 14:50:45.158 [http-nio-8080-exec-1] INFO  c.e.tranding.interceptor.LoggingInterceptor - Response Status: 200
+2023-05-26 14:50:47.930 [http-nio-8080-exec-10] INFO  c.e.tranding.interceptor.LoggingInterceptor - admin 使用资源：统计所有权限的数量，访问路径：http://localhost:8080/permission/total
+2023-05-26 14:50:47.933 [http-nio-8080-exec-4] INFO  c.e.tranding.interceptor.LoggingInterceptor - admin 使用资源：获取所有权限的信息，访问路径：http://localhost:8080/permission/all
+2023-05-26 14:50:47.933 [http-nio-8080-exec-10] INFO  c.e.tranding.interceptor.LoggingInterceptor - Response Status: 200
+2023-05-26 14:50:47.951 [http-nio-8080-exec-4] INFO  c.e.tranding.interceptor.LoggingInterceptor - Response Status: 200
+2023-05-26 14:50:51.536 [http-nio-8080-exec-2] INFO  c.e.tranding.interceptor.LoggingInterceptor - admin 使用资源：获取所有资源信息功能（分页、关键字搜素），访问路径：http://localhost:8080/module/all
+2023-05-26 14:50:51.537 [http-nio-8080-exec-6] INFO  c.e.tranding.interceptor.LoggingInterceptor - admin 使用资源：资源数量统计功能，访问路径：http://localhost:8080/module/total
+2023-05-26 14:50:51.540 [http-nio-8080-exec-6] INFO  c.e.tranding.interceptor.LoggingInterceptor - Response Status: 200
+2023-05-26 14:50:51.540 [http-nio-8080-exec-2] INFO  c.e.tranding.interceptor.LoggingInterceptor - Response Status: 200
+2023-05-26 14:50:55.423 [http-nio-8080-exec-5] INFO  c.e.tranding.interceptor.LoggingInterceptor - admin 使用资源：获取所有角色信息功能（分页、关键字搜索），访问路径：http://localhost:8080/role/all
+2023-05-26 14:50:55.425 [http-nio-8080-exec-8] INFO  c.e.tranding.interceptor.LoggingInterceptor - admin 使用资源：统计角色数量功能，访问路径：http://localhost:8080/role/total
+2023-05-26 14:50:55.426 [http-nio-8080-exec-5] INFO  c.e.tranding.interceptor.LoggingInterceptor - Response Status: 200
+2023-05-26 14:50:55.428 [http-nio-8080-exec-8] INFO  c.e.tranding.interceptor.LoggingInterceptor - Response Status: 200
+2023-05-26 14:50:57.234 [http-nio-8080-exec-7] INFO  c.e.tranding.interceptor.LoggingInterceptor - admin 使用资源：获取所有分类信息的功能，访问路径：http://localhost:8080/category/all
+2023-05-26 14:50:57.236 [http-nio-8080-exec-3] INFO  c.e.tranding.interceptor.LoggingInterceptor - admin 使用资源：统计所有分类信息的数量，访问路径：http://localhost:8080/category/total
+2023-05-26 14:50:57.238 [http-nio-8080-exec-7] INFO  c.e.tranding.interceptor.LoggingInterceptor - Response Status: 200
+2023-05-26 14:50:57.238 [http-nio-8080-exec-3] INFO  c.e.tranding.interceptor.LoggingInterceptor - Response Status: 200
+2023-05-26 14:50:58.169 [http-nio-8080-exec-1] INFO  c.e.tranding.interceptor.LoggingInterceptor - admin 使用资源：统计所有商品的信息，访问路径：http://localhost:8080/good/total
+2023-05-26 14:50:58.169 [http-nio-8080-exec-9] INFO  c.e.tranding.interceptor.LoggingInterceptor - admin 使用资源：获取所有商品的信息，访问路径：http://localhost:8080/good/all
+2023-05-26 14:50:58.172 [http-nio-8080-exec-1] INFO  c.e.tranding.interceptor.LoggingInterceptor - Response Status: 200
+2023-05-26 14:50:58.176 [http-nio-8080-exec-9] INFO  c.e.tranding.interceptor.LoggingInterceptor - Response Status: 200
+2023-05-26 14:51:00.953 [http-nio-8080-exec-4] INFO  c.e.tranding.interceptor.LoggingInterceptor - admin 使用资源：统计所有在售商品的信息，访问路径：http://localhost:8080/good/total/trading
+2023-05-26 14:51:00.954 [http-nio-8080-exec-10] INFO  c.e.tranding.interceptor.LoggingInterceptor - admin 使用资源：获取所有在售商品的信息，访问路径：http://localhost:8080/good/all/trading
+2023-05-26 14:51:00.956 [http-nio-8080-exec-4] INFO  c.e.tranding.interceptor.LoggingInterceptor - Response Status: 200
+2023-05-26 14:51:00.960 [http-nio-8080-exec-10] INFO  c.e.tranding.interceptor.LoggingInterceptor - Response Status: 200
+2023-05-26 14:51:04.269 [http-nio-8080-exec-2] INFO  c.e.tranding.interceptor.LoggingInterceptor - admin 使用资源：获取所有分类信息的功能，访问路径：http://localhost:8080/category/all
+2023-05-26 14:51:04.273 [http-nio-8080-exec-2] INFO  c.e.tranding.interceptor.LoggingInterceptor - Response Status: 200
+2023-05-26 14:51:10.909 [http-nio-8080-exec-6] INFO  c.e.tranding.interceptor.LoggingInterceptor - admin 使用资源：购买商品功能，访问路径：http://localhost:8080/good/buy
+2023-05-26 14:51:10.912 [http-nio-8080-exec-6] INFO  c.e.tranding.interceptor.LoggingInterceptor - Response Status: 200
+2023-05-26 14:51:10.929 [http-nio-8080-exec-5] INFO  c.e.tranding.interceptor.LoggingInterceptor - admin 使用资源：获取所有在售商品的信息，访问路径：http://localhost:8080/good/all/trading
+2023-05-26 14:51:10.930 [http-nio-8080-exec-8] INFO  c.e.tranding.interceptor.LoggingInterceptor - admin 使用资源：统计所有在售商品的信息，访问路径：http://localhost:8080/good/total/trading
+2023-05-26 14:51:10.932 [http-nio-8080-exec-8] INFO  c.e.tranding.interceptor.LoggingInterceptor - Response Status: 200
+2023-05-26 14:51:10.935 [http-nio-8080-exec-5] INFO  c.e.tranding.interceptor.LoggingInterceptor - Response Status: 200
+2023-05-26 14:51:12.884 [http-nio-8080-exec-3] INFO  c.e.tranding.interceptor.LoggingInterceptor - admin 使用资源：用户统计自己的所有订单信息的数量的功能，访问路径：http://localhost:8080/order/total/trading
+2023-05-26 14:51:12.885 [http-nio-8080-exec-7] INFO  c.e.tranding.interceptor.LoggingInterceptor - admin 使用资源：用户获取自己的所有订单信息的功能，访问路径：http://localhost:8080/order/all/trading
+2023-05-26 14:51:12.887 [http-nio-8080-exec-3] INFO  c.e.tranding.interceptor.LoggingInterceptor - Response Status: 200
+2023-05-26 14:51:12.889 [http-nio-8080-exec-7] INFO  c.e.tranding.interceptor.LoggingInterceptor - Response Status: 200
+2023-05-26 14:51:23.573 [http-nio-8080-exec-9] INFO  c.e.tranding.interceptor.LoggingInterceptor - admin 使用资源：统计用户出售的所有商品的数量，访问路径：http://localhost:8080/good/total/sale
+2023-05-26 14:51:23.573 [http-nio-8080-exec-1] INFO  c.e.tranding.interceptor.LoggingInterceptor - admin 使用资源：获取用户出售的所有商品信息，访问路径：http://localhost:8080/good/all/sale
+2023-05-26 14:51:23.576 [http-nio-8080-exec-9] INFO  c.e.tranding.interceptor.LoggingInterceptor - Response Status: 200
+2023-05-26 14:51:23.578 [http-nio-8080-exec-1] INFO  c.e.tranding.interceptor.LoggingInterceptor - Response Status: 200
+2023-05-26 14:51:39.951 [http-nio-8080-exec-8] INFO  c.e.tranding.interceptor.LoggingInterceptor - admin 使用资源：用户统计自己的所有订单信息的数量的功能，访问路径：http://localhost:8080/order/total/trading
+2023-05-26 14:51:39.951 [http-nio-8080-exec-6] INFO  c.e.tranding.interceptor.LoggingInterceptor - admin 使用资源：用户获取自己的所有订单信息的功能，访问路径：http://localhost:8080/order/all/trading
+2023-05-26 14:51:39.953 [http-nio-8080-exec-8] INFO  c.e.tranding.interceptor.LoggingInterceptor - Response Status: 200
+2023-05-26 14:51:39.953 [http-nio-8080-exec-6] INFO  c.e.tranding.interceptor.LoggingInterceptor - Response Status: 200
+2023-05-26 14:51:46.805 [http-nio-8080-exec-5] INFO  c.e.tranding.interceptor.LoggingInterceptor - admin 使用资源：获取用户的平均分数，访问路径：http://localhost:8080/user/rate
+2023-05-26 14:51:46.808 [http-nio-8080-exec-5] INFO  c.e.tranding.interceptor.LoggingInterceptor - Response Status: 200
+2023-05-26 14:51:51.784 [http-nio-8080-exec-3] INFO  c.e.tranding.interceptor.LoggingInterceptor - admin 使用资源：获取所有订单信息的功能，访问路径：http://localhost:8080/order/all
+2023-05-26 14:51:51.785 [http-nio-8080-exec-7] INFO  c.e.tranding.interceptor.LoggingInterceptor - admin 使用资源：统计所有订单信息的数量的功能，访问路径：http://localhost:8080/order/total
+2023-05-26 14:51:51.787 [http-nio-8080-exec-3] INFO  c.e.tranding.interceptor.LoggingInterceptor - Response Status: 200
+2023-05-26 14:51:51.787 [http-nio-8080-exec-7] INFO  c.e.tranding.interceptor.LoggingInterceptor - Response Status: 200
+2023-05-26 14:51:52.399 [http-nio-8080-exec-9] INFO  c.e.tranding.interceptor.LoggingInterceptor - admin 使用资源：获取所有用户功能（分页、关键字搜索），访问路径：http://localhost:8080/user/all
+2023-05-26 14:51:52.401 [http-nio-8080-exec-1] INFO  c.e.tranding.interceptor.LoggingInterceptor - admin 使用资源：统计用户数量功能，访问路径：http://localhost:8080/user/total
+2023-05-26 14:51:52.405 [http-nio-8080-exec-1] INFO  c.e.tranding.interceptor.LoggingInterceptor - Response Status: 200
+2023-05-26 14:51:52.408 [http-nio-8080-exec-9] INFO  c.e.tranding.interceptor.LoggingInterceptor - Response Status: 200
+2023-05-26 14:51:53.201 [http-nio-8080-exec-10] INFO  c.e.tranding.interceptor.LoggingInterceptor - admin 使用资源：统计角色数量功能，访问路径：http://localhost:8080/role/total
+2023-05-26 14:51:53.201 [http-nio-8080-exec-4] INFO  c.e.tranding.interceptor.LoggingInterceptor - admin 使用资源：获取所有角色信息功能（分页、关键字搜索），访问路径：http://localhost:8080/role/all
+2023-05-26 14:51:53.204 [http-nio-8080-exec-4] INFO  c.e.tranding.interceptor.LoggingInterceptor - Response Status: 200
+2023-05-26 14:51:53.204 [http-nio-8080-exec-10] INFO  c.e.tranding.interceptor.LoggingInterceptor - Response Status: 200
+2023-05-26 14:51:54.335 [http-nio-8080-exec-2] INFO  c.e.tranding.interceptor.LoggingInterceptor - admin 使用资源：获取所有用户功能（分页、关键字搜索），访问路径：http://localhost:8080/user/all
+2023-05-26 14:51:54.336 [http-nio-8080-exec-8] INFO  c.e.tranding.interceptor.LoggingInterceptor - admin 使用资源：统计用户数量功能，访问路径：http://localhost:8080/user/total
+2023-05-26 14:51:54.337 [http-nio-8080-exec-8] INFO  c.e.tranding.interceptor.LoggingInterceptor - Response Status: 200
+2023-05-26 14:51:54.343 [http-nio-8080-exec-2] INFO  c.e.tranding.interceptor.LoggingInterceptor - Response Status: 200
+2023-05-26 14:52:22.224 [http-nio-8080-exec-5] INFO  c.e.tranding.interceptor.LoggingInterceptor - admin 使用资源：资源数量统计功能，访问路径：http://localhost:8080/module/total
+2023-05-26 14:52:22.224 [http-nio-8080-exec-6] INFO  c.e.tranding.interceptor.LoggingInterceptor - admin 使用资源：获取所有资源信息功能（分页、关键字搜素），访问路径：http://localhost:8080/module/all
+2023-05-26 14:52:22.228 [http-nio-8080-exec-5] INFO  c.e.tranding.interceptor.LoggingInterceptor - Response Status: 200
+2023-05-26 14:52:22.228 [http-nio-8080-exec-6] INFO  c.e.tranding.interceptor.LoggingInterceptor - Response Status: 200
+2023-05-26 14:52:27.865 [http-nio-8080-exec-3] INFO  c.e.tranding.interceptor.LoggingInterceptor - admin 使用资源：获取所有权限的信息，访问路径：http://localhost:8080/permission/all
+2023-05-26 14:52:27.866 [http-nio-8080-exec-7] INFO  c.e.tranding.interceptor.LoggingInterceptor - admin 使用资源：统计所有权限的数量，访问路径：http://localhost:8080/permission/total
+2023-05-26 14:52:27.869 [http-nio-8080-exec-7] INFO  c.e.tranding.interceptor.LoggingInterceptor - Response Status: 200
+2023-05-26 14:52:27.878 [http-nio-8080-exec-3] INFO  c.e.tranding.interceptor.LoggingInterceptor - Response Status: 200
+2023-05-26 14:52:38.738 [http-nio-8080-exec-1] INFO  c.e.tranding.interceptor.LoggingInterceptor - admin 使用资源：获取所有用户功能（分页、关键字搜索），访问路径：http://localhost:8080/user/all
+2023-05-26 14:52:38.740 [http-nio-8080-exec-9] INFO  c.e.tranding.interceptor.LoggingInterceptor - admin 使用资源：统计用户数量功能，访问路径：http://localhost:8080/user/total
+2023-05-26 14:52:38.742 [http-nio-8080-exec-9] INFO  c.e.tranding.interceptor.LoggingInterceptor - Response Status: 200
+2023-05-26 14:52:38.750 [http-nio-8080-exec-1] INFO  c.e.tranding.interceptor.LoggingInterceptor - Response Status: 200
+2023-05-26 14:54:23.877 [http-nio-8080-exec-8] INFO  c.e.tranding.interceptor.LoggingInterceptor - admin 使用资源：获取所有在售商品的信息，访问路径：http://localhost:8080/good/all/trading
+2023-05-26 14:54:23.879 [http-nio-8080-exec-2] INFO  c.e.tranding.interceptor.LoggingInterceptor - admin 使用资源：统计所有在售商品的信息，访问路径：http://localhost:8080/good/total/trading
+2023-05-26 14:54:23.880 [http-nio-8080-exec-8] INFO  c.e.tranding.interceptor.LoggingInterceptor - Response Status: 200
+2023-05-26 14:54:23.881 [http-nio-8080-exec-2] INFO  c.e.tranding.interceptor.LoggingInterceptor - Response Status: 200
+2023-05-26 14:54:25.933 [http-nio-8080-exec-5] INFO  c.e.tranding.interceptor.LoggingInterceptor - admin 使用资源：统计所有商品的信息，访问路径：http://localhost:8080/good/total
+2023-05-26 14:54:25.933 [http-nio-8080-exec-6] INFO  c.e.tranding.interceptor.LoggingInterceptor - admin 使用资源：获取所有商品的信息，访问路径：http://localhost:8080/good/all
+2023-05-26 14:54:25.935 [http-nio-8080-exec-5] INFO  c.e.tranding.interceptor.LoggingInterceptor - Response Status: 200
+2023-05-26 14:54:25.939 [http-nio-8080-exec-6] INFO  c.e.tranding.interceptor.LoggingInterceptor - Response Status: 200
+2023-05-26 14:54:27.926 [http-nio-8080-exec-3] INFO  c.e.tranding.interceptor.LoggingInterceptor - admin 使用资源：统计所有分类信息的数量，访问路径：http://localhost:8080/category/total
+2023-05-26 14:54:27.928 [http-nio-8080-exec-7] INFO  c.e.tranding.interceptor.LoggingInterceptor - admin 使用资源：获取所有分类信息的功能，访问路径：http://localhost:8080/category/all
+2023-05-26 14:54:27.929 [http-nio-8080-exec-3] INFO  c.e.tranding.interceptor.LoggingInterceptor - Response Status: 200
+2023-05-26 14:54:27.931 [http-nio-8080-exec-7] INFO  c.e.tranding.interceptor.LoggingInterceptor - Response Status: 200
+2023-05-26 14:54:28.487 [http-nio-8080-exec-1] INFO  c.e.tranding.interceptor.LoggingInterceptor - admin 使用资源：统计所有订单信息的数量的功能，访问路径：http://localhost:8080/order/total
+2023-05-26 14:54:28.487 [http-nio-8080-exec-9] INFO  c.e.tranding.interceptor.LoggingInterceptor - admin 使用资源：获取所有订单信息的功能，访问路径：http://localhost:8080/order/all
+2023-05-26 14:54:28.489 [http-nio-8080-exec-1] INFO  c.e.tranding.interceptor.LoggingInterceptor - Response Status: 200
+2023-05-26 14:54:28.489 [http-nio-8080-exec-9] INFO  c.e.tranding.interceptor.LoggingInterceptor - Response Status: 200
+2023-05-26 14:54:29.323 [http-nio-8080-exec-10] INFO  c.e.tranding.interceptor.LoggingInterceptor - admin 使用资源：获取商品详细信息功能，访问路径：http://localhost:8080/good/detail
+2023-05-26 14:54:29.325 [http-nio-8080-exec-10] INFO  c.e.tranding.interceptor.LoggingInterceptor - Response Status: 200
+2023-05-26 15:23:19.696 [http-nio-8080-exec-6] INFO  c.e.tranding.interceptor.LoggingInterceptor - admin 使用资源：统计所有在售商品的信息，访问路径：http://localhost:8080/good/total/trading
+2023-05-26 15:23:19.696 [http-nio-8080-exec-5] INFO  c.e.tranding.interceptor.LoggingInterceptor - admin 使用资源：获取所有在售商品的信息，访问路径：http://localhost:8080/good/all/trading
+2023-05-26 15:23:19.699 [http-nio-8080-exec-6] INFO  c.e.tranding.interceptor.LoggingInterceptor - Response Status: 200
+2023-05-26 15:23:19.702 [http-nio-8080-exec-5] INFO  c.e.tranding.interceptor.LoggingInterceptor - Response Status: 200
+2023-05-26 15:27:38.296 [http-nio-8080-exec-9] INFO  c.e.tranding.interceptor.LoggingInterceptor - admin 使用资源：购买商品功能，访问路径：http://localhost:8080/good/buy
+2023-05-26 15:27:38.299 [http-nio-8080-exec-9] INFO  c.e.tranding.interceptor.LoggingInterceptor - Response Status: 200
+2023-05-26 15:27:38.316 [http-nio-8080-exec-1] INFO  c.e.tranding.interceptor.LoggingInterceptor - admin 使用资源：获取所有在售商品的信息，访问路径：http://localhost:8080/good/all/trading
+2023-05-26 15:27:38.317 [http-nio-8080-exec-10] INFO  c.e.tranding.interceptor.LoggingInterceptor - admin 使用资源：统计所有在售商品的信息，访问路径：http://localhost:8080/good/total/trading
+2023-05-26 15:27:38.320 [http-nio-8080-exec-10] INFO  c.e.tranding.interceptor.LoggingInterceptor - Response Status: 200
+2023-05-26 15:27:38.323 [http-nio-8080-exec-1] INFO  c.e.tranding.interceptor.LoggingInterceptor - Response Status: 200
+2023-05-26 15:27:42.004 [http-nio-8080-exec-8] INFO  c.e.tranding.interceptor.LoggingInterceptor - admin 使用资源：用户统计自己的所有订单信息的数量的功能，访问路径：http://localhost:8080/order/total/trading
+2023-05-26 15:27:42.004 [http-nio-8080-exec-4] INFO  c.e.tranding.interceptor.LoggingInterceptor - admin 使用资源：用户获取自己的所有订单信息的功能，访问路径：http://localhost:8080/order/all/trading
+2023-05-26 15:27:42.007 [http-nio-8080-exec-4] INFO  c.e.tranding.interceptor.LoggingInterceptor - Response Status: 200
+2023-05-26 15:27:42.007 [http-nio-8080-exec-8] INFO  c.e.tranding.interceptor.LoggingInterceptor - Response Status: 200
+2023-05-26 15:27:45.021 [http-nio-8080-exec-6] INFO  c.e.tranding.interceptor.LoggingInterceptor - admin 使用资源：统计所有在售商品的信息，访问路径：http://localhost:8080/good/total/trading
+2023-05-26 15:27:45.022 [http-nio-8080-exec-2] INFO  c.e.tranding.interceptor.LoggingInterceptor - admin 使用资源：获取所有在售商品的信息，访问路径：http://localhost:8080/good/all/trading
+2023-05-26 15:27:45.023 [http-nio-8080-exec-6] INFO  c.e.tranding.interceptor.LoggingInterceptor - Response Status: 200
+2023-05-26 15:27:45.026 [http-nio-8080-exec-2] INFO  c.e.tranding.interceptor.LoggingInterceptor - Response Status: 200
+2023-05-26 15:28:40.998 [http-nio-8080-exec-3] INFO  c.e.tranding.interceptor.LoggingInterceptor - admin 使用资源：用户统计自己的所有订单信息的数量的功能，访问路径：http://localhost:8080/order/total/trading
+2023-05-26 15:28:40.998 [http-nio-8080-exec-5] INFO  c.e.tranding.interceptor.LoggingInterceptor - admin 使用资源：用户获取自己的所有订单信息的功能，访问路径：http://localhost:8080/order/all/trading
+2023-05-26 15:28:41.001 [http-nio-8080-exec-3] INFO  c.e.tranding.interceptor.LoggingInterceptor - Response Status: 200
+2023-05-26 15:28:41.001 [http-nio-8080-exec-5] INFO  c.e.tranding.interceptor.LoggingInterceptor - Response Status: 200
+2023-05-26 15:28:52.151 [http-nio-8080-exec-9] INFO  c.e.tranding.interceptor.LoggingInterceptor - admin 使用资源：统计所有商品的信息，访问路径：http://localhost:8080/good/total
+2023-05-26 15:28:52.151 [http-nio-8080-exec-7] INFO  c.e.tranding.interceptor.LoggingInterceptor - admin 使用资源：获取所有商品的信息，访问路径：http://localhost:8080/good/all
+2023-05-26 15:28:52.153 [http-nio-8080-exec-9] INFO  c.e.tranding.interceptor.LoggingInterceptor - Response Status: 200
+2023-05-26 15:28:52.156 [http-nio-8080-exec-7] INFO  c.e.tranding.interceptor.LoggingInterceptor - Response Status: 200
+2023-05-26 15:29:17.760 [http-nio-8080-exec-1] INFO  c.e.tranding.interceptor.LoggingInterceptor - admin 使用资源：统计所有分类信息的数量，访问路径：http://localhost:8080/category/total
+2023-05-26 15:29:17.761 [http-nio-8080-exec-10] INFO  c.e.tranding.interceptor.LoggingInterceptor - admin 使用资源：获取所有分类信息的功能，访问路径：http://localhost:8080/category/all
+2023-05-26 15:29:17.762 [http-nio-8080-exec-1] INFO  c.e.tranding.interceptor.LoggingInterceptor - Response Status: 200
+2023-05-26 15:29:17.764 [http-nio-8080-exec-10] INFO  c.e.tranding.interceptor.LoggingInterceptor - Response Status: 200
+2023-05-26 15:29:19.110 [http-nio-8080-exec-8] INFO  c.e.tranding.interceptor.LoggingInterceptor - admin 使用资源：统计所有订单信息的数量的功能，访问路径：http://localhost:8080/order/total
+2023-05-26 15:29:19.110 [http-nio-8080-exec-4] INFO  c.e.tranding.interceptor.LoggingInterceptor - admin 使用资源：获取所有订单信息的功能，访问路径：http://localhost:8080/order/all
+2023-05-26 15:29:19.112 [http-nio-8080-exec-8] INFO  c.e.tranding.interceptor.LoggingInterceptor - Response Status: 200
+2023-05-26 15:29:19.112 [http-nio-8080-exec-4] INFO  c.e.tranding.interceptor.LoggingInterceptor - Response Status: 200
+2023-05-26 15:29:19.740 [http-nio-8080-exec-6] INFO  c.e.tranding.interceptor.LoggingInterceptor - admin 使用资源：获取所有用户功能（分页、关键字搜索），访问路径：http://localhost:8080/user/all
+2023-05-26 15:29:19.743 [http-nio-8080-exec-2] INFO  c.e.tranding.interceptor.LoggingInterceptor - admin 使用资源：统计用户数量功能，访问路径：http://localhost:8080/user/total
+2023-05-26 15:29:19.745 [http-nio-8080-exec-2] INFO  c.e.tranding.interceptor.LoggingInterceptor - Response Status: 200
+2023-05-26 15:29:19.747 [http-nio-8080-exec-6] INFO  c.e.tranding.interceptor.LoggingInterceptor - Response Status: 200
+2023-05-26 15:29:20.787 [http-nio-8080-exec-3] INFO  c.e.tranding.interceptor.LoggingInterceptor - admin 使用资源：获取所有订单信息的功能，访问路径：http://localhost:8080/order/all
+2023-05-26 15:29:20.788 [http-nio-8080-exec-5] INFO  c.e.tranding.interceptor.LoggingInterceptor - admin 使用资源：统计所有订单信息的数量的功能，访问路径：http://localhost:8080/order/total
+2023-05-26 15:29:20.790 [http-nio-8080-exec-5] INFO  c.e.tranding.interceptor.LoggingInterceptor - Response Status: 200
+2023-05-26 15:29:20.790 [http-nio-8080-exec-3] INFO  c.e.tranding.interceptor.LoggingInterceptor - Response Status: 200
+2023-05-26 15:29:38.296 [http-nio-8080-exec-9] INFO  c.e.tranding.interceptor.LoggingInterceptor - admin 使用资源：获取商品详细信息功能，访问路径：http://localhost:8080/good/detail
+2023-05-26 15:29:38.299 [http-nio-8080-exec-9] INFO  c.e.tranding.interceptor.LoggingInterceptor - Response Status: 200
+2023-05-26 15:33:18.438 [http-nio-8080-exec-10] INFO  c.e.tranding.interceptor.LoggingInterceptor - admin 使用资源：获取所有订单信息的功能，访问路径：http://localhost:8080/order/all
+2023-05-26 15:33:18.442 [http-nio-8080-exec-10] INFO  c.e.tranding.interceptor.LoggingInterceptor - Response Status: 200
+2023-05-26 15:33:18.464 [http-nio-8080-exec-4] INFO  c.e.tranding.interceptor.LoggingInterceptor - admin 使用资源：统计所有订单信息的数量的功能，访问路径：http://localhost:8080/order/total
+2023-05-26 15:33:18.467 [http-nio-8080-exec-4] INFO  c.e.tranding.interceptor.LoggingInterceptor - Response Status: 200
+2023-05-26 15:35:02.239 [http-nio-8080-exec-2] INFO  c.e.tranding.interceptor.LoggingInterceptor - admin 使用资源：获取商品详细信息功能，访问路径：http://localhost:8080/good/detail
+2023-05-26 15:35:02.244 [http-nio-8080-exec-2] INFO  c.e.tranding.interceptor.LoggingInterceptor - Response Status: 200
+2023-05-26 15:39:50.589 [SpringApplicationShutdownHook] INFO  com.zaxxer.hikari.HikariDataSource - HikariPool-1 - Shutdown initiated...
+2023-05-26 15:39:50.591 [SpringApplicationShutdownHook] INFO  com.zaxxer.hikari.HikariDataSource - HikariPool-1 - Shutdown completed.
+2023-05-26 15:39:55.882 [main] INFO  com.eccentric.tranding.TrandingPlatformApplication - Starting TrandingPlatformApplication using Java 1.8.0_342 on EccentricPC with PID 34599 (/home/eccentric/Documents/Trading-Platform-System/Tranding-Platform/target/classes started by eccentric in /home/eccentric/Documents/Trading-Platform-System/Tranding-Platform)
+2023-05-26 15:39:55.885 [main] INFO  com.eccentric.tranding.TrandingPlatformApplication - No active profile set, falling back to 1 default profile: "default"
+2023-05-26 15:39:56.599 [main] INFO  o.s.d.r.config.RepositoryConfigurationDelegate - Multiple Spring Data modules found, entering strict repository configuration mode
+2023-05-26 15:39:56.601 [main] INFO  o.s.d.r.config.RepositoryConfigurationDelegate - Bootstrapping Spring Data Redis repositories in DEFAULT mode.
+2023-05-26 15:39:56.627 [main] INFO  o.s.d.r.config.RepositoryConfigurationDelegate - Finished Spring Data repository scanning in 8 ms. Found 0 Redis repository interfaces.
+2023-05-26 15:39:57.121 [main] INFO  o.s.boot.web.embedded.tomcat.TomcatWebServer - Tomcat initialized with port(s): 8080 (http)
+2023-05-26 15:39:57.130 [main] INFO  org.apache.coyote.http11.Http11NioProtocol - Initializing ProtocolHandler ["http-nio-8080"]
+2023-05-26 15:39:57.131 [main] INFO  org.apache.catalina.core.StandardService - Starting service [Tomcat]
+2023-05-26 15:39:57.131 [main] INFO  org.apache.catalina.core.StandardEngine - Starting Servlet engine: [Apache Tomcat/9.0.71]
+2023-05-26 15:39:57.208 [main] INFO  o.a.c.core.ContainerBase.[Tomcat].[localhost].[/] - Initializing Spring embedded WebApplicationContext
+2023-05-26 15:39:57.208 [main] INFO  o.s.b.w.s.c.ServletWebServerApplicationContext - Root WebApplicationContext: initialization completed in 1278 ms
+2023-05-26 15:39:58.303 [main] INFO  org.apache.coyote.http11.Http11NioProtocol - Starting ProtocolHandler ["http-nio-8080"]
+2023-05-26 15:39:58.317 [main] INFO  o.s.boot.web.embedded.tomcat.TomcatWebServer - Tomcat started on port(s): 8080 (http) with context path ''
+2023-05-26 15:39:58.329 [main] INFO  com.eccentric.tranding.TrandingPlatformApplication - Started TrandingPlatformApplication in 2.932 seconds (JVM running for 3.449)
+2023-05-26 15:39:59.926 [http-nio-8080-exec-2] INFO  o.a.c.core.ContainerBase.[Tomcat].[localhost].[/] - Initializing Spring DispatcherServlet 'dispatcherServlet'
+2023-05-26 15:39:59.927 [http-nio-8080-exec-2] INFO  org.springframework.web.servlet.DispatcherServlet - Initializing Servlet 'dispatcherServlet'
+2023-05-26 15:39:59.930 [http-nio-8080-exec-2] INFO  org.springframework.web.servlet.DispatcherServlet - Completed initialization in 3 ms
+2023-05-26 15:39:59.977 [http-nio-8080-exec-1] INFO  com.zaxxer.hikari.HikariDataSource - HikariPool-1 - Starting...
+2023-05-26 15:40:00.168 [http-nio-8080-exec-1] INFO  com.zaxxer.hikari.HikariDataSource - HikariPool-1 - Start completed.
+2023-05-26 15:40:00.246 [http-nio-8080-exec-2] INFO  c.e.tranding.interceptor.LoggingInterceptor - admin 使用资源：统计所有订单信息的数量的功能，访问路径：http://localhost:8080/order/total
+2023-05-26 15:40:00.246 [http-nio-8080-exec-1] INFO  c.e.tranding.interceptor.LoggingInterceptor - admin 使用资源：获取所有订单信息的功能，访问路径：http://localhost:8080/order/all
+2023-05-26 15:40:00.343 [http-nio-8080-exec-2] INFO  c.e.tranding.interceptor.LoggingInterceptor - Response Status: 200
+2023-05-26 15:40:00.351 [http-nio-8080-exec-1] INFO  c.e.tranding.interceptor.LoggingInterceptor - Response Status: 200
+2023-05-26 15:41:13.687 [SpringApplicationShutdownHook] INFO  com.zaxxer.hikari.HikariDataSource - HikariPool-1 - Shutdown initiated...
+2023-05-26 15:41:13.694 [SpringApplicationShutdownHook] INFO  com.zaxxer.hikari.HikariDataSource - HikariPool-1 - Shutdown completed.
+2023-05-26 15:41:16.524 [main] INFO  com.eccentric.tranding.TrandingPlatformApplication - Starting TrandingPlatformApplication using Java 1.8.0_342 on EccentricPC with PID 34761 (/home/eccentric/Documents/Trading-Platform-System/Tranding-Platform/target/classes started by eccentric in /home/eccentric/Documents/Trading-Platform-System/Tranding-Platform)
+2023-05-26 15:41:16.526 [main] INFO  com.eccentric.tranding.TrandingPlatformApplication - No active profile set, falling back to 1 default profile: "default"
+2023-05-26 15:41:17.229 [main] INFO  o.s.d.r.config.RepositoryConfigurationDelegate - Multiple Spring Data modules found, entering strict repository configuration mode
+2023-05-26 15:41:17.232 [main] INFO  o.s.d.r.config.RepositoryConfigurationDelegate - Bootstrapping Spring Data Redis repositories in DEFAULT mode.
+2023-05-26 15:41:17.258 [main] INFO  o.s.d.r.config.RepositoryConfigurationDelegate - Finished Spring Data repository scanning in 10 ms. Found 0 Redis repository interfaces.
+2023-05-26 15:41:17.757 [main] INFO  o.s.boot.web.embedded.tomcat.TomcatWebServer - Tomcat initialized with port(s): 8080 (http)
+2023-05-26 15:41:17.766 [main] INFO  org.apache.coyote.http11.Http11NioProtocol - Initializing ProtocolHandler ["http-nio-8080"]
+2023-05-26 15:41:17.766 [main] INFO  org.apache.catalina.core.StandardService - Starting service [Tomcat]
+2023-05-26 15:41:17.767 [main] INFO  org.apache.catalina.core.StandardEngine - Starting Servlet engine: [Apache Tomcat/9.0.71]
+2023-05-26 15:41:17.837 [main] INFO  o.a.c.core.ContainerBase.[Tomcat].[localhost].[/] - Initializing Spring embedded WebApplicationContext
+2023-05-26 15:41:17.838 [main] INFO  o.s.b.w.s.c.ServletWebServerApplicationContext - Root WebApplicationContext: initialization completed in 1265 ms
+2023-05-26 15:41:18.826 [main] INFO  org.apache.coyote.http11.Http11NioProtocol - Starting ProtocolHandler ["http-nio-8080"]
+2023-05-26 15:41:18.837 [main] INFO  o.s.boot.web.embedded.tomcat.TomcatWebServer - Tomcat started on port(s): 8080 (http) with context path ''
+2023-05-26 15:41:18.849 [main] INFO  com.eccentric.tranding.TrandingPlatformApplication - Started TrandingPlatformApplication in 2.766 seconds (JVM running for 3.306)
+2023-05-26 15:41:19.050 [http-nio-8080-exec-2] INFO  o.a.c.core.ContainerBase.[Tomcat].[localhost].[/] - Initializing Spring DispatcherServlet 'dispatcherServlet'
+2023-05-26 15:41:19.051 [http-nio-8080-exec-2] INFO  org.springframework.web.servlet.DispatcherServlet - Initializing Servlet 'dispatcherServlet'
+2023-05-26 15:41:19.052 [http-nio-8080-exec-2] INFO  org.springframework.web.servlet.DispatcherServlet - Completed initialization in 1 ms
+2023-05-26 15:41:19.086 [http-nio-8080-exec-2] INFO  com.zaxxer.hikari.HikariDataSource - HikariPool-1 - Starting...
+2023-05-26 15:41:19.223 [http-nio-8080-exec-2] INFO  com.zaxxer.hikari.HikariDataSource - HikariPool-1 - Start completed.
+2023-05-26 15:41:19.282 [http-nio-8080-exec-2] INFO  c.e.tranding.interceptor.LoggingInterceptor - admin 使用资源：用户统计自己的所有订单信息的数量的功能，访问路径：http://localhost:8080/order/total/trading
+2023-05-26 15:41:19.282 [http-nio-8080-exec-1] INFO  c.e.tranding.interceptor.LoggingInterceptor - admin 使用资源：用户获取自己的所有订单信息的功能，访问路径：http://localhost:8080/order/all/trading
+2023-05-26 15:41:19.379 [http-nio-8080-exec-2] INFO  c.e.tranding.interceptor.LoggingInterceptor - Response Status: 200
+2023-05-26 15:41:19.389 [http-nio-8080-exec-1] INFO  c.e.tranding.interceptor.LoggingInterceptor - Response Status: 200
+2023-05-26 15:41:25.596 [http-nio-8080-exec-4] INFO  c.e.tranding.interceptor.LoggingInterceptor - admin 使用资源：获取所有在售商品的信息，访问路径：http://localhost:8080/good/all/trading
+2023-05-26 15:41:25.604 [http-nio-8080-exec-3] INFO  c.e.tranding.interceptor.LoggingInterceptor - admin 使用资源：统计所有在售商品的信息，访问路径：http://localhost:8080/good/total/trading
+2023-05-26 15:41:25.611 [http-nio-8080-exec-3] INFO  c.e.tranding.interceptor.LoggingInterceptor - Response Status: 200
+2023-05-26 15:41:25.616 [http-nio-8080-exec-4] INFO  c.e.tranding.interceptor.LoggingInterceptor - Response Status: 200
+2023-05-26 15:41:26.404 [http-nio-8080-exec-5] INFO  c.e.tranding.interceptor.LoggingInterceptor - admin 使用资源：获取所有分类信息的功能，访问路径：http://localhost:8080/category/all
+2023-05-26 15:41:26.417 [http-nio-8080-exec-5] INFO  c.e.tranding.interceptor.LoggingInterceptor - Response Status: 200
+2023-05-26 15:41:37.373 [http-nio-8080-exec-6] INFO  c.e.tranding.interceptor.LoggingInterceptor - admin 使用资源：商品图片上传功能，访问路径：http://localhost:8080/qiniu/good
+2023-05-26 15:41:38.377 [http-nio-8080-exec-6] INFO  c.e.tranding.interceptor.LoggingInterceptor - Response Status: 200
+2023-05-26 15:41:39.062 [http-nio-8080-exec-8] INFO  c.e.tranding.interceptor.LoggingInterceptor - admin 使用资源：商品发布功能，访问路径：http://localhost:8080/good/add
+2023-05-26 15:41:39.112 [http-nio-8080-exec-8] INFO  c.e.tranding.interceptor.LoggingInterceptor - Response Status: 200
+2023-05-26 15:41:39.135 [http-nio-8080-exec-9] INFO  c.e.tranding.interceptor.LoggingInterceptor - admin 使用资源：获取所有在售商品的信息，访问路径：http://localhost:8080/good/all/trading
+2023-05-26 15:41:39.137 [http-nio-8080-exec-10] INFO  c.e.tranding.interceptor.LoggingInterceptor - admin 使用资源：统计所有在售商品的信息，访问路径：http://localhost:8080/good/total/trading
+2023-05-26 15:41:39.142 [http-nio-8080-exec-10] INFO  c.e.tranding.interceptor.LoggingInterceptor - Response Status: 200
+2023-05-26 15:41:39.156 [http-nio-8080-exec-9] INFO  c.e.tranding.interceptor.LoggingInterceptor - Response Status: 200
+2023-05-26 15:41:45.003 [http-nio-8080-exec-2] INFO  c.e.tranding.interceptor.LoggingInterceptor - test 使用资源：获取所有在售商品的信息，访问路径：http://localhost:8080/good/all/trading
+2023-05-26 15:41:45.003 [http-nio-8080-exec-1] INFO  c.e.tranding.interceptor.LoggingInterceptor - test 使用资源：统计所有在售商品的信息，访问路径：http://localhost:8080/good/total/trading
+2023-05-26 15:41:45.008 [http-nio-8080-exec-1] INFO  c.e.tranding.interceptor.LoggingInterceptor - Response Status: 200
+2023-05-26 15:41:45.018 [http-nio-8080-exec-2] INFO  c.e.tranding.interceptor.LoggingInterceptor - Response Status: 200
+2023-05-26 15:41:48.115 [http-nio-8080-exec-3] INFO  c.e.tranding.interceptor.LoggingInterceptor - test 使用资源：购买商品功能，访问路径：http://localhost:8080/good/buy
+2023-05-26 15:41:48.130 [http-nio-8080-exec-3] INFO  c.e.tranding.interceptor.LoggingInterceptor - Response Status: 200
+2023-05-26 15:41:48.155 [http-nio-8080-exec-5] INFO  c.e.tranding.interceptor.LoggingInterceptor - test 使用资源：统计所有在售商品的信息，访问路径：http://localhost:8080/good/total/trading
+2023-05-26 15:41:48.155 [http-nio-8080-exec-4] INFO  c.e.tranding.interceptor.LoggingInterceptor - test 使用资源：获取所有在售商品的信息，访问路径：http://localhost:8080/good/all/trading
+2023-05-26 15:41:48.160 [http-nio-8080-exec-5] INFO  c.e.tranding.interceptor.LoggingInterceptor - Response Status: 200
+2023-05-26 15:41:48.164 [http-nio-8080-exec-4] INFO  c.e.tranding.interceptor.LoggingInterceptor - Response Status: 200
+2023-05-26 15:41:50.778 [http-nio-8080-exec-6] INFO  c.e.tranding.interceptor.LoggingInterceptor - admin 使用资源：用户获取自己的所有订单信息的功能，访问路径：http://localhost:8080/order/all/trading
+2023-05-26 15:41:50.781 [http-nio-8080-exec-7] INFO  c.e.tranding.interceptor.LoggingInterceptor - admin 使用资源：用户统计自己的所有订单信息的数量的功能，访问路径：http://localhost:8080/order/total/trading
+2023-05-26 15:41:50.784 [http-nio-8080-exec-6] INFO  c.e.tranding.interceptor.LoggingInterceptor - Response Status: 200
+2023-05-26 15:41:50.786 [http-nio-8080-exec-7] INFO  c.e.tranding.interceptor.LoggingInterceptor - Response Status: 200
+2023-05-26 15:41:52.657 [http-nio-8080-exec-8] INFO  c.e.tranding.interceptor.LoggingInterceptor - admin 使用资源：用户获取自己的所有订单信息的功能，访问路径：http://localhost:8080/order/all/trading
+2023-05-26 15:41:52.660 [http-nio-8080-exec-10] INFO  c.e.tranding.interceptor.LoggingInterceptor - admin 使用资源：用户统计自己的所有订单信息的数量的功能，访问路径：http://localhost:8080/order/total/trading
+2023-05-26 15:41:52.662 [http-nio-8080-exec-8] INFO  c.e.tranding.interceptor.LoggingInterceptor - Response Status: 200
+2023-05-26 15:41:52.665 [http-nio-8080-exec-10] INFO  c.e.tranding.interceptor.LoggingInterceptor - Response Status: 200
+2023-05-26 15:41:59.299 [http-nio-8080-exec-1] INFO  c.e.tranding.interceptor.LoggingInterceptor - test 使用资源：用户统计自己的所有订单信息的数量的功能，访问路径：http://localhost:8080/order/total/trading
+2023-05-26 15:41:59.299 [http-nio-8080-exec-9] INFO  c.e.tranding.interceptor.LoggingInterceptor - test 使用资源：用户获取自己的所有订单信息的功能，访问路径：http://localhost:8080/order/all/trading
+2023-05-26 15:41:59.304 [http-nio-8080-exec-1] INFO  c.e.tranding.interceptor.LoggingInterceptor - Response Status: 200
+2023-05-26 15:41:59.304 [http-nio-8080-exec-9] INFO  c.e.tranding.interceptor.LoggingInterceptor - Response Status: 200
+2023-05-26 15:42:05.189 [http-nio-8080-exec-3] INFO  c.e.tranding.interceptor.LoggingInterceptor - test 使用资源：用户统计自己的所有订单信息的数量的功能，访问路径：http://localhost:8080/order/total/trading
+2023-05-26 15:42:05.190 [http-nio-8080-exec-2] INFO  c.e.tranding.interceptor.LoggingInterceptor - test 使用资源：用户获取自己的所有订单信息的功能，访问路径：http://localhost:8080/order/all/trading
+2023-05-26 15:42:05.194 [http-nio-8080-exec-3] INFO  c.e.tranding.interceptor.LoggingInterceptor - Response Status: 200
+2023-05-26 15:42:05.194 [http-nio-8080-exec-2] INFO  c.e.tranding.interceptor.LoggingInterceptor - Response Status: 200
+2023-05-26 15:45:36.450 [http-nio-8080-exec-10] INFO  c.e.tranding.interceptor.LoggingInterceptor - admin 使用资源：获取所有订单信息的功能，访问路径：http://localhost:8080/order/all
+2023-05-26 15:45:36.454 [http-nio-8080-exec-9] INFO  c.e.tranding.interceptor.LoggingInterceptor - admin 使用资源：统计所有订单信息的数量的功能，访问路径：http://localhost:8080/order/total
+2023-05-26 15:45:36.457 [http-nio-8080-exec-10] INFO  c.e.tranding.interceptor.LoggingInterceptor - Response Status: 200
+2023-05-26 15:45:36.459 [http-nio-8080-exec-9] INFO  c.e.tranding.interceptor.LoggingInterceptor - Response Status: 200
+2023-05-26 15:46:47.814 [http-nio-8080-exec-2] INFO  c.e.tranding.interceptor.LoggingInterceptor - admin 使用资源：获取所有订单信息的功能，访问路径：http://localhost:8080/order/all
+2023-05-26 15:46:47.820 [http-nio-8080-exec-2] INFO  c.e.tranding.interceptor.LoggingInterceptor - Response Status: 200
+2023-05-26 15:46:47.837 [http-nio-8080-exec-5] INFO  c.e.tranding.interceptor.LoggingInterceptor - admin 使用资源：统计所有订单信息的数量的功能，访问路径：http://localhost:8080/order/total
+2023-05-26 15:46:47.840 [http-nio-8080-exec-5] INFO  c.e.tranding.interceptor.LoggingInterceptor - Response Status: 200
+2023-05-26 15:47:05.291 [http-nio-8080-exec-4] INFO  c.e.tranding.interceptor.LoggingInterceptor - admin 使用资源：获取所有订单信息的功能，访问路径：http://localhost:8080/order/all
+2023-05-26 15:47:05.297 [http-nio-8080-exec-6] INFO  c.e.tranding.interceptor.LoggingInterceptor - admin 使用资源：统计所有订单信息的数量的功能，访问路径：http://localhost:8080/order/total
+2023-05-26 15:47:05.297 [http-nio-8080-exec-4] INFO  c.e.tranding.interceptor.LoggingInterceptor - Response Status: 200
+2023-05-26 15:47:05.301 [http-nio-8080-exec-6] INFO  c.e.tranding.interceptor.LoggingInterceptor - Response Status: 200
+2023-05-26 15:47:40.382 [http-nio-8080-exec-7] INFO  c.e.tranding.interceptor.LoggingInterceptor - admin 使用资源：获取所有分类信息的功能，访问路径：http://localhost:8080/category/all
+2023-05-26 15:47:40.388 [http-nio-8080-exec-7] INFO  c.e.tranding.interceptor.LoggingInterceptor - Response Status: 200
+2023-05-26 15:47:40.417 [http-nio-8080-exec-8] INFO  c.e.tranding.interceptor.LoggingInterceptor - admin 使用资源：统计所有分类信息的数量，访问路径：http://localhost:8080/category/total
+2023-05-26 15:47:40.420 [http-nio-8080-exec-8] INFO  c.e.tranding.interceptor.LoggingInterceptor - Response Status: 200
+2023-05-26 15:47:41.022 [http-nio-8080-exec-10] INFO  c.e.tranding.interceptor.LoggingInterceptor - admin 使用资源：获取所有订单信息的功能，访问路径：http://localhost:8080/order/all
+2023-05-26 15:47:41.026 [http-nio-8080-exec-10] INFO  c.e.tranding.interceptor.LoggingInterceptor - Response Status: 200
+2023-05-26 15:47:41.026 [http-nio-8080-exec-9] INFO  c.e.tranding.interceptor.LoggingInterceptor - admin 使用资源：统计所有订单信息的数量的功能，访问路径：http://localhost:8080/order/total
+2023-05-26 15:47:41.029 [http-nio-8080-exec-9] INFO  c.e.tranding.interceptor.LoggingInterceptor - Response Status: 200
+2023-05-26 15:49:18.890 [http-nio-8080-exec-2] INFO  c.e.tranding.interceptor.LoggingInterceptor - admin 使用资源：获取用户的平均分数，访问路径：http://localhost:8080/user/rate
+2023-05-26 15:49:18.894 [http-nio-8080-exec-2] INFO  c.e.tranding.interceptor.LoggingInterceptor - Response Status: 200
+2023-05-26 15:49:22.090 [http-nio-8080-exec-5] INFO  c.e.tranding.interceptor.LoggingInterceptor - admin 使用资源：获取所有订单信息的功能，访问路径：http://localhost:8080/order/all
+2023-05-26 15:49:22.097 [http-nio-8080-exec-4] INFO  c.e.tranding.interceptor.LoggingInterceptor - admin 使用资源：统计所有订单信息的数量的功能，访问路径：http://localhost:8080/order/total
+2023-05-26 15:49:22.100 [http-nio-8080-exec-5] INFO  c.e.tranding.interceptor.LoggingInterceptor - Response Status: 200
+2023-05-26 15:49:22.101 [http-nio-8080-exec-4] INFO  c.e.tranding.interceptor.LoggingInterceptor - Response Status: 200
+2023-05-26 15:50:01.216 [http-nio-8080-exec-7] INFO  c.e.tranding.interceptor.LoggingInterceptor - admin 使用资源：统计所有订单信息的数量的功能，访问路径：http://localhost:8080/order/total
+2023-05-26 15:50:01.216 [http-nio-8080-exec-6] INFO  c.e.tranding.interceptor.LoggingInterceptor - admin 使用资源：获取所有订单信息的功能，访问路径：http://localhost:8080/order/all
+2023-05-26 15:50:01.219 [http-nio-8080-exec-7] INFO  c.e.tranding.interceptor.LoggingInterceptor - Response Status: 200
+2023-05-26 15:50:01.226 [http-nio-8080-exec-6] INFO  c.e.tranding.interceptor.LoggingInterceptor - Response Status: 200
+2023-05-26 15:51:10.807 [http-nio-8080-exec-9] INFO  c.e.tranding.interceptor.LoggingInterceptor - admin 使用资源：获取用户的平均分数，访问路径：http://localhost:8080/user/rate
+2023-05-26 15:51:10.811 [http-nio-8080-exec-9] INFO  c.e.tranding.interceptor.LoggingInterceptor - Response Status: 200
+2023-05-26 15:51:14.713 [http-nio-8080-exec-1] INFO  c.e.tranding.interceptor.LoggingInterceptor - admin 使用资源：获取所有订单信息的功能，访问路径：http://localhost:8080/order/all
+2023-05-26 15:51:14.715 [http-nio-8080-exec-3] INFO  c.e.tranding.interceptor.LoggingInterceptor - admin 使用资源：统计所有订单信息的数量的功能，访问路径：http://localhost:8080/order/total
+2023-05-26 15:51:14.718 [http-nio-8080-exec-1] INFO  c.e.tranding.interceptor.LoggingInterceptor - Response Status: 200
+2023-05-26 15:51:14.719 [http-nio-8080-exec-3] INFO  c.e.tranding.interceptor.LoggingInterceptor - Response Status: 200
+2023-05-26 15:51:15.980 [http-nio-8080-exec-2] INFO  c.e.tranding.interceptor.LoggingInterceptor - admin 使用资源：用户详细信息查看功能，访问路径：http://localhost:8080/user/info
+2023-05-26 15:51:15.988 [http-nio-8080-exec-2] INFO  c.e.tranding.interceptor.LoggingInterceptor - Response Status: 200
+2023-05-26 15:51:37.016 [http-nio-8080-exec-5] INFO  c.e.tranding.interceptor.LoggingInterceptor - admin 使用资源：获取所有订单信息的功能，访问路径：http://localhost:8080/order/all
+2023-05-26 15:51:37.017 [http-nio-8080-exec-4] INFO  c.e.tranding.interceptor.LoggingInterceptor - admin 使用资源：统计所有订单信息的数量的功能，访问路径：http://localhost:8080/order/total
+2023-05-26 15:51:37.021 [http-nio-8080-exec-4] INFO  c.e.tranding.interceptor.LoggingInterceptor - Response Status: 200
+2023-05-26 15:51:37.021 [http-nio-8080-exec-5] INFO  c.e.tranding.interceptor.LoggingInterceptor - Response Status: 200
+2023-05-26 15:51:40.204 [http-nio-8080-exec-7] INFO  c.e.tranding.interceptor.LoggingInterceptor - admin 使用资源：获取所有订单信息的功能，访问路径：http://localhost:8080/order/all
+2023-05-26 15:51:40.204 [http-nio-8080-exec-6] INFO  c.e.tranding.interceptor.LoggingInterceptor - admin 使用资源：统计所有订单信息的数量的功能，访问路径：http://localhost:8080/order/total
+2023-05-26 15:51:40.207 [http-nio-8080-exec-7] INFO  c.e.tranding.interceptor.LoggingInterceptor - Response Status: 200
+2023-05-26 15:51:40.207 [http-nio-8080-exec-6] INFO  c.e.tranding.interceptor.LoggingInterceptor - Response Status: 200
+2023-05-26 15:53:44.675 [http-nio-8080-exec-9] INFO  c.e.tranding.interceptor.LoggingInterceptor - admin 使用资源：用户详细信息查看功能，访问路径：http://localhost:8080/user/info
+2023-05-26 15:53:44.680 [http-nio-8080-exec-9] INFO  c.e.tranding.interceptor.LoggingInterceptor - Response Status: 200
+2023-05-26 15:53:48.717 [http-nio-8080-exec-1] INFO  c.e.tranding.interceptor.LoggingInterceptor - admin 使用资源：获取所有用户功能（分页、关键字搜索），访问路径：http://localhost:8080/user/all
+2023-05-26 15:53:48.727 [http-nio-8080-exec-3] INFO  c.e.tranding.interceptor.LoggingInterceptor - admin 使用资源：统计用户数量功能，访问路径：http://localhost:8080/user/total
+2023-05-26 15:53:48.730 [http-nio-8080-exec-3] INFO  c.e.tranding.interceptor.LoggingInterceptor - Response Status: 200
+2023-05-26 15:53:48.736 [http-nio-8080-exec-1] INFO  c.e.tranding.interceptor.LoggingInterceptor - Response Status: 200
+2023-05-26 15:53:49.406 [http-nio-8080-exec-2] INFO  c.e.tranding.interceptor.LoggingInterceptor - admin 使用资源：获取所有订单信息的功能，访问路径：http://localhost:8080/order/all
+2023-05-26 15:53:49.410 [http-nio-8080-exec-2] INFO  c.e.tranding.interceptor.LoggingInterceptor - Response Status: 200
+2023-05-26 15:53:49.410 [http-nio-8080-exec-5] INFO  c.e.tranding.interceptor.LoggingInterceptor - admin 使用资源：统计所有订单信息的数量的功能，访问路径：http://localhost:8080/order/total
+2023-05-26 15:53:49.414 [http-nio-8080-exec-5] INFO  c.e.tranding.interceptor.LoggingInterceptor - Response Status: 200
+2023-05-26 15:53:50.329 [http-nio-8080-exec-4] INFO  c.e.tranding.interceptor.LoggingInterceptor - admin 使用资源：用户详细信息查看功能，访问路径：http://localhost:8080/user/info
+2023-05-26 15:53:50.333 [http-nio-8080-exec-4] INFO  c.e.tranding.interceptor.LoggingInterceptor - Response Status: 200
+2023-05-26 15:53:51.726 [http-nio-8080-exec-6] INFO  c.e.tranding.interceptor.LoggingInterceptor - admin 使用资源：用户详细信息查看功能，访问路径：http://localhost:8080/user/info
+2023-05-26 15:53:51.731 [http-nio-8080-exec-6] INFO  c.e.tranding.interceptor.LoggingInterceptor - Response Status: 200
+2023-05-26 15:53:51.911 [http-nio-8080-exec-7] INFO  c.e.tranding.interceptor.LoggingInterceptor - admin 使用资源：用户详细信息查看功能，访问路径：http://localhost:8080/user/info
+2023-05-26 15:53:51.919 [http-nio-8080-exec-7] INFO  c.e.tranding.interceptor.LoggingInterceptor - Response Status: 200
+2023-05-26 15:53:52.031 [http-nio-8080-exec-8] INFO  c.e.tranding.interceptor.LoggingInterceptor - admin 使用资源：用户详细信息查看功能，访问路径：http://localhost:8080/user/info
+2023-05-26 15:53:52.037 [http-nio-8080-exec-8] INFO  c.e.tranding.interceptor.LoggingInterceptor - Response Status: 200
+2023-05-26 15:53:52.170 [http-nio-8080-exec-10] INFO  c.e.tranding.interceptor.LoggingInterceptor - admin 使用资源：用户详细信息查看功能，访问路径：http://localhost:8080/user/info
+2023-05-26 15:53:52.175 [http-nio-8080-exec-10] INFO  c.e.tranding.interceptor.LoggingInterceptor - Response Status: 200
+2023-05-26 15:53:52.298 [http-nio-8080-exec-9] INFO  c.e.tranding.interceptor.LoggingInterceptor - admin 使用资源：用户详细信息查看功能，访问路径：http://localhost:8080/user/info
+2023-05-26 15:53:52.301 [http-nio-8080-exec-9] INFO  c.e.tranding.interceptor.LoggingInterceptor - Response Status: 200
+2023-05-26 15:53:52.769 [http-nio-8080-exec-3] INFO  c.e.tranding.interceptor.LoggingInterceptor - admin 使用资源：用户详细信息查看功能，访问路径：http://localhost:8080/user/info
+2023-05-26 15:53:52.774 [http-nio-8080-exec-3] INFO  c.e.tranding.interceptor.LoggingInterceptor - Response Status: 200
+2023-05-26 15:53:53.115 [http-nio-8080-exec-1] INFO  c.e.tranding.interceptor.LoggingInterceptor - admin 使用资源：用户详细信息查看功能，访问路径：http://localhost:8080/user/info
+2023-05-26 15:53:53.118 [http-nio-8080-exec-1] INFO  c.e.tranding.interceptor.LoggingInterceptor - Response Status: 200
+2023-05-26 15:54:32.375 [http-nio-8080-exec-2] INFO  c.e.tranding.interceptor.LoggingInterceptor - admin 使用资源：获取所有用户功能（分页、关键字搜索），访问路径：http://localhost:8080/user/all
+2023-05-26 15:54:32.397 [http-nio-8080-exec-2] INFO  c.e.tranding.interceptor.LoggingInterceptor - Response Status: 200
+2023-05-26 15:54:32.429 [http-nio-8080-exec-5] INFO  c.e.tranding.interceptor.LoggingInterceptor - admin 使用资源：统计用户数量功能，访问路径：http://localhost:8080/user/total
+2023-05-26 15:54:32.432 [http-nio-8080-exec-5] INFO  c.e.tranding.interceptor.LoggingInterceptor - Response Status: 200
+2023-05-26 15:54:47.430 [http-nio-8080-exec-4] INFO  c.e.tranding.interceptor.LoggingInterceptor - admin 使用资源：获取所有订单信息的功能，访问路径：http://localhost:8080/order/all
+2023-05-26 15:54:47.431 [http-nio-8080-exec-6] INFO  c.e.tranding.interceptor.LoggingInterceptor - admin 使用资源：统计所有订单信息的数量的功能，访问路径：http://localhost:8080/order/total
+2023-05-26 15:54:47.434 [http-nio-8080-exec-4] INFO  c.e.tranding.interceptor.LoggingInterceptor - Response Status: 200
+2023-05-26 15:54:47.435 [http-nio-8080-exec-6] INFO  c.e.tranding.interceptor.LoggingInterceptor - Response Status: 200
+2023-05-26 15:54:50.189 [http-nio-8080-exec-7] INFO  c.e.tranding.interceptor.LoggingInterceptor - admin 使用资源：用户详细信息查看功能，访问路径：http://localhost:8080/user/info
+2023-05-26 15:54:50.192 [http-nio-8080-exec-7] INFO  c.e.tranding.interceptor.LoggingInterceptor - Response Status: 200
+2023-05-26 15:57:59.915 [http-nio-8080-exec-9] INFO  c.e.tranding.interceptor.LoggingInterceptor - admin 使用资源：用户详细信息查看功能，访问路径：http://localhost:8080/user/info
+2023-05-26 15:57:59.920 [http-nio-8080-exec-9] INFO  c.e.tranding.interceptor.LoggingInterceptor - Response Status: 200
+2023-05-26 15:58:02.281 [http-nio-8080-exec-3] INFO  c.e.tranding.interceptor.LoggingInterceptor - admin 使用资源：获取所有用户功能（分页、关键字搜索），访问路径：http://localhost:8080/user/all
+2023-05-26 15:58:02.284 [http-nio-8080-exec-1] INFO  c.e.tranding.interceptor.LoggingInterceptor - admin 使用资源：统计用户数量功能，访问路径：http://localhost:8080/user/total
+2023-05-26 15:58:02.288 [http-nio-8080-exec-1] INFO  c.e.tranding.interceptor.LoggingInterceptor - Response Status: 200
+2023-05-26 15:58:02.297 [http-nio-8080-exec-3] INFO  c.e.tranding.interceptor.LoggingInterceptor - Response Status: 200
+2023-05-26 15:58:02.959 [http-nio-8080-exec-2] INFO  c.e.tranding.interceptor.LoggingInterceptor - admin 使用资源：获取所有订单信息的功能，访问路径：http://localhost:8080/order/all
+2023-05-26 15:58:02.962 [http-nio-8080-exec-2] INFO  c.e.tranding.interceptor.LoggingInterceptor - Response Status: 200
+2023-05-26 15:58:02.964 [http-nio-8080-exec-5] INFO  c.e.tranding.interceptor.LoggingInterceptor - admin 使用资源：统计所有订单信息的数量的功能，访问路径：http://localhost:8080/order/total
+2023-05-26 15:58:02.966 [http-nio-8080-exec-5] INFO  c.e.tranding.interceptor.LoggingInterceptor - Response Status: 200
+2023-05-26 15:58:04.289 [http-nio-8080-exec-4] INFO  c.e.tranding.interceptor.LoggingInterceptor - admin 使用资源：用户详细信息查看功能，访问路径：http://localhost:8080/user/info
+2023-05-26 15:58:04.292 [http-nio-8080-exec-4] INFO  c.e.tranding.interceptor.LoggingInterceptor - Response Status: 200
+2023-05-26 15:58:34.163 [http-nio-8080-exec-6] INFO  c.e.tranding.interceptor.LoggingInterceptor - admin 使用资源：获取用户的平均分数，访问路径：http://localhost:8080/user/rate
+2023-05-26 15:58:34.165 [http-nio-8080-exec-6] INFO  c.e.tranding.interceptor.LoggingInterceptor - Response Status: 200
+2023-05-26 15:58:38.923 [http-nio-8080-exec-7] INFO  c.e.tranding.interceptor.LoggingInterceptor - admin 使用资源：获取所有订单信息的功能，访问路径：http://localhost:8080/order/all
+2023-05-26 15:58:38.927 [http-nio-8080-exec-7] INFO  c.e.tranding.interceptor.LoggingInterceptor - Response Status: 200
+2023-05-26 15:58:38.928 [http-nio-8080-exec-8] INFO  c.e.tranding.interceptor.LoggingInterceptor - admin 使用资源：统计所有订单信息的数量的功能，访问路径：http://localhost:8080/order/total
+2023-05-26 15:58:38.932 [http-nio-8080-exec-8] INFO  c.e.tranding.interceptor.LoggingInterceptor - Response Status: 200
+2023-05-26 15:58:39.986 [http-nio-8080-exec-10] INFO  c.e.tranding.interceptor.LoggingInterceptor - admin 使用资源：用户详细信息查看功能，访问路径：http://localhost:8080/user/info
+2023-05-26 15:58:39.990 [http-nio-8080-exec-10] INFO  c.e.tranding.interceptor.LoggingInterceptor - Response Status: 200
+2023-05-26 15:58:45.650 [http-nio-8080-exec-9] INFO  c.e.tranding.interceptor.LoggingInterceptor - admin 使用资源：用户详细信息查看功能，访问路径：http://localhost:8080/user/info
+2023-05-26 15:58:45.655 [http-nio-8080-exec-9] INFO  c.e.tranding.interceptor.LoggingInterceptor - Response Status: 200
+2023-05-26 15:58:49.851 [http-nio-8080-exec-1] INFO  c.e.tranding.interceptor.LoggingInterceptor - admin 使用资源：获取商品详细信息功能，访问路径：http://localhost:8080/good/detail
+2023-05-26 15:58:49.859 [http-nio-8080-exec-1] INFO  c.e.tranding.interceptor.LoggingInterceptor - Response Status: 200
+2023-05-26 15:58:52.787 [http-nio-8080-exec-3] INFO  c.e.tranding.interceptor.LoggingInterceptor - admin 使用资源：用户详细信息查看功能，访问路径：http://localhost:8080/user/info
+2023-05-26 15:58:52.791 [http-nio-8080-exec-3] INFO  c.e.tranding.interceptor.LoggingInterceptor - Response Status: 200
+2023-05-26 15:59:01.649 [http-nio-8080-exec-2] INFO  c.e.tranding.interceptor.LoggingInterceptor - admin 使用资源：用户详细信息查看功能，访问路径：http://localhost:8080/user/info
+2023-05-26 15:59:01.654 [http-nio-8080-exec-2] INFO  c.e.tranding.interceptor.LoggingInterceptor - Response Status: 200
+2023-05-26 15:59:15.656 [http-nio-8080-exec-5] INFO  c.e.tranding.interceptor.LoggingInterceptor - admin 使用资源：用户详细信息查看功能，访问路径：http://localhost:8080/user/info
+2023-05-26 15:59:15.661 [http-nio-8080-exec-5] INFO  c.e.tranding.interceptor.LoggingInterceptor - Response Status: 200
+2023-05-26 15:59:39.791 [http-nio-8080-exec-6] INFO  c.e.tranding.interceptor.LoggingInterceptor - admin 使用资源：用户获取自己的所有订单信息的功能，访问路径：http://localhost:8080/order/all/trading
+2023-05-26 15:59:39.794 [http-nio-8080-exec-7] INFO  c.e.tranding.interceptor.LoggingInterceptor - admin 使用资源：用户统计自己的所有订单信息的数量的功能，访问路径：http://localhost:8080/order/total/trading
+2023-05-26 15:59:39.796 [http-nio-8080-exec-6] INFO  c.e.tranding.interceptor.LoggingInterceptor - Response Status: 200
+2023-05-26 15:59:39.798 [http-nio-8080-exec-7] INFO  c.e.tranding.interceptor.LoggingInterceptor - Response Status: 200
+2023-05-26 15:59:43.708 [http-nio-8080-exec-8] INFO  c.e.tranding.interceptor.LoggingInterceptor - admin 使用资源：获取所有订单信息的功能，访问路径：http://localhost:8080/order/all
+2023-05-26 15:59:43.710 [http-nio-8080-exec-10] INFO  c.e.tranding.interceptor.LoggingInterceptor - admin 使用资源：统计所有订单信息的数量的功能，访问路径：http://localhost:8080/order/total
+2023-05-26 15:59:43.712 [http-nio-8080-exec-8] INFO  c.e.tranding.interceptor.LoggingInterceptor - Response Status: 200
+2023-05-26 15:59:43.714 [http-nio-8080-exec-10] INFO  c.e.tranding.interceptor.LoggingInterceptor - Response Status: 200
+2023-05-26 15:59:53.897 [http-nio-8080-exec-9] INFO  c.e.tranding.interceptor.LoggingInterceptor - admin 使用资源：用户详细信息查看功能，访问路径：http://localhost:8080/user/info
+2023-05-26 15:59:53.902 [http-nio-8080-exec-9] INFO  c.e.tranding.interceptor.LoggingInterceptor - Response Status: 200
+2023-05-26 15:59:58.858 [http-nio-8080-exec-1] INFO  c.e.tranding.interceptor.LoggingInterceptor - admin 使用资源：获取商品详细信息功能，访问路径：http://localhost:8080/good/detail
+2023-05-26 15:59:58.863 [http-nio-8080-exec-1] INFO  c.e.tranding.interceptor.LoggingInterceptor - Response Status: 200
+2023-05-26 16:00:01.940 [http-nio-8080-exec-3] INFO  c.e.tranding.interceptor.LoggingInterceptor - admin 使用资源：用户获取自己的所有订单信息的功能，访问路径：http://localhost:8080/order/all/trading
+2023-05-26 16:00:01.941 [http-nio-8080-exec-2] INFO  c.e.tranding.interceptor.LoggingInterceptor - admin 使用资源：用户统计自己的所有订单信息的数量的功能，访问路径：http://localhost:8080/order/total/trading
+2023-05-26 16:00:01.945 [http-nio-8080-exec-3] INFO  c.e.tranding.interceptor.LoggingInterceptor - Response Status: 200
+2023-05-26 16:00:01.945 [http-nio-8080-exec-2] INFO  c.e.tranding.interceptor.LoggingInterceptor - Response Status: 200
+2023-05-26 16:00:11.483 [http-nio-8080-exec-5] INFO  c.e.tranding.interceptor.LoggingInterceptor - admin 使用资源：获取商品详细信息功能，访问路径：http://localhost:8080/good/detail
+2023-05-26 16:00:11.489 [http-nio-8080-exec-5] INFO  c.e.tranding.interceptor.LoggingInterceptor - Response Status: 200
+2023-05-26 16:00:36.861 [http-nio-8080-exec-4] INFO  c.e.tranding.interceptor.LoggingInterceptor - test 使用资源：用户获取自己的所有订单信息的功能，访问路径：http://localhost:8080/order/all/trading
+2023-05-26 16:00:36.861 [http-nio-8080-exec-6] INFO  c.e.tranding.interceptor.LoggingInterceptor - test 使用资源：用户统计自己的所有订单信息的数量的功能，访问路径：http://localhost:8080/order/total/trading
+2023-05-26 16:00:36.865 [http-nio-8080-exec-6] INFO  c.e.tranding.interceptor.LoggingInterceptor - Response Status: 200
+2023-05-26 16:00:36.865 [http-nio-8080-exec-4] INFO  c.e.tranding.interceptor.LoggingInterceptor - Response Status: 200
+2023-05-26 16:00:36.928 [http-nio-8080-exec-7] INFO  c.e.tranding.interceptor.LoggingInterceptor - admin 使用资源：用户获取自己的所有订单信息的功能，访问路径：http://localhost:8080/order/all/trading
+2023-05-26 16:00:36.928 [http-nio-8080-exec-8] INFO  c.e.tranding.interceptor.LoggingInterceptor - admin 使用资源：用户统计自己的所有订单信息的数量的功能，访问路径：http://localhost:8080/order/total/trading
+2023-05-26 16:00:36.930 [http-nio-8080-exec-8] INFO  c.e.tranding.interceptor.LoggingInterceptor - Response Status: 200
+2023-05-26 16:00:36.931 [http-nio-8080-exec-7] INFO  c.e.tranding.interceptor.LoggingInterceptor - Response Status: 200
+2023-05-26 16:01:13.178 [http-nio-8080-exec-9] INFO  c.e.tranding.interceptor.LoggingInterceptor - test 使用资源：用户统计自己的所有订单信息的数量的功能，访问路径：http://localhost:8080/order/total/trading
+2023-05-26 16:01:13.180 [http-nio-8080-exec-10] INFO  c.e.tranding.interceptor.LoggingInterceptor - test 使用资源：用户获取自己的所有订单信息的功能，访问路径：http://localhost:8080/order/all/trading
+2023-05-26 16:01:13.181 [http-nio-8080-exec-9] INFO  c.e.tranding.interceptor.LoggingInterceptor - Response Status: 200
+2023-05-26 16:01:13.186 [http-nio-8080-exec-10] INFO  c.e.tranding.interceptor.LoggingInterceptor - Response Status: 200
+2023-05-26 16:01:13.247 [http-nio-8080-exec-1] INFO  c.e.tranding.interceptor.LoggingInterceptor - admin 使用资源：用户获取自己的所有订单信息的功能，访问路径：http://localhost:8080/order/all/trading
+2023-05-26 16:01:13.247 [http-nio-8080-exec-3] INFO  c.e.tranding.interceptor.LoggingInterceptor - admin 使用资源：用户统计自己的所有订单信息的数量的功能，访问路径：http://localhost:8080/order/total/trading
+2023-05-26 16:01:13.249 [http-nio-8080-exec-3] INFO  c.e.tranding.interceptor.LoggingInterceptor - Response Status: 200
+2023-05-26 16:01:13.251 [http-nio-8080-exec-1] INFO  c.e.tranding.interceptor.LoggingInterceptor - Response Status: 200
+2023-05-26 16:01:58.923 [http-nio-8080-exec-2] INFO  c.e.tranding.interceptor.LoggingInterceptor - admin 使用资源：获取用户出售的所有商品信息，访问路径：http://localhost:8080/good/all/sale
+2023-05-26 16:01:58.923 [http-nio-8080-exec-5] INFO  c.e.tranding.interceptor.LoggingInterceptor - admin 使用资源：统计用户出售的所有商品的数量，访问路径：http://localhost:8080/good/total/sale
+2023-05-26 16:01:58.927 [http-nio-8080-exec-5] INFO  c.e.tranding.interceptor.LoggingInterceptor - Response Status: 200
+2023-05-26 16:01:58.932 [http-nio-8080-exec-2] INFO  c.e.tranding.interceptor.LoggingInterceptor - Response Status: 200
+2023-05-26 16:01:59.709 [http-nio-8080-exec-4] INFO  c.e.tranding.interceptor.LoggingInterceptor - admin 使用资源：用户获取自己的所有订单信息的功能，访问路径：http://localhost:8080/order/all/trading
+2023-05-26 16:01:59.710 [http-nio-8080-exec-6] INFO  c.e.tranding.interceptor.LoggingInterceptor - admin 使用资源：用户统计自己的所有订单信息的数量的功能，访问路径：http://localhost:8080/order/total/trading
+2023-05-26 16:01:59.713 [http-nio-8080-exec-4] INFO  c.e.tranding.interceptor.LoggingInterceptor - Response Status: 200
+2023-05-26 16:01:59.713 [http-nio-8080-exec-6] INFO  c.e.tranding.interceptor.LoggingInterceptor - Response Status: 200
+2023-05-26 16:02:01.218 [http-nio-8080-exec-8] INFO  c.e.tranding.interceptor.LoggingInterceptor - admin 使用资源：用户详细信息查看功能，访问路径：http://localhost:8080/user/info
+2023-05-26 16:02:01.221 [http-nio-8080-exec-8] INFO  c.e.tranding.interceptor.LoggingInterceptor - Response Status: 200
+2023-05-26 16:04:33.217 [http-nio-8080-exec-1] INFO  c.e.tranding.interceptor.LoggingInterceptor - admin 使用资源：获取用户的平均分数，访问路径：http://localhost:8080/user/rate
+2023-05-26 16:04:33.220 [http-nio-8080-exec-1] INFO  c.e.tranding.interceptor.LoggingInterceptor - Response Status: 200
+2023-05-26 16:06:21.337 [http-nio-8080-exec-2] INFO  c.e.tranding.interceptor.LoggingInterceptor - admin 使用资源：获取用户出售的所有商品信息，访问路径：http://localhost:8080/good/all/sale
+2023-05-26 16:06:21.338 [http-nio-8080-exec-4] INFO  c.e.tranding.interceptor.LoggingInterceptor - admin 使用资源：统计用户出售的所有商品的数量，访问路径：http://localhost:8080/good/total/sale
+2023-05-26 16:06:21.342 [http-nio-8080-exec-4] INFO  c.e.tranding.interceptor.LoggingInterceptor - Response Status: 200
+2023-05-26 16:06:21.347 [http-nio-8080-exec-2] INFO  c.e.tranding.interceptor.LoggingInterceptor - Response Status: 200
+2023-05-26 16:09:06.600 [SpringApplicationShutdownHook] INFO  com.zaxxer.hikari.HikariDataSource - HikariPool-1 - Shutdown initiated...
+2023-05-26 16:09:06.606 [SpringApplicationShutdownHook] INFO  com.zaxxer.hikari.HikariDataSource - HikariPool-1 - Shutdown completed.

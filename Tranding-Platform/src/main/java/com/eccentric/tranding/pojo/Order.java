@@ -39,4 +39,6 @@ public class Order {
     private String buyUsername;
     //商品名称
     private String goodName;
+    //出售者的id
+    private Integer saleUserId;
 }
