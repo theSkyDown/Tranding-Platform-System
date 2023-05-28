@@ -276,3 +276,5 @@
 2023-05-28 00:32:52.932 [http-nio-8080-exec-9] INFO  c.e.tranding.interceptor.LoggingInterceptor - admin 使用资源：统计所有商品的信息，访问路径：http://localhost:8080/good/total
 2023-05-28 00:32:52.934 [http-nio-8080-exec-9] INFO  c.e.tranding.interceptor.LoggingInterceptor - Response Status: 200
 2023-05-28 00:32:52.947 [http-nio-8080-exec-8] INFO  c.e.tranding.interceptor.LoggingInterceptor - Response Status: 200
+2023-05-28 00:41:53.137 [SpringApplicationShutdownHook] INFO  com.zaxxer.hikari.HikariDataSource - HikariPool-1 - Shutdown initiated...
+2023-05-28 00:41:53.143 [SpringApplicationShutdownHook] INFO  com.zaxxer.hikari.HikariDataSource - HikariPool-1 - Shutdown completed.
