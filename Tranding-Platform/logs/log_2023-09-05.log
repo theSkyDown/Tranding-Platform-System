@@ -1,0 +1,293 @@
+2023-09-05 22:20:19.617 [main] INFO  com.eccentric.tranding.TrandingPlatformApplication - Starting TrandingPlatformApplication using Java 1.8.0_382 on EccentricPC with PID 32319 (/home/eccentric/Documents/Tranding-Platform-System/Tranding-Platform/target/classes started by eccentric in /home/eccentric/Documents/Tranding-Platform-System/Tranding-Platform)
+2023-09-05 22:20:19.620 [main] INFO  com.eccentric.tranding.TrandingPlatformApplication - No active profile set, falling back to 1 default profile: "default"
+2023-09-05 22:20:20.121 [main] INFO  o.s.d.r.config.RepositoryConfigurationDelegate - Multiple Spring Data modules found, entering strict repository configuration mode
+2023-09-05 22:20:20.123 [main] INFO  o.s.d.r.config.RepositoryConfigurationDelegate - Bootstrapping Spring Data Redis repositories in DEFAULT mode.
+2023-09-05 22:20:20.141 [main] INFO  o.s.d.r.config.RepositoryConfigurationDelegate - Finished Spring Data repository scanning in 6 ms. Found 0 Redis repository interfaces.
+2023-09-05 22:20:20.504 [main] INFO  o.s.boot.web.embedded.tomcat.TomcatWebServer - Tomcat initialized with port(s): 8080 (http)
+2023-09-05 22:20:20.511 [main] INFO  org.apache.catalina.core.StandardService - Starting service [Tomcat]
+2023-09-05 22:20:20.511 [main] INFO  org.apache.catalina.core.StandardEngine - Starting Servlet engine: [Apache Tomcat/9.0.71]
+2023-09-05 22:20:20.564 [main] INFO  o.a.c.core.ContainerBase.[Tomcat].[localhost].[/] - Initializing Spring embedded WebApplicationContext
+2023-09-05 22:20:20.564 [main] INFO  o.s.b.w.s.c.ServletWebServerApplicationContext - Root WebApplicationContext: initialization completed in 909 ms
+2023-09-05 22:20:21.364 [main] INFO  o.s.boot.web.embedded.tomcat.TomcatWebServer - Tomcat started on port(s): 8080 (http) with context path ''
+2023-09-05 22:20:21.373 [main] INFO  com.eccentric.tranding.TrandingPlatformApplication - Started TrandingPlatformApplication in 2.181 seconds (JVM running for 2.608)
+2023-09-05 22:20:23.349 [http-nio-8080-exec-1] INFO  o.a.c.core.ContainerBase.[Tomcat].[localhost].[/] - Initializing Spring DispatcherServlet 'dispatcherServlet'
+2023-09-05 22:20:23.350 [http-nio-8080-exec-1] INFO  org.springframework.web.servlet.DispatcherServlet - Initializing Servlet 'dispatcherServlet'
+2023-09-05 22:20:23.351 [http-nio-8080-exec-1] INFO  org.springframework.web.servlet.DispatcherServlet - Completed initialization in 1 ms
+2023-09-05 22:21:33.478 [http-nio-8080-exec-10] INFO  com.zaxxer.hikari.HikariDataSource - HikariPool-1 - Starting...
+2023-09-05 22:21:33.591 [http-nio-8080-exec-10] INFO  com.zaxxer.hikari.HikariDataSource - HikariPool-1 - Start completed.
+2023-09-05 22:21:33.597 [http-nio-8080-exec-10] DEBUG c.e.tranding.mappers.UserMapper.getUserByPhone - ==>  Preparing: select * from user where phone = ?
+2023-09-05 22:21:33.613 [http-nio-8080-exec-10] DEBUG c.e.tranding.mappers.UserMapper.getUserByPhone - ==> Parameters: 17373011502(String)
+2023-09-05 22:21:33.637 [http-nio-8080-exec-10] DEBUG c.e.tranding.mappers.UserMapper.getUserByPhone - <==      Total: 1
+2023-09-05 22:21:33.642 [http-nio-8080-exec-10] DEBUG c.e.tranding.mappers.RoleMapper.getRoleById - ==>  Preparing: select * from role where role_id = ?
+2023-09-05 22:21:33.642 [http-nio-8080-exec-10] DEBUG c.e.tranding.mappers.RoleMapper.getRoleById - ==> Parameters: 2(Integer)
+2023-09-05 22:21:33.644 [http-nio-8080-exec-10] DEBUG c.e.tranding.mappers.RoleMapper.getRoleById - <==      Total: 1
+2023-09-05 22:21:36.217 [http-nio-8080-exec-1] DEBUG c.e.tranding.mappers.UserMapper.getUserByPhone - ==>  Preparing: select * from user where phone = ?
+2023-09-05 22:21:36.217 [http-nio-8080-exec-1] DEBUG c.e.tranding.mappers.UserMapper.getUserByPhone - ==> Parameters: 17373011502(String)
+2023-09-05 22:21:36.218 [http-nio-8080-exec-2] DEBUG c.e.tranding.mappers.UserMapper.getUserByPhone - ==>  Preparing: select * from user where phone = ?
+2023-09-05 22:21:36.219 [http-nio-8080-exec-2] DEBUG c.e.tranding.mappers.UserMapper.getUserByPhone - ==> Parameters: 17373011502(String)
+2023-09-05 22:21:36.219 [http-nio-8080-exec-1] DEBUG c.e.tranding.mappers.UserMapper.getUserByPhone - <==      Total: 1
+2023-09-05 22:21:36.220 [http-nio-8080-exec-1] DEBUG c.e.tranding.mappers.RoleMapper.getRoleById - ==>  Preparing: select * from role where role_id = ?
+2023-09-05 22:21:36.220 [http-nio-8080-exec-1] DEBUG c.e.tranding.mappers.RoleMapper.getRoleById - ==> Parameters: 2(Integer)
+2023-09-05 22:21:36.221 [http-nio-8080-exec-2] DEBUG c.e.tranding.mappers.UserMapper.getUserByPhone - <==      Total: 1
+2023-09-05 22:21:36.221 [http-nio-8080-exec-2] DEBUG c.e.tranding.mappers.RoleMapper.getRoleById - ==>  Preparing: select * from role where role_id = ?
+2023-09-05 22:21:36.222 [http-nio-8080-exec-1] DEBUG c.e.tranding.mappers.RoleMapper.getRoleById - <==      Total: 1
+2023-09-05 22:21:36.222 [http-nio-8080-exec-2] DEBUG c.e.tranding.mappers.RoleMapper.getRoleById - ==> Parameters: 2(Integer)
+2023-09-05 22:21:36.222 [http-nio-8080-exec-1] DEBUG c.e.tranding.mappers.ModuleMapper.getModuleByUrl - ==>  Preparing: select * from module where url = ?
+2023-09-05 22:21:36.223 [http-nio-8080-exec-1] DEBUG c.e.tranding.mappers.ModuleMapper.getModuleByUrl - ==> Parameters: /good/all/trading(String)
+2023-09-05 22:21:36.223 [http-nio-8080-exec-2] DEBUG c.e.tranding.mappers.RoleMapper.getRoleById - <==      Total: 1
+2023-09-05 22:21:36.224 [http-nio-8080-exec-2] DEBUG c.e.tranding.mappers.ModuleMapper.getModuleByUrl - ==>  Preparing: select * from module where url = ?
+2023-09-05 22:21:36.224 [http-nio-8080-exec-2] DEBUG c.e.tranding.mappers.ModuleMapper.getModuleByUrl - ==> Parameters: /good/total/trading(String)
+2023-09-05 22:21:36.225 [http-nio-8080-exec-1] DEBUG c.e.tranding.mappers.ModuleMapper.getModuleByUrl - <==      Total: 1
+2023-09-05 22:21:36.225 [http-nio-8080-exec-1] DEBUG c.e.t.mappers.PermissionMapper.getPermission - ==>  Preparing: select * from permission where role_id=? and module_id=?
+2023-09-05 22:21:36.226 [http-nio-8080-exec-1] DEBUG c.e.t.mappers.PermissionMapper.getPermission - ==> Parameters: 2(Integer), 26(Integer)
+2023-09-05 22:21:36.227 [http-nio-8080-exec-2] DEBUG c.e.tranding.mappers.ModuleMapper.getModuleByUrl - <==      Total: 1
+2023-09-05 22:21:36.227 [http-nio-8080-exec-1] DEBUG c.e.t.mappers.PermissionMapper.getPermission - <==      Total: 1
+2023-09-05 22:21:36.227 [http-nio-8080-exec-2] DEBUG c.e.t.mappers.PermissionMapper.getPermission - ==>  Preparing: select * from permission where role_id=? and module_id=?
+2023-09-05 22:21:36.228 [http-nio-8080-exec-1] DEBUG c.e.tranding.mappers.ModuleMapper.getModuleByUrl - ==>  Preparing: select * from module where url = ?
+2023-09-05 22:21:36.228 [http-nio-8080-exec-2] DEBUG c.e.t.mappers.PermissionMapper.getPermission - ==> Parameters: 2(Integer), 28(Integer)
+2023-09-05 22:21:36.228 [http-nio-8080-exec-1] DEBUG c.e.tranding.mappers.ModuleMapper.getModuleByUrl - ==> Parameters: /good/all/trading(String)
+2023-09-05 22:21:36.229 [http-nio-8080-exec-2] DEBUG c.e.t.mappers.PermissionMapper.getPermission - <==      Total: 1
+2023-09-05 22:21:36.230 [http-nio-8080-exec-1] DEBUG c.e.tranding.mappers.ModuleMapper.getModuleByUrl - <==      Total: 1
+2023-09-05 22:21:36.230 [http-nio-8080-exec-2] DEBUG c.e.tranding.mappers.ModuleMapper.getModuleByUrl - ==>  Preparing: select * from module where url = ?
+2023-09-05 22:21:36.231 [http-nio-8080-exec-1] INFO  c.e.tranding.interceptor.LoggingInterceptor - eccentric 使用资源：获取所有在售商品的信息，访问路径：http://localhost:8080/good/all/trading
+2023-09-05 22:21:36.231 [http-nio-8080-exec-2] DEBUG c.e.tranding.mappers.ModuleMapper.getModuleByUrl - ==> Parameters: /good/total/trading(String)
+2023-09-05 22:21:36.232 [http-nio-8080-exec-2] DEBUG c.e.tranding.mappers.ModuleMapper.getModuleByUrl - <==      Total: 1
+2023-09-05 22:21:36.233 [http-nio-8080-exec-2] INFO  c.e.tranding.interceptor.LoggingInterceptor - eccentric 使用资源：统计所有在售商品的信息，访问路径：http://localhost:8080/good/total/trading
+2023-09-05 22:21:36.241 [http-nio-8080-exec-1] DEBUG c.e.tranding.mappers.GoodMapper.getAllGoodOnSale - ==>  Preparing: select * from goods where concat(good_name,description) like "%"?"%" and status = 1 limit ?,?
+2023-09-05 22:21:36.241 [http-nio-8080-exec-2] DEBUG c.e.tranding.mappers.GoodMapper.getTotalOnSale - ==>  Preparing: select count(*) from goods where concat(good_name,description) like "%"?"%" and status = 1
+2023-09-05 22:21:36.241 [http-nio-8080-exec-1] DEBUG c.e.tranding.mappers.GoodMapper.getAllGoodOnSale - ==> Parameters: (String), 0(Integer), 10(Integer)
+2023-09-05 22:21:36.241 [http-nio-8080-exec-2] DEBUG c.e.tranding.mappers.GoodMapper.getTotalOnSale - ==> Parameters: (String)
+2023-09-05 22:21:36.245 [http-nio-8080-exec-1] DEBUG c.e.tranding.mappers.GoodMapper.getAllGoodOnSale - <==      Total: 8
+2023-09-05 22:21:36.246 [http-nio-8080-exec-2] DEBUG c.e.tranding.mappers.GoodMapper.getTotalOnSale - <==      Total: 1
+2023-09-05 22:21:36.247 [http-nio-8080-exec-1] DEBUG c.e.t.mappers.CategoryMapper.getCategoryById - ==>  Preparing: select * from category where category_id = ?
+2023-09-05 22:21:36.247 [http-nio-8080-exec-1] DEBUG c.e.t.mappers.CategoryMapper.getCategoryById - ==> Parameters: 2(Integer)
+2023-09-05 22:21:36.249 [http-nio-8080-exec-2] INFO  c.e.tranding.interceptor.LoggingInterceptor - Response Status: 200
+2023-09-05 22:21:36.250 [http-nio-8080-exec-1] DEBUG c.e.t.mappers.CategoryMapper.getCategoryById - <==      Total: 1
+2023-09-05 22:21:36.252 [http-nio-8080-exec-1] DEBUG c.e.tranding.mappers.UserMapper.getUserByUserId - ==>  Preparing: select * from user where user_id = ?
+2023-09-05 22:21:36.253 [http-nio-8080-exec-1] DEBUG c.e.tranding.mappers.UserMapper.getUserByUserId - ==> Parameters: 2(Integer)
+2023-09-05 22:21:36.256 [http-nio-8080-exec-1] DEBUG c.e.tranding.mappers.UserMapper.getUserByUserId - <==      Total: 1
+2023-09-05 22:21:36.259 [http-nio-8080-exec-1] DEBUG c.e.t.mappers.CategoryMapper.getCategoryById - ==>  Preparing: select * from category where category_id = ?
+2023-09-05 22:21:36.259 [http-nio-8080-exec-1] DEBUG c.e.t.mappers.CategoryMapper.getCategoryById - ==> Parameters: 2(Integer)
+2023-09-05 22:21:36.260 [http-nio-8080-exec-1] DEBUG c.e.t.mappers.CategoryMapper.getCategoryById - <==      Total: 1
+2023-09-05 22:21:36.260 [http-nio-8080-exec-1] DEBUG c.e.tranding.mappers.UserMapper.getUserByUserId - ==>  Preparing: select * from user where user_id = ?
+2023-09-05 22:21:36.261 [http-nio-8080-exec-1] DEBUG c.e.tranding.mappers.UserMapper.getUserByUserId - ==> Parameters: 2(Integer)
+2023-09-05 22:21:36.262 [http-nio-8080-exec-1] DEBUG c.e.tranding.mappers.UserMapper.getUserByUserId - <==      Total: 1
+2023-09-05 22:21:36.262 [http-nio-8080-exec-1] DEBUG c.e.t.mappers.CategoryMapper.getCategoryById - ==>  Preparing: select * from category where category_id = ?
+2023-09-05 22:21:36.262 [http-nio-8080-exec-1] DEBUG c.e.t.mappers.CategoryMapper.getCategoryById - ==> Parameters: 2(Integer)
+2023-09-05 22:21:36.263 [http-nio-8080-exec-1] DEBUG c.e.t.mappers.CategoryMapper.getCategoryById - <==      Total: 1
+2023-09-05 22:21:36.264 [http-nio-8080-exec-1] DEBUG c.e.tranding.mappers.UserMapper.getUserByUserId - ==>  Preparing: select * from user where user_id = ?
+2023-09-05 22:21:36.264 [http-nio-8080-exec-1] DEBUG c.e.tranding.mappers.UserMapper.getUserByUserId - ==> Parameters: 2(Integer)
+2023-09-05 22:21:36.265 [http-nio-8080-exec-1] DEBUG c.e.tranding.mappers.UserMapper.getUserByUserId - <==      Total: 1
+2023-09-05 22:21:36.266 [http-nio-8080-exec-1] DEBUG c.e.t.mappers.CategoryMapper.getCategoryById - ==>  Preparing: select * from category where category_id = ?
+2023-09-05 22:21:36.268 [http-nio-8080-exec-1] DEBUG c.e.t.mappers.CategoryMapper.getCategoryById - ==> Parameters: 2(Integer)
+2023-09-05 22:21:36.269 [http-nio-8080-exec-1] DEBUG c.e.t.mappers.CategoryMapper.getCategoryById - <==      Total: 1
+2023-09-05 22:21:36.269 [http-nio-8080-exec-1] DEBUG c.e.tranding.mappers.UserMapper.getUserByUserId - ==>  Preparing: select * from user where user_id = ?
+2023-09-05 22:21:36.270 [http-nio-8080-exec-1] DEBUG c.e.tranding.mappers.UserMapper.getUserByUserId - ==> Parameters: 2(Integer)
+2023-09-05 22:21:36.271 [http-nio-8080-exec-1] DEBUG c.e.tranding.mappers.UserMapper.getUserByUserId - <==      Total: 1
+2023-09-05 22:21:36.271 [http-nio-8080-exec-1] DEBUG c.e.t.mappers.CategoryMapper.getCategoryById - ==>  Preparing: select * from category where category_id = ?
+2023-09-05 22:21:36.271 [http-nio-8080-exec-1] DEBUG c.e.t.mappers.CategoryMapper.getCategoryById - ==> Parameters: 3(Integer)
+2023-09-05 22:21:36.272 [http-nio-8080-exec-1] DEBUG c.e.t.mappers.CategoryMapper.getCategoryById - <==      Total: 1
+2023-09-05 22:21:36.272 [http-nio-8080-exec-1] DEBUG c.e.tranding.mappers.UserMapper.getUserByUserId - ==>  Preparing: select * from user where user_id = ?
+2023-09-05 22:21:36.272 [http-nio-8080-exec-1] DEBUG c.e.tranding.mappers.UserMapper.getUserByUserId - ==> Parameters: 1(Integer)
+2023-09-05 22:21:36.273 [http-nio-8080-exec-1] DEBUG c.e.tranding.mappers.UserMapper.getUserByUserId - <==      Total: 1
+2023-09-05 22:21:36.274 [http-nio-8080-exec-1] DEBUG c.e.t.mappers.CategoryMapper.getCategoryById - ==>  Preparing: select * from category where category_id = ?
+2023-09-05 22:21:36.274 [http-nio-8080-exec-1] DEBUG c.e.t.mappers.CategoryMapper.getCategoryById - ==> Parameters: 1(Integer)
+2023-09-05 22:21:36.275 [http-nio-8080-exec-1] DEBUG c.e.t.mappers.CategoryMapper.getCategoryById - <==      Total: 1
+2023-09-05 22:21:36.275 [http-nio-8080-exec-1] DEBUG c.e.tranding.mappers.UserMapper.getUserByUserId - ==>  Preparing: select * from user where user_id = ?
+2023-09-05 22:21:36.275 [http-nio-8080-exec-1] DEBUG c.e.tranding.mappers.UserMapper.getUserByUserId - ==> Parameters: 1(Integer)
+2023-09-05 22:21:36.276 [http-nio-8080-exec-1] DEBUG c.e.tranding.mappers.UserMapper.getUserByUserId - <==      Total: 1
+2023-09-05 22:21:36.277 [http-nio-8080-exec-1] DEBUG c.e.t.mappers.CategoryMapper.getCategoryById - ==>  Preparing: select * from category where category_id = ?
+2023-09-05 22:21:36.277 [http-nio-8080-exec-1] DEBUG c.e.t.mappers.CategoryMapper.getCategoryById - ==> Parameters: 5(Integer)
+2023-09-05 22:21:36.278 [http-nio-8080-exec-1] DEBUG c.e.t.mappers.CategoryMapper.getCategoryById - <==      Total: 1
+2023-09-05 22:21:36.278 [http-nio-8080-exec-1] DEBUG c.e.tranding.mappers.UserMapper.getUserByUserId - ==>  Preparing: select * from user where user_id = ?
+2023-09-05 22:21:36.278 [http-nio-8080-exec-1] DEBUG c.e.tranding.mappers.UserMapper.getUserByUserId - ==> Parameters: 1(Integer)
+2023-09-05 22:21:36.279 [http-nio-8080-exec-1] DEBUG c.e.tranding.mappers.UserMapper.getUserByUserId - <==      Total: 1
+2023-09-05 22:21:36.279 [http-nio-8080-exec-1] DEBUG c.e.t.mappers.CategoryMapper.getCategoryById - ==>  Preparing: select * from category where category_id = ?
+2023-09-05 22:21:36.279 [http-nio-8080-exec-1] DEBUG c.e.t.mappers.CategoryMapper.getCategoryById - ==> Parameters: 8(Integer)
+2023-09-05 22:21:36.280 [http-nio-8080-exec-1] DEBUG c.e.t.mappers.CategoryMapper.getCategoryById - <==      Total: 1
+2023-09-05 22:21:36.280 [http-nio-8080-exec-1] DEBUG c.e.tranding.mappers.UserMapper.getUserByUserId - ==>  Preparing: select * from user where user_id = ?
+2023-09-05 22:21:36.281 [http-nio-8080-exec-1] DEBUG c.e.tranding.mappers.UserMapper.getUserByUserId - ==> Parameters: 1(Integer)
+2023-09-05 22:21:36.282 [http-nio-8080-exec-1] DEBUG c.e.tranding.mappers.UserMapper.getUserByUserId - <==      Total: 1
+2023-09-05 22:21:36.290 [http-nio-8080-exec-1] INFO  c.e.tranding.interceptor.LoggingInterceptor - Response Status: 200
+2023-09-05 22:21:37.655 [http-nio-8080-exec-3] DEBUG c.e.tranding.mappers.UserMapper.getUserByPhone - ==>  Preparing: select * from user where phone = ?
+2023-09-05 22:21:37.656 [http-nio-8080-exec-3] DEBUG c.e.tranding.mappers.UserMapper.getUserByPhone - ==> Parameters: 17373011502(String)
+2023-09-05 22:21:37.656 [http-nio-8080-exec-5] DEBUG c.e.tranding.mappers.UserMapper.getUserByPhone - ==>  Preparing: select * from user where phone = ?
+2023-09-05 22:21:37.656 [http-nio-8080-exec-5] DEBUG c.e.tranding.mappers.UserMapper.getUserByPhone - ==> Parameters: 17373011502(String)
+2023-09-05 22:21:37.657 [http-nio-8080-exec-3] DEBUG c.e.tranding.mappers.UserMapper.getUserByPhone - <==      Total: 1
+2023-09-05 22:21:37.658 [http-nio-8080-exec-3] DEBUG c.e.tranding.mappers.RoleMapper.getRoleById - ==>  Preparing: select * from role where role_id = ?
+2023-09-05 22:21:37.658 [http-nio-8080-exec-5] DEBUG c.e.tranding.mappers.UserMapper.getUserByPhone - <==      Total: 1
+2023-09-05 22:21:37.659 [http-nio-8080-exec-3] DEBUG c.e.tranding.mappers.RoleMapper.getRoleById - ==> Parameters: 2(Integer)
+2023-09-05 22:21:37.659 [http-nio-8080-exec-5] DEBUG c.e.tranding.mappers.RoleMapper.getRoleById - ==>  Preparing: select * from role where role_id = ?
+2023-09-05 22:21:37.659 [http-nio-8080-exec-5] DEBUG c.e.tranding.mappers.RoleMapper.getRoleById - ==> Parameters: 2(Integer)
+2023-09-05 22:21:37.660 [http-nio-8080-exec-5] DEBUG c.e.tranding.mappers.RoleMapper.getRoleById - <==      Total: 1
+2023-09-05 22:21:37.660 [http-nio-8080-exec-3] DEBUG c.e.tranding.mappers.RoleMapper.getRoleById - <==      Total: 1
+2023-09-05 22:21:37.661 [http-nio-8080-exec-3] DEBUG c.e.tranding.mappers.ModuleMapper.getModuleByUrl - ==>  Preparing: select * from module where url = ?
+2023-09-05 22:21:37.661 [http-nio-8080-exec-5] DEBUG c.e.tranding.mappers.ModuleMapper.getModuleByUrl - ==>  Preparing: select * from module where url = ?
+2023-09-05 22:21:37.661 [http-nio-8080-exec-3] DEBUG c.e.tranding.mappers.ModuleMapper.getModuleByUrl - ==> Parameters: /order/all/trading(String)
+2023-09-05 22:21:37.661 [http-nio-8080-exec-5] DEBUG c.e.tranding.mappers.ModuleMapper.getModuleByUrl - ==> Parameters: /order/total/trading(String)
+2023-09-05 22:21:37.662 [http-nio-8080-exec-3] DEBUG c.e.tranding.mappers.ModuleMapper.getModuleByUrl - <==      Total: 1
+2023-09-05 22:21:37.662 [http-nio-8080-exec-5] DEBUG c.e.tranding.mappers.ModuleMapper.getModuleByUrl - <==      Total: 1
+2023-09-05 22:21:37.662 [http-nio-8080-exec-3] DEBUG c.e.t.mappers.PermissionMapper.getPermission - ==>  Preparing: select * from permission where role_id=? and module_id=?
+2023-09-05 22:21:37.663 [http-nio-8080-exec-5] DEBUG c.e.t.mappers.PermissionMapper.getPermission - ==>  Preparing: select * from permission where role_id=? and module_id=?
+2023-09-05 22:21:37.663 [http-nio-8080-exec-3] DEBUG c.e.t.mappers.PermissionMapper.getPermission - ==> Parameters: 2(Integer), 48(Integer)
+2023-09-05 22:21:37.663 [http-nio-8080-exec-5] DEBUG c.e.t.mappers.PermissionMapper.getPermission - ==> Parameters: 2(Integer), 49(Integer)
+2023-09-05 22:21:37.664 [http-nio-8080-exec-5] DEBUG c.e.t.mappers.PermissionMapper.getPermission - <==      Total: 1
+2023-09-05 22:21:37.664 [http-nio-8080-exec-3] DEBUG c.e.t.mappers.PermissionMapper.getPermission - <==      Total: 1
+2023-09-05 22:21:37.664 [http-nio-8080-exec-3] DEBUG c.e.tranding.mappers.ModuleMapper.getModuleByUrl - ==>  Preparing: select * from module where url = ?
+2023-09-05 22:21:37.664 [http-nio-8080-exec-5] DEBUG c.e.tranding.mappers.ModuleMapper.getModuleByUrl - ==>  Preparing: select * from module where url = ?
+2023-09-05 22:21:37.664 [http-nio-8080-exec-3] DEBUG c.e.tranding.mappers.ModuleMapper.getModuleByUrl - ==> Parameters: /order/all/trading(String)
+2023-09-05 22:21:37.664 [http-nio-8080-exec-5] DEBUG c.e.tranding.mappers.ModuleMapper.getModuleByUrl - ==> Parameters: /order/total/trading(String)
+2023-09-05 22:21:37.665 [http-nio-8080-exec-3] DEBUG c.e.tranding.mappers.ModuleMapper.getModuleByUrl - <==      Total: 1
+2023-09-05 22:21:37.665 [http-nio-8080-exec-5] DEBUG c.e.tranding.mappers.ModuleMapper.getModuleByUrl - <==      Total: 1
+2023-09-05 22:21:37.666 [http-nio-8080-exec-3] INFO  c.e.tranding.interceptor.LoggingInterceptor - eccentric 使用资源：用户获取自己的所有订单信息的功能，访问路径：http://localhost:8080/order/all/trading
+2023-09-05 22:21:37.666 [http-nio-8080-exec-5] INFO  c.e.tranding.interceptor.LoggingInterceptor - eccentric 使用资源：用户统计自己的所有订单信息的数量的功能，访问路径：http://localhost:8080/order/total/trading
+2023-09-05 22:21:37.668 [http-nio-8080-exec-5] DEBUG c.e.t.mappers.OrderMapper.getTotalByActionUser - ==>  Preparing: select count(*) from orders left join goods on orders.good_id = goods.good_id left join user as buyUser on orders.user_id = buyUser.user_id left join user as saleUser on goods.user_id=saleUser.user_id where concat(saleUser.username,goods.good_name) like "%"?"%" and orders.user_id = ?
+2023-09-05 22:21:37.669 [http-nio-8080-exec-3] DEBUG c.e.t.mappers.OrderMapper.getAllOrderByActionUser - ==>  Preparing: select orders.*,goods.good_name,saleUser.username as saleUsername,buyUser.username as buyUsername,goods.user_id as sale_user_id from orders left join goods on orders.good_id = goods.good_id left join user as buyUser on orders.user_id = buyUser.user_id left join user as saleUser on goods.user_id=saleUser.user_id where concat(saleUser.username,goods.good_name) like "%"?"%" and orders.user_id = ? limit ?,?
+2023-09-05 22:21:37.669 [http-nio-8080-exec-5] DEBUG c.e.t.mappers.OrderMapper.getTotalByActionUser - ==> Parameters: (String), 3(Integer)
+2023-09-05 22:21:37.669 [http-nio-8080-exec-3] DEBUG c.e.t.mappers.OrderMapper.getAllOrderByActionUser - ==> Parameters: (String), 3(Integer), 0(Integer), 10(Integer)
+2023-09-05 22:21:37.671 [http-nio-8080-exec-3] DEBUG c.e.t.mappers.OrderMapper.getAllOrderByActionUser - <==      Total: 0
+2023-09-05 22:21:37.671 [http-nio-8080-exec-5] DEBUG c.e.t.mappers.OrderMapper.getTotalByActionUser - <==      Total: 1
+2023-09-05 22:21:37.672 [http-nio-8080-exec-3] INFO  c.e.tranding.interceptor.LoggingInterceptor - Response Status: 200
+2023-09-05 22:21:37.673 [http-nio-8080-exec-5] INFO  c.e.tranding.interceptor.LoggingInterceptor - Response Status: 200
+2023-09-05 22:21:38.891 [http-nio-8080-exec-4] DEBUG c.e.tranding.mappers.UserMapper.getUserByPhone - ==>  Preparing: select * from user where phone = ?
+2023-09-05 22:21:38.891 [http-nio-8080-exec-4] DEBUG c.e.tranding.mappers.UserMapper.getUserByPhone - ==> Parameters: 17373011502(String)
+2023-09-05 22:21:38.892 [http-nio-8080-exec-4] DEBUG c.e.tranding.mappers.UserMapper.getUserByPhone - <==      Total: 1
+2023-09-05 22:21:38.893 [http-nio-8080-exec-4] DEBUG c.e.tranding.mappers.RoleMapper.getRoleById - ==>  Preparing: select * from role where role_id = ?
+2023-09-05 22:21:38.893 [http-nio-8080-exec-7] DEBUG c.e.tranding.mappers.UserMapper.getUserByPhone - ==>  Preparing: select * from user where phone = ?
+2023-09-05 22:21:38.893 [http-nio-8080-exec-7] DEBUG c.e.tranding.mappers.UserMapper.getUserByPhone - ==> Parameters: 17373011502(String)
+2023-09-05 22:21:38.893 [http-nio-8080-exec-4] DEBUG c.e.tranding.mappers.RoleMapper.getRoleById - ==> Parameters: 2(Integer)
+2023-09-05 22:21:38.894 [http-nio-8080-exec-4] DEBUG c.e.tranding.mappers.RoleMapper.getRoleById - <==      Total: 1
+2023-09-05 22:21:38.894 [http-nio-8080-exec-4] DEBUG c.e.tranding.mappers.ModuleMapper.getModuleByUrl - ==>  Preparing: select * from module where url = ?
+2023-09-05 22:21:38.894 [http-nio-8080-exec-4] DEBUG c.e.tranding.mappers.ModuleMapper.getModuleByUrl - ==> Parameters: /good/all/sale(String)
+2023-09-05 22:21:38.895 [http-nio-8080-exec-7] DEBUG c.e.tranding.mappers.UserMapper.getUserByPhone - <==      Total: 1
+2023-09-05 22:21:38.895 [http-nio-8080-exec-7] DEBUG c.e.tranding.mappers.RoleMapper.getRoleById - ==>  Preparing: select * from role where role_id = ?
+2023-09-05 22:21:38.895 [http-nio-8080-exec-4] DEBUG c.e.tranding.mappers.ModuleMapper.getModuleByUrl - <==      Total: 1
+2023-09-05 22:21:38.896 [http-nio-8080-exec-7] DEBUG c.e.tranding.mappers.RoleMapper.getRoleById - ==> Parameters: 2(Integer)
+2023-09-05 22:21:38.896 [http-nio-8080-exec-4] DEBUG c.e.t.mappers.PermissionMapper.getPermission - ==>  Preparing: select * from permission where role_id=? and module_id=?
+2023-09-05 22:21:38.896 [http-nio-8080-exec-4] DEBUG c.e.t.mappers.PermissionMapper.getPermission - ==> Parameters: 2(Integer), 35(Integer)
+2023-09-05 22:21:38.897 [http-nio-8080-exec-7] DEBUG c.e.tranding.mappers.RoleMapper.getRoleById - <==      Total: 1
+2023-09-05 22:21:38.897 [http-nio-8080-exec-4] DEBUG c.e.t.mappers.PermissionMapper.getPermission - <==      Total: 1
+2023-09-05 22:21:38.897 [http-nio-8080-exec-7] DEBUG c.e.tranding.mappers.ModuleMapper.getModuleByUrl - ==>  Preparing: select * from module where url = ?
+2023-09-05 22:21:38.897 [http-nio-8080-exec-4] DEBUG c.e.tranding.mappers.ModuleMapper.getModuleByUrl - ==>  Preparing: select * from module where url = ?
+2023-09-05 22:21:38.897 [http-nio-8080-exec-7] DEBUG c.e.tranding.mappers.ModuleMapper.getModuleByUrl - ==> Parameters: /good/total/sale(String)
+2023-09-05 22:21:38.897 [http-nio-8080-exec-4] DEBUG c.e.tranding.mappers.ModuleMapper.getModuleByUrl - ==> Parameters: /good/all/sale(String)
+2023-09-05 22:21:38.898 [http-nio-8080-exec-7] DEBUG c.e.tranding.mappers.ModuleMapper.getModuleByUrl - <==      Total: 1
+2023-09-05 22:21:38.898 [http-nio-8080-exec-4] DEBUG c.e.tranding.mappers.ModuleMapper.getModuleByUrl - <==      Total: 1
+2023-09-05 22:21:38.898 [http-nio-8080-exec-4] INFO  c.e.tranding.interceptor.LoggingInterceptor - eccentric 使用资源：获取用户出售的所有商品信息，访问路径：http://localhost:8080/good/all/sale
+2023-09-05 22:21:38.898 [http-nio-8080-exec-7] DEBUG c.e.t.mappers.PermissionMapper.getPermission - ==>  Preparing: select * from permission where role_id=? and module_id=?
+2023-09-05 22:21:38.899 [http-nio-8080-exec-7] DEBUG c.e.t.mappers.PermissionMapper.getPermission - ==> Parameters: 2(Integer), 36(Integer)
+2023-09-05 22:21:38.900 [http-nio-8080-exec-7] DEBUG c.e.t.mappers.PermissionMapper.getPermission - <==      Total: 1
+2023-09-05 22:21:38.900 [http-nio-8080-exec-4] DEBUG c.e.tranding.mappers.GoodMapper.getGoodByUserId - ==>  Preparing: select * from goods where concat(good_name,description) like "%"?"%" and user_id = ? limit ?,?
+2023-09-05 22:21:38.901 [http-nio-8080-exec-7] DEBUG c.e.tranding.mappers.ModuleMapper.getModuleByUrl - ==>  Preparing: select * from module where url = ?
+2023-09-05 22:21:38.901 [http-nio-8080-exec-7] DEBUG c.e.tranding.mappers.ModuleMapper.getModuleByUrl - ==> Parameters: /good/total/sale(String)
+2023-09-05 22:21:38.901 [http-nio-8080-exec-4] DEBUG c.e.tranding.mappers.GoodMapper.getGoodByUserId - ==> Parameters: (String), 3(Integer), 0(Integer), 10(Integer)
+2023-09-05 22:21:38.902 [http-nio-8080-exec-4] DEBUG c.e.tranding.mappers.GoodMapper.getGoodByUserId - <==      Total: 0
+2023-09-05 22:21:38.902 [http-nio-8080-exec-7] DEBUG c.e.tranding.mappers.ModuleMapper.getModuleByUrl - <==      Total: 1
+2023-09-05 22:21:38.902 [http-nio-8080-exec-7] INFO  c.e.tranding.interceptor.LoggingInterceptor - eccentric 使用资源：统计用户出售的所有商品的数量，访问路径：http://localhost:8080/good/total/sale
+2023-09-05 22:21:38.903 [http-nio-8080-exec-7] DEBUG c.e.tranding.mappers.GoodMapper.getTotalByUserId - ==>  Preparing: select count(*) from goods where concat(good_name,description) like "%"?"%" and user_id = ?
+2023-09-05 22:21:38.903 [http-nio-8080-exec-4] INFO  c.e.tranding.interceptor.LoggingInterceptor - Response Status: 200
+2023-09-05 22:21:38.903 [http-nio-8080-exec-7] DEBUG c.e.tranding.mappers.GoodMapper.getTotalByUserId - ==> Parameters: (String), 3(Integer)
+2023-09-05 22:21:38.904 [http-nio-8080-exec-7] DEBUG c.e.tranding.mappers.GoodMapper.getTotalByUserId - <==      Total: 1
+2023-09-05 22:21:38.905 [http-nio-8080-exec-7] INFO  c.e.tranding.interceptor.LoggingInterceptor - Response Status: 200
+2023-09-05 22:21:40.487 [http-nio-8080-exec-6] DEBUG c.e.tranding.mappers.UserMapper.getUserByPhone - ==>  Preparing: select * from user where phone = ?
+2023-09-05 22:21:40.487 [http-nio-8080-exec-8] DEBUG c.e.tranding.mappers.UserMapper.getUserByPhone - ==>  Preparing: select * from user where phone = ?
+2023-09-05 22:21:40.487 [http-nio-8080-exec-6] DEBUG c.e.tranding.mappers.UserMapper.getUserByPhone - ==> Parameters: 17373011502(String)
+2023-09-05 22:21:40.487 [http-nio-8080-exec-8] DEBUG c.e.tranding.mappers.UserMapper.getUserByPhone - ==> Parameters: 17373011502(String)
+2023-09-05 22:21:40.489 [http-nio-8080-exec-8] DEBUG c.e.tranding.mappers.UserMapper.getUserByPhone - <==      Total: 1
+2023-09-05 22:21:40.489 [http-nio-8080-exec-6] DEBUG c.e.tranding.mappers.UserMapper.getUserByPhone - <==      Total: 1
+2023-09-05 22:21:40.490 [http-nio-8080-exec-8] DEBUG c.e.tranding.mappers.RoleMapper.getRoleById - ==>  Preparing: select * from role where role_id = ?
+2023-09-05 22:21:40.490 [http-nio-8080-exec-6] DEBUG c.e.tranding.mappers.RoleMapper.getRoleById - ==>  Preparing: select * from role where role_id = ?
+2023-09-05 22:21:40.490 [http-nio-8080-exec-8] DEBUG c.e.tranding.mappers.RoleMapper.getRoleById - ==> Parameters: 2(Integer)
+2023-09-05 22:21:40.490 [http-nio-8080-exec-6] DEBUG c.e.tranding.mappers.RoleMapper.getRoleById - ==> Parameters: 2(Integer)
+2023-09-05 22:21:40.491 [http-nio-8080-exec-8] DEBUG c.e.tranding.mappers.RoleMapper.getRoleById - <==      Total: 1
+2023-09-05 22:21:40.491 [http-nio-8080-exec-6] DEBUG c.e.tranding.mappers.RoleMapper.getRoleById - <==      Total: 1
+2023-09-05 22:21:40.491 [http-nio-8080-exec-8] DEBUG c.e.tranding.mappers.ModuleMapper.getModuleByUrl - ==>  Preparing: select * from module where url = ?
+2023-09-05 22:21:40.491 [http-nio-8080-exec-6] DEBUG c.e.tranding.mappers.ModuleMapper.getModuleByUrl - ==>  Preparing: select * from module where url = ?
+2023-09-05 22:21:40.491 [http-nio-8080-exec-8] DEBUG c.e.tranding.mappers.ModuleMapper.getModuleByUrl - ==> Parameters: /good/total(String)
+2023-09-05 22:21:40.491 [http-nio-8080-exec-6] DEBUG c.e.tranding.mappers.ModuleMapper.getModuleByUrl - ==> Parameters: /good/all(String)
+2023-09-05 22:21:40.492 [http-nio-8080-exec-8] DEBUG c.e.tranding.mappers.ModuleMapper.getModuleByUrl - <==      Total: 1
+2023-09-05 22:21:40.492 [http-nio-8080-exec-8] DEBUG c.e.t.mappers.PermissionMapper.getPermission - ==>  Preparing: select * from permission where role_id=? and module_id=?
+2023-09-05 22:21:40.492 [http-nio-8080-exec-8] DEBUG c.e.t.mappers.PermissionMapper.getPermission - ==> Parameters: 2(Integer), 27(Integer)
+2023-09-05 22:21:40.492 [http-nio-8080-exec-6] DEBUG c.e.tranding.mappers.ModuleMapper.getModuleByUrl - <==      Total: 1
+2023-09-05 22:21:40.493 [http-nio-8080-exec-6] DEBUG c.e.t.mappers.PermissionMapper.getPermission - ==>  Preparing: select * from permission where role_id=? and module_id=?
+2023-09-05 22:21:40.493 [http-nio-8080-exec-8] DEBUG c.e.t.mappers.PermissionMapper.getPermission - <==      Total: 1
+2023-09-05 22:21:40.493 [http-nio-8080-exec-8] DEBUG c.e.tranding.mappers.ModuleMapper.getModuleByUrl - ==>  Preparing: select * from module where url = ?
+2023-09-05 22:21:40.493 [http-nio-8080-exec-8] DEBUG c.e.tranding.mappers.ModuleMapper.getModuleByUrl - ==> Parameters: /good/total(String)
+2023-09-05 22:21:40.493 [http-nio-8080-exec-6] DEBUG c.e.t.mappers.PermissionMapper.getPermission - ==> Parameters: 2(Integer), 25(Integer)
+2023-09-05 22:21:40.494 [http-nio-8080-exec-8] DEBUG c.e.tranding.mappers.ModuleMapper.getModuleByUrl - <==      Total: 1
+2023-09-05 22:21:40.494 [http-nio-8080-exec-6] DEBUG c.e.t.mappers.PermissionMapper.getPermission - <==      Total: 1
+2023-09-05 22:21:40.494 [http-nio-8080-exec-8] INFO  c.e.tranding.interceptor.LoggingInterceptor - eccentric 使用资源：统计所有商品的信息，访问路径：http://localhost:8080/good/total
+2023-09-05 22:21:40.494 [http-nio-8080-exec-6] DEBUG c.e.tranding.mappers.ModuleMapper.getModuleByUrl - ==>  Preparing: select * from module where url = ?
+2023-09-05 22:21:40.494 [http-nio-8080-exec-6] DEBUG c.e.tranding.mappers.ModuleMapper.getModuleByUrl - ==> Parameters: /good/all(String)
+2023-09-05 22:21:40.494 [http-nio-8080-exec-8] DEBUG com.eccentric.tranding.mappers.GoodMapper.getTotal - ==>  Preparing: select count(*) from goods where concat(good_name,description) like "%"?"%"
+2023-09-05 22:21:40.495 [http-nio-8080-exec-8] DEBUG com.eccentric.tranding.mappers.GoodMapper.getTotal - ==> Parameters: (String)
+2023-09-05 22:21:40.496 [http-nio-8080-exec-8] DEBUG com.eccentric.tranding.mappers.GoodMapper.getTotal - <==      Total: 1
+2023-09-05 22:21:40.497 [http-nio-8080-exec-8] INFO  c.e.tranding.interceptor.LoggingInterceptor - Response Status: 200
+2023-09-05 22:21:40.497 [http-nio-8080-exec-6] DEBUG c.e.tranding.mappers.ModuleMapper.getModuleByUrl - <==      Total: 1
+2023-09-05 22:21:40.497 [http-nio-8080-exec-6] INFO  c.e.tranding.interceptor.LoggingInterceptor - eccentric 使用资源：获取所有商品的信息，访问路径：http://localhost:8080/good/all
+2023-09-05 22:21:40.499 [http-nio-8080-exec-6] DEBUG c.eccentric.tranding.mappers.GoodMapper.getAllGood - ==>  Preparing: select * from goods where concat(good_name,description) like "%"?"%" limit ?,?
+2023-09-05 22:21:40.500 [http-nio-8080-exec-6] DEBUG c.eccentric.tranding.mappers.GoodMapper.getAllGood - ==> Parameters: (String), 0(Integer), 10(Integer)
+2023-09-05 22:21:40.505 [http-nio-8080-exec-6] DEBUG c.eccentric.tranding.mappers.GoodMapper.getAllGood - <==      Total: 10
+2023-09-05 22:21:40.506 [http-nio-8080-exec-6] DEBUG c.e.t.mappers.CategoryMapper.getCategoryById - ==>  Preparing: select * from category where category_id = ?
+2023-09-05 22:21:40.507 [http-nio-8080-exec-6] DEBUG c.e.t.mappers.CategoryMapper.getCategoryById - ==> Parameters: 2(Integer)
+2023-09-05 22:21:40.507 [http-nio-8080-exec-6] DEBUG c.e.t.mappers.CategoryMapper.getCategoryById - <==      Total: 1
+2023-09-05 22:21:40.508 [http-nio-8080-exec-6] DEBUG c.e.tranding.mappers.UserMapper.getUserByUserId - ==>  Preparing: select * from user where user_id = ?
+2023-09-05 22:21:40.508 [http-nio-8080-exec-6] DEBUG c.e.tranding.mappers.UserMapper.getUserByUserId - ==> Parameters: 1(Integer)
+2023-09-05 22:21:40.509 [http-nio-8080-exec-6] DEBUG c.e.tranding.mappers.UserMapper.getUserByUserId - <==      Total: 1
+2023-09-05 22:21:40.509 [http-nio-8080-exec-6] DEBUG c.e.t.mappers.CategoryMapper.getCategoryById - ==>  Preparing: select * from category where category_id = ?
+2023-09-05 22:21:40.509 [http-nio-8080-exec-6] DEBUG c.e.t.mappers.CategoryMapper.getCategoryById - ==> Parameters: 8(Integer)
+2023-09-05 22:21:40.510 [http-nio-8080-exec-6] DEBUG c.e.t.mappers.CategoryMapper.getCategoryById - <==      Total: 1
+2023-09-05 22:21:40.511 [http-nio-8080-exec-6] DEBUG c.e.tranding.mappers.UserMapper.getUserByUserId - ==>  Preparing: select * from user where user_id = ?
+2023-09-05 22:21:40.511 [http-nio-8080-exec-6] DEBUG c.e.tranding.mappers.UserMapper.getUserByUserId - ==> Parameters: 18(Integer)
+2023-09-05 22:21:40.512 [http-nio-8080-exec-6] DEBUG c.e.tranding.mappers.UserMapper.getUserByUserId - <==      Total: 1
+2023-09-05 22:21:40.513 [http-nio-8080-exec-6] DEBUG c.e.t.mappers.CategoryMapper.getCategoryById - ==>  Preparing: select * from category where category_id = ?
+2023-09-05 22:21:40.513 [http-nio-8080-exec-6] DEBUG c.e.t.mappers.CategoryMapper.getCategoryById - ==> Parameters: 2(Integer)
+2023-09-05 22:21:40.514 [http-nio-8080-exec-6] DEBUG c.e.t.mappers.CategoryMapper.getCategoryById - <==      Total: 1
+2023-09-05 22:21:40.514 [http-nio-8080-exec-6] DEBUG c.e.tranding.mappers.UserMapper.getUserByUserId - ==>  Preparing: select * from user where user_id = ?
+2023-09-05 22:21:40.514 [http-nio-8080-exec-6] DEBUG c.e.tranding.mappers.UserMapper.getUserByUserId - ==> Parameters: 4(Integer)
+2023-09-05 22:21:40.515 [http-nio-8080-exec-6] DEBUG c.e.tranding.mappers.UserMapper.getUserByUserId - <==      Total: 1
+2023-09-05 22:21:40.516 [http-nio-8080-exec-6] DEBUG c.e.t.mappers.CategoryMapper.getCategoryById - ==>  Preparing: select * from category where category_id = ?
+2023-09-05 22:21:40.516 [http-nio-8080-exec-6] DEBUG c.e.t.mappers.CategoryMapper.getCategoryById - ==> Parameters: 2(Integer)
+2023-09-05 22:21:40.517 [http-nio-8080-exec-6] DEBUG c.e.t.mappers.CategoryMapper.getCategoryById - <==      Total: 1
+2023-09-05 22:21:40.518 [http-nio-8080-exec-6] DEBUG c.e.tranding.mappers.UserMapper.getUserByUserId - ==>  Preparing: select * from user where user_id = ?
+2023-09-05 22:21:40.518 [http-nio-8080-exec-6] DEBUG c.e.tranding.mappers.UserMapper.getUserByUserId - ==> Parameters: 2(Integer)
+2023-09-05 22:21:40.519 [http-nio-8080-exec-6] DEBUG c.e.tranding.mappers.UserMapper.getUserByUserId - <==      Total: 1
+2023-09-05 22:21:40.520 [http-nio-8080-exec-6] DEBUG c.e.t.mappers.CategoryMapper.getCategoryById - ==>  Preparing: select * from category where category_id = ?
+2023-09-05 22:21:40.520 [http-nio-8080-exec-6] DEBUG c.e.t.mappers.CategoryMapper.getCategoryById - ==> Parameters: 2(Integer)
+2023-09-05 22:21:40.521 [http-nio-8080-exec-6] DEBUG c.e.t.mappers.CategoryMapper.getCategoryById - <==      Total: 1
+2023-09-05 22:21:40.521 [http-nio-8080-exec-6] DEBUG c.e.tranding.mappers.UserMapper.getUserByUserId - ==>  Preparing: select * from user where user_id = ?
+2023-09-05 22:21:40.522 [http-nio-8080-exec-6] DEBUG c.e.tranding.mappers.UserMapper.getUserByUserId - ==> Parameters: 2(Integer)
+2023-09-05 22:21:40.523 [http-nio-8080-exec-6] DEBUG c.e.tranding.mappers.UserMapper.getUserByUserId - <==      Total: 1
+2023-09-05 22:21:40.523 [http-nio-8080-exec-6] DEBUG c.e.t.mappers.CategoryMapper.getCategoryById - ==>  Preparing: select * from category where category_id = ?
+2023-09-05 22:21:40.524 [http-nio-8080-exec-6] DEBUG c.e.t.mappers.CategoryMapper.getCategoryById - ==> Parameters: 2(Integer)
+2023-09-05 22:21:40.525 [http-nio-8080-exec-6] DEBUG c.e.t.mappers.CategoryMapper.getCategoryById - <==      Total: 1
+2023-09-05 22:21:40.525 [http-nio-8080-exec-6] DEBUG c.e.tranding.mappers.UserMapper.getUserByUserId - ==>  Preparing: select * from user where user_id = ?
+2023-09-05 22:21:40.525 [http-nio-8080-exec-6] DEBUG c.e.tranding.mappers.UserMapper.getUserByUserId - ==> Parameters: 13(Integer)
+2023-09-05 22:21:40.526 [http-nio-8080-exec-6] DEBUG c.e.tranding.mappers.UserMapper.getUserByUserId - <==      Total: 1
+2023-09-05 22:21:40.527 [http-nio-8080-exec-6] DEBUG c.e.t.mappers.CategoryMapper.getCategoryById - ==>  Preparing: select * from category where category_id = ?
+2023-09-05 22:21:40.527 [http-nio-8080-exec-6] DEBUG c.e.t.mappers.CategoryMapper.getCategoryById - ==> Parameters: 2(Integer)
+2023-09-05 22:21:40.528 [http-nio-8080-exec-6] DEBUG c.e.t.mappers.CategoryMapper.getCategoryById - <==      Total: 1
+2023-09-05 22:21:40.528 [http-nio-8080-exec-6] DEBUG c.e.tranding.mappers.UserMapper.getUserByUserId - ==>  Preparing: select * from user where user_id = ?
+2023-09-05 22:21:40.528 [http-nio-8080-exec-6] DEBUG c.e.tranding.mappers.UserMapper.getUserByUserId - ==> Parameters: 2(Integer)
+2023-09-05 22:21:40.529 [http-nio-8080-exec-6] DEBUG c.e.tranding.mappers.UserMapper.getUserByUserId - <==      Total: 1
+2023-09-05 22:21:40.529 [http-nio-8080-exec-6] DEBUG c.e.t.mappers.CategoryMapper.getCategoryById - ==>  Preparing: select * from category where category_id = ?
+2023-09-05 22:21:40.530 [http-nio-8080-exec-6] DEBUG c.e.t.mappers.CategoryMapper.getCategoryById - ==> Parameters: 2(Integer)
+2023-09-05 22:21:40.532 [http-nio-8080-exec-6] DEBUG c.e.t.mappers.CategoryMapper.getCategoryById - <==      Total: 1
+2023-09-05 22:21:40.532 [http-nio-8080-exec-6] DEBUG c.e.tranding.mappers.UserMapper.getUserByUserId - ==>  Preparing: select * from user where user_id = ?
+2023-09-05 22:21:40.532 [http-nio-8080-exec-6] DEBUG c.e.tranding.mappers.UserMapper.getUserByUserId - ==> Parameters: 2(Integer)
+2023-09-05 22:21:40.533 [http-nio-8080-exec-6] DEBUG c.e.tranding.mappers.UserMapper.getUserByUserId - <==      Total: 1
+2023-09-05 22:21:40.534 [http-nio-8080-exec-6] DEBUG c.e.t.mappers.CategoryMapper.getCategoryById - ==>  Preparing: select * from category where category_id = ?
+2023-09-05 22:21:40.534 [http-nio-8080-exec-6] DEBUG c.e.t.mappers.CategoryMapper.getCategoryById - ==> Parameters: 2(Integer)
+2023-09-05 22:21:40.535 [http-nio-8080-exec-6] DEBUG c.e.t.mappers.CategoryMapper.getCategoryById - <==      Total: 1
+2023-09-05 22:21:40.535 [http-nio-8080-exec-6] DEBUG c.e.tranding.mappers.UserMapper.getUserByUserId - ==>  Preparing: select * from user where user_id = ?
+2023-09-05 22:21:40.536 [http-nio-8080-exec-6] DEBUG c.e.tranding.mappers.UserMapper.getUserByUserId - ==> Parameters: 2(Integer)
+2023-09-05 22:21:40.537 [http-nio-8080-exec-6] DEBUG c.e.tranding.mappers.UserMapper.getUserByUserId - <==      Total: 1
+2023-09-05 22:21:40.537 [http-nio-8080-exec-6] DEBUG c.e.t.mappers.CategoryMapper.getCategoryById - ==>  Preparing: select * from category where category_id = ?
+2023-09-05 22:21:40.537 [http-nio-8080-exec-6] DEBUG c.e.t.mappers.CategoryMapper.getCategoryById - ==> Parameters: 2(Integer)
+2023-09-05 22:21:40.538 [http-nio-8080-exec-6] DEBUG c.e.t.mappers.CategoryMapper.getCategoryById - <==      Total: 1
+2023-09-05 22:21:40.539 [http-nio-8080-exec-6] DEBUG c.e.tranding.mappers.UserMapper.getUserByUserId - ==>  Preparing: select * from user where user_id = ?
+2023-09-05 22:21:40.539 [http-nio-8080-exec-6] DEBUG c.e.tranding.mappers.UserMapper.getUserByUserId - ==> Parameters: 2(Integer)
+2023-09-05 22:21:40.540 [http-nio-8080-exec-6] DEBUG c.e.tranding.mappers.UserMapper.getUserByUserId - <==      Total: 1
+2023-09-05 22:21:40.545 [http-nio-8080-exec-6] INFO  c.e.tranding.interceptor.LoggingInterceptor - Response Status: 200
+2023-09-05 22:22:14.929 [SpringApplicationShutdownHook] INFO  com.zaxxer.hikari.HikariDataSource - HikariPool-1 - Shutdown initiated...
+2023-09-05 22:22:14.936 [SpringApplicationShutdownHook] INFO  com.zaxxer.hikari.HikariDataSource - HikariPool-1 - Shutdown completed.

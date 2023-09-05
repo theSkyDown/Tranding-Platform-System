@@ -1,0 +1,266 @@
+2023-05-30 12:56:44.993 [main] INFO  com.eccentric.tranding.TrandingPlatformApplication - Starting TrandingPlatformApplication using Java 1.8.0_372 on EccentricPC with PID 5438 (/home/eccentric/Documents/Tranding-Platform-System/Tranding-Platform/target/classes started by eccentric in /home/eccentric/Documents/Tranding-Platform-System/Tranding-Platform)
+2023-05-30 12:56:44.996 [main] INFO  com.eccentric.tranding.TrandingPlatformApplication - No active profile set, falling back to 1 default profile: "default"
+2023-05-30 12:56:45.572 [main] INFO  o.s.d.r.config.RepositoryConfigurationDelegate - Multiple Spring Data modules found, entering strict repository configuration mode
+2023-05-30 12:56:45.574 [main] INFO  o.s.d.r.config.RepositoryConfigurationDelegate - Bootstrapping Spring Data Redis repositories in DEFAULT mode.
+2023-05-30 12:56:45.596 [main] INFO  o.s.d.r.config.RepositoryConfigurationDelegate - Finished Spring Data repository scanning in 7 ms. Found 0 Redis repository interfaces.
+2023-05-30 12:56:46.019 [main] INFO  o.s.boot.web.embedded.tomcat.TomcatWebServer - Tomcat initialized with port(s): 8080 (http)
+2023-05-30 12:56:46.026 [main] INFO  org.apache.coyote.http11.Http11NioProtocol - Initializing ProtocolHandler ["http-nio-8080"]
+2023-05-30 12:56:46.026 [main] INFO  org.apache.catalina.core.StandardService - Starting service [Tomcat]
+2023-05-30 12:56:46.026 [main] INFO  org.apache.catalina.core.StandardEngine - Starting Servlet engine: [Apache Tomcat/9.0.71]
+2023-05-30 12:56:46.089 [main] INFO  o.a.c.core.ContainerBase.[Tomcat].[localhost].[/] - Initializing Spring embedded WebApplicationContext
+2023-05-30 12:56:46.090 [main] INFO  o.s.b.w.s.c.ServletWebServerApplicationContext - Root WebApplicationContext: initialization completed in 1058 ms
+2023-05-30 12:56:46.985 [main] INFO  org.apache.coyote.http11.Http11NioProtocol - Starting ProtocolHandler ["http-nio-8080"]
+2023-05-30 12:56:46.996 [main] INFO  o.s.boot.web.embedded.tomcat.TomcatWebServer - Tomcat started on port(s): 8080 (http) with context path ''
+2023-05-30 12:56:47.005 [main] INFO  com.eccentric.tranding.TrandingPlatformApplication - Started TrandingPlatformApplication in 2.501 seconds (JVM running for 3.043)
+2023-05-30 12:57:00.174 [http-nio-8080-exec-1] INFO  o.a.c.core.ContainerBase.[Tomcat].[localhost].[/] - Initializing Spring DispatcherServlet 'dispatcherServlet'
+2023-05-30 12:57:00.174 [http-nio-8080-exec-1] INFO  org.springframework.web.servlet.DispatcherServlet - Initializing Servlet 'dispatcherServlet'
+2023-05-30 12:57:00.175 [http-nio-8080-exec-1] INFO  org.springframework.web.servlet.DispatcherServlet - Completed initialization in 1 ms
+2023-05-30 13:01:34.192 [http-nio-8080-exec-4] INFO  com.zaxxer.hikari.HikariDataSource - HikariPool-1 - Starting...
+2023-05-30 13:01:34.337 [http-nio-8080-exec-4] INFO  com.zaxxer.hikari.HikariDataSource - HikariPool-1 - Start completed.
+2023-05-30 13:01:34.343 [http-nio-8080-exec-4] DEBUG c.e.tranding.mappers.UserMapper.getUserByPhone - ==>  Preparing: select * from user where phone = ?
+2023-05-30 13:01:34.359 [http-nio-8080-exec-4] DEBUG c.e.tranding.mappers.UserMapper.getUserByPhone - ==> Parameters: admin(String)
+2023-05-30 13:01:34.380 [http-nio-8080-exec-4] DEBUG c.e.tranding.mappers.UserMapper.getUserByPhone - <==      Total: 1
+2023-05-30 13:01:34.383 [http-nio-8080-exec-4] DEBUG c.e.tranding.mappers.RoleMapper.getRoleById - ==>  Preparing: select * from role where role_id = ?
+2023-05-30 13:01:34.383 [http-nio-8080-exec-4] DEBUG c.e.tranding.mappers.RoleMapper.getRoleById - ==> Parameters: 1(Integer)
+2023-05-30 13:01:34.385 [http-nio-8080-exec-4] DEBUG c.e.tranding.mappers.RoleMapper.getRoleById - <==      Total: 1
+2023-05-30 13:01:34.386 [http-nio-8080-exec-4] DEBUG c.e.tranding.mappers.ModuleMapper.getModuleByUrl - ==>  Preparing: select * from module where url = ?
+2023-05-30 13:01:34.386 [http-nio-8080-exec-4] DEBUG c.e.tranding.mappers.ModuleMapper.getModuleByUrl - ==> Parameters: /category/total(String)
+2023-05-30 13:01:34.387 [http-nio-8080-exec-4] DEBUG c.e.tranding.mappers.ModuleMapper.getModuleByUrl - <==      Total: 1
+2023-05-30 13:01:34.388 [http-nio-8080-exec-4] INFO  c.e.tranding.interceptor.LoggingInterceptor - admin 使用资源：统计所有分类信息的数量，访问路径：http://localhost:8080/category/total
+2023-05-30 13:01:34.403 [http-nio-8080-exec-4] DEBUG c.e.t.mappers.CategoryMapper.getTotalCategory - ==>  Preparing: select count(*) from category where concat(category_name) like "%"?"%"
+2023-05-30 13:01:34.404 [http-nio-8080-exec-4] DEBUG c.e.t.mappers.CategoryMapper.getTotalCategory - ==> Parameters: (String)
+2023-05-30 13:01:34.406 [http-nio-8080-exec-4] DEBUG c.e.t.mappers.CategoryMapper.getTotalCategory - <==      Total: 1
+2023-05-30 13:01:34.430 [http-nio-8080-exec-4] INFO  c.e.tranding.interceptor.LoggingInterceptor - Response Status: 200
+2023-05-30 13:04:15.721 [SpringApplicationShutdownHook] INFO  com.zaxxer.hikari.HikariDataSource - HikariPool-1 - Shutdown initiated...
+2023-05-30 13:04:15.728 [SpringApplicationShutdownHook] INFO  com.zaxxer.hikari.HikariDataSource - HikariPool-1 - Shutdown completed.
+2023-05-30 13:04:17.849 [main] INFO  com.eccentric.tranding.TrandingPlatformApplication - Starting TrandingPlatformApplication using Java 1.8.0_372 on EccentricPC with PID 6039 (/home/eccentric/Documents/Tranding-Platform-System/Tranding-Platform/target/classes started by eccentric in /home/eccentric/Documents/Tranding-Platform-System/Tranding-Platform)
+2023-05-30 13:04:17.851 [main] INFO  com.eccentric.tranding.TrandingPlatformApplication - No active profile set, falling back to 1 default profile: "default"
+2023-05-30 13:04:18.386 [main] INFO  o.s.d.r.config.RepositoryConfigurationDelegate - Multiple Spring Data modules found, entering strict repository configuration mode
+2023-05-30 13:04:18.388 [main] INFO  o.s.d.r.config.RepositoryConfigurationDelegate - Bootstrapping Spring Data Redis repositories in DEFAULT mode.
+2023-05-30 13:04:18.406 [main] INFO  o.s.d.r.config.RepositoryConfigurationDelegate - Finished Spring Data repository scanning in 6 ms. Found 0 Redis repository interfaces.
+2023-05-30 13:04:18.768 [main] INFO  o.s.boot.web.embedded.tomcat.TomcatWebServer - Tomcat initialized with port(s): 8080 (http)
+2023-05-30 13:04:18.775 [main] INFO  org.apache.catalina.core.StandardService - Starting service [Tomcat]
+2023-05-30 13:04:18.775 [main] INFO  org.apache.catalina.core.StandardEngine - Starting Servlet engine: [Apache Tomcat/9.0.71]
+2023-05-30 13:04:18.824 [main] INFO  o.a.c.core.ContainerBase.[Tomcat].[localhost].[/] - Initializing Spring embedded WebApplicationContext
+2023-05-30 13:04:18.824 [main] INFO  o.s.b.w.s.c.ServletWebServerApplicationContext - Root WebApplicationContext: initialization completed in 936 ms
+2023-05-30 13:04:19.590 [main] INFO  o.s.boot.web.embedded.tomcat.TomcatWebServer - Tomcat started on port(s): 8080 (http) with context path ''
+2023-05-30 13:04:19.598 [main] INFO  com.eccentric.tranding.TrandingPlatformApplication - Started TrandingPlatformApplication in 2.113 seconds (JVM running for 2.494)
+2023-05-30 13:04:41.974 [http-nio-8080-exec-1] INFO  o.a.c.core.ContainerBase.[Tomcat].[localhost].[/] - Initializing Spring DispatcherServlet 'dispatcherServlet'
+2023-05-30 13:04:41.975 [http-nio-8080-exec-1] INFO  org.springframework.web.servlet.DispatcherServlet - Initializing Servlet 'dispatcherServlet'
+2023-05-30 13:04:41.976 [http-nio-8080-exec-1] INFO  org.springframework.web.servlet.DispatcherServlet - Completed initialization in 1 ms
+2023-05-30 13:04:42.016 [http-nio-8080-exec-1] INFO  com.zaxxer.hikari.HikariDataSource - HikariPool-1 - Starting...
+2023-05-30 13:04:42.125 [http-nio-8080-exec-1] INFO  com.zaxxer.hikari.HikariDataSource - HikariPool-1 - Start completed.
+2023-05-30 13:04:42.130 [http-nio-8080-exec-1] DEBUG c.e.tranding.mappers.UserMapper.getUserByPhone - ==>  Preparing: select * from user where phone = ?
+2023-05-30 13:04:42.147 [http-nio-8080-exec-1] DEBUG c.e.tranding.mappers.UserMapper.getUserByPhone - ==> Parameters: admin(String)
+2023-05-30 13:04:42.165 [http-nio-8080-exec-1] DEBUG c.e.tranding.mappers.UserMapper.getUserByPhone - <==      Total: 1
+2023-05-30 13:04:42.168 [http-nio-8080-exec-1] DEBUG c.e.tranding.mappers.RoleMapper.getRoleById - ==>  Preparing: select * from role where role_id = ?
+2023-05-30 13:04:42.168 [http-nio-8080-exec-1] DEBUG c.e.tranding.mappers.RoleMapper.getRoleById - ==> Parameters: 1(Integer)
+2023-05-30 13:04:42.169 [http-nio-8080-exec-1] DEBUG c.e.tranding.mappers.RoleMapper.getRoleById - <==      Total: 1
+2023-05-30 13:04:42.170 [http-nio-8080-exec-1] DEBUG c.e.tranding.mappers.ModuleMapper.getModuleByUrl - ==>  Preparing: select * from module where url = ?
+2023-05-30 13:04:42.171 [http-nio-8080-exec-1] DEBUG c.e.tranding.mappers.ModuleMapper.getModuleByUrl - ==> Parameters: /category/total(String)
+2023-05-30 13:04:42.172 [http-nio-8080-exec-1] DEBUG c.e.tranding.mappers.ModuleMapper.getModuleByUrl - <==      Total: 1
+2023-05-30 13:04:42.173 [http-nio-8080-exec-1] INFO  c.e.tranding.interceptor.LoggingInterceptor - admin 使用资源：统计所有分类信息的数量，访问路径：http://localhost:8080/category/total
+2023-05-30 13:04:42.193 [http-nio-8080-exec-1] DEBUG c.e.t.mappers.CategoryMapper.getTotalCategory - ==>  Preparing: select count(*) from category where concat(category_name) like "%"?"%"
+2023-05-30 13:04:42.193 [http-nio-8080-exec-1] DEBUG c.e.t.mappers.CategoryMapper.getTotalCategory - ==> Parameters: (String)
+2023-05-30 13:04:42.195 [http-nio-8080-exec-1] DEBUG c.e.t.mappers.CategoryMapper.getTotalCategory - <==      Total: 1
+2023-05-30 13:04:42.261 [http-nio-8080-exec-1] INFO  c.e.tranding.interceptor.LoggingInterceptor - Response Status: 200
+2023-05-30 13:05:30.539 [SpringApplicationShutdownHook] INFO  com.zaxxer.hikari.HikariDataSource - HikariPool-1 - Shutdown initiated...
+2023-05-30 13:05:30.554 [SpringApplicationShutdownHook] INFO  com.zaxxer.hikari.HikariDataSource - HikariPool-1 - Shutdown completed.
+2023-05-30 13:05:32.602 [main] INFO  com.eccentric.tranding.TrandingPlatformApplication - Starting TrandingPlatformApplication using Java 1.8.0_372 on EccentricPC with PID 6440 (/home/eccentric/Documents/Tranding-Platform-System/Tranding-Platform/target/classes started by eccentric in /home/eccentric/Documents/Tranding-Platform-System/Tranding-Platform)
+2023-05-30 13:05:32.604 [main] INFO  com.eccentric.tranding.TrandingPlatformApplication - No active profile set, falling back to 1 default profile: "default"
+2023-05-30 13:05:33.075 [main] INFO  o.s.d.r.config.RepositoryConfigurationDelegate - Multiple Spring Data modules found, entering strict repository configuration mode
+2023-05-30 13:05:33.077 [main] INFO  o.s.d.r.config.RepositoryConfigurationDelegate - Bootstrapping Spring Data Redis repositories in DEFAULT mode.
+2023-05-30 13:05:33.094 [main] INFO  o.s.d.r.config.RepositoryConfigurationDelegate - Finished Spring Data repository scanning in 7 ms. Found 0 Redis repository interfaces.
+2023-05-30 13:05:33.465 [main] INFO  o.s.boot.web.embedded.tomcat.TomcatWebServer - Tomcat initialized with port(s): 8080 (http)
+2023-05-30 13:05:33.471 [main] INFO  org.apache.coyote.http11.Http11NioProtocol - Initializing ProtocolHandler ["http-nio-8080"]
+2023-05-30 13:05:33.472 [main] INFO  org.apache.catalina.core.StandardService - Starting service [Tomcat]
+2023-05-30 13:05:33.472 [main] INFO  org.apache.catalina.core.StandardEngine - Starting Servlet engine: [Apache Tomcat/9.0.71]
+2023-05-30 13:05:33.521 [main] INFO  o.a.c.core.ContainerBase.[Tomcat].[localhost].[/] - Initializing Spring embedded WebApplicationContext
+2023-05-30 13:05:33.522 [main] INFO  o.s.b.w.s.c.ServletWebServerApplicationContext - Root WebApplicationContext: initialization completed in 886 ms
+2023-05-30 13:05:34.275 [main] INFO  org.apache.coyote.http11.Http11NioProtocol - Starting ProtocolHandler ["http-nio-8080"]
+2023-05-30 13:05:34.285 [main] INFO  o.s.boot.web.embedded.tomcat.TomcatWebServer - Tomcat started on port(s): 8080 (http) with context path ''
+2023-05-30 13:05:34.294 [main] INFO  com.eccentric.tranding.TrandingPlatformApplication - Started TrandingPlatformApplication in 2.051 seconds (JVM running for 2.483)
+2023-05-30 13:06:03.049 [main] INFO  com.eccentric.tranding.TrandingPlatformApplication - Starting TrandingPlatformApplication using Java 1.8.0_372 on EccentricPC with PID 6586 (/home/eccentric/Documents/Tranding-Platform-System/Tranding-Platform/target/classes started by eccentric in /home/eccentric/Documents/Tranding-Platform-System/Tranding-Platform)
+2023-05-30 13:06:03.051 [main] INFO  com.eccentric.tranding.TrandingPlatformApplication - No active profile set, falling back to 1 default profile: "default"
+2023-05-30 13:06:03.529 [main] INFO  o.s.d.r.config.RepositoryConfigurationDelegate - Multiple Spring Data modules found, entering strict repository configuration mode
+2023-05-30 13:06:03.530 [main] INFO  o.s.d.r.config.RepositoryConfigurationDelegate - Bootstrapping Spring Data Redis repositories in DEFAULT mode.
+2023-05-30 13:06:03.548 [main] INFO  o.s.d.r.config.RepositoryConfigurationDelegate - Finished Spring Data repository scanning in 6 ms. Found 0 Redis repository interfaces.
+2023-05-30 13:06:03.928 [main] INFO  o.s.boot.web.embedded.tomcat.TomcatWebServer - Tomcat initialized with port(s): 8080 (http)
+2023-05-30 13:06:03.934 [main] INFO  org.apache.coyote.http11.Http11NioProtocol - Initializing ProtocolHandler ["http-nio-8080"]
+2023-05-30 13:06:03.934 [main] INFO  org.apache.catalina.core.StandardService - Starting service [Tomcat]
+2023-05-30 13:06:03.934 [main] INFO  org.apache.catalina.core.StandardEngine - Starting Servlet engine: [Apache Tomcat/9.0.71]
+2023-05-30 13:06:03.990 [main] INFO  o.a.c.core.ContainerBase.[Tomcat].[localhost].[/] - Initializing Spring embedded WebApplicationContext
+2023-05-30 13:06:03.991 [main] INFO  o.s.b.w.s.c.ServletWebServerApplicationContext - Root WebApplicationContext: initialization completed in 906 ms
+2023-05-30 13:06:04.782 [main] INFO  org.apache.coyote.http11.Http11NioProtocol - Starting ProtocolHandler ["http-nio-8080"]
+2023-05-30 13:06:04.793 [main] INFO  o.s.boot.web.embedded.tomcat.TomcatWebServer - Tomcat started on port(s): 8080 (http) with context path ''
+2023-05-30 13:06:04.801 [main] INFO  com.eccentric.tranding.TrandingPlatformApplication - Started TrandingPlatformApplication in 2.114 seconds (JVM running for 2.498)
+2023-05-30 13:09:25.181 [main] INFO  com.eccentric.tranding.TrandingPlatformApplication - Starting TrandingPlatformApplication using Java 1.8.0_372 on EccentricPC with PID 7735 (/home/eccentric/Documents/Tranding-Platform-System/Tranding-Platform/target/classes started by eccentric in /home/eccentric/Documents/Tranding-Platform-System/Tranding-Platform)
+2023-05-30 13:09:25.183 [main] INFO  com.eccentric.tranding.TrandingPlatformApplication - No active profile set, falling back to 1 default profile: "default"
+2023-05-30 13:09:25.646 [main] INFO  o.s.d.r.config.RepositoryConfigurationDelegate - Multiple Spring Data modules found, entering strict repository configuration mode
+2023-05-30 13:09:25.647 [main] INFO  o.s.d.r.config.RepositoryConfigurationDelegate - Bootstrapping Spring Data Redis repositories in DEFAULT mode.
+2023-05-30 13:09:25.664 [main] INFO  o.s.d.r.config.RepositoryConfigurationDelegate - Finished Spring Data repository scanning in 6 ms. Found 0 Redis repository interfaces.
+2023-05-30 13:09:26.034 [main] INFO  o.s.boot.web.embedded.tomcat.TomcatWebServer - Tomcat initialized with port(s): 8080 (http)
+2023-05-30 13:09:26.040 [main] INFO  org.apache.coyote.http11.Http11NioProtocol - Initializing ProtocolHandler ["http-nio-8080"]
+2023-05-30 13:09:26.040 [main] INFO  org.apache.catalina.core.StandardService - Starting service [Tomcat]
+2023-05-30 13:09:26.040 [main] INFO  org.apache.catalina.core.StandardEngine - Starting Servlet engine: [Apache Tomcat/9.0.71]
+2023-05-30 13:09:26.089 [main] INFO  o.a.c.core.ContainerBase.[Tomcat].[localhost].[/] - Initializing Spring embedded WebApplicationContext
+2023-05-30 13:09:26.090 [main] INFO  o.s.b.w.s.c.ServletWebServerApplicationContext - Root WebApplicationContext: initialization completed in 876 ms
+2023-05-30 13:09:26.850 [main] INFO  org.apache.coyote.http11.Http11NioProtocol - Starting ProtocolHandler ["http-nio-8080"]
+2023-05-30 13:09:26.860 [main] INFO  o.s.boot.web.embedded.tomcat.TomcatWebServer - Tomcat started on port(s): 8080 (http) with context path ''
+2023-05-30 13:09:26.869 [main] INFO  com.eccentric.tranding.TrandingPlatformApplication - Started TrandingPlatformApplication in 2.048 seconds (JVM running for 2.442)
+2023-05-30 13:09:38.047 [main] INFO  com.eccentric.tranding.TrandingPlatformApplication - Starting TrandingPlatformApplication using Java 1.8.0_372 on EccentricPC with PID 7880 (/home/eccentric/Documents/Tranding-Platform-System/Tranding-Platform/target/classes started by eccentric in /home/eccentric/Documents/Tranding-Platform-System/Tranding-Platform)
+2023-05-30 13:09:38.049 [main] INFO  com.eccentric.tranding.TrandingPlatformApplication - No active profile set, falling back to 1 default profile: "default"
+2023-05-30 13:09:38.518 [main] INFO  o.s.d.r.config.RepositoryConfigurationDelegate - Multiple Spring Data modules found, entering strict repository configuration mode
+2023-05-30 13:09:38.519 [main] INFO  o.s.d.r.config.RepositoryConfigurationDelegate - Bootstrapping Spring Data Redis repositories in DEFAULT mode.
+2023-05-30 13:09:38.537 [main] INFO  o.s.d.r.config.RepositoryConfigurationDelegate - Finished Spring Data repository scanning in 7 ms. Found 0 Redis repository interfaces.
+2023-05-30 13:09:38.907 [main] INFO  o.s.boot.web.embedded.tomcat.TomcatWebServer - Tomcat initialized with port(s): 8080 (http)
+2023-05-30 13:09:38.913 [main] INFO  org.apache.coyote.http11.Http11NioProtocol - Initializing ProtocolHandler ["http-nio-8080"]
+2023-05-30 13:09:38.913 [main] INFO  org.apache.catalina.core.StandardService - Starting service [Tomcat]
+2023-05-30 13:09:38.913 [main] INFO  org.apache.catalina.core.StandardEngine - Starting Servlet engine: [Apache Tomcat/9.0.71]
+2023-05-30 13:09:38.964 [main] INFO  o.a.c.core.ContainerBase.[Tomcat].[localhost].[/] - Initializing Spring embedded WebApplicationContext
+2023-05-30 13:09:38.964 [main] INFO  o.s.b.w.s.c.ServletWebServerApplicationContext - Root WebApplicationContext: initialization completed in 883 ms
+2023-05-30 13:09:39.732 [main] INFO  org.apache.coyote.http11.Http11NioProtocol - Starting ProtocolHandler ["http-nio-8080"]
+2023-05-30 13:09:39.742 [main] INFO  o.s.boot.web.embedded.tomcat.TomcatWebServer - Tomcat started on port(s): 8080 (http) with context path ''
+2023-05-30 13:09:39.750 [main] INFO  com.eccentric.tranding.TrandingPlatformApplication - Started TrandingPlatformApplication in 2.097 seconds (JVM running for 2.484)
+2023-05-30 13:11:06.063 [main] INFO  com.eccentric.tranding.TrandingPlatformApplication - Starting TrandingPlatformApplication using Java 1.8.0_372 on EccentricPC with PID 8352 (/home/eccentric/Documents/Tranding-Platform-System/Tranding-Platform/target/classes started by eccentric in /home/eccentric/Documents/Tranding-Platform-System/Tranding-Platform)
+2023-05-30 13:11:06.065 [main] INFO  com.eccentric.tranding.TrandingPlatformApplication - No active profile set, falling back to 1 default profile: "default"
+2023-05-30 13:11:06.535 [main] INFO  o.s.d.r.config.RepositoryConfigurationDelegate - Multiple Spring Data modules found, entering strict repository configuration mode
+2023-05-30 13:11:06.536 [main] INFO  o.s.d.r.config.RepositoryConfigurationDelegate - Bootstrapping Spring Data Redis repositories in DEFAULT mode.
+2023-05-30 13:11:06.553 [main] INFO  o.s.d.r.config.RepositoryConfigurationDelegate - Finished Spring Data repository scanning in 6 ms. Found 0 Redis repository interfaces.
+2023-05-30 13:11:06.909 [main] INFO  o.s.boot.web.embedded.tomcat.TomcatWebServer - Tomcat initialized with port(s): 8080 (http)
+2023-05-30 13:11:06.915 [main] INFO  org.apache.coyote.http11.Http11NioProtocol - Initializing ProtocolHandler ["http-nio-8080"]
+2023-05-30 13:11:06.916 [main] INFO  org.apache.catalina.core.StandardService - Starting service [Tomcat]
+2023-05-30 13:11:06.916 [main] INFO  org.apache.catalina.core.StandardEngine - Starting Servlet engine: [Apache Tomcat/9.0.71]
+2023-05-30 13:11:06.965 [main] INFO  o.a.c.core.ContainerBase.[Tomcat].[localhost].[/] - Initializing Spring embedded WebApplicationContext
+2023-05-30 13:11:06.965 [main] INFO  o.s.b.w.s.c.ServletWebServerApplicationContext - Root WebApplicationContext: initialization completed in 861 ms
+2023-05-30 13:11:07.735 [main] INFO  org.apache.coyote.http11.Http11NioProtocol - Starting ProtocolHandler ["http-nio-8080"]
+2023-05-30 13:11:07.745 [main] INFO  o.s.boot.web.embedded.tomcat.TomcatWebServer - Tomcat started on port(s): 8080 (http) with context path ''
+2023-05-30 13:11:07.753 [main] INFO  com.eccentric.tranding.TrandingPlatformApplication - Started TrandingPlatformApplication in 2.029 seconds (JVM running for 2.383)
+2023-05-30 13:11:58.965 [main] INFO  com.eccentric.tranding.TrandingPlatformApplication - Starting TrandingPlatformApplication using Java 1.8.0_372 on EccentricPC with PID 8513 (/home/eccentric/Documents/Tranding-Platform-System/Tranding-Platform/target/classes started by eccentric in /home/eccentric/Documents/Tranding-Platform-System/Tranding-Platform)
+2023-05-30 13:11:58.969 [main] INFO  com.eccentric.tranding.TrandingPlatformApplication - No active profile set, falling back to 1 default profile: "default"
+2023-05-30 13:11:59.440 [main] INFO  o.s.d.r.config.RepositoryConfigurationDelegate - Multiple Spring Data modules found, entering strict repository configuration mode
+2023-05-30 13:11:59.442 [main] INFO  o.s.d.r.config.RepositoryConfigurationDelegate - Bootstrapping Spring Data Redis repositories in DEFAULT mode.
+2023-05-30 13:11:59.459 [main] INFO  o.s.d.r.config.RepositoryConfigurationDelegate - Finished Spring Data repository scanning in 6 ms. Found 0 Redis repository interfaces.
+2023-05-30 13:11:59.826 [main] INFO  o.s.boot.web.embedded.tomcat.TomcatWebServer - Tomcat initialized with port(s): 8080 (http)
+2023-05-30 13:11:59.833 [main] INFO  org.apache.catalina.core.StandardService - Starting service [Tomcat]
+2023-05-30 13:11:59.833 [main] INFO  org.apache.catalina.core.StandardEngine - Starting Servlet engine: [Apache Tomcat/9.0.71]
+2023-05-30 13:11:59.883 [main] INFO  o.a.c.core.ContainerBase.[Tomcat].[localhost].[/] - Initializing Spring embedded WebApplicationContext
+2023-05-30 13:11:59.883 [main] INFO  o.s.b.w.s.c.ServletWebServerApplicationContext - Root WebApplicationContext: initialization completed in 874 ms
+2023-05-30 13:12:00.661 [main] INFO  o.s.boot.web.embedded.tomcat.TomcatWebServer - Tomcat started on port(s): 8080 (http) with context path ''
+2023-05-30 13:12:00.670 [main] INFO  com.eccentric.tranding.TrandingPlatformApplication - Started TrandingPlatformApplication in 2.071 seconds (JVM running for 2.438)
+2023-05-30 13:12:08.960 [http-nio-8080-exec-2] INFO  o.a.c.core.ContainerBase.[Tomcat].[localhost].[/] - Initializing Spring DispatcherServlet 'dispatcherServlet'
+2023-05-30 13:12:08.961 [http-nio-8080-exec-2] INFO  org.springframework.web.servlet.DispatcherServlet - Initializing Servlet 'dispatcherServlet'
+2023-05-30 13:12:08.963 [http-nio-8080-exec-2] INFO  org.springframework.web.servlet.DispatcherServlet - Completed initialization in 2 ms
+2023-05-30 13:12:09.009 [http-nio-8080-exec-2] INFO  com.zaxxer.hikari.HikariDataSource - HikariPool-1 - Starting...
+2023-05-30 13:12:09.111 [http-nio-8080-exec-2] INFO  com.zaxxer.hikari.HikariDataSource - HikariPool-1 - Start completed.
+2023-05-30 13:12:09.117 [http-nio-8080-exec-2] DEBUG c.e.tranding.mappers.UserMapper.getUserByPhone - ==>  Preparing: select * from user where phone = ?
+2023-05-30 13:12:09.132 [http-nio-8080-exec-2] DEBUG c.e.tranding.mappers.UserMapper.getUserByPhone - ==> Parameters: admin(String)
+2023-05-30 13:12:09.149 [http-nio-8080-exec-2] DEBUG c.e.tranding.mappers.UserMapper.getUserByPhone - <==      Total: 1
+2023-05-30 13:12:09.152 [http-nio-8080-exec-2] DEBUG c.e.tranding.mappers.RoleMapper.getRoleById - ==>  Preparing: select * from role where role_id = ?
+2023-05-30 13:12:09.152 [http-nio-8080-exec-2] DEBUG c.e.tranding.mappers.RoleMapper.getRoleById - ==> Parameters: 1(Integer)
+2023-05-30 13:12:09.153 [http-nio-8080-exec-2] DEBUG c.e.tranding.mappers.RoleMapper.getRoleById - <==      Total: 1
+2023-05-30 13:12:09.154 [http-nio-8080-exec-2] DEBUG c.e.tranding.mappers.ModuleMapper.getModuleByUrl - ==>  Preparing: select * from module where url = ?
+2023-05-30 13:12:09.155 [http-nio-8080-exec-2] DEBUG c.e.tranding.mappers.ModuleMapper.getModuleByUrl - ==> Parameters: /category/total(String)
+2023-05-30 13:12:09.156 [http-nio-8080-exec-2] DEBUG c.e.tranding.mappers.ModuleMapper.getModuleByUrl - <==      Total: 1
+2023-05-30 13:12:09.156 [http-nio-8080-exec-2] INFO  c.e.tranding.interceptor.LoggingInterceptor - admin 使用资源：统计所有分类信息的数量，访问路径：http://localhost:8080/category/total
+2023-05-30 13:12:09.170 [http-nio-8080-exec-2] DEBUG c.e.t.mappers.CategoryMapper.getTotalCategory - ==>  Preparing: select count(*) from category where concat(category_name) like "%"?"%"
+2023-05-30 13:12:09.170 [http-nio-8080-exec-2] DEBUG c.e.t.mappers.CategoryMapper.getTotalCategory - ==> Parameters: (String)
+2023-05-30 13:12:09.172 [http-nio-8080-exec-2] DEBUG c.e.t.mappers.CategoryMapper.getTotalCategory - <==      Total: 1
+2023-05-30 13:12:09.221 [http-nio-8080-exec-2] INFO  c.e.tranding.interceptor.LoggingInterceptor - Response Status: 200
+2023-05-30 13:12:53.830 [http-nio-8080-exec-4] DEBUG c.e.tranding.mappers.UserMapper.getUserByPhone - ==>  Preparing: select * from user where phone = ?
+2023-05-30 13:12:53.831 [http-nio-8080-exec-4] DEBUG c.e.tranding.mappers.UserMapper.getUserByPhone - ==> Parameters: admin(String)
+2023-05-30 13:12:53.833 [http-nio-8080-exec-4] DEBUG c.e.tranding.mappers.UserMapper.getUserByPhone - <==      Total: 1
+2023-05-30 13:12:53.834 [http-nio-8080-exec-4] DEBUG c.e.tranding.mappers.RoleMapper.getRoleById - ==>  Preparing: select * from role where role_id = ?
+2023-05-30 13:12:53.834 [http-nio-8080-exec-4] DEBUG c.e.tranding.mappers.RoleMapper.getRoleById - ==> Parameters: 1(Integer)
+2023-05-30 13:12:53.836 [http-nio-8080-exec-4] DEBUG c.e.tranding.mappers.RoleMapper.getRoleById - <==      Total: 1
+2023-05-30 13:12:53.836 [http-nio-8080-exec-4] DEBUG c.e.tranding.mappers.ModuleMapper.getModuleByUrl - ==>  Preparing: select * from module where url = ?
+2023-05-30 13:12:53.837 [http-nio-8080-exec-4] DEBUG c.e.tranding.mappers.ModuleMapper.getModuleByUrl - ==> Parameters: /category/all(String)
+2023-05-30 13:12:53.839 [http-nio-8080-exec-4] DEBUG c.e.tranding.mappers.ModuleMapper.getModuleByUrl - <==      Total: 1
+2023-05-30 13:12:53.840 [http-nio-8080-exec-4] INFO  c.e.tranding.interceptor.LoggingInterceptor - admin 使用资源：获取所有分类信息的功能，访问路径：http://localhost:8080/category/all
+2023-05-30 13:12:53.842 [http-nio-8080-exec-4] DEBUG c.e.tranding.mappers.CategoryMapper.getAllCategory - ==>  Preparing: select * from category where concat(category_name) like "%"?"%" limit ?,?
+2023-05-30 13:12:53.843 [http-nio-8080-exec-4] DEBUG c.e.tranding.mappers.CategoryMapper.getAllCategory - ==> Parameters: (String), 0(Integer), 10(Integer)
+2023-05-30 13:12:53.848 [http-nio-8080-exec-4] DEBUG c.e.tranding.mappers.CategoryMapper.getAllCategory - <==      Total: 10
+2023-05-30 13:12:53.872 [http-nio-8080-exec-4] INFO  c.e.tranding.interceptor.LoggingInterceptor - Response Status: 200
+2023-05-30 13:13:21.117 [http-nio-8080-exec-3] DEBUG c.e.tranding.mappers.UserMapper.getUserByPhone - ==>  Preparing: select * from user where phone = ?
+2023-05-30 13:13:21.118 [http-nio-8080-exec-3] DEBUG c.e.tranding.mappers.UserMapper.getUserByPhone - ==> Parameters: test(String)
+2023-05-30 13:13:21.120 [http-nio-8080-exec-3] DEBUG c.e.tranding.mappers.UserMapper.getUserByPhone - <==      Total: 1
+2023-05-30 13:13:21.121 [http-nio-8080-exec-3] DEBUG c.e.tranding.mappers.RoleMapper.getRoleById - ==>  Preparing: select * from role where role_id = ?
+2023-05-30 13:13:21.122 [http-nio-8080-exec-3] DEBUG c.e.tranding.mappers.RoleMapper.getRoleById - ==> Parameters: 2(Integer)
+2023-05-30 13:13:21.123 [http-nio-8080-exec-3] DEBUG c.e.tranding.mappers.RoleMapper.getRoleById - <==      Total: 1
+2023-05-30 13:13:21.124 [http-nio-8080-exec-3] DEBUG c.e.tranding.mappers.ModuleMapper.getModuleByUrl - ==>  Preparing: select * from module where url = ?
+2023-05-30 13:13:21.124 [http-nio-8080-exec-3] DEBUG c.e.tranding.mappers.ModuleMapper.getModuleByUrl - ==> Parameters: /user/switch/status(String)
+2023-05-30 13:13:21.125 [http-nio-8080-exec-3] DEBUG c.e.tranding.mappers.ModuleMapper.getModuleByUrl - <==      Total: 1
+2023-05-30 13:13:21.126 [http-nio-8080-exec-3] DEBUG c.e.t.mappers.PermissionMapper.getPermission - ==>  Preparing: select * from permission where role_id=? and module_id=?
+2023-05-30 13:13:21.127 [http-nio-8080-exec-3] DEBUG c.e.t.mappers.PermissionMapper.getPermission - ==> Parameters: 2(Integer), 14(Integer)
+2023-05-30 13:13:21.139 [http-nio-8080-exec-3] DEBUG c.e.t.mappers.PermissionMapper.getPermission - <==      Total: 1
+2023-05-30 13:13:21.140 [http-nio-8080-exec-3] DEBUG c.e.tranding.mappers.ModuleMapper.getModuleByUrl - ==>  Preparing: select * from module where url = ?
+2023-05-30 13:13:21.140 [http-nio-8080-exec-3] DEBUG c.e.tranding.mappers.ModuleMapper.getModuleByUrl - ==> Parameters: /user/switch/status(String)
+2023-05-30 13:13:21.142 [http-nio-8080-exec-3] DEBUG c.e.tranding.mappers.ModuleMapper.getModuleByUrl - <==      Total: 1
+2023-05-30 13:13:21.142 [http-nio-8080-exec-3] INFO  c.e.tranding.interceptor.LoggingInterceptor - test 使用资源：用户状态切换功能（admin无法被禁用），访问路径：http://localhost:8080/user/switch/status
+2023-05-30 13:13:21.145 [http-nio-8080-exec-3] DEBUG c.e.tranding.mappers.UserMapper.getUserByUserId - ==>  Preparing: select * from user where user_id = ?
+2023-05-30 13:13:21.145 [http-nio-8080-exec-3] DEBUG c.e.tranding.mappers.UserMapper.getUserByUserId - ==> Parameters: 3(Integer)
+2023-05-30 13:13:21.147 [http-nio-8080-exec-3] DEBUG c.e.tranding.mappers.UserMapper.getUserByUserId - <==      Total: 1
+2023-05-30 13:13:21.148 [http-nio-8080-exec-3] DEBUG c.e.tranding.mappers.RoleMapper.getRoleById - ==>  Preparing: select * from role where role_id = ?
+2023-05-30 13:13:21.149 [http-nio-8080-exec-3] DEBUG c.e.tranding.mappers.RoleMapper.getRoleById - ==> Parameters: 2(Integer)
+2023-05-30 13:13:21.150 [http-nio-8080-exec-3] DEBUG c.e.tranding.mappers.RoleMapper.getRoleById - <==      Total: 1
+2023-05-30 13:13:21.151 [http-nio-8080-exec-3] DEBUG c.e.tranding.mappers.RoleMapper.getRoleById - ==>  Preparing: select * from role where role_id = ?
+2023-05-30 13:13:21.152 [http-nio-8080-exec-3] DEBUG c.e.tranding.mappers.RoleMapper.getRoleById - ==> Parameters: 2(Integer)
+2023-05-30 13:13:21.154 [http-nio-8080-exec-3] DEBUG c.e.tranding.mappers.RoleMapper.getRoleById - <==      Total: 1
+2023-05-30 13:13:21.158 [http-nio-8080-exec-3] DEBUG c.e.tranding.mappers.RoleMapper.getRoleById - ==>  Preparing: select * from role where role_id = ?
+2023-05-30 13:13:21.158 [http-nio-8080-exec-3] DEBUG c.e.tranding.mappers.RoleMapper.getRoleById - ==> Parameters: 2(Integer)
+2023-05-30 13:13:21.160 [http-nio-8080-exec-3] DEBUG c.e.tranding.mappers.RoleMapper.getRoleById - <==      Total: 1
+2023-05-30 13:13:21.162 [http-nio-8080-exec-3] INFO  c.e.tranding.interceptor.LoggingInterceptor - Response Status: 200
+2023-05-30 13:13:27.626 [http-nio-8080-exec-5] DEBUG c.e.tranding.mappers.UserMapper.getUserByPhone - ==>  Preparing: select * from user where phone = ?
+2023-05-30 13:13:27.626 [http-nio-8080-exec-5] DEBUG c.e.tranding.mappers.UserMapper.getUserByPhone - ==> Parameters: admin(String)
+2023-05-30 13:13:27.628 [http-nio-8080-exec-5] DEBUG c.e.tranding.mappers.UserMapper.getUserByPhone - <==      Total: 1
+2023-05-30 13:13:27.628 [http-nio-8080-exec-5] DEBUG c.e.tranding.mappers.RoleMapper.getRoleById - ==>  Preparing: select * from role where role_id = ?
+2023-05-30 13:13:27.629 [http-nio-8080-exec-5] DEBUG c.e.tranding.mappers.RoleMapper.getRoleById - ==> Parameters: 1(Integer)
+2023-05-30 13:13:27.630 [http-nio-8080-exec-5] DEBUG c.e.tranding.mappers.RoleMapper.getRoleById - <==      Total: 1
+2023-05-30 13:13:27.630 [http-nio-8080-exec-5] DEBUG c.e.tranding.mappers.ModuleMapper.getModuleByUrl - ==>  Preparing: select * from module where url = ?
+2023-05-30 13:13:27.631 [http-nio-8080-exec-5] DEBUG c.e.tranding.mappers.ModuleMapper.getModuleByUrl - ==> Parameters: /user/switch/status(String)
+2023-05-30 13:13:27.632 [http-nio-8080-exec-5] DEBUG c.e.tranding.mappers.ModuleMapper.getModuleByUrl - <==      Total: 1
+2023-05-30 13:13:27.632 [http-nio-8080-exec-5] INFO  c.e.tranding.interceptor.LoggingInterceptor - admin 使用资源：用户状态切换功能（admin无法被禁用），访问路径：http://localhost:8080/user/switch/status
+2023-05-30 13:13:27.633 [http-nio-8080-exec-5] DEBUG c.e.tranding.mappers.UserMapper.getUserByUserId - ==>  Preparing: select * from user where user_id = ?
+2023-05-30 13:13:27.633 [http-nio-8080-exec-5] DEBUG c.e.tranding.mappers.UserMapper.getUserByUserId - ==> Parameters: 3(Integer)
+2023-05-30 13:13:27.634 [http-nio-8080-exec-5] DEBUG c.e.tranding.mappers.UserMapper.getUserByUserId - <==      Total: 1
+2023-05-30 13:13:27.635 [http-nio-8080-exec-5] DEBUG c.e.tranding.mappers.RoleMapper.getRoleById - ==>  Preparing: select * from role where role_id = ?
+2023-05-30 13:13:27.635 [http-nio-8080-exec-5] DEBUG c.e.tranding.mappers.RoleMapper.getRoleById - ==> Parameters: 2(Integer)
+2023-05-30 13:13:27.636 [http-nio-8080-exec-5] DEBUG c.e.tranding.mappers.RoleMapper.getRoleById - <==      Total: 1
+2023-05-30 13:13:27.636 [http-nio-8080-exec-5] DEBUG c.e.tranding.mappers.RoleMapper.getRoleById - ==>  Preparing: select * from role where role_id = ?
+2023-05-30 13:13:27.636 [http-nio-8080-exec-5] DEBUG c.e.tranding.mappers.RoleMapper.getRoleById - ==> Parameters: 1(Integer)
+2023-05-30 13:13:27.637 [http-nio-8080-exec-5] DEBUG c.e.tranding.mappers.RoleMapper.getRoleById - <==      Total: 1
+2023-05-30 13:13:27.638 [http-nio-8080-exec-5] DEBUG c.e.tranding.mappers.RoleMapper.getRoleById - ==>  Preparing: select * from role where role_id = ?
+2023-05-30 13:13:27.638 [http-nio-8080-exec-5] DEBUG c.e.tranding.mappers.RoleMapper.getRoleById - ==> Parameters: 2(Integer)
+2023-05-30 13:13:27.639 [http-nio-8080-exec-5] DEBUG c.e.tranding.mappers.RoleMapper.getRoleById - <==      Total: 1
+2023-05-30 13:13:27.640 [http-nio-8080-exec-5] DEBUG c.e.tranding.mappers.UserMapper.updateUserStatus - ==>  Preparing: update user set status = ? where user_id = ?
+2023-05-30 13:13:27.640 [http-nio-8080-exec-5] DEBUG c.e.tranding.mappers.UserMapper.updateUserStatus - ==> Parameters: 2(Integer), 3(Integer)
+2023-05-30 13:13:27.652 [http-nio-8080-exec-5] DEBUG c.e.tranding.mappers.UserMapper.updateUserStatus - <==    Updates: 1
+2023-05-30 13:13:27.654 [http-nio-8080-exec-5] INFO  c.e.tranding.interceptor.LoggingInterceptor - Response Status: 200
+2023-05-30 13:13:46.021 [http-nio-8080-exec-6] DEBUG c.e.tranding.mappers.UserMapper.getUserByPhone - ==>  Preparing: select * from user where phone = ?
+2023-05-30 13:13:46.022 [http-nio-8080-exec-6] DEBUG c.e.tranding.mappers.UserMapper.getUserByPhone - ==> Parameters: admin(String)
+2023-05-30 13:13:46.022 [http-nio-8080-exec-6] DEBUG c.e.tranding.mappers.UserMapper.getUserByPhone - <==      Total: 1
+2023-05-30 13:13:46.023 [http-nio-8080-exec-6] DEBUG c.e.tranding.mappers.RoleMapper.getRoleById - ==>  Preparing: select * from role where role_id = ?
+2023-05-30 13:13:46.023 [http-nio-8080-exec-6] DEBUG c.e.tranding.mappers.RoleMapper.getRoleById - ==> Parameters: 1(Integer)
+2023-05-30 13:13:46.024 [http-nio-8080-exec-6] DEBUG c.e.tranding.mappers.RoleMapper.getRoleById - <==      Total: 1
+2023-05-30 13:13:46.024 [http-nio-8080-exec-6] DEBUG c.e.tranding.mappers.ModuleMapper.getModuleByUrl - ==>  Preparing: select * from module where url = ?
+2023-05-30 13:13:46.024 [http-nio-8080-exec-6] DEBUG c.e.tranding.mappers.ModuleMapper.getModuleByUrl - ==> Parameters: /user/switch/status(String)
+2023-05-30 13:13:46.025 [http-nio-8080-exec-6] DEBUG c.e.tranding.mappers.ModuleMapper.getModuleByUrl - <==      Total: 1
+2023-05-30 13:13:46.025 [http-nio-8080-exec-6] INFO  c.e.tranding.interceptor.LoggingInterceptor - admin 使用资源：用户状态切换功能（admin无法被禁用），访问路径：http://localhost:8080/user/switch/status
+2023-05-30 13:13:46.025 [http-nio-8080-exec-6] DEBUG c.e.tranding.mappers.UserMapper.getUserByUserId - ==>  Preparing: select * from user where user_id = ?
+2023-05-30 13:13:46.026 [http-nio-8080-exec-6] DEBUG c.e.tranding.mappers.UserMapper.getUserByUserId - ==> Parameters: 3(Integer)
+2023-05-30 13:13:46.027 [http-nio-8080-exec-6] DEBUG c.e.tranding.mappers.UserMapper.getUserByUserId - <==      Total: 1
+2023-05-30 13:13:46.028 [http-nio-8080-exec-6] DEBUG c.e.tranding.mappers.RoleMapper.getRoleById - ==>  Preparing: select * from role where role_id = ?
+2023-05-30 13:13:46.028 [http-nio-8080-exec-6] DEBUG c.e.tranding.mappers.RoleMapper.getRoleById - ==> Parameters: 2(Integer)
+2023-05-30 13:13:46.029 [http-nio-8080-exec-6] DEBUG c.e.tranding.mappers.RoleMapper.getRoleById - <==      Total: 1
+2023-05-30 13:13:46.030 [http-nio-8080-exec-6] DEBUG c.e.tranding.mappers.RoleMapper.getRoleById - ==>  Preparing: select * from role where role_id = ?
+2023-05-30 13:13:46.030 [http-nio-8080-exec-6] DEBUG c.e.tranding.mappers.RoleMapper.getRoleById - ==> Parameters: 1(Integer)
+2023-05-30 13:13:46.031 [http-nio-8080-exec-6] DEBUG c.e.tranding.mappers.RoleMapper.getRoleById - <==      Total: 1
+2023-05-30 13:13:46.031 [http-nio-8080-exec-6] DEBUG c.e.tranding.mappers.RoleMapper.getRoleById - ==>  Preparing: select * from role where role_id = ?
+2023-05-30 13:13:46.031 [http-nio-8080-exec-6] DEBUG c.e.tranding.mappers.RoleMapper.getRoleById - ==> Parameters: 2(Integer)
+2023-05-30 13:13:46.032 [http-nio-8080-exec-6] DEBUG c.e.tranding.mappers.RoleMapper.getRoleById - <==      Total: 1
+2023-05-30 13:13:46.032 [http-nio-8080-exec-6] DEBUG c.e.tranding.mappers.UserMapper.updateUserStatus - ==>  Preparing: update user set status = ? where user_id = ?
+2023-05-30 13:13:46.032 [http-nio-8080-exec-6] DEBUG c.e.tranding.mappers.UserMapper.updateUserStatus - ==> Parameters: 1(Integer), 3(Integer)
+2023-05-30 13:13:46.045 [http-nio-8080-exec-6] DEBUG c.e.tranding.mappers.UserMapper.updateUserStatus - <==    Updates: 1
+2023-05-30 13:13:46.046 [http-nio-8080-exec-6] INFO  c.e.tranding.interceptor.LoggingInterceptor - Response Status: 200
+2023-05-30 13:14:45.560 [SpringApplicationShutdownHook] INFO  com.zaxxer.hikari.HikariDataSource - HikariPool-1 - Shutdown initiated...
+2023-05-30 13:14:45.566 [SpringApplicationShutdownHook] INFO  com.zaxxer.hikari.HikariDataSource - HikariPool-1 - Shutdown completed.
